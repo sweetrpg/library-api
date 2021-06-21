@@ -4,7 +4,7 @@ import PackageDescription
 
 
 let package = Package(
-        name: "TILApp",
+        name: "App",
         platforms: [
             .macOS(.v10_15),
         ],
@@ -13,27 +13,28 @@ let package = Package(
             .package(url: "https://github.com/vapor/vapor.git", from: "4.0.0"),
             .package(url: "https://github.com/vapor/fluent.git", from: "4.0.0"),
             .package(url: "https://github.com/vapor/fluent-mongo-driver.git", from: "1.0.0"),
-            .package(url: "https://github.com/vapor/leaf.git", from: "4.0.0"),
-            .package(url: "https://github.com/vapor/jwt.git", from: "4.0.0"),
-            .package(url: "https://github.com/vapor-community/Imperial.git", from: "1.0.0"),
-            .package(url: "https://github.com/vapor-community/sendgrid.git", from: "4.0.0"),
+            // .package(url: "https://github.com/vapor/leaf.git", from: "4.0.0"),
+            // .package(url: "https://github.com/vapor/jwt.git", from: "4.0.0"),
+            // .package(url: "https://github.com/vapor-community/Imperial.git", from: "1.0.0"),
+            // .package(url: "https://github.com/vapor-community/sendgrid.git", from: "4.0.0"),
             .package(url: "https://github.com/vapor/redis.git", from: "4.0.0"),
+            .package(name: "sweetrpg-common", path: "../../Libraries/Common"),
+            .package(name: "sweetrpg-api-common", path: "../../Libraries/APICommon"),
+            .package(name: "sweetrpg-library-model", path: "../../Libraries/LibraryModel"),
         ],
         targets: [
-            .target(name: "Common",
+            .target(name: "App",
                     dependencies: [
-                        .product(name: "Vapor", package: "vapor"),
-                    ]),
-            .target(name: "UsersApp",
-                    dependencies: [
-                        .target(name: "Common"),
+                        .product(name: "Common", package: "sweetrpg-common"),
+                        .product(name: "APICommon", package: "sweetrpg-api-common"),
+                        .product(name: "LibraryModel", package: "sweetrpg-library-model"),
                         .product(name: "Fluent", package: "fluent"),
                         .product(name: "FluentMongoDriver", package: "fluent-mongo-driver"),
 //                        .product(name: "Leaf", package: "leaf"),
 //                        .product(name: "JWT", package: "jwt"),
                         .product(name: "Vapor", package: "vapor"),
-                        .product(name: "ImperialGoogle", package: "Imperial"),
-                        .product(name: "ImperialGitHub", package: "Imperial"),
+                        // .product(name: "ImperialGoogle", package: "Imperial"),
+                        // .product(name: "ImperialGitHub", package: "Imperial"),
 //                        .product(name: "SendGrid", package: "sendgrid"),
                         .product(name: "Redis", package: "redis"),
                     ],
@@ -44,60 +45,9 @@ let package = Package(
                         .unsafeFlags([ "-cross-module-optimization" ], .when(configuration: .release)),
                     ]
             ),
-            .executableTarget(name: "UsersExec", dependencies: [ .target(name: "UsersApp") ]),
-            .testTarget(name: "UsersAppTests", dependencies: [
-                .target(name: "UsersApp"),
-                .product(name: "XCTVapor", package: "vapor"),
-            ]),
-            .target(name: "AcronymsApp",
-                    dependencies: [
-                        .target(name: "Common"),
-                        .product(name: "Fluent", package: "fluent"),
-                        .product(name: "FluentMongoDriver", package: "fluent-mongo-driver"),
-//                        .product(name: "Leaf", package: "leaf"),
-//                        .product(name: "JWT", package: "jwt"),
-                        .product(name: "Vapor", package: "vapor"),
-//                        .product(name: "ImperialGoogle", package: "Imperial"),
-//                        .product(name: "ImperialGitHub", package: "Imperial"),
-//                        .product(name: "SendGrid", package: "sendgrid"),
-                        .product(name: "Redis", package: "redis"),
-                    ],
-                    swiftSettings: [
-                        // Enable better optimizations when building in Release configuration. Despite the use of
-                        // the `.unsafeFlags` construct required by SwiftPM, this flag is recommended for Release
-                        // builds. See <https://github.com/swift-server/guides/blob/main/docs/building.md#building-for-production> for details.
-                        .unsafeFlags([ "-cross-module-optimization" ], .when(configuration: .release)),
-                    ]
-            ),
-            .executableTarget(name: "AcronymsExec", dependencies: [ .target(name: "AcronymsApp") ]),
-            .testTarget(name: "AcronymsAppTests", dependencies: [
-                .target(name: "AcronymsApp"),
-                .product(name: "XCTVapor", package: "vapor"),
-            ]),
-            .target(
-                    name: "WebsiteApp",
-                    dependencies: [
-                        .target(name: "Common"),
-                        .product(name: "Fluent", package: "fluent"),
-                        .product(name: "FluentMongoDriver", package: "fluent-mongo-driver"),
-                        .product(name: "Leaf", package: "leaf"),
-//                        .product(name: "JWT", package: "jwt"),
-                        .product(name: "Vapor", package: "vapor"),
-//                        .product(name: "ImperialGoogle", package: "Imperial"),
-//                        .product(name: "ImperialGitHub", package: "Imperial"),
-//                        .product(name: "SendGrid", package: "sendgrid"),
-                        .product(name: "Redis", package: "redis"),
-                    ],
-                    swiftSettings: [
-                        // Enable better optimizations when building in Release configuration. Despite the use of
-                        // the `.unsafeFlags` construct required by SwiftPM, this flag is recommended for Release
-                        // builds. See <https://github.com/swift-server/guides/blob/main/docs/building.md#building-for-production> for details.
-                        .unsafeFlags([ "-cross-module-optimization" ], .when(configuration: .release)),
-                    ]
-            ),
-            .executableTarget(name: "WebsiteExec", dependencies: [ .target(name: "WebsiteApp") ]),
-            .testTarget(name: "WebsiteAppTests", dependencies: [
-                .target(name: "WebsiteApp"),
+            .executableTarget(name: "Run", dependencies: [ .target(name: "App") ]),
+            .testTarget(name: "AppTests", dependencies: [
+                .target(name: "App"),
                 .product(name: "XCTVapor", package: "vapor"),
             ]),
         ]

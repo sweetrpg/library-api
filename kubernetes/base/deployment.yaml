@@ -1,0 +1,80 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: sweetrpg-library-api
+
+spec:
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      platform: sweetrpg
+      app: library
+      component: api
+  template:
+    metadata:
+      labels:
+        platform: sweetrpg
+        app: library
+        component: api
+    spec:
+      serviceAccountName: sweetrpg-library-api
+      imagePullSecrets:
+        - name: sweetrpg-registry
+      containers:
+        - name: library-api-app
+          image: registry.sweetrpg.com/sweetrpg-library-api:latest
+          imagePullPolicy: Always
+          args:
+            [
+              "serve",
+              "--env",
+              "development",
+              "--hostname",
+              "0.0.0.0",
+              "--port",
+              "8280",
+            ]
+          envFrom:
+            - configMapRef:
+                name: sweetrpg-library-api
+            - configMapRef:
+                name: sweetrpg-library-api-env
+            # - secretRef:
+            #     name: sweetrpg-library-api
+          env:
+            - name: VAPOR_HTTP_PORT
+              value: "8280"
+            - name: VAPOR_HTTP_BIND_ADDRESS
+              value: 0.0.0.0
+          ports:
+            - containerPort: 8280
+              name: http
+          resources:
+            requests:
+              cpu: "20m"
+              memory: "55M"
+          livenessProbe:
+            httpGet:
+              path: /health/ping
+              port: 8280
+            initialDelaySeconds: 90
+            timeoutSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health/ping
+              port: 8280
+            initialDelaySeconds: 30
+            timeoutSeconds: 10
+          volumeMounts:
+            - mountPath: /data
+              name: data
+      volumes:
+        - name: data
+          emptyDir: {}
+      restartPolicy: Always

@@ -18,9 +18,9 @@ let package = Package(
             // .package(url: "https://github.com/vapor-community/Imperial.git", from: "1.0.0"),
             // .package(url: "https://github.com/vapor-community/sendgrid.git", from: "4.0.0"),
             .package(url: "https://github.com/vapor/redis.git", from: "4.0.0"),
-            .package(name: "sweetrpg-common", path: "../../Libraries/Common"),
-            .package(name: "sweetrpg-api-common", path: "../../Libraries/APICommon"),
-            .package(name: "sweetrpg-library-model", path: "../../Libraries/LibraryModel"),
+            .package(url: "ssh://git@github.com/paulyhedral/sweetrpg-common.git", .branch("develop")),
+            .package(url: "ssh://git@github.com/paulyhedral/sweetrpg-api-common.git", .branch("develop")),
+            .package(url: "ssh://git@github.com/paulyhedral/sweetrpg-library-model.git", .branch("develop")),
         ],
         targets: [
             .target(name: "App",

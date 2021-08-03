@@ -20,6 +20,7 @@ jobs:
       uses: shimataro/ssh-key-action@v2
       with:
         key: ${{ secrets.SSH_PRIVATE_KEY }} 
+        known_hosts: unnecessary
     - name: Build
       run: swift build -v
     - name: Run tests

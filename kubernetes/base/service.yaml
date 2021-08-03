@@ -1,12 +1,15 @@
+---
 kind: Service
 apiVersion: v1
+
 metadata:
-  name: Service Name
+  name: sweetrpg-library-api
+
 spec:
   selector:
-    app: Selector Label
-  type: LoadBalancer | ClusterIP | NodePort
+    app: sweetrpg-library-api
+  type: LoadBalancer
   ports:
-    - name: name-of-the-port
-      port: 80
-      targetPort: 8080
+    - name: http
+      port: 8281
+      targetPort: http

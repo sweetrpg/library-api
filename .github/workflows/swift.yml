@@ -16,6 +16,10 @@ jobs:
     - uses: fwal/setup-swift@v1
       with:
         swift-version: '5.4'
+    - name: Install SSH Key
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.SSH_PRIVATE_KEY }} 
     - name: Build
       run: swift build -v
     - name: Run tests

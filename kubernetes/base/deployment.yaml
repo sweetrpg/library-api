@@ -38,7 +38,7 @@ spec:
               "--hostname",
               "0.0.0.0",
               "--port",
-              "8280",
+              "8281",
             ]
           envFrom:
             - configMapRef:
@@ -49,11 +49,11 @@ spec:
             #     name: sweetrpg-library-api
           env:
             - name: VAPOR_HTTP_PORT
-              value: "8280"
+              value: "8281"
             - name: VAPOR_HTTP_BIND_ADDRESS
               value: 0.0.0.0
           ports:
-            - containerPort: 8280
+            - containerPort: 8281
               name: http
           resources:
             requests:
@@ -62,13 +62,13 @@ spec:
           livenessProbe:
             httpGet:
               path: /health/ping
-              port: 8280
+              port: 8281
             initialDelaySeconds: 90
             timeoutSeconds: 10
           readinessProbe:
             httpGet:
               path: /health/ping
-              port: 8280
+              port: 8281
             initialDelaySeconds: 30
             timeoutSeconds: 10
           volumeMounts:

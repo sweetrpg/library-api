@@ -7,6 +7,7 @@ FROM swift:5.4-focal as build
 RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
     && apt-get -q update \
     && apt-get -q dist-upgrade -y \
+    && apt-get -q install openssh-client git \
     && rm -rf /var/lib/apt/lists/*
 
 # Set up a build area
@@ -17,13 +18,14 @@ WORKDIR /build
 # as long as your Package.swift/Package.resolved
 # files do not change.
 COPY ./Package.* ./
-RUN swift package resolve
+RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
+RUN --mount=type=ssh swift package resolve
 
 # Copy entire repo into container
 COPY . .
 
 # Build everything, with optimizations and test discovery
-RUN swift build --enable-test-discovery -c release
+RUN --mount=type=ssh swift build --enable-test-discovery -c release
 
 # Switch to the staging area
 WORKDIR /staging
@@ -57,7 +59,7 @@ COPY --from=build --chown=vapor:vapor /staging /app
 # Ensure all further commands run as the vapor user
 USER vapor:vapor
 
-# Let Docker bind to port 8080
+# Let Docker bind to port 8281
 EXPOSE 8281
 
 # Start the Vapor service when the image is run, default to listening on 8080 in production environment

@@ -9,7 +9,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`dev.sweetrpg.com`) && PathPrefix(`/library/api`)
+    - match: Host(`dev.sweetrpg.com`) && PathPrefix(`/api/library`)
       kind: Rule
       services:
         - kind: Service

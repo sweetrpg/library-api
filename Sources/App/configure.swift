@@ -20,6 +20,7 @@ public func configure(_ app : Application) throws {
     guard let dbUrl = Environment.get("DATABASE_URL") else {
         fatalError("DATABASE_URL is not set in environment")
     }
+    print(dbUrl)
     app.logger.debug("DATABASE_URL: \(dbUrl)")
     try app.databases.use(.mongo(connectionString: dbUrl), as: .mongo)
 

@@ -9,9 +9,6 @@ import Common
 
 
 func routes(_ app: Application) throws {
-    try app.register(collection: HealthController { () -> BasicHealthInfo in
-        let bhi = BasicHealthInfo()
-        print("health check", bhi)
-        return bhi
-    })
+    try app.register(collection: VolumesController())
+    try app.register(collection: HealthController<LibraryHealthInfo>(healthCallback: healthCallback))
 }

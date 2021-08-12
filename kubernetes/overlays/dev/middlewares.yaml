@@ -8,4 +8,5 @@ metadata:
 spec:
   stripPrefix:
     prefixes:
-      - /api/library
+      - /api/0/library
+      - /api/1/library

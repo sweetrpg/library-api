@@ -22,7 +22,7 @@ jobs:
     - name: Run tests
       env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-      run: swift test -v
+      run: swift test # -v
     - name: 'Get previous tag'
       id: previous-tag
       uses: "WyriHaximus/github-action-get-previous-tag@v1"

@@ -23,11 +23,21 @@ jobs:
       env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
       run: swift test -v
-    - name: Increment version
-      id: increment-semver-patch
-      uses: Benbentwo/increment-semver@master
+    - name: 'Get previous tag'
+      id: previous-tag
+      uses: "WyriHaximus/github-action-get-previous-tag@v1"
       with:
-        version-level: '-p'
+        fallback: 0.0.0 # Optional fallback tag to use when no tag can be found
+    - name: 'Get next patch version'
+      id: semver
+      uses: "WyriHaximus/github-action-next-semvers@v1"
+      with:
+        version: ${{ steps.previous-tag.outputs.tag }}
+#     - name: Increment version
+#       id: increment-semver-patch
+#       uses: Benbentwo/increment-semver@master
+#       with:
+#         version-level: '-p'
     - name: Build the Docker image
       env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
@@ -37,6 +47,6 @@ jobs:
               --file Dockerfile \
               --tag sweetrpg-library-api:$(date +%s) \
               --tag sweetrpg-library-api:latest \
-              --tag sweetrpg-library-api:${{ steps.increment-semver-patch.outputs.version }}
+              --tag sweetrpg-library-api:${{ steps.semver.outputs.patch }}
               --ssh default \
               .

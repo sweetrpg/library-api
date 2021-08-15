@@ -1,0 +1,42 @@
+name: CI - Test and build Docker image
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup SSH Keys and known_hosts
+      env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+      run: |
+           ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+           ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
+    - name: Run tests
+      env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+      run: swift test -v
+    - name: Increment version
+      id: increment-semver-patch
+      uses: Benbentwo/increment-semver@master
+      with:
+        version-level: '-p'
+    - name: Build the Docker image
+      env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          DOCKER_BUILDKIT: "1"
+      run: |
+           docker build \
+              --file Dockerfile \
+              --tag sweetrpg-library-api:$(date +%s) \
+              --tag sweetrpg-library-api:latest \
+              --tag sweetrpg-library-api:${{ steps.increment-semver-patch.outputs.version }}
+              --ssh default \
+              .

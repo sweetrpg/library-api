@@ -47,6 +47,8 @@ spec:
                 name: sweetrpg-library-api-env
             - secretRef:
                 name: sweetrpg-library-api
+            - secretRef:
+                name: sweetrpg-library-api-env
           env:
             - name: VAPOR_HTTP_PORT
               value: "8281"

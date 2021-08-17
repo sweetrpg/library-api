@@ -37,10 +37,4 @@ jobs:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
           DOCKER_BUILDKIT: "1"
         run: >
-          docker build
-             --file Dockerfile
-             --tag sweetrpg-library-api:$(date +%s)
-             --tag sweetrpg-library-api:latest
-             --tag sweetrpg-library-api:${{ steps.semver.outputs.patch }}
-             --ssh default
-             .
+          docker build             --file Dockerfile             --tag sweetrpg-library-api:$(date +%s)             --tag sweetrpg-library-api:latest             --tag sweetrpg-library-api:${{ steps.semver.outputs.patch }}             --ssh default             .

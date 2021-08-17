@@ -35,6 +35,7 @@ struct VolumesController : RouteCollection {
 ////        authSessionRoutes.get("users", use: allUsersHandler)
 ////        authSessionRoutes.get("categories", use: allCategoriesHandler)
 ////        authSessionRoutes.get("categories", ":categoryId", use: categoryHandler)
+
         volumesRoutes.get(use: allVolumesHandler)
         volumesRoutes.get(":volumeId", use: volumeHandler)
     }
@@ -44,6 +45,7 @@ struct VolumesController : RouteCollection {
     }
 
     func volumeHandler(_ req : Request) throws -> EventLoopFuture<Volume> {
+        // query for slug, not ID
         throw Abort(.notFound)
     }
 }

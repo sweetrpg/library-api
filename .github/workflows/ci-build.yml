@@ -45,10 +45,11 @@ jobs:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
           DOCKER_BUILDKIT: "1"
         run: |-
+          name=$(echo ${{ env.GITHUB_REPOSITORY }} | cut -d'/' -f 2)
           docker build \
                  --file Dockerfile \
-                 --tag sweetrpg-library-api:$(date +%s) \
-                 --tag sweetrpg-library-api:latest \
-                 --tag sweetrpg-library-api:${{ steps.semver.outputs.patch }} \
+                 --tag ${name}:$(date +%s) \
+                 --tag ${name}:latest \
+                 --tag ${name}:${{ steps.semver.outputs.patch }} \
                  --ssh default \
                  .

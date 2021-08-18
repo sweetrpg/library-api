@@ -26,12 +26,17 @@ jobs:
         run: |
           ssh-agent -a $SSH_AUTH_SOCK > /dev/null
           ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
-      - name: Get previous tag
+      # - name: Get previous tag
+      #   id: previous-tag
+      #   shell: bash
+      #   run: |-
+      #     git tag -l | sort -rV
+      #     echo "::set-output name=tag::$(git tag -l | sort -rV | head -1)"
+      - name: "Get Previous tag"
         id: previous-tag
-        shell: bash
-        run: |-
-          git tag -l | sort -rV
-          echo "::set-output name=latest_tag::$(git tag -l | sort -rV | head -1)"
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+        with:
+          fallback: 1.0.0 # Optional fallback tag to use when no tag can be found
       # - name: Gets latest created release info
       #   id: latest_release_info
       #   uses: jossef/action-latest-release-info@v1.1.0
@@ -41,7 +46,7 @@ jobs:
         id: semver
         uses: "WyriHaximus/github-action-next-semvers@v1"
         with:
-          version: ${{ steps.previous-tag.outputs.latest_tag }}
+          version: ${{ steps.previous-tag.outputs.tag }}
       - name: Run tests
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock

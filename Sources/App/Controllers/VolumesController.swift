@@ -18,7 +18,7 @@ struct VolumesController : RouteCollection {
 //        let authRoutes = sessionRoutes.grouped("auth")
 //        authRoutes.get("login", use: loginHandler)
 //        // authSessionRoutes.get("login", "auth0", use: loginAuth0Handler)
-//
+
 ////        let credentialsAuthRoutes = authSessionRoutes.grouped(User.credentialsAuthenticator())
 ////        credentialsAuthRoutes.post("auth", "login", use: loginPostHandler)
 //

@@ -30,13 +30,12 @@ jobs:
         id: previous-tag
         shell: bash
         run: |-
-          tag=$(git tag -l | sort -rV | head -1)
-          echo "::set-output name=latest_tag::$tag"
+          echo "::set-output name=latest_tag::$(git tag -l | sort -rV | head -1)"
       - name: Get next patch version
         id: semver
         uses: "WyriHaximus/github-action-next-semvers@v1"
         with:
-          version: ${{ steps.previous-tag.outputs.tag }}
+          version: ${{ steps.previous-tag.outputs.latest_tag }}
       - name: Run tests
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock

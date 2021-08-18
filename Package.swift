@@ -9,14 +9,9 @@ let package = Package(
             .macOS(.v10_15),
         ],
         dependencies: [
-            // 💧 A server-side Swift web framework.
             .package(url: "https://github.com/vapor/vapor.git", from: "4.0.0"),
             .package(url: "https://github.com/vapor/fluent.git", from: "4.0.0"),
             .package(url: "https://github.com/vapor/fluent-mongo-driver.git", from: "1.0.0"),
-            // .package(url: "https://github.com/vapor/leaf.git", from: "4.0.0"),
-            // .package(url: "https://github.com/vapor/jwt.git", from: "4.0.0"),
-            // .package(url: "https://github.com/vapor-community/Imperial.git", from: "1.0.0"),
-            // .package(url: "https://github.com/vapor-community/sendgrid.git", from: "4.0.0"),
             .package(url: "https://github.com/vapor/redis.git", from: "4.0.0"),
             .package(url: "ssh://git@github.com/paulyhedral/sweetrpg-common.git", .branch("develop")),
             .package(url: "ssh://git@github.com/paulyhedral/sweetrpg-api-common.git", .branch("develop")),
@@ -30,12 +25,7 @@ let package = Package(
                         .product(name: "LibraryModel", package: "sweetrpg-library-model"),
                         .product(name: "Fluent", package: "fluent"),
                         .product(name: "FluentMongoDriver", package: "fluent-mongo-driver"),
-//                        .product(name: "Leaf", package: "leaf"),
-//                        .product(name: "JWT", package: "jwt"),
                         .product(name: "Vapor", package: "vapor"),
-                        // .product(name: "ImperialGoogle", package: "Imperial"),
-                        // .product(name: "ImperialGitHub", package: "Imperial"),
-//                        .product(name: "SendGrid", package: "sendgrid"),
                         .product(name: "Redis", package: "redis"),
                     ],
                     swiftSettings: [

@@ -30,32 +30,69 @@ jobs:
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: swift test # -v
-      - name: "Get previous tag"
+      - name: Get previous tag
         id: previous-tag
         uses: "WyriHaximus/github-action-get-previous-tag@v1"
         with:
           fallback: 0.0.0 # Optional fallback tag to use when no tag can be found
-      - name: "Get next patch version"
+      - name: Get next patch version
         id: semver
         uses: "WyriHaximus/github-action-next-semvers@v1"
         with:
           version: ${{ steps.previous-tag.outputs.tag }}
+      - name: Tag repository
+        uses: richardsimko/update-tag@v1
+        with:
+          tag_name: ${{ steps.semver.outputs.patch }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Get docker image name
         id: set-image-name
         run: |-
           echo "IMAGE_NAME=$(echo ${{ env.GITHUB_REPOSITORY }} | cut -d'/' -f 2)" >> $GITHUB_ENV
-      - name: Build the Docker image
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-          DOCKER_BUILDKIT: "1"
-        run: |-
-          docker build \
-                 --file Dockerfile \
-                 --tag ${{ env.IMAGE_NAME }}:$(date +%s) \
-                 --tag ${{ env.IMAGE_NAME }}:latest \
-                 --tag ${{ env.IMAGE_NAME }}:${{ steps.semver.outputs.patch }} \
-                 --ssh default \
-                 .
+      - name: Docker metadata
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          # list of Docker images to use as base name for tags
+          images: |
+            ${{ github.actor }}/${{ env.IMAGE_NAME }}
+            ghcr.io/${{ github.actor }}/${{ env.IMAGE_NAME }}
+          # generate Docker tags based on the following events/attributes
+          tags: |
+            type=schedule
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+            type=sha
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          ssh: default
+      # - name: Build the Docker image
+      #   env:
+      #     SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+      #     DOCKER_BUILDKIT: "1"
+      #   run: |-
+      #     docker build \
+      #            --file Dockerfile \
+      #            --tag ${{ env.IMAGE_NAME }}:$(date +%s) \
+      #            --tag ${{ env.IMAGE_NAME }}:latest \
+      #            --tag ${{ env.IMAGE_NAME }}:${{ steps.semver.outputs.patch }} \
+      #            --ssh default \
+      #            .
       # - name: Login to private registry
       #   uses: docker/login-action@v1
       #   with:
@@ -69,10 +106,10 @@ jobs:
       #   with:
       #     push: true
       #     tags: ${name}
-      - name: Push image
-        uses: julioarruda/pushimagetoregistry@v1
-        with:
-          acr-tokenname: docker
-          acr-token: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
-          acr-account: registry.sweetrpg.com
-          acr-imagename: ${{ env.IMAGE_NAME }}
+      # - name: Push image
+      #   uses: julioarruda/pushimagetoregistry@v1
+      #   with:
+      #     acr-tokenname: docker
+      #     acr-token: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+      #     acr-account: registry.sweetrpg.com
+      #     acr-imagename: ${{ env.IMAGE_NAME }}

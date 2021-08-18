@@ -30,6 +30,7 @@ jobs:
         id: previous-tag
         shell: bash
         run: |-
+          git tag -l | sort -rV
           echo "::set-output name=latest_tag::$(git tag -l | sort -rV | head -1)"
       - name: Get next patch version
         id: semver

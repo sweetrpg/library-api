@@ -45,7 +45,7 @@ struct VolumesController : RouteCollection {
     }
 
     func volumeHandler(_ req : Request) throws -> EventLoopFuture<Volume> {
-        // query for slug, not ID
+        // TODO: query for slug, not ID
         throw Abort(.notFound)
     }
 }

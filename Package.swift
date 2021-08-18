@@ -42,10 +42,3 @@ let package = Package(
             ]),
         ]
 )
-
-// Prometheus
-// Logging
-// Stripe
-// Auth0
-// APM (NewRelic?)
-// Sentry?

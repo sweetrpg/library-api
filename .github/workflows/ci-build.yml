@@ -54,12 +54,11 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         env:
-          IMAGE_NAME: ${{ env.IMAGE_NAME }}
+          IMAGE_NAME: ${{ env.GITHUB_REPOSITORY }}
         with:
           # list of Docker images to use as base name for tags
           images: |
-            paulyhedral/sweetrpg-library-api
-            ghcr.io/paulyhedral/sweetrpg-library-api
+            registry.sweetrpg.com/paulyhedral/sweetrpg-library-api
           # generate Docker tags based on the following events/attributes
           tags: |
             type=schedule
@@ -70,14 +69,14 @@ jobs:
             type=semver,pattern={{major}}
             type=sha
           flavor: |
-            latest=auto
+            latest=true
       - name: Login to GitHub Container Registry
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v1
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: registry.sweetrpg.com
+          username: docker
+          password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
       - name: Build and push
         id: docker_build
         if: github.event_name != 'pull_request'
@@ -91,35 +90,3 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           ssh: default
-      # - name: Build the Docker image
-      #   env:
-      #     SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-      #     DOCKER_BUILDKIT: "1"
-      #   run: |-
-      #     docker build \
-      #            --file Dockerfile \
-      #            --tag ${{ env.IMAGE_NAME }}:$(date +%s) \
-      #            --tag ${{ env.IMAGE_NAME }}:latest \
-      #            --tag ${{ env.IMAGE_NAME }}:${{ steps.semver.outputs.patch }} \
-      #            --ssh default \
-      #            .
-      # - name: Login to private registry
-      #   uses: docker/login-action@v1
-      #   with:
-      #     registry: registry.sweetrpg.com
-      #     username: docker
-      #     password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
-      # -
-      #   name: Push Docker image
-      #   id: docker_push
-      #   uses: docker/build-push-action@v2
-      #   with:
-      #     push: true
-      #     tags: ${name}
-      # - name: Push image
-      #   uses: julioarruda/pushimagetoregistry@v1
-      #   with:
-      #     acr-tokenname: docker
-      #     acr-token: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
-      #     acr-account: registry.sweetrpg.com
-      #     acr-imagename: ${{ env.IMAGE_NAME }}

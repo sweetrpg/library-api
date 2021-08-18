@@ -32,9 +32,10 @@ jobs:
         run: swift test # -v
       - name: Get previous tag
         id: previous-tag
+        shell: bash
         run: |-
           tag=$(git tag -l | sort -rV | head -1)
-          echo "::set-output name=latest_tag::${tag}"
+          echo "::set-output name=latest_tag::$tag"
       - name: Get next patch version
         id: semver
         uses: "WyriHaximus/github-action-next-semvers@v1"
@@ -48,6 +49,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Get docker image name
         id: set-image-name
+        shell: bash
         run: |-
           echo "::set-output name=image_name::$(echo ${{ env.GITHUB_REPOSITORY }} | cut -d'/' -f 2)"
       - name: Docker metadata

@@ -26,10 +26,6 @@ jobs:
         run: |
           ssh-agent -a $SSH_AUTH_SOCK > /dev/null
           ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
-      - name: Run tests
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-        run: swift test # -v
       - name: Get previous tag
         id: previous-tag
         shell: bash
@@ -41,6 +37,10 @@ jobs:
         uses: "WyriHaximus/github-action-next-semvers@v1"
         with:
           version: ${{ steps.previous-tag.outputs.tag }}
+      - name: Run tests
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: swift test # -v
       - name: Tag repository
         uses: richardsimko/update-tag@v1
         with:
@@ -72,14 +72,14 @@ jobs:
             type=sha
           flavor: |
             latest=true
-      - name: Login to GitHub Container Registry
+      - name: Login to private registry
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v1
         with:
           registry: registry.sweetrpg.com
           username: docker
           password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
-      - name: Build and push
+      - name: Build image and push to registry
         id: docker_build
         if: github.event_name != 'pull_request'
         uses: docker/build-push-action@v2

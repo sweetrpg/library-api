@@ -14,6 +14,7 @@ import LibraryModel
 struct VolumesController : RouteCollection {
     func boot(routes : RoutesBuilder) throws {
         let volumesRoutes = routes.grouped("volumes")
+
 //        let sessionRoutes = routes.grouped(User.sessionAuthenticator())
 //        let authRoutes = sessionRoutes.grouped("auth")
 //        authRoutes.get("login", use: loginHandler)

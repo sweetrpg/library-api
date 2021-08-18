@@ -32,16 +32,16 @@ jobs:
         run: |-
           git tag -l | sort -rV
           echo "::set-output name=latest_tag::$(git tag -l | sort -rV | head -1)"
-      - name: Gets latest created release info
-        id: latest_release_info
-        uses: jossef/action-latest-release-info@v1.1.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Gets latest created release info
+      #   id: latest_release_info
+      #   uses: jossef/action-latest-release-info@v1.1.0
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Get next patch version
         id: semver
         uses: "WyriHaximus/github-action-next-semvers@v1"
         with:
-          version: ${{ steps.latest_release_info.outputs.tag_name }}
+          version: ${{ steps.previous-tag.outputs.latest_tag }}
       - name: Run tests
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock

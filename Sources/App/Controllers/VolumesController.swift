@@ -28,7 +28,7 @@ struct VolumesController : RouteCollection {
 ////        authSessionRoutes.get("auth", "password", "forgot", use: forgottenPasswordHandler)
 ////        authSessionRoutes.post("auth", "password", "reset", use: forgottenPasswordPostHandler)
 ////        authSessionRoutes.get("resetPassword", use: resetPasswordHandler)
-//
+
 //        sessionRoutes.get(use: indexHandler)
 ////        authSessionRoutes.get("acronyms", ":acronymId", use: acronymHandler)
 ////        authSessionRoutes.get("users", ":userId", use: userHandler)

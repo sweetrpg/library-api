@@ -32,9 +32,9 @@ jobs:
         run: swift test # -v
       - name: Get previous tag
         id: previous-tag
-        uses: "WyriHaximus/github-action-get-previous-tag@v1"
-        with:
-          fallback: 0.0.0 # Optional fallback tag to use when no tag can be found
+        run: |-
+          tag=$(git tag -l | sort -rV | head -1)
+          echo "::set-output name=latest_tag::${tag}"
       - name: Get next patch version
         id: semver
         uses: "WyriHaximus/github-action-next-semvers@v1"
@@ -49,12 +49,12 @@ jobs:
       - name: Get docker image name
         id: set-image-name
         run: |-
-          echo "IMAGE_NAME=$(echo ${{ env.GITHUB_REPOSITORY }} | cut -d'/' -f 2)" >> $GITHUB_ENV
+          echo "::set-output name=image_name::$(echo ${{ env.GITHUB_REPOSITORY }} | cut -d'/' -f 2)"
       - name: Docker metadata
         id: meta
         uses: docker/metadata-action@v3
         env:
-          IMAGE_NAME: ${{ env.GITHUB_REPOSITORY }}
+          IMAGE_NAME: ${{ steps.set-image-name.outputs.image_name }}
         with:
           # list of Docker images to use as base name for tags
           images: |

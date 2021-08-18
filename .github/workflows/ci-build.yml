@@ -26,23 +26,23 @@ jobs:
         run: |
           ssh-agent -a $SSH_AUTH_SOCK > /dev/null
           ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
-      # - name: Get previous tag
-      #   id: previous-tag
-      #   shell: bash
-      #   env:
-      #     SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   run: |-
-      #     git tag -l | sort -rV
-      #     echo "::set-output name=tag::$(git tag -l | sort -rV | head -1)"
-      - name: "Get Previous tag"
+      - name: Get previous tag
         id: previous-tag
-        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+        shell: bash
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          fallback: 0.0.0
+        run: |-
+          git tag -l | sort -rV
+          echo "::set-output name=tag::$(git tag -l | sort -rV | head -1)"
+      # - name: "Get Previous tag"
+      #   id: previous-tag
+      #   uses: "WyriHaximus/github-action-get-previous-tag@v1"
+      #   env:
+      #     SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     fallback: 0.0.0
       # - name: Gets latest created release info
       #   id: latest_release_info
       #   uses: jossef/action-latest-release-info@v1.1.0

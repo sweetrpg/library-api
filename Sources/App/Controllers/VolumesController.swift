@@ -42,7 +42,7 @@ struct VolumesController : RouteCollection {
     }
 
     func allVolumesHandler(_ req : Request) throws -> EventLoopFuture<[Volume]> {
-        return req.eventLoop.future([])
+        return req.eventLoop.future([]) // TODO
     }
 
     func volumeHandler(_ req : Request) throws -> EventLoopFuture<Volume> {

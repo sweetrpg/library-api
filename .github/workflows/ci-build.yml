@@ -26,15 +26,15 @@ jobs:
         run: |
           ssh-agent -a $SSH_AUTH_SOCK > /dev/null
           ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
-      - name: Get previous tag
-        id: previous-tag
-        shell: bash
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |-
-          git tag -l | sort -rV
-          echo "::set-output name=tag::$(git tag -l | sort -rV | head -1)"
+      # - name: Get previous tag
+      #   id: previous-tag
+      #   shell: bash
+      #   env:
+      #     SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   run: |-
+      #     git tag -l | sort -rV
+      #     echo "::set-output name=tag::$(git tag -l | sort -rV | head -1)"
       # - name: "Get Previous tag"
       #   id: previous-tag
       #   uses: "WyriHaximus/github-action-get-previous-tag@v1"
@@ -48,11 +48,11 @@ jobs:
       #   uses: jossef/action-latest-release-info@v1.1.0
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Get next patch version
-        id: semver
-        uses: "WyriHaximus/github-action-next-semvers@v1"
-        with:
-          version: ${{ steps.previous-tag.outputs.tag }}
+      # - name: Get next patch version
+      #   id: semver
+      #   uses: "WyriHaximus/github-action-next-semvers@v1"
+      #   with:
+      #     version: ${{ steps.previous-tag.outputs.tag }}
       - name: Run tests
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock

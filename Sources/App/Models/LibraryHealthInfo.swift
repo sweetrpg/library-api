@@ -14,6 +14,7 @@ import Common
  */
 struct LibraryHealthInfo : HealthInfo, Content {
 /**
+The timestamp of the health response.
  */
     let timestamp : Date
 /**

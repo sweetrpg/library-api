@@ -9,9 +9,14 @@
 import Fluent
 import Vapor
 import LibraryModel
+import Common
 
 
 struct VolumesController : RouteCollection {
+
+    @Injected(.volumeService)
+    private var volumeService : VolumeService
+
     func boot(routes : RoutesBuilder) throws {
         let volumesRoutes = routes.grouped("volumes")
 
@@ -39,13 +44,37 @@ struct VolumesController : RouteCollection {
 
         volumesRoutes.get(use: allVolumesHandler)
         volumesRoutes.get(":volumeId", use: volumeHandler)
+        volumesRoutes.put(":volumeId", use: updateVolumeHandler)
+        volumesRoutes.post(use: addVolumeHandler)
+        volumesRoutes.delete(":volumeId", use: deleteVolumeHandler)
     }
 
     func allVolumesHandler(_ req : Request) throws -> EventLoopFuture<[Volume]> {
-        return req.eventLoop.future([]) // TODO
+        return Volume.query(on: req.db).all()
     }
 
     func volumeHandler(_ req : Request) throws -> EventLoopFuture<Volume> {
+        let volumeSlug = req.parameters.get("volumeId")
+        return Volume.query(on: req.db)
+        .filter(\.$slug ==  volumeSlug)
+    }
+
+    func updateVolumeHandler(_ req : Request) throws -> EventLoopFuture<Volume> {
+        let volumeUpdate = try req.content.decode(Volume.self)
+        return Volume.find("", on: req.db)
+        .unwrap(or: Abort(.notFound))
+        .flatMap { volume in
+            volume.name = volumeUpdate.name
+            volume.system = volumeUpdate.system
+        }
+    }
+
+    func addVolumeHandler(_ req : Request) throws -> EventLoopFuture<Volume> {
+        let volume = try req.content.decode(Volume.self)
+        return volume.save(on: req.db).map { volume }
+    }
+
+    func deleteVolumeHandler(_ req : Request) throws -> EventLoopFuture<Volume> {
         // TODO: query for slug, not ID
         throw Abort(.notFound)
     }

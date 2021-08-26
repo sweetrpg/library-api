@@ -90,5 +90,5 @@ fastlane/test_output
 iOSInjectionProject/
 Package.resolved
 
-.idea
+# .idea
 .env

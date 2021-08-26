@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.187.0/containers/swift
 {
-  "name": "Swift (Community)",
+  "name": "SweetRPG Library API",
   "build": {
     "dockerfile": "Dockerfile",
     "args": {
@@ -58,7 +58,7 @@
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   "forwardPorts": [
-    8081, 8180, 8181, 8280, 8281, 8380, 8381, 8480, 8481, 8580, 8581, 8680, 8681
+   8281
   ],
 
   // Use 'postCreateCommand' to run commands after the container is created.

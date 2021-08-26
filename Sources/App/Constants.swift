@@ -16,3 +16,7 @@ struct Constants {
     static let serviceName = "library-api"
     static let serviceIdBase = "library-api-"
 }
+
+extension String {
+    static let volumeService = "VolumeService"
+}

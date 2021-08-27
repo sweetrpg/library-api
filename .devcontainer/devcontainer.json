@@ -38,7 +38,6 @@
   "extensions": [
     "vknabel.vscode-swift-development-environment",
     "pvasek.sourcekit-lsp--dev-unofficial",
-
     "vadimcn.vscode-lldb",
     "steoates.autoimport",
     "thekalinga.bootstrap4-vscode",
@@ -63,7 +62,7 @@
 
   // Use 'postCreateCommand' to run commands after the container is created.
   "postCreateCommand": "swiftc --version",
-  "initializeCommand": "ssh-add ${localEnv:USERPROFILE}/.ssh/id_rsa",
+  "initializeCommand": "ssh-add ${localEnv:HOME}${localEnv:USERPROFILE}/.ssh/id_rsa",
 
   // Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
   "remoteUser": "vscode"

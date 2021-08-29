@@ -1,4 +1,4 @@
-name: CI - Test and build Docker image
+name: Unit tests + Docker image
 
 on:
   push:

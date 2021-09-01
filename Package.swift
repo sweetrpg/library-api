@@ -13,9 +13,9 @@ let package = Package(
             .package(url: "https://github.com/vapor/fluent.git", from: "4.0.0"),
             .package(url: "https://github.com/vapor/fluent-mongo-driver.git", from: "1.0.0"),
             .package(url: "https://github.com/vapor/redis.git", from: "4.0.0"),
-            .package(url: "ssh://git@github.com/paulyhedral/sweetrpg-common.git", .branch("develop")),
-            .package(url: "ssh://git@github.com/paulyhedral/sweetrpg-api-common.git", .branch("develop")),
-            .package(url: "ssh://git@github.com/paulyhedral/sweetrpg-library-model.git", .branch("develop")),
+            .package(name: "sweetrpg-common", url: "ssh://git@github.com/sweetrpg/common.git", .branch("develop")),
+            .package(name: "sweetrpg-api-common", url: "ssh://git@github.com/sweetrpg/api-common.git", .branch("develop")),
+            .package(name: "sweetrpg-library-model", url: "ssh://git@github.com/sweetrpg/library-model.git", .branch("develop")),
         ],
         targets: [
             .target(name: "App",

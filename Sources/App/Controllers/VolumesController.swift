@@ -52,32 +52,33 @@ struct VolumesController : RouteCollection {
 
     func allVolumesHandler(_ req : Request) throws -> EventLoopFuture<JSONAPIResponse<[Volume]>> {
         return Volume.query(on: req.db)
-        .all()
-        .flatMap { JSONAPIResponse(links: nil, data: $0) }
+            .all()
+            .flatMap { JSONAPIResponse(links: nil, data: $0) }
     }
 
     func volumeHandler(_ req : Request) throws -> EventLoopFuture<JSONAPIResponse<Volume>> {
         let volumeSlug = req.parameters.get("volumeId")
         return Volume.query(on: req.db)
-        .filter(\.$slug == volumeSlug)
-        .flatMap { JSONAPIResponse(links: nil, data: $0) }
+            .filter(\.$slug == volumeSlug)
+            .flatMap { JSONAPIResponse(links: nil, data: $0) }
     }
 
     func updateVolumeHandler(_ req : Request) throws -> EventLoopFuture<JSONAPIResponse<Volume>> {
         let volumeUpdate = try req.content.decode(Volume.self)
         let volumeSlug = volumeUpdate.slug
         return Volume.query(on: req.db)
-        .first()
-        .unwrap(or: Abort(.notFound))
-        .flatMap { volume in
-            volume.name = volumeUpdate.name
-            volume.system = volumeUpdate.system
-        }
+            .first()
+            .unwrap(or: Abort(.notFound))
+            .flatMap { volume in
+                volume.name = volumeUpdate.name
+                volume.system = volumeUpdate.system
+            }
     }
 
     func addVolumeHandler(_ req : Request) throws -> EventLoopFuture<JSONAPIResponse<Volume>> {
         let volume = try req.content.decode(Volume.self)
-        return volume.save(on: req.db).map { JSONAPIResponse(links: nil, data: volume) }
+        return volume.save(on: req.db)
+            .map { JSONAPIResponse(links: nil, data: volume) }
     }
 
     func deleteVolumeHandler(_ req : Request) throws -> EventLoopFuture<Response> {

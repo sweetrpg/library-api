@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  sweetrpg-library-api:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+      args:
+        VARIANT: "3.9"
+        NODE_VERSION: "lts/*"
+    # ports:
+    #   - 8281:5000
+    environment:
+      DOCKER_BUILDKIT: 1
+    volumes:
+    - ..:/workspace:cached
+    cap_add:
+    - SYS_PTRACE
+    security_opt:
+    - seccomp:unconfined
+    command: sleep infinity
+    network_mode: service:redis
+
+  redis:
+    image: redis:4
+    ports:
+    - 6379:6379

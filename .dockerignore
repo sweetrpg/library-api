@@ -3,3 +3,7 @@
 .git/
 .vscode/
 .idea/
+*.pyc
+__pycache__/
+.gitignore
+README.md

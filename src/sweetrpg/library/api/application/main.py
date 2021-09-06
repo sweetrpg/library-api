@@ -24,6 +24,7 @@ import stripe
 
 ENV_FILE = find_dotenv()
 if ENV_FILE:
+    print(f"Loading environment from {ENV_FILE}...")
     load_dotenv(ENV_FILE)
 
 
@@ -32,7 +33,7 @@ def create_app(app_name=constants.APPLICATION_NAME):
         'version': 1,
         'formatters': {
             'default': {
-                'format': '[%(asctime)s] %(levelname)s %(module)s: %(message)s',
+                'format': '[%(asctime)s] %(levelname)s %(module)s/%(funcName)s: %(message)s',
             }
         },
         'handlers': {'wsgi': {
@@ -41,7 +42,7 @@ def create_app(app_name=constants.APPLICATION_NAME):
             'formatter': 'default'
         }},
         'root': {
-            'level': 'INFO',
+            'level': 'DEBUG',
             'handlers': ['wsgi']
         }
     })
@@ -53,9 +54,9 @@ def create_app(app_name=constants.APPLICATION_NAME):
 
     session = Session(app)
 
-    cors = CORS(app, resources={r"/*": {"origins": "*"}})
+    # cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
-    wsgi = SentryWsgiMiddleware(app)
+    sentry = SentryWsgiMiddleware(app)
 
     # from sweetrpg.library.api.application.blueprints.volumes import blueprint as volumes_blueprint
     from sweetrpg.library.api.application.blueprints.volumes import setup_routes as setup_volume_routes

@@ -4,7 +4,9 @@ __author__ = "Paul Schifferer <dm@sweetrpg.com>"
 """
 
 from flask import current_app
-from flask_sqlalchemy import SQLAlchemy
+# from flask_sqlalchemy import SQLAlchemy
+from flask_pymongo import PyMongo
 
 
-db = SQLAlchemy()
+# db = SQLAlchemy()
+db = PyMongo()

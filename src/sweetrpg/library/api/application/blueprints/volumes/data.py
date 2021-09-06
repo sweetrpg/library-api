@@ -5,11 +5,36 @@ __author__ = "Paul Schifferer <paul@schifferers.net>"
 
 from flask import current_app
 from flask_rest_jsonapi.data_layers.base import BaseDataLayer
+from flask_rest_jsonapi.exceptions import ObjectNotFound
+from sweetrpg_library_model.volume import Volume
+from .schema import VolumeAPISchema
+from sweetrpg.library.api.application.db import db
+from sweetrpg.library.api.application.db.volume.schema import VolumeDBSchema
+from sweetrpg_common.db.mongodb.repo import MongoDataRepository
 
 
 class VolumeData(BaseDataLayer):
+
+    def __init__(self, kwargs):
+        """Intialize an data layer instance with kwargs
+        :param dict kwargs: information about data layer instance
+        """
+        print("init: %s", kwargs)
+
+        if kwargs.get('methods') is not None:
+            self.bound_rewritable_methods(kwargs['methods'])
+            kwargs.pop('methods')
+
+        kwargs.pop('class', None)
+
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+
+        self.volume_repo = MongoDataRepository(mongo=db, model=Volume, schema=VolumeDBSchema, id_attr='slug')
+
     def query(self, view_kwargs):
         current_app.logger.info("Query for volumes: %s", view_kwargs)
+        return []
 
     def create_object(self, data, view_kwargs):
         """Create an object
@@ -20,13 +45,28 @@ class VolumeData(BaseDataLayer):
         current_app.logger.info("%s, %s, %s", self, data, view_kwargs)
         raise NotImplementedError
 
-    def get_object(self, view_kwargs):
+    def get_object(self, view_kwargs, qs):
         """Retrieve an object
         :params dict view_kwargs: kwargs from the resource view
         :return DeclarativeMeta: an object
         """
-        current_app.logger.info("%s, %s", self, view_kwargs)
-        raise NotImplementedError
+        current_app.logger.info("%s, %s, %s", self, view_kwargs, qs)
+        record_id = view_kwargs['id']
+        # try:
+        current_app.logger.info("Looking up record for ID '%s'...", record_id)
+        volume_record = self.volume_repo.get(record_id)
+        # except:
+        #     raise ObjectNotFound(f"Record not found for ID '{record_id}'")
+        if not volume_record:
+            raise ObjectNotFound(f'No Volume found for ID {view_kwargs["id"]}')
+        current_app.logger.info("%s, %s", self, volume_record)
+        # schema = VolumeAPISchema()
+        # # volume = schema.load(volume_data)
+        # volume_data = {'data':{'type': 'volume', 'attributes': volume_record}}
+        # current_app.logger.info("%s, volume_data: %s", self, volume_data)
+        # volume = schema.load(volume_data)
+        # current_app.logger.info("%s, volume: %s", self, volume)
+        return volume_record
 
     def get_collection(self, qs, view_kwargs, filters=None):
         """Retrieve a collection of objects

@@ -25,12 +25,13 @@ from sweetrpg_library_model.volume import Volume
 blueprint = Blueprint("volumes", __name__, url_prefix="/volumes")
 
 
-from .manager import VolumeList
+from .manager import VolumeList, VolumeDetail, VolumeRelationship
 
 def setup_routes(app):
     app.logger.info("Setting up routes for Volumes API")
     api = Api(app)
-    api.route(VolumeList, 'volume_list', '/volumes')
+    api.route(VolumeList, 'volume_list', '/volumes/')
+    api.route(VolumeDetail, 'volume_detail', '/volumes/<id>')
 
 # @blueprint.route("/", methods=['GET'])
 # def get_single_volume():

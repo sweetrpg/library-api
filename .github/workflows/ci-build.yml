@@ -2,13 +2,13 @@ name: Unit tests + Docker image
 
 on:
   push:
-    branches: [develop]
+    branches: [swift-5]
     paths:
       - "Sources/**"
       - "Tests/**"
       - Package.swift
   pull_request:
-    branches: [develop]
+    branches: [swift-5]
     paths:
       - "Sources/**"
       - "Tests/**"

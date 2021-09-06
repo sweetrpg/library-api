@@ -22,7 +22,8 @@ class BaseConfig(object):
     DB_NAME = os.environ["DB_NAME"]
     DB_OPTS = os.environ["DB_OPTS"]
     # DB_URL = f'postgresql+psycopg2://{DB_USER}:{DB_PW}@{DB_HOST}:{DB_PORT}/{DB_NAME}?{DB_OPTS}'
-    DB_URL = f'mongo+srv://{DB_USER}:{DB_PW}@{DB_HOST}:{DB_PORT}/{DB_NAME}?{DB_OPTS}'
+    DB_URL = f'mongodb+srv://{DB_USER}:{DB_PW}@{DB_HOST}/{DB_NAME}?{DB_OPTS}'
+    MONGO_URI = DB_URL
     # SQLALCHEMY_DATABASE_URI = 'sqlite:///survey.db'
     SQLALCHEMY_DATABASE_URI = DB_URL
     SQLALCHEMY_TRACK_MODIFICATIONS = False

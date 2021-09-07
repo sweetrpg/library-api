@@ -8,8 +8,8 @@ manage.py
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 
-from sweetrpg.library.api.application.main import create_app
-from sweetrpg.library.api.application.db import db
+from sweetrpg_library_api.application.main import create_app
+from sweetrpg_library_api.application.db import db
 # from application.models.common.game_system import GameSystem, GameSystemFacetDatum, GameSystemImageDatum
 # from application.models.initiative.condition import Condition, ConditionHealthAdjustment
 # from application.models.initiative.encounter import Encounter, EncounterParticipant, EncounterParticipantGroup, EncounterParticipantHealthDatum, EncounterParticipantMetrics, EncounterParticipantTurnData, EncounterRegion, EncounterSession, EncounterSessionTimelineEntry

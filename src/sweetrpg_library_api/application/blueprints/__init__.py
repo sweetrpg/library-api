@@ -5,17 +5,17 @@ __author__ = "Paul Schifferer <dm@sweetrpg.com>"
 
 from functools import wraps
 from flask import redirect, session, render_template, request
-from sweetrpg.library.api.application import constants
+from sweetrpg_library_api.application import constants
 import jinja2
 from flask import Blueprint, request, render_template, session, jsonify, current_app
 from werkzeug.exceptions import HTTPException
 import json
 import os
-from sweetrpg.library.api.application import constants
-# from sweetrpg.library.api.application.models import constants as model_constants
+from sweetrpg_library_api.application import constants
+# from sweetrpg_library_api.application.models import constants as model_constants
 # from .. import render_page, requires_auth
-# from sweetrpg.library.api.application.models.user import User
-# from sweetrpg.library.api.application.utils.user import has_role
+# from sweetrpg_library_api.application.models.user import User
+# from sweetrpg_library_api.application.utils.user import has_role
 
 
 # def requires_auth(f):
@@ -138,7 +138,7 @@ def error_handler(ex):
     return response
 
 
-# from sweetrpg.library.api.application.blueprints.api.common import game_systems, utils
-# from sweetrpg.library.api.application.blueprints.api.initiative import encounters, groups
-from sweetrpg.library.api.application.blueprints import health
-from sweetrpg.library.api.application.blueprints import volumes
+# from sweetrpg_library_api.application.blueprints.api.common import game_systems, utils
+# from sweetrpg_library_api.application.blueprints.api.initiative import encounters, groups
+from sweetrpg_library_api.application.blueprints import health
+from sweetrpg_library_api.application.blueprints import volumes

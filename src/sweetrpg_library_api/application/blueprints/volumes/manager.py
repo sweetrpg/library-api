@@ -7,6 +7,7 @@ from flask_rest_jsonapi import ResourceList, ResourceDetail, ResourceRelationshi
 from .schema import VolumeAPISchema
 from sweetrpg_library_model.volume import Volume
 from .data import VolumeData
+from sweetrpg_library_api.application.db.volume.schema import VolumeDBSchema
 
 
 class VolumeList(ResourceList):
@@ -14,6 +15,7 @@ class VolumeList(ResourceList):
     data_layer = {
         'class': VolumeData,
         'model': Volume,
+        'schema': VolumeDBSchema,
     }
 
 
@@ -22,6 +24,7 @@ class VolumeDetail(ResourceDetail):
     data_layer = {
         'class': VolumeData,
         'model': Volume,
+        'schema': VolumeDBSchema,
     }
 
 
@@ -30,4 +33,5 @@ class VolumeRelationship(ResourceRelationship):
     data_layer = {
         'class': VolumeData,
         'model': Volume,
+        'schema': VolumeDBSchema,
     }

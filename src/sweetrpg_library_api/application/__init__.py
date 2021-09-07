@@ -5,7 +5,7 @@ __version__ = "1.0"
 
 import sentry_sdk
 import os
-from sweetrpg.library.api.application import constants
+from sweetrpg_library_api.application import constants
 from sentry_sdk.integrations.redis import RedisIntegration
 from sentry_sdk.integrations.flask import FlaskIntegration
 from sentry_sdk.integrations.sqlalchemy import SqlalchemyIntegration

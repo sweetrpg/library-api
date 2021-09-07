@@ -10,10 +10,10 @@ from flask_session import Session
 from flask_cors import CORS
 # from flask_vue import Vue
 from dotenv import load_dotenv, find_dotenv
-from sweetrpg.library.api.application.cache import cache
-from sweetrpg.library.api.application import constants
+from sweetrpg_library_api.application.cache import cache
+from sweetrpg_library_api.application import constants
 from logging.config import dictConfig
-from sweetrpg.library.api.application.blueprints import error_page
+from sweetrpg_library_api.application.blueprints import error_page
 from werkzeug.exceptions import HTTPException
 from redis.client import Redis
 from sentry_sdk.integrations.wsgi import SentryWsgiMiddleware
@@ -48,7 +48,7 @@ def create_app(app_name=constants.APPLICATION_NAME):
     })
 
     app = Flask(app_name)
-    app.config.from_object("sweetrpg.library.api.application.config.BaseConfig")
+    app.config.from_object("sweetrpg_library_api.application.config.BaseConfig")
     # env = DotEnv(app)
     cache.init_app(app)
 
@@ -58,8 +58,8 @@ def create_app(app_name=constants.APPLICATION_NAME):
 
     sentry = SentryWsgiMiddleware(app)
 
-    # from sweetrpg.library.api.application.blueprints.volumes import blueprint as volumes_blueprint
-    from sweetrpg.library.api.application.blueprints.volumes import setup_routes as setup_volume_routes
+    # from sweetrpg_library_api.application.blueprints.volumes import blueprint as volumes_blueprint
+    from sweetrpg_library_api.application.blueprints.volumes import setup_routes as setup_volume_routes
     # app.register_blueprint(volumes_blueprint, url_prefix="/volumes")
     setup_volume_routes(app)
 
@@ -75,13 +75,13 @@ def create_app(app_name=constants.APPLICATION_NAME):
     # from application.blueprints.auth import blueprint as auth_blueprint
     # app.register_blueprint(auth_blueprint, url_prefix="/auth")
 
-    from sweetrpg.library.api.application.blueprints.health import blueprint as health_blueprint
+    from sweetrpg_library_api.application.blueprints.health import blueprint as health_blueprint
     app.register_blueprint(health_blueprint, url_prefix="/health")
 
     # from application.blueprints.billing import blueprint as billing_blueprint
     # app.register_blueprint(billing_blueprint, url_prefix="/billing")
 
-    from sweetrpg.library.api.application.db import db
+    from sweetrpg_library_api.application.db import db
     from flask_migrate import Migrate
     db.init_app(app)
     migrate = Migrate(app, db)

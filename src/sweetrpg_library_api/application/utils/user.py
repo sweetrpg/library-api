@@ -6,9 +6,9 @@ user.py
 
 
 # from flask import current_app
-# from sweetrpg.library.api.application.db import db
-# from sweetrpg.library.api.application.models.user import User, Identity, Role, UserRole
-# from sweetrpg.library.api.application.models import constants as model_constants
+# from sweetrpg_library_api.application.db import db
+# from sweetrpg_library_api.application.models.user import User, Identity, Role, UserRole
+# from sweetrpg_library_api.application.models import constants as model_constants
 # import hashlib
 
 

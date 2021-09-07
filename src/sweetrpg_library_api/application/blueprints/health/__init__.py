@@ -8,7 +8,7 @@ auth.py
 from flask import Blueprint, current_app, jsonify
 from werkzeug.exceptions import HTTPException
 import json
-from sweetrpg.library.api.application.blueprints import error_page
+from sweetrpg_library_api.application.blueprints import error_page
 
 
 blueprint = Blueprint("health", __name__, url_prefix='/health')

@@ -16,9 +16,9 @@ class VolumeDBSchema(Schema):
     def make_object(self, data, **kwargs):
         print(f'data: {data}')
         print(f'kwargs: {kwargs}')
-        name = data.pop('name')
-        slug = data.pop('slug')
-        system = data.pop('system')
+        name = data.pop('name', None)
+        slug = data.pop('slug', None)
+        system = data.pop('system', None)
         return Volume(name, slug, system, **data)
 
     id = fields.Str() # as_string=True, dump_only=True)

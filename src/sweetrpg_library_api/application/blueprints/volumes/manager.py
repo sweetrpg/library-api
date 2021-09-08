@@ -16,6 +16,7 @@ class VolumeList(ResourceList):
         'class': VolumeData,
         'model': Volume,
         'schema': VolumeDBSchema,
+        'type': 'volume',
     }
 
 
@@ -25,6 +26,7 @@ class VolumeDetail(ResourceDetail):
         'class': VolumeData,
         'model': Volume,
         'schema': VolumeDBSchema,
+        'type': 'volume',
     }
 
 
@@ -34,4 +36,5 @@ class VolumeRelationship(ResourceRelationship):
         'class': VolumeData,
         'model': Volume,
         'schema': VolumeDBSchema,
+        'type': 'volume',
     }

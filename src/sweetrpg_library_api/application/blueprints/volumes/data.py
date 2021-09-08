@@ -11,6 +11,7 @@ from .schema import VolumeAPISchema
 from sweetrpg_library_api.application.db import db
 from sweetrpg_library_api.application.db.volume.schema import VolumeDBSchema
 from sweetrpg_common.db.mongodb.repo import MongoDataRepository
+from sweetrpg_common.db.mongodb.options import QueryOptions
 
 
 class VolumeData(BaseDataLayer):
@@ -73,21 +74,29 @@ class VolumeData(BaseDataLayer):
         """Retrieve a collection of objects
         :param QueryStringManager qs: a querystring manager to retrieve information from url
         :param dict view_kwargs: kwargs from the resource view
-        :param dict filters: A dictionary of key/value filters to apply to the eventual query
+        :param dict filters: A dictionary of key/value filters to apply to the eventual query (ignored since it usually contains nothing)
         :return tuple: the number of object and the list of objects
         """
         current_app.logger.info("self: %s, qs: %s, view_kwargs: %s, filters: %s", self, qs, view_kwargs, filters)
-        querystring = qs.querystring
-        current_app.logger.info("querystring: %s, fields: %s, sorting: %s, include: %s, pagination: %s", querystring, qs.fields, qs.sorting, qs.include, qs.pagination)
+        current_app.logger.info("querystring: %s", qs.querystring)
+        current_app.logger.info("fields: %s, sorting: %s, include: %s, pagination: %s, filters: %s", qs.fields, qs.sorting, qs.include, qs.pagination, qs.filters)
 
         self.before_get_collection(qs, view_kwargs)
 
-        query = self.query(view_kwargs)
+        query = self.query(qs, view_kwargs)
         query = self.paginate_query(query, qs.pagination)
 
-        objs = []
+        # collection = db.db['volumes']
+        # current_app.logger.info("collection: %s", collection)
+        # query.sort = [('slug', 1)]
+        # cursor = collection.find(filter=query.filters, projection=query.projection, skip=query.skip, limit=query.skip, sort=query.sort)
+        # objs = list(map(lambda d: d, cursor))
+        # current_app.logger.info("objs: %s", objs)
+        # records = collection.find(filter=query.filters, projection=query.projection, skip=query.skip, limit=query.skip, sort=query.sort)
+        objs = self.volume_repo.query(query)
+        current_app.logger.info("objs: %s", objs)
 
-        collection = self.after_get_collection(collection, qs, view_kwargs)
+        collection = self.after_get_collection(objs, qs, view_kwargs)
 
         return len(objs), objs
 
@@ -197,18 +206,26 @@ class VolumeData(BaseDataLayer):
 
         return obj, updated
 
-    def query(self, view_kwargs):
+    def query(self, qs, view_kwargs):
         """Construct the base query to retrieve wanted data
+        :param QueryStringManager qs: the QueryStringManager
         :param dict view_kwargs: kwargs from the resource view
+        :return QueryOptions: An initialized QueryOptions object
         """
-        current_app.logger.info("self: %s, view_kwargs: %s", self, view_kwargs)
-        return []
+        current_app.logger.info("self: %s, qs: %s, view_kwargs: %s", self, qs, view_kwargs)
+
+        query = QueryOptions()
+        query.set_filters(from_querystring=qs.filters)
+        query.set_projection(from_querystring=qs.fields.get(self.type))
+        query.set_sort(from_querystring=qs.sorting)
+
+        return query
 
     def paginate_query(self, query, paginate_info):
         """Paginate query according to jsonapi 1.0
-        :param Query query: sqlalchemy queryset
+        :param QueryOptions query: MongoDB query options
         :param dict paginate_info: pagination information
-        :return Query: the paginated query
+        :return QueryOptions: an updated QueryOptions with pagination information
         """
         current_app.logger.info("self: %s, query: %s, paginate_info: %s", self, query, paginate_info)
 
@@ -216,9 +233,9 @@ class VolumeData(BaseDataLayer):
             return query
 
         page_size = int(paginate_info.get('size', 0)) or current_app.config['PAGE_SIZE']
-        query = query.limit(page_size)
+        query.limit = page_size
         if paginate_info.get('number'):
-            query = query.offset((int(paginate_info['number']) - 1) * page_size)
+            query.skip = (int(paginate_info['number']) - 1) * page_size
 
         return query
 

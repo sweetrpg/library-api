@@ -59,9 +59,13 @@ def create_app(app_name=constants.APPLICATION_NAME):
     sentry = SentryWsgiMiddleware(app)
 
     # from sweetrpg_library_api.application.blueprints.volumes import blueprint as volumes_blueprint
-    from sweetrpg_library_api.application.blueprints.volumes import setup_routes as setup_volume_routes
     # app.register_blueprint(volumes_blueprint, url_prefix="/volumes")
+
+    from sweetrpg_library_api.application.blueprints.volumes import setup_routes as setup_volume_routes
     setup_volume_routes(app)
+
+    from sweetrpg_library_api.application.blueprints.authors import setup_routes as setup_author_routes
+    setup_author_routes(app)
 
     # from application.blueprints.api import blueprint as api_blueprint
     # app.register_blueprint(api_blueprint, url_prefix="/api/v1")

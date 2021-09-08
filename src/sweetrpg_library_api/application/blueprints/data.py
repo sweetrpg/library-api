@@ -6,15 +6,12 @@ __author__ = "Paul Schifferer <paul@schifferers.net>"
 from flask import current_app
 from flask_rest_jsonapi.data_layers.base import BaseDataLayer
 from flask_rest_jsonapi.exceptions import ObjectNotFound
-from sweetrpg_library_model.volume import Volume
-from .schema import VolumeAPISchema
 from sweetrpg_library_api.application.db import db
-from sweetrpg_library_api.application.db.volume.schema import VolumeDBSchema
 from sweetrpg_common.db.mongodb.repo import MongoDataRepository
 from sweetrpg_common.db.mongodb.options import QueryOptions
 
 
-class VolumeData(BaseDataLayer):
+class APIData(BaseDataLayer):
 
     def __init__(self, kwargs):
         """Intialize an data layer instance with kwargs
@@ -31,7 +28,7 @@ class VolumeData(BaseDataLayer):
         for key, value in kwargs.items():
             setattr(self, key, value)
 
-        self.volume_repo = MongoDataRepository(mongo=db, model=self.model, schema=self.schema, id_attr='slug')
+        self.repo = MongoDataRepository(mongo=db, model=self.model, schema=self.schema, id_attr='slug')
 
     def create_object(self, data, view_kwargs):
         """Create an object
@@ -61,14 +58,14 @@ class VolumeData(BaseDataLayer):
 
         record_id = view_kwargs['id']
         current_app.logger.info("Looking up record for ID '%s'...", record_id)
-        volume_record = self.volume_repo.get(record_id)
-        if not volume_record:
-            raise ObjectNotFound(f'No Volume found for ID {view_kwargs["id"]}')
-        current_app.logger.info("self: %s, volume_record: %s", self, volume_record)
+        record = self.repo.get(record_id)
+        if not record:
+            raise ObjectNotFound(f'No {self.type} record found for ID {view_kwargs["id"]}')
+        current_app.logger.info("self: %s, record: %s", self, record)
 
-        self.after_get_object(volume_record, view_kwargs)
+        self.after_get_object(record, view_kwargs)
 
-        return volume_record
+        return record
 
     def get_collection(self, qs, view_kwargs, filters=None):
         """Retrieve a collection of objects
@@ -93,12 +90,12 @@ class VolumeData(BaseDataLayer):
         # objs = list(map(lambda d: d, cursor))
         # current_app.logger.info("objs: %s", objs)
         # records = collection.find(filter=query.filters, projection=query.projection, skip=query.skip, limit=query.skip, sort=query.sort)
-        objs = self.volume_repo.query(query)
+        objs = self.repo.query(query)
         current_app.logger.info("objs: %s", objs)
 
         collection = self.after_get_collection(objs, qs, view_kwargs)
 
-        return len(objs), objs
+        return len(collection), collection
 
     def update_object(self, obj, data, view_kwargs):
         """Update an object
@@ -216,7 +213,7 @@ class VolumeData(BaseDataLayer):
 
         query = QueryOptions()
         query.set_filters(from_querystring=qs.filters)
-        query.set_projection(from_querystring=qs.fields.get(self.type))
+        # query.set_projection(from_querystring=qs.fields.get(self.type))
         query.set_sort(from_querystring=qs.sorting)
 
         return query

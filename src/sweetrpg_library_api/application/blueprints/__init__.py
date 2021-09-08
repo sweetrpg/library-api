@@ -142,3 +142,4 @@ def error_handler(ex):
 # from sweetrpg_library_api.application.blueprints.api.initiative import encounters, groups
 from sweetrpg_library_api.application.blueprints import health
 from sweetrpg_library_api.application.blueprints import volumes
+from sweetrpg_library_api.application.blueprints import authors

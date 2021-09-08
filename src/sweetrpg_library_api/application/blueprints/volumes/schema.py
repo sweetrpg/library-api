@@ -18,15 +18,20 @@ class VolumeAPISchema(Schema):
 
     @post_load
     def make_object(self, data, **kwargs):
-        print(f'data: {data}')
-        print(f'kwargs: {kwargs}')
-        return Volume('', **data)
+        return Volume('name', 'slug', 'system', **data)
 
     id = fields.Str() # as_string=True, dump_only=True)
     name = fields.Str() # required=True) #, load_only=True)
     slug = fields.Str() # required=True) #, load_only=True)
     isbn = fields.Str() #, load_only=True)
     system = fields.Str() # required=True) #, load_only=True)
+    authors = Relationship(self_view='volume_authors',
+                           self_view_kwargs={'id': '<id>'},
+                           related_view='author_list',
+                           related_view_kwargs={'volume_id': '<id>'},
+                           many=True,
+                           schema='VolumeAPISchema',
+                           type_='volume')
     created_at = fields.DateTime()
     updated_at = fields.DateTime()
     deleted_at = fields.DateTime()

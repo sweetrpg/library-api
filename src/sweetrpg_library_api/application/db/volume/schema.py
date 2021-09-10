@@ -14,6 +14,7 @@ class VolumeDBSchema(Schema):
 
     @post_load
     def make_object(self, data, **kwargs):
+        print(f"data: {data}")
         name = data.pop('name', None)
         slug = data.pop('slug', None)
         system = data.pop('system', None)
@@ -27,3 +28,4 @@ class VolumeDBSchema(Schema):
     created_at = fields.DateTime()
     updated_at = fields.DateTime()
     deleted_at = fields.DateTime()
+    authors = fields.List(fields.Str())

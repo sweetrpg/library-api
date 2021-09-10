@@ -14,8 +14,6 @@ class VolumeList(ResourceList):
     schema = VolumeAPISchema
     data_layer = {
         'class': APIData,
-        'model': Volume,
-        'schema': VolumeDBSchema,
         'type': 'volume',
     }
 
@@ -24,8 +22,6 @@ class VolumeDetail(ResourceDetail):
     schema = VolumeAPISchema
     data_layer = {
         'class': APIData,
-        'model': Volume,
-        'schema': VolumeDBSchema,
         'type': 'volume',
     }
 
@@ -34,7 +30,5 @@ class VolumeAuthorRelationship(ResourceRelationship):
     schema = VolumeAPISchema
     data_layer = {
         'class': APIData,
-        'model': Volume,
-        'schema': VolumeDBSchema,
         'type': 'volume',
     }

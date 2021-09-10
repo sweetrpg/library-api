@@ -30,8 +30,8 @@ class VolumeAPISchema(Schema):
                            related_view='author_list',
                            related_view_kwargs={'volume_id': '<id>'},
                            many=True,
-                           schema='VolumeAPISchema',
-                           type_='volume')
+                           schema='AuthorAPISchema',
+                           type_='author')
     created_at = fields.DateTime()
     updated_at = fields.DateTime()
     deleted_at = fields.DateTime()

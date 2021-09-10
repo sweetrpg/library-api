@@ -22,3 +22,4 @@ class AuthorDBSchema(Schema):
     created_at = fields.DateTime()
     updated_at = fields.DateTime()
     deleted_at = fields.DateTime()
+    volumes = fields.List(fields.Str())

@@ -14,8 +14,6 @@ class AuthorList(ResourceList):
     schema = AuthorAPISchema
     data_layer = {
         'class': APIData,
-        'model': Author,
-        'schema': AuthorDBSchema,
         'type': 'author',
     }
 
@@ -24,8 +22,6 @@ class AuthorDetail(ResourceDetail):
     schema = AuthorAPISchema
     data_layer = {
         'class': APIData,
-        'model': Author,
-        'schema': AuthorDBSchema,
         'type': 'author',
     }
 
@@ -34,7 +30,5 @@ class AuthorVolumeRelationship(ResourceRelationship):
     schema = AuthorAPISchema
     data_layer = {
         'class': APIData,
-        'model': Author,
-        'schema': AuthorDBSchema,
         'type': 'author',
     }

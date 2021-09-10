@@ -9,7 +9,30 @@ from flask_rest_jsonapi.exceptions import ObjectNotFound
 from sweetrpg_library_api.application.db import db
 from sweetrpg_common.db.mongodb.repo import MongoDataRepository
 from sweetrpg_common.db.mongodb.options import QueryOptions
+from sweetrpg_library_model.volume import Volume
+from sweetrpg_library_api.application.db.volume.schema import VolumeDBSchema
+from sweetrpg_library_model.author import Author
+from sweetrpg_library_api.application.db.author.schema import AuthorDBSchema
 
+
+models = {
+    'volume': {
+        'model': Volume,
+        'schema': VolumeDBSchema,
+        'type': 'volume',
+        'properties': {
+            'authors': 'author'
+        }
+    },
+    'author': {
+        'model': Author,
+        'schema': AuthorDBSchema,
+        'type': 'author',
+        'properties': {
+            'volumes': 'volume'
+        }
+    }
+}
 
 class APIData(BaseDataLayer):
 
@@ -28,7 +51,9 @@ class APIData(BaseDataLayer):
         for key, value in kwargs.items():
             setattr(self, key, value)
 
-        self.repo = MongoDataRepository(mongo=db, model=self.model, schema=self.schema, id_attr='slug')
+        self.repos = {}
+        for model_type, model_info in models.items():
+            self.repos[model_type] = MongoDataRepository(mongo=db, model=model_info['model'], schema=model_info['schema'], id_attr=model_info.get('id_attr'))
 
     def create_object(self, data, view_kwargs):
         """Create an object
@@ -58,7 +83,7 @@ class APIData(BaseDataLayer):
 
         record_id = view_kwargs['id']
         current_app.logger.info("Looking up record for ID '%s'...", record_id)
-        record = self.repo.get(record_id)
+        record = self.repos[self.type].get(record_id)
         if not record:
             raise ObjectNotFound(f'No {self.type} record found for ID {view_kwargs["id"]}')
         current_app.logger.info("self: %s, record: %s", self, record)
@@ -90,7 +115,7 @@ class APIData(BaseDataLayer):
         # objs = list(map(lambda d: d, cursor))
         # current_app.logger.info("objs: %s", objs)
         # records = collection.find(filter=query.filters, projection=query.projection, skip=query.skip, limit=query.skip, sort=query.sort)
-        objs = self.repo.query(query)
+        objs = self.repos[self.type].query(query)
         current_app.logger.info("objs: %s", objs)
 
         collection = self.after_get_collection(objs, qs, view_kwargs)
@@ -236,6 +261,37 @@ class APIData(BaseDataLayer):
 
         return query
 
+    def _populate_object(self, obj, properties):
+        current_app.logger.info("self: %s, obj: %s, properties: %s", self, obj, properties)
+
+        for property_name,property_type in properties.items():
+            current_app.logger.info("self: %s, property_name: %s, property_type: %s", self, property_name, property_type)
+            property_value = getattr(obj, property_name)
+            current_app.logger.info("self: %s, property_value: %s", self, property_value)
+            if property_value is None:
+                continue
+            if isinstance(property_value, str):
+                current_app.logger.info("self: %s, property_value is a string", self)
+
+                new_property_value = self.repos[property_type].get(property_value)
+                current_app.logger.info("self: %s, new_value: %s", self, new_value)
+
+                current_app.logger.info("self: %s, new_property_value: %s", self, new_property_value)
+                setattr(obj, property_name, new_property_value)
+
+            if isinstance(property_value, list):
+                current_app.logger.info("self: %s, property_value is a list", self)
+
+                new_property_value = []
+                for value in property_value:
+                    current_app.logger.info("self: %s, (list) value: %s", self, value)
+                    new_value = self.repos[property_type].get(value)
+                    current_app.logger.info("self: %s, new_value: %s", self, new_value)
+                    new_property_value.append(new_value)
+
+                current_app.logger.info("self: %s, new_property_value: %s", self, new_property_value)
+                setattr(obj, property_name, new_property_value)
+
     def before_create_object(self, data, view_kwargs):
         """Provide additional data before object creation
         :param dict data: the data validated by marshmallow
@@ -258,11 +314,18 @@ class APIData(BaseDataLayer):
         current_app.logger.info("self: %s, data: %s, view_kwargs: %s", self, data, view_kwargs)
 
     def after_get_object(self, obj, view_kwargs):
-        """Make work after to retrieve an object
+        """Work after fetching an object, including fetching child objects
         :param obj: an object from data layer
         :param dict view_kwargs: kwargs from the resource view
         """
         current_app.logger.info("self: %s, obj: %s, view_kwargs: %s", self, obj, view_kwargs)
+
+        this_model = models[self.type]
+        current_app.logger.info("self: %s, this_model: %s", self, this_model)
+        properties = this_model.get('properties', {})
+        current_app.logger.info("self: %s, properties: %s", self, properties)
+
+        self._populate_object(obj, properties)
 
     def before_get_collection(self, qs, view_kwargs):
         """Make work before to retrieve a collection of objects
@@ -279,7 +342,14 @@ class APIData(BaseDataLayer):
         """
         current_app.logger.info("self: %s, collection: %s, qs: %s, view_kwargs: %s", self, collection, qs, view_kwargs)
 
-        # TODO
+        this_model = models[self.type]
+        current_app.logger.info("self: %s, this_model: %s", self, this_model)
+        properties = this_model.get('properties', {})
+        current_app.logger.info("self: %s, properties: %s", self, properties)
+
+        for obj in collection:
+            current_app.logger.info("self: %s, obj: %s", self, obj)
+            self._populate_object(obj, properties)
 
         return collection
 

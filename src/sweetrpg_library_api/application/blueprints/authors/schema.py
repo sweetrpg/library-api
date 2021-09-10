@@ -27,8 +27,8 @@ class AuthorAPISchema(Schema):
                            related_view='volume_list',
                            related_view_kwargs={'author_id': '<id>'},
                            many=True,
-                           schema='AuthorAPISchema',
-                           type_='author')
+                           schema='VolumeAPISchema',
+                           type_='volume')
     created_at = fields.DateTime()
     updated_at = fields.DateTime()
     deleted_at = fields.DateTime()

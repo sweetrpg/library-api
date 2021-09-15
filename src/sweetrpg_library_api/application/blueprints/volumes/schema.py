@@ -18,7 +18,7 @@ class VolumeAPISchema(Schema):
 
     @post_load
     def make_object(self, data, **kwargs):
-        return Volume('name', 'slug', 'system', **data)
+        return Volume(**data)
 
     id = fields.Str() # as_string=True, dump_only=True)
     name = fields.Str() # required=True) #, load_only=True)

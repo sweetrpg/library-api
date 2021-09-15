@@ -18,7 +18,7 @@ class AuthorAPISchema(Schema):
 
     @post_load
     def make_object(self, data, **kwargs):
-        return Author('name', **data)
+        return Author(**data)
 
     id = fields.Str() # as_string=True, dump_only=True)
     name = fields.Str() # required=True) #, load_only=True)

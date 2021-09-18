@@ -72,7 +72,7 @@ spec:
       volumes:
         - name: config
           secret:
-            name: sweetrpg-library-api-config-env
+            secretName: sweetrpg-library-api-config-env
             items:
               - key: newrelic.ini
                 path: newrelic.ini

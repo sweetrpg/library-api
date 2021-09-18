@@ -51,9 +51,11 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 COPY src /app
+COPY scripts/entrypoint.sh /
 WORKDIR /app
 
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND=
 
-CMD [ "newrelic-admin", "run-program", "gunicorn", "wsgi:app" ]
+ENTRYPOINT [ "/entrypoint.sh" ]
+#CMD [ "newrelic-admin", "run-program", "gunicorn", "wsgi:app" ]

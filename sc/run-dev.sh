@@ -8,6 +8,6 @@ pushd src
 
 export $(cat configs/dev.env | xargs)
 
-python3 appserver.py
+NEW_RELIC_CONFIG_FILE=../newrelic.ini newrelic-admin run-python appserver.py
 
 popd

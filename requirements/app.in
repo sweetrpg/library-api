@@ -13,7 +13,6 @@ Flask-REST-JSONAPI
 Flask-Script
 Flask-Scss
 Flask-Session
-Flask-SQLAlchemy
 git+https://github.com/sweetrpg/common.git@develop
 git+https://github.com/sweetrpg/library-model.git@develop
 Jinja2
@@ -33,3 +32,4 @@ stripe
 urllib3
 uWSGI
 WTForms
+newrelic

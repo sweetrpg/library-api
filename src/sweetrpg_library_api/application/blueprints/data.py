@@ -9,10 +9,10 @@ from flask_rest_jsonapi.exceptions import ObjectNotFound
 from sweetrpg_library_api.application.db import db
 from sweetrpg_common.db.mongodb.repo import MongoDataRepository
 from sweetrpg_common.db.mongodb.options import QueryOptions
-from sweetrpg_library_model.volume import Volume
-from sweetrpg_library_api.application.db.volume.schema import VolumeDBSchema
-from sweetrpg_library_model.author import Author
-from sweetrpg_library_api.application.db.author.schema import AuthorDBSchema
+from sweetrpg_library_model.model.volume import Volume
+from sweetrpg_library_model.db.volume.schema import VolumeDBSchema
+from sweetrpg_library_model.model.author import Author
+from sweetrpg_library_model.db.author.schema import AuthorDBSchema
 from datetime import datetime
 
 
@@ -62,12 +62,18 @@ class APIData(BaseDataLayer):
         :param dict view_kwargs: kwargs from the resource view
         :return DeclarativeMeta: an object
         """
-        current_app.logger.info("self: %s, data: %s, view_kwargs: %s", self, data, view_kwargs)
+        current_app.logger.info("self: %s, data (%s): %s, view_kwargs: %s", self, data, type(data), view_kwargs)
 
         self.before_create_object(data, view_kwargs)
 
-        # TODO
-        obj = None
+        schema = models[self.type]['schema']
+        current_app.logger.info("self: %s, schema: %s", self, schema)
+        json = schema().dump(data, many=False)
+        current_app.logger.info("self: %s, json: %s", self, json)
+        obj_id = self.repos[self.type].create(json)
+        current_app.logger.info("self: %s, obj_id: %s", self, obj_id)
+        obj = self.repos[self.type].query(obj_id)
+        current_app.logger.info("self: %s, obj: %s", self, obj)
 
         self.after_create_object(obj, data, view_kwargs)
 
@@ -275,9 +281,9 @@ class APIData(BaseDataLayer):
                 current_app.logger.info("self: %s, property_value is a string", self)
 
                 new_property_value = self.repos[property_type].get(property_value)
-                current_app.logger.info("self: %s, new_value: %s", self, new_value)
-
+                # current_app.logger.info("self: %s, new_value: %s", self, new_value)
                 current_app.logger.info("self: %s, new_property_value: %s", self, new_property_value)
+
                 setattr(obj, property_name, new_property_value)
 
             if isinstance(property_value, list):
@@ -289,8 +295,8 @@ class APIData(BaseDataLayer):
                     new_value = self.repos[property_type].get(value)
                     current_app.logger.info("self: %s, new_value: %s", self, new_value)
                     new_property_value.append(new_value)
-
                 current_app.logger.info("self: %s, new_property_value: %s", self, new_property_value)
+
                 setattr(obj, property_name, new_property_value)
 
     def before_create_object(self, data, view_kwargs):
@@ -299,6 +305,12 @@ class APIData(BaseDataLayer):
         :param dict view_kwargs: kwargs from the resource view
         """
         current_app.logger.info("self: %s, data: %s, view_kwargs: %s", self, data, view_kwargs)
+
+        delattr(data, 'id')
+        delattr(data, 'deleted_at')
+        now = datetime.utcnow()
+        data.created_at = now
+        data.updated_at = now
 
     def after_create_object(self, obj, data, view_kwargs):
         """Provide additional data after object creation
@@ -312,7 +324,7 @@ class APIData(BaseDataLayer):
         """Make work before to retrieve an object
         :param dict view_kwargs: kwargs from the resource view
         """
-        current_app.logger.info("self: %s, data: %s, view_kwargs: %s", self, data, view_kwargs)
+        current_app.logger.info("self: %s, view_kwargs: %s", self, view_kwargs)
 
     def after_get_object(self, obj, view_kwargs):
         """Work after fetching an object, including fetching child objects

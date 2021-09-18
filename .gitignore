@@ -49,3 +49,6 @@ t.py
 t2.py
 toy.py
 src/configs/*.env
+secrets.env
+.dockerconfigjson
+newrelic.ini

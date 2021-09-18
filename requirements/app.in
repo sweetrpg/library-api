@@ -15,6 +15,7 @@ Flask-Scss
 Flask-Session
 git+https://github.com/sweetrpg/common.git@develop
 git+https://github.com/sweetrpg/library-model.git@develop
+gunicorn
 Jinja2
 kanka
 newrelic

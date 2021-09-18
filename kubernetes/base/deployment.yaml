@@ -30,16 +30,6 @@ spec:
         - name: library-api-app
           image: registry.sweetrpg.com/sweetrpg-library-api:latest
           imagePullPolicy: Always
-          args:
-            [
-              "serve",
-              "--env",
-              "development",
-              "--hostname",
-              "0.0.0.0",
-              "--port",
-              "8281",
-            ]
           envFrom:
             - configMapRef:
                 name: sweetrpg-library-api
@@ -50,10 +40,8 @@ spec:
             - secretRef:
                 name: sweetrpg-library-api-env
           env:
-            - name: VAPOR_HTTP_PORT
-              value: "8281"
-            - name: VAPOR_HTTP_BIND_ADDRESS
-              value: 0.0.0.0
+            - name: NEW_RELIC_CONFIG_FILE
+              value: /app/newrelic.ini
           ports:
             - containerPort: 8281
               name: http
@@ -61,6 +49,9 @@ spec:
             requests:
               cpu: "20m"
               memory: "55M"
+            limits:
+              cpu: "100m"
+              memory: "256M"
           livenessProbe:
             httpGet:
               path: /health/ping

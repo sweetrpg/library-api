@@ -14,6 +14,7 @@ charset-normalizer==2.0.4
     # via requests
 docutils==0.16
     # via
+    #   rstcheck
     #   sphinx
     #   sphinx-tabs
 idna==3.2
@@ -40,9 +41,11 @@ pytz==2021.1
     # via babel
 requests==2.26.0
     # via sphinx
+rstcheck==3.3.1
+    # via -r ./docs.in
 snowballstemmer==2.1.0
     # via sphinx
-sphinx==4.1.2
+sphinx==4.2.0
     # via
     #   -r ./docs.in
     #   pallets-sphinx-themes

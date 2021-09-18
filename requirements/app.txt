@@ -46,6 +46,7 @@ flask==2.0.1
     #   flask-scss
     #   flask-session
     #   flask-sqlalchemy
+    #   sweetrpg-api-common
     #   sweetrpg-library-model
 flask-caching==1.10.1
     # via -r ./app.in
@@ -155,9 +156,12 @@ sqlalchemy==1.4.23
     #   flask-sqlalchemy
 stripe==2.60.0
     # via -r ./app.in
+git+https://github.com/sweetrpg/api-common.git@develop
+    # via -r ./app.in
 git+https://github.com/sweetrpg/common.git@develop
     # via
     #   -r ./app.in
+    #   sweetrpg-api-common
     #   sweetrpg-library-model
 git+https://github.com/sweetrpg/library-model.git@develop
     # via -r ./app.in

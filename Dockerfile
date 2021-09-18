@@ -51,7 +51,6 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 COPY src /app
-COPY newrelic.ini /app
 WORKDIR /app
 
 # Switch back to dialog for any ad-hoc use of apt-get

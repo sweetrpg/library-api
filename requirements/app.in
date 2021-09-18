@@ -1,7 +1,7 @@
 alembic
 Authlib
 blinker
-dnspython
+dnspython<2.0.0
 Flask
 Flask-Caching
 Flask-Cors
@@ -17,9 +17,10 @@ git+https://github.com/sweetrpg/common.git@develop
 git+https://github.com/sweetrpg/library-model.git@develop
 Jinja2
 kanka
+newrelic
 PyJWT
 pylint
-PyMongo[tls]
+PyMongo[srv,tls]
 python-dateutil
 python-dotenv
 python-editor
@@ -32,4 +33,3 @@ stripe
 urllib3
 uWSGI
 WTForms
-newrelic

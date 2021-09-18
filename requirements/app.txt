@@ -28,8 +28,10 @@ click==8.0.1
     # via flask
 cryptography==3.4.8
     # via authlib
-dnspython==2.1.0
-    # via -r ./app.in
+dnspython==1.16.0
+    # via
+    #   -r ./app.in
+    #   pymongo
 flask==2.0.1
     # via
     #   -r ./app.in
@@ -102,6 +104,8 @@ marshmallow-jsonapi==0.24.0
     # via flask-rest-jsonapi
 mccabe==0.6.1
     # via pylint
+newrelic==6.10.0.165
+    # via -r ./app.in
 platformdirs==2.3.0
     # via pylint
 pycparser==2.20
@@ -110,7 +114,7 @@ pyjwt==2.1.0
     # via -r ./app.in
 pylint==2.10.2
     # via -r ./app.in
-pymongo[tls]==3.12.0
+pymongo[srv,tls]==3.12.0
     # via
     #   -r ./app.in
     #   flask-pymongo

@@ -83,6 +83,8 @@ future==0.18.2
     # via flask-inputs
 greenlet==1.1.1
     # via sqlalchemy
+gunicorn==20.1.0
+    # via -r ./app.in
 idna==3.2
     # via requests
 imagesize==1.2.0

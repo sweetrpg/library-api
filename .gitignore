@@ -7,9 +7,9 @@ __pycache__/
 .build/
 .cache/
 .coverage
+.dockerconfigjson
 .eggs/
 .env
-.idea
 .idea/
 .pytest_cache/
 .python-version
@@ -35,6 +35,7 @@ __pycache__/
 /.mypy_cache/
 build/
 cover/
+coverage.svg
 coverage.xml
 Dependencies/
 dist
@@ -42,13 +43,12 @@ docs/_build
 env/
 junit-report.xml
 MANIFEST
+newrelic.ini
 nosetests.xml
 Package.resolved
-pylint.txt
+pylint.ini
+secrets.env
+src/configs/*.env
 t.py
 t2.py
 toy.py
-src/configs/*.env
-secrets.env
-.dockerconfigjson
-newrelic.ini

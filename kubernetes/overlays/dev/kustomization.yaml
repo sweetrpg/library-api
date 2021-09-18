@@ -19,6 +19,10 @@ secretGenerator:
     type: Opaque
     envs:
       - secrets.env
+  - name: sweetrpg-library-api-config-env
+    type: Opaque
+    files:
+      - newrelic.ini
 
 commonLabels:
   platform: sweetrpg

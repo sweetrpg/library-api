@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-__author__ = "Paul Schifferer <paul@schifferers.net>"
+__author__ = "Paul Schifferer <dm@sweetrpg.com>"
 """
 """
 
@@ -17,44 +17,32 @@ from datetime import datetime
 
 
 models = {
-    'volume': {
-        'model': Volume,
-        'schema': VolumeDBSchema,
-        'type': 'volume',
-        'properties': {
-            'authors': 'author'
-        }
-    },
-    'author': {
-        'model': Author,
-        'schema': AuthorDBSchema,
-        'type': 'author',
-        'properties': {
-            'volumes': 'volume'
-        }
-    }
+    "volume": {"model": Volume, "schema": VolumeDBSchema, "type": "volume", "properties": {"authors": "author"}},
+    "author": {"model": Author, "schema": AuthorDBSchema, "type": "author", "properties": {"volumes": "volume"}},
 }
 
-class APIData(BaseDataLayer):
 
+class APIData(BaseDataLayer):
     def __init__(self, kwargs):
         """Intialize an data layer instance with kwargs
         :param dict kwargs: information about data layer instance
         """
         print("init: %s", kwargs)
 
-        if kwargs.get('methods') is not None:
-            self.bound_rewritable_methods(kwargs['methods'])
-            kwargs.pop('methods')
+        if kwargs.get("methods") is not None:
+            self.bound_rewritable_methods(kwargs["methods"])
+            kwargs.pop("methods")
 
-        kwargs.pop('class', None)
+        kwargs.pop("class", None)
 
         for key, value in kwargs.items():
             setattr(self, key, value)
 
         self.repos = {}
         for model_type, model_info in models.items():
-            self.repos[model_type] = MongoDataRepository(mongo=db, model=model_info['model'], schema=model_info['schema'], id_attr=model_info.get('id_attr'))
+            self.repos[model_type] = MongoDataRepository(
+                mongo=db, model=model_info["model"], schema=model_info["schema"], id_attr=model_info.get("id_attr")
+            )
 
     def create_object(self, data, view_kwargs):
         """Create an object
@@ -66,7 +54,7 @@ class APIData(BaseDataLayer):
 
         self.before_create_object(data, view_kwargs)
 
-        schema = models[self.type]['schema']
+        schema = models[self.type]["schema"]
         current_app.logger.info("self: %s, schema: %s", self, schema)
         json = schema().dump(data, many=False)
         current_app.logger.info("self: %s, json: %s", self, json)
@@ -88,7 +76,7 @@ class APIData(BaseDataLayer):
 
         self.before_get_object(view_kwargs)
 
-        record_id = view_kwargs['id']
+        record_id = view_kwargs["id"]
         current_app.logger.info("Looking up record for ID '%s'...", record_id)
         record = self.repos[self.type].get(record_id)
         if not record:
@@ -108,7 +96,9 @@ class APIData(BaseDataLayer):
         """
         current_app.logger.info("self: %s, qs: %s, view_kwargs: %s, filters: %s", self, qs, view_kwargs, filters)
         current_app.logger.info("querystring: %s", qs.querystring)
-        current_app.logger.info("fields: %s, sorting: %s, include: %s, pagination: %s, filters: %s", qs.fields, qs.sorting, qs.include, qs.pagination, qs.filters)
+        current_app.logger.info(
+            "fields: %s, sorting: %s, include: %s, pagination: %s, filters: %s", qs.fields, qs.sorting, qs.include, qs.pagination, qs.filters
+        )
 
         self.before_get_collection(qs, view_kwargs)
 
@@ -165,7 +155,14 @@ class APIData(BaseDataLayer):
         :param dict view_kwargs: kwargs from the resource view
         :return boolean: True if relationship have changed else False
         """
-        current_app.logger.info("self: %s, json_data: %s, relationship_field: %s, related_id_field: %s, view_kwargs: %s", self, json_data, relationship_field, related_id_field, view_kwargs)
+        current_app.logger.info(
+            "self: %s, json_data: %s, relationship_field: %s, related_id_field: %s, view_kwargs: %s",
+            self,
+            json_data,
+            relationship_field,
+            related_id_field,
+            view_kwargs,
+        )
 
         self.before_create_relationship(json_data, relationship_field, related_id_field, view_kwargs)
 
@@ -184,20 +181,25 @@ class APIData(BaseDataLayer):
         :param dict view_kwargs: kwargs from the resource view
         :return tuple: the object and related object(s)
         """
-        current_app.logger.info("self: %s, relationship_field: %s, related_type_: %s, related_id_field: %s, view_kwargs: %s", self, relationship_field, related_type_, related_id_field, view_kwargs)
+        current_app.logger.info(
+            "self: %s, relationship_field: %s, related_type_: %s, related_id_field: %s, view_kwargs: %s",
+            self,
+            relationship_field,
+            related_type_,
+            related_id_field,
+            view_kwargs,
+        )
 
         self.before_get_relationship(relationship_field, related_type_, related_id_field, view_kwargs)
 
         # TODO
 
-        self.after_get_relationship(obj, related_objects, relationship_field, related_type_, related_id_field,
-                                    view_kwargs)
+        self.after_get_relationship(obj, related_objects, relationship_field, related_type_, related_id_field, view_kwargs)
 
         if isinstance(related_objects, InstrumentedList):
-            return obj,\
-                [{'type': related_type_, 'id': getattr(obj_, related_id_field)} for obj_ in related_objects]
+            return obj, [{"type": related_type_, "id": getattr(obj_, related_id_field)} for obj_ in related_objects]
         else:
-            return obj, {'type': related_type_, 'id': getattr(related_objects, related_id_field)}
+            return obj, {"type": related_type_, "id": getattr(related_objects, related_id_field)}
 
     def update_relationship(self, json_data, relationship_field, related_id_field, view_kwargs):
         """Update a relationship
@@ -207,7 +209,14 @@ class APIData(BaseDataLayer):
         :param dict view_kwargs: kwargs from the resource view
         :return boolean: True if relationship have changed else False
         """
-        current_app.logger.info("self: %s, json_data: %s, relationship_field: %s, related_id_field: %s, view_kwargs: %s", self, json_data, relationship_field, related_id_field, view_kwargs)
+        current_app.logger.info(
+            "self: %s, json_data: %s, relationship_field: %s, related_id_field: %s, view_kwargs: %s",
+            self,
+            json_data,
+            relationship_field,
+            related_id_field,
+            view_kwargs,
+        )
 
         self.before_update_relationship(json_data, relationship_field, related_id_field, view_kwargs)
 
@@ -225,7 +234,14 @@ class APIData(BaseDataLayer):
         :param str related_id_field: the identifier field of the related model
         :param dict view_kwargs: kwargs from the resource view
         """
-        current_app.logger.info("self: %s, json_data: %s, relationship_field: %s, related_id_field: %s, view_kwargs: %s", self, json_data, relationship_field, related_id_field, view_kwargs)
+        current_app.logger.info(
+            "self: %s, json_data: %s, relationship_field: %s, related_id_field: %s, view_kwargs: %s",
+            self,
+            json_data,
+            relationship_field,
+            related_id_field,
+            view_kwargs,
+        )
 
         self.before_delete_relationship(json_data, relationship_field, related_id_field, view_kwargs)
 
@@ -258,20 +274,20 @@ class APIData(BaseDataLayer):
         """
         current_app.logger.info("self: %s, query: %s, paginate_info: %s", self, query, paginate_info)
 
-        if int(paginate_info.get('size', 1)) == 0:
+        if int(paginate_info.get("size", 1)) == 0:
             return query
 
-        page_size = int(paginate_info.get('size', 0)) or current_app.config['PAGE_SIZE']
+        page_size = int(paginate_info.get("size", 0)) or current_app.config["PAGE_SIZE"]
         query.limit = page_size
-        if paginate_info.get('number'):
-            query.skip = (int(paginate_info['number']) - 1) * page_size
+        if paginate_info.get("number"):
+            query.skip = (int(paginate_info["number"]) - 1) * page_size
 
         return query
 
     def _populate_object(self, obj, properties):
         current_app.logger.info("self: %s, obj: %s, properties: %s", self, obj, properties)
 
-        for property_name,property_type in properties.items():
+        for property_name, property_type in properties.items():
             current_app.logger.info("self: %s, property_name: %s, property_type: %s", self, property_name, property_type)
             property_value = getattr(obj, property_name)
             current_app.logger.info("self: %s, property_value: %s", self, property_value)
@@ -306,8 +322,8 @@ class APIData(BaseDataLayer):
         """
         current_app.logger.info("self: %s, data: %s, view_kwargs: %s", self, data, view_kwargs)
 
-        delattr(data, 'id')
-        delattr(data, 'deleted_at')
+        delattr(data, "id")
+        delattr(data, "deleted_at")
         now = datetime.utcnow()
         data.created_at = now
         data.updated_at = now
@@ -335,7 +351,7 @@ class APIData(BaseDataLayer):
 
         this_model = models[self.type]
         current_app.logger.info("self: %s, this_model: %s", self, this_model)
-        properties = this_model.get('properties', {})
+        properties = this_model.get("properties", {})
         current_app.logger.info("self: %s, properties: %s", self, properties)
 
         self._populate_object(obj, properties)
@@ -357,7 +373,7 @@ class APIData(BaseDataLayer):
 
         this_model = models[self.type]
         current_app.logger.info("self: %s, this_model: %s", self, this_model)
-        properties = this_model.get('properties', {})
+        properties = this_model.get("properties", {})
         current_app.logger.info("self: %s, properties: %s", self, properties)
 
         for obj in collection:
@@ -404,7 +420,9 @@ class APIData(BaseDataLayer):
         :param dict view_kwargs: kwargs from the resource view
         :return boolean: True if relationship have changed else False
         """
-        current_app.logger.info("self: %s, relationship_field: %s, related_id_field: %s, view_kwargs: %s", self, relationship_field, related_id_field, view_kwargs)
+        current_app.logger.info(
+            "self: %s, relationship_field: %s, related_id_field: %s, view_kwargs: %s", self, relationship_field, related_id_field, view_kwargs
+        )
 
     def after_create_relationship(self, obj, updated, json_data, relationship_field, related_id_field, view_kwargs):
         """Make work after to create a relationship
@@ -416,7 +434,16 @@ class APIData(BaseDataLayer):
         :param dict view_kwargs: kwargs from the resource view
         :return boolean: True if relationship have changed else False
         """
-        current_app.logger.info("self: %s, obj: %s, update: %s, json_data: %s, relationship_field: %s, related_id_field: %s, view_kwargs: %s", self, obj, updated, json_data, relationship_field, related_id_field, view_kwargs)
+        current_app.logger.info(
+            "self: %s, obj: %s, update: %s, json_data: %s, relationship_field: %s, related_id_field: %s, view_kwargs: %s",
+            self,
+            obj,
+            updated,
+            json_data,
+            relationship_field,
+            related_id_field,
+            view_kwargs,
+        )
 
     def before_get_relationship(self, relationship_field, related_type_, related_id_field, view_kwargs):
         """Make work before to get information about a relationship
@@ -426,10 +453,16 @@ class APIData(BaseDataLayer):
         :param dict view_kwargs: kwargs from the resource view
         :return tuple: the object and related object(s)
         """
-        current_app.logger.info("self: %s, relationship_field: %s, related_type_: %s, related_id_field: %s, view_kwargs: %s", self, relationship_field, related_type_, related_id_field, view_kwargs)
+        current_app.logger.info(
+            "self: %s, relationship_field: %s, related_type_: %s, related_id_field: %s, view_kwargs: %s",
+            self,
+            relationship_field,
+            related_type_,
+            related_id_field,
+            view_kwargs,
+        )
 
-    def after_get_relationship(self, obj, related_objects, relationship_field, related_type_, related_id_field,
-                               view_kwargs):
+    def after_get_relationship(self, obj, related_objects, relationship_field, related_type_, related_id_field, view_kwargs):
         """Make work after to get information about a relationship
         :param obj: an object from data layer
         :param iterable related_objects: related objects of the object
@@ -439,7 +472,16 @@ class APIData(BaseDataLayer):
         :param dict view_kwargs: kwargs from the resource view
         :return tuple: the object and related object(s)
         """
-        current_app.logger.info("self: %s, obj: %s, update: %s, json_data: %s, relationship_field: %s, related_id_field: %s, view_kwargs: %s", self, obj, updated, json_data, relationship_field, related_id_field, view_kwargs)
+        current_app.logger.info(
+            "self: %s, obj: %s, update: %s, json_data: %s, relationship_field: %s, related_id_field: %s, view_kwargs: %s",
+            self,
+            obj,
+            updated,
+            json_data,
+            relationship_field,
+            related_id_field,
+            view_kwargs,
+        )
 
     def before_update_relationship(self, json_data, relationship_field, related_id_field, view_kwargs):
         """Make work before to update a relationship
@@ -449,7 +491,14 @@ class APIData(BaseDataLayer):
         :param dict view_kwargs: kwargs from the resource view
         :return boolean: True if relationship have changed else False
         """
-        current_app.logger.info("self: %s, json_data: %s, relationship_field: %s, related_id_field: %s, view_kwargs: %s", self, json_data, relationship_field, related_id_field, view_kwargs)
+        current_app.logger.info(
+            "self: %s, json_data: %s, relationship_field: %s, related_id_field: %s, view_kwargs: %s",
+            self,
+            json_data,
+            relationship_field,
+            related_id_field,
+            view_kwargs,
+        )
 
     def after_update_relationship(self, obj, updated, json_data, relationship_field, related_id_field, view_kwargs):
         """Make work after to update a relationship
@@ -461,7 +510,16 @@ class APIData(BaseDataLayer):
         :param dict view_kwargs: kwargs from the resource view
         :return boolean: True if relationship have changed else False
         """
-        current_app.logger.info("self: %s, obj: %s, update: %s, json_data: %s, relationship_field: %s, related_id_field: %s, view_kwargs: %s", self, obj, updated, json_data, relationship_field, related_id_field, view_kwargs)
+        current_app.logger.info(
+            "self: %s, obj: %s, update: %s, json_data: %s, relationship_field: %s, related_id_field: %s, view_kwargs: %s",
+            self,
+            obj,
+            updated,
+            json_data,
+            relationship_field,
+            related_id_field,
+            view_kwargs,
+        )
 
     def before_delete_relationship(self, json_data, relationship_field, related_id_field, view_kwargs):
         """Make work before to delete a relationship
@@ -470,7 +528,14 @@ class APIData(BaseDataLayer):
         :param str related_id_field: the identifier field of the related model
         :param dict view_kwargs: kwargs from the resource view
         """
-        current_app.logger.info("self: %s, json_data: %s, relationship_field: %s, related_id_field: %s, view_kwargs: %s", self, json_data, relationship_field, related_id_field, view_kwargs)
+        current_app.logger.info(
+            "self: %s, json_data: %s, relationship_field: %s, related_id_field: %s, view_kwargs: %s",
+            self,
+            json_data,
+            relationship_field,
+            related_id_field,
+            view_kwargs,
+        )
 
     def after_delete_relationship(self, obj, updated, json_data, relationship_field, related_id_field, view_kwargs):
         """Make work after to delete a relationship
@@ -481,4 +546,13 @@ class APIData(BaseDataLayer):
         :param str related_id_field: the identifier field of the related model
         :param dict view_kwargs: kwargs from the resource view
         """
-        current_app.logger.info("self: %s, obj: %s, update: %s, json_data: %s, relationship_field: %s, related_id_field: %s, view_kwargs: %s", self, obj, updated, json_data, relationship_field, related_id_field, view_kwargs)
+        current_app.logger.info(
+            "self: %s, obj: %s, update: %s, json_data: %s, relationship_field: %s, related_id_field: %s, view_kwargs: %s",
+            self,
+            obj,
+            updated,
+            json_data,
+            relationship_field,
+            related_id_field,
+            view_kwargs,
+        )

@@ -7,3 +7,13 @@
 __pycache__/
 .gitignore
 README.md
+LICENSE
+src/configs/
+.coveragerc
+.pylintrc
+pytest.ini
+setup.cfg
+setup.py
+tox.ini
+.editorconfig
+tests/

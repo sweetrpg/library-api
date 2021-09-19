@@ -1,14 +1,13 @@
+# -*- coding: utf-8 -*-
 __author__ = "Paul Schifferer <dm@sweetrpg.com>"
-"""
-main.py
-- creates a Flask app instance and registers the database object
+"""main.py
+
+Creates a Flask app instance and registers various services and middleware.
 """
 
 
 from flask import Flask, session
 from flask_session import Session
-from flask_cors import CORS
-# from flask_vue import Vue
 from dotenv import load_dotenv, find_dotenv
 from sweetrpg_library_api.application.cache import cache
 from sweetrpg_library_api.application import constants
@@ -17,9 +16,6 @@ from sweetrpg_library_api.application.blueprints import error_page
 from werkzeug.exceptions import HTTPException
 from redis.client import Redis
 from sentry_sdk.integrations.wsgi import SentryWsgiMiddleware
-# from sassutils.wsgi import SassMiddleware
-from flask_scss import Scss
-import stripe
 
 
 ENV_FILE = find_dotenv()
@@ -86,9 +82,9 @@ def create_app(app_name=constants.APPLICATION_NAME):
     # app.register_blueprint(billing_blueprint, url_prefix="/billing")
 
     from sweetrpg_library_api.application.db import db, setup_indexes
-    from flask_migrate import Migrate
+    # from flask_migrate import Migrate
     db.init_app(app)
-    migrate = Migrate(app, db)
+    # migrate = Migrate(app, db)
     setup_indexes(app, db.db)
 
     # vue = Vue(app)
@@ -98,7 +94,7 @@ def create_app(app_name=constants.APPLICATION_NAME):
     # })
     # scss = Scss(app, static_dir='static', asset_dir='assets')
 
-    stripe.api_key = app.config['STRIPE_API_KEY']
+    # stripe.api_key = app.config['STRIPE_API_KEY']
 
     print(app.url_map)
 

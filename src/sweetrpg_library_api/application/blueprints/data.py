@@ -5,15 +5,16 @@ __author__ = "Paul Schifferer <dm@sweetrpg.com>"
 
 from flask import current_app
 from flask_rest_jsonapi.data_layers.base import BaseDataLayer
-from flask_rest_jsonapi.exceptions import ObjectNotFound
+from flask_rest_jsonapi.exceptions import ObjectNotFound, JsonApiException
 from sweetrpg_library_api.application.db import db
-from sweetrpg_common.db.mongodb.repo import MongoDataRepository
-from sweetrpg_common.db.mongodb.options import QueryOptions
+from sweetrpg_db.db.mongodb.repo import MongoDataRepository
+from sweetrpg_db.db.mongodb.options import QueryOptions
 from sweetrpg_library_model.model.volume import Volume
 from sweetrpg_library_model.db.volume.schema import VolumeDBSchema
 from sweetrpg_library_model.model.author import Author
 from sweetrpg_library_model.db.author.schema import AuthorDBSchema
 from datetime import datetime
+from pymongo.errors import DuplicateKeyError
 
 
 models = {
@@ -58,18 +59,23 @@ class APIData(BaseDataLayer):
         current_app.logger.info("self: %s, schema: %s", self, schema)
         json = schema().dump(data, many=False)
         current_app.logger.info("self: %s, json: %s", self, json)
-        obj_id = self.repos[self.type].create(json)
-        current_app.logger.info("self: %s, obj_id: %s", self, obj_id)
-        obj = self.repos[self.type].query(obj_id)
-        current_app.logger.info("self: %s, obj: %s", self, obj)
+
+        try:
+            obj_id = self.repos[self.type].create(json)
+            current_app.logger.info("self: %s, obj_id: %s", self, obj_id)
+            obj = self.repos[self.type].query(obj_id)
+            current_app.logger.info("self: %s, obj: %s", self, obj)
+        except DuplicateKeyError as dke:
+            raise JsonApiException(dke.details, title='Duplicate key', status='409', code='duplicate-key')
 
         self.after_create_object(obj, data, view_kwargs)
 
         return obj
 
-    def get_object(self, view_kwargs, qs):
+    def get_object(self, view_kwargs, qs=None):
         """Retrieve an object
         :params dict view_kwargs: kwargs from the resource view
+        :params qs: A query string?
         :return DeclarativeMeta: an object
         """
         current_app.logger.info("self: %s, view_kwargs: %s, qs: %s", self, view_kwargs, qs)
@@ -143,7 +149,11 @@ class APIData(BaseDataLayer):
 
         self.before_delete_object(obj, view_kwargs)
 
-        # TODO
+        record_id = view_kwargs["id"]
+        current_app.logger.info("Deleting record for ID '%s'...", record_id)
+        success = self.repos[self.type].delete(record_id)
+        if not success:
+            raise ObjectNotFound(f'Unable to delete {self.type} record for ID {view_kwargs["id"]}')
 
         self.after_delete_object(obj, view_kwargs)
 

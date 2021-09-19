@@ -33,7 +33,7 @@ setup(
         "sentry-sdk",
         "SQLAlchemy",
         "stripe",
-        "sweetrpg-common @ git+https://github.com/sweetrpg/common.git@develop",
+        "sweetrpg-db @ git+https://github.com/sweetrpg/db.git@develop",
         "sweetrpg-library-model @ git+https://github.com/sweetrpg/library-model.git@develop",
         "urllib3",
         "uWSGI",

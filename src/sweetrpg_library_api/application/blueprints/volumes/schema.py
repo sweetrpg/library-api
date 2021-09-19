@@ -21,10 +21,10 @@ class VolumeAPISchema(Schema):
         return Volume(**data)
 
     id = fields.Str()  # as_string=True, dump_only=True)
-    name = fields.Str()  # required=True) #, load_only=True)
-    slug = fields.Str()  # required=True) #, load_only=True)
+    name = fields.Str(required=True) #, load_only=True)
+    slug = fields.Str(required=True) #, load_only=True)
     isbn = fields.Str()  # , load_only=True)
-    system = fields.Str()  # required=True) #, load_only=True)
+    system = fields.Str(required=True) #, load_only=True)
     authors = Relationship(
         self_view="volume_authors",
         self_view_kwargs={"id": "<id>"},
@@ -34,6 +34,6 @@ class VolumeAPISchema(Schema):
         schema="AuthorAPISchema",
         type_="author",
     )
-    created_at = fields.DateTime()
-    updated_at = fields.DateTime()
+    created_at = fields.DateTime(dump_only=True)
+    updated_at = fields.DateTime(dump_only=True)
     deleted_at = fields.DateTime()

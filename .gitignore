@@ -52,3 +52,4 @@ src/configs/*.env
 t.py
 t2.py
 toy.py
+*.env

@@ -6,10 +6,6 @@
 #
 alabaster==0.7.12
     # via sphinx
-alembic==1.7.1
-    # via
-    #   -r ./app.in
-    #   flask-migrate
 asgiref==3.4.1
     # via -r ./tests.in
 astroid==2.7.3
@@ -70,15 +66,9 @@ flask==2.0.1
     #   flask-caching
     #   flask-cors
     #   flask-dotenv
-    #   flask-inputs
-    #   flask-migrate
-    #   flask-pymongo
     #   flask-rest-jsonapi
-    #   flask-script
-    #   flask-scss
     #   flask-session
-    #   flask-sqlalchemy
-    #   sweetrpg-api-common
+    #   sweetrpg-api-core
     #   sweetrpg-library-model
 flask-caching==1.10.1
     # via -r ./app.in
@@ -86,24 +76,10 @@ flask-cors==3.0.10
     # via -r ./app.in
 flask-dotenv==0.1.2
     # via -r ./app.in
-flask-inputs==0.3.0
-    # via -r ./app.in
-flask-migrate==3.1.0
-    # via -r ./app.in
-flask-pymongo==2.3.0
-    # via -r ./app.in
 flask-rest-jsonapi==0.31.2
-    # via -r ./app.in
-flask-script==2.0.6
-    # via -r ./app.in
-flask-scss==0.5
     # via -r ./app.in
 flask-session==0.4.0
     # via -r ./app.in
-flask-sqlalchemy==2.5.1
-    # via flask-migrate
-future==0.18.2
-    # via flask-inputs
 greenlet==1.1.1
     # via
     #   -r ./tests.in
@@ -122,25 +98,19 @@ itsdangerous==2.0.1
     # via flask
 jinja2==3.0.1
     # via
-    #   -r ./app.in
     #   flask
     #   sphinx
 kanka==0.1.2
     # via -r ./app.in
 lazy-object-proxy==1.6.0
     # via astroid
-mako==1.1.5
-    # via alembic
 markupsafe==2.0.1
-    # via
-    #   jinja2
-    #   mako
-    #   wtforms
+    # via jinja2
 marshmallow==3.13.0
     # via
     #   flask-rest-jsonapi
     #   marshmallow-jsonapi
-    #   sweetrpg-common
+    #   sweetrpg-db
     #   sweetrpg-library-model
 marshmallow-jsonapi==0.24.0
     # via flask-rest-jsonapi
@@ -183,20 +153,15 @@ pygments==2.10.0
     # via
     #   sphinx
     #   sphinx-tabs
-pyjwt==2.1.0
-    # via -r ./app.in
 pylint==2.10.2
     # via -r ./app.in
 pymongo[srv,tls]==3.12.0
     # via
     #   -r ./app.in
-    #   flask-pymongo
-    #   sweetrpg-common
+    #   sweetrpg-db
     #   sweetrpg-library-model
 pyparsing==2.4.7
     # via packaging
-pyscss==1.3.7
-    # via flask-scss
 pytest==6.2.5
     # via
     #   -r ./tests.in
@@ -224,7 +189,6 @@ requests==2.26.0
     #   -r ./app.in
     #   kanka
     #   sphinx
-    #   stripe
 rstcheck==3.3.1
     # via -r ./docs.in
 sentry-sdk==1.3.1
@@ -233,7 +197,6 @@ six==1.16.0
     # via
     #   flask-cors
     #   flask-rest-jsonapi
-    #   pyscss
     #   python-dateutil
     #   tox
     #   virtualenv
@@ -265,19 +228,13 @@ sphinxcontrib-qthelp==1.0.3
 sphinxcontrib-serializinghtml==1.1.5
     # via sphinx
 sqlalchemy==1.4.23
+    # via flask-rest-jsonapi
+git+https://github.com/sweetrpg/api-core.git@develop
+    # via -r ./app.in
+git+https://github.com/sweetrpg/db.git@develop
     # via
     #   -r ./app.in
-    #   alembic
-    #   flask-rest-jsonapi
-    #   flask-sqlalchemy
-stripe==2.60.0
-    # via -r ./app.in
-git+https://github.com/sweetrpg/api-common.git@develop
-    # via -r ./app.in
-git+https://github.com/sweetrpg/common.git@develop
-    # via
-    #   -r ./app.in
-    #   sweetrpg-api-common
+    #   sweetrpg-api-core
     #   sweetrpg-library-model
 git+https://github.com/sweetrpg/library-model.git@develop
     # via -r ./app.in
@@ -297,11 +254,8 @@ typing-extensions==3.10.0.2
     # via black
 urllib3==1.26.6
     # via
-    #   -r ./app.in
     #   requests
     #   sentry-sdk
-uwsgi==2.0.19.1
-    # via -r ./app.in
 virtualenv==20.8.0
     # via tox
 werkzeug==2.0.1
@@ -310,10 +264,6 @@ wheel==0.37.0
     # via pip-tools
 wrapt==1.12.1
     # via astroid
-wtforms==2.3.3
-    # via
-    #   -r ./app.in
-    #   flask-inputs
 
 # The following packages are considered to be unsafe in a requirements file:
 # pip

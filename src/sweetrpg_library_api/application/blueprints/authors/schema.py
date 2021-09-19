@@ -21,7 +21,7 @@ class AuthorAPISchema(Schema):
         return Author(**data)
 
     id = fields.Str()  # as_string=True, dump_only=True)
-    name = fields.Str()  # required=True) #, load_only=True)
+    name = fields.Str(required=True)  # required=True) #, load_only=True)
     volumes = Relationship(
         self_view="author_volumes",
         self_view_kwargs={"id": "<id>"},
@@ -31,6 +31,6 @@ class AuthorAPISchema(Schema):
         schema="VolumeAPISchema",
         type_="volume",
     )
-    created_at = fields.DateTime()
-    updated_at = fields.DateTime()
+    created_at = fields.DateTime(dump_only=True)
+    updated_at = fields.DateTime(dump_only=True)
     deleted_at = fields.DateTime()

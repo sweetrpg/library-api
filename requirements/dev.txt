@@ -66,6 +66,7 @@ flask==2.0.1
     #   flask-caching
     #   flask-cors
     #   flask-dotenv
+    #   flask-mongokit
     #   flask-rest-jsonapi
     #   flask-session
     #   sweetrpg-api-core
@@ -76,6 +77,8 @@ flask-cors==3.0.10
     # via -r ./app.in
 flask-dotenv==0.1.2
     # via -r ./app.in
+flask-mongokit==0.6
+    # via sweetrpg-library-model
 flask-rest-jsonapi==0.31.2
     # via -r ./app.in
 flask-session==0.4.0
@@ -111,11 +114,14 @@ marshmallow==3.13.0
     #   flask-rest-jsonapi
     #   marshmallow-jsonapi
     #   sweetrpg-db
-    #   sweetrpg-library-model
 marshmallow-jsonapi==0.24.0
     # via flask-rest-jsonapi
 mccabe==0.6.1
     # via pylint
+mongokit==0.9.1.1
+    # via flask-mongokit
+mongokit-ng==0.1.1
+    # via -r ./app.in
 mypy-extensions==0.4.3
     # via black
 newrelic==6.10.0.165
@@ -157,9 +163,9 @@ pylint==2.10.2
     # via -r ./app.in
 pymongo[srv,tls]==3.12.0
     # via
-    #   -r ./app.in
+    #   mongokit
+    #   mongokit-ng
     #   sweetrpg-db
-    #   sweetrpg-library-model
 pyparsing==2.4.7
     # via packaging
 pytest==6.2.5
@@ -235,7 +241,6 @@ git+https://github.com/sweetrpg/db.git@develop
     # via
     #   -r ./app.in
     #   sweetrpg-api-core
-    #   sweetrpg-library-model
 git+https://github.com/sweetrpg/library-model.git@develop
     # via -r ./app.in
 toml==0.10.2

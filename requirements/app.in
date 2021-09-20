@@ -14,7 +14,6 @@ gunicorn
 kanka
 newrelic
 pylint
-PyMongo[srv,tls]
 python-dateutil
 python-dotenv
 python-editor
@@ -22,3 +21,4 @@ PyYAML
 redis
 requests
 sentry-sdk
+mongokit-ng

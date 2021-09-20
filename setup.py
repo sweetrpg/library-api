@@ -34,6 +34,7 @@ setup(
         "SQLAlchemy",
         "stripe",
         "sweetrpg-db @ git+https://github.com/sweetrpg/db.git@develop",
+        "sweetrpg-api-core @ git+https://github.com/sweetrpg/api-core.git@develop",
         "sweetrpg-library-model @ git+https://github.com/sweetrpg/library-model.git@develop",
         "urllib3",
         "uWSGI",

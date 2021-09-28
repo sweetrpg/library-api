@@ -21,8 +21,22 @@ from sweetrpg_library_api.application.db import db
 
 
 models = {
-    "volume": {"model": Volume, "schema": VolumeSchema, "document": VolumeDocument, "type": "volume", "collection": "volumes", "properties": {"authors": "author"}},
-    "author": {"model": Author, "schema": AuthorSchema, "document": AuthorDocument, "type": "author", "collection": "authors", "properties": {"volumes": "volume"}},
+    "volume": {
+        "model": Volume,
+        "schema": VolumeSchema,
+        "document": VolumeDocument,
+        "type": "volume",
+        "collection": "volumes",
+        "properties": {"authors": "author"},
+    },
+    "author": {
+        "model": Author,
+        "schema": AuthorSchema,
+        "document": AuthorDocument,
+        "type": "author",
+        "collection": "authors",
+        "properties": {"volumes": "volume"},
+    },
 }
 
 
@@ -44,10 +58,9 @@ class APIData(BaseDataLayer):
 
         self.repos = {}
         for model_type, model_info in models.items():
-            self.repos[model_type] = MongoDataRepository(db=db,
-                                                         model=model_info["model"],
-                                                         document=model_info["document"],
-                                                         collection=model_info["collection"])
+            self.repos[model_type] = MongoDataRepository(
+                db=db, model=model_info["model"], document=model_info["document"], collection=model_info["collection"]
+            )
 
     def create_object(self, data, view_kwargs):
         """Create an object
@@ -61,35 +74,14 @@ class APIData(BaseDataLayer):
 
         self.before_create_object(data, view_kwargs)
 
-        # schema = models[self.type]["schema"]
-        # current_app.logger.info("self: %s, schema: %s", self, schema)
-        # mapping = models[self.type]["mapping"]
-        # document_class = models[self.type]["document"]
-        # current_app.logger.info("self: %s, document_class: %s", self, document_class)
-        # db_obj = db[mapping.__name__]()
-        # current_app.logger.info("self: %s, db_obj: %s", self, db_obj)
         json = schema().dump(data, many=False)
         current_app.logger.info("self: %s, json: %s", self, json)
-
-        # db_obj = document_class()
-        # for k in db_obj.structure.keys():
-        #     current_app.logger.debug("self: %s, k: %s", self, k)
-        #     if hasattr(data, k):
-        #         db_obj[k] = getattr(data, k)
 
         try:
             repo = self.repos[self.type]
             current_app.logger.debug("self: %s, repo: %s", self, repo)
-            # current_app.logger.info("Validating object...")
-            # db_obj.validate()
-            # current_app.logger.info("Saving object...")
-            # db_obj.save()
-            # obj_id = ObjectId(db_obj._id)
             obj_id = repo.create(json)
             current_app.logger.info("Object created with ID: %s", obj_id)
-            # obj = db_obj.one({"_id": obj_id})
-            # current_app.logger.debug("self: %s, db_obj: %s", self, db_obj)
-            # obj = models[self.type]["model"](**db_obj)
             current_app.logger.info("self: %s, obj: %s", self, obj)
         except DuplicateKeyError as dke:
             raise JsonApiException(dke.details, title="Duplicate key", status="409", code="duplicate-key")
@@ -110,24 +102,13 @@ class APIData(BaseDataLayer):
 
         record_id = view_kwargs["id"]
         current_app.logger.info("Looking up record for ID '%s'...", record_id)
-        # schema = models[self.type]["schema"]
-        # current_app.logger.info("self: %s, schema: %s", self, schema)
-        # mapping = models[self.type]["mapping"]
-        # current_app.logger.info("self: %s, mapping: %s", self, mapping)
-        # document_class = models[self.type]["document"]
-        # current_app.logger.info("self: %s, document_class: %s", self, document_class)
-        # db = current_app.config["db"]
-        # db_obj = db[mapping]()
-        # current_app.logger.debug("self: %s, db_obj: %s", self, db_obj)
         repo = self.repos[self.type]
         current_app.logger.debug("self: %s, repo: %s", self, repo)
-        # record = mapping.one({"_id": record_id})
-        record = repo.get(record_id)
-        current_app.logger.info("self: %s, record: %s", self, record)
-        # record = self.repos[self.type].get(record_id)
-        if not record:
+        try:
+            record = repo.get(record_id)
+            current_app.logger.info("self: %s, record: %s", self, record)
+        except:
             raise ObjectNotFound(f'No {self.type} record found for ID {view_kwargs["id"]}')
-        # current_app.logger.info("self: %s, record: %s", self, record)
 
         self.after_get_object(record, view_kwargs)
 
@@ -154,23 +135,10 @@ class APIData(BaseDataLayer):
         query = self.query(qs, view_kwargs)
         query = self.paginate_query(query, qs.pagination)
 
-        schema = models[self.type]["schema"]
-        current_app.logger.info("self: %s, schema: %s", self, schema)
-        document = models[self.type]["document"]
-        current_app.logger.info("self: %s, document: %s", self, document)
-        # db = current_app.config["db"]
-        # db_obj = db[mapping]()
-        # current_app.logger.debug("self: %s, db_obj: %s", self, db_obj)
-        # collection = db.db['volumes']
-        # current_app.logger.info("collection: %s", collection)
-        # query.sort = [('slug', 1)]
-        cursor = mapping.find(filter=query.filters, projection=query.projection, skip=query.skip, limit=query.skip, sort=query.sort)
-        current_app.logger.debug("self: %s, cursor: %s", self, cursor)
-        objs = list(map(lambda d: models[self.type]["model"](**d), cursor))
-        current_app.logger.info("objs: %s", objs)
-        # records = collection.find(filter=query.filters, projection=query.projection, skip=query.skip, limit=query.skip, sort=query.sort)
-        # objs = self.repos[self.type].query(query)
-        # current_app.logger.debug("objs: %s", objs)
+        repo = self.repos[self.type]
+        current_app.logger.debug("self: %s, repo: %s", self, repo)
+        objs = repo.query(query)
+        current_app.logger.debug("self: %s, objs: %s", self, objs)
 
         collection = self.after_get_collection(objs, qs, view_kwargs)
 
@@ -187,22 +155,16 @@ class APIData(BaseDataLayer):
 
         self.before_update_object(obj, data, view_kwargs)
 
-        record_id = ObjectId(view_kwargs["id"])
-        schema = models[self.type]["schema"]
-        current_app.logger.info("self: %s, schema: %s", self, schema)
-        document = models[self.type]["document"]
-        current_app.logger.info("self: %s, document: %s", self, document)
-        db = current_app.config["db"]
-        db_obj = db[mapping]()
-
-        current_app.logger.info("Deleting record for ID '%s'...", record_id)
-        obj_filter = {"_id": record_id}
-        update = {"$set": data}
-        updated_record = db_obj.find_and_modify(filter=obj_filter, update=update)
-        if not updated_record:
+        record_id = view_kwargs["id"]
+        repo = self.repos[self.type]
+        current_app.logger.debug("self: %s, repo: %s", self, repo)
+        try:
+            updated_record = repo.update(record_id, data)
+            current_app.logger.debug("self: %s, updated_record: %s", self, updated_record)
+        except:
             raise ObjectNotFound(f'Unable to delete {self.type} record for ID {view_kwargs["id"]}')
 
-        self.after_update_object(obj, data, view_kwargs)
+        self.after_update_object(updated_record, data, view_kwargs)
 
         return True
 
@@ -215,26 +177,18 @@ class APIData(BaseDataLayer):
 
         self.before_delete_object(obj, view_kwargs)
 
-        record_id = ObjectId(view_kwargs["id"])
-        schema = models[self.type]["schema"]
-        current_app.logger.info("self: %s, schema: %s", self, schema)
-        document = models[self.type]["document"]
-        current_app.logger.info("self: %s, document: %s", self, document)
-        db = current_app.config["db"]
-        db_obj = db[document]()
-
-        current_app.logger.info("Deleting record for ID '%s'...", record_id)
-        obj_filter = {"_id": record_id}
-        now = datetime.utcnow()
-        update = {"$set": {"deleted_at": now}}
-        updated_record = db_obj.find_and_modify(filter=obj_filter, update=update)
-        # success = self.repos[self.type].delete(record_id)
-        if not updated_record:
+        record_id = view_kwargs["id"]
+        repo = self.repos[self.type]
+        current_app.logger.debug("self: %s, repo: %s", self, repo)
+        try:
+            is_deleted = repo.delete(record_id)
+            current_app.logger.debug("self: %s, is_deleted: %s", self, is_deleted)
+        except:
             raise ObjectNotFound(f'Unable to delete {self.type} record for ID {view_kwargs["id"]}')
 
         self.after_delete_object(obj, view_kwargs)
 
-        return True
+        return is_deleted
 
     def create_relationship(self, json_data, relationship_field, related_id_field, view_kwargs):
         """Create a relationship

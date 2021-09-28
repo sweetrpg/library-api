@@ -7,6 +7,7 @@ Creates a Flask app instance and registers various services and middleware.
 
 
 from flask import Flask, session
+from flask_migrate import Migrate
 from flask_session import Session
 from dotenv import load_dotenv, find_dotenv
 from sweetrpg_library_api.application.cache import cache
@@ -81,13 +82,15 @@ def create_app(app_name=constants.APPLICATION_NAME):
     # from application.blueprints.billing import blueprint as billing_blueprint
     # app.register_blueprint(billing_blueprint, url_prefix="/billing")
 
-    from sweetrpg_library_api.application.db import setup_database, register_models #, setup_indexes
+    from sweetrpg_library_api.application.db import db
     # from flask_migrate import Migrate
-    setup_database(app)
+    # db.init_app(app, **app.config['DB_OPTS'])
+    db.init_app(app)
+    app.logger.info("Database: %s", db)
     # db.init_app(app)
-    # migrate = Migrate(app, db)
+    migrate = Migrate(app, db)
     # setup_indexes(app, db.db)
-    register_models()
+    # register_models(app)
 
     # vue = Vue(app)
 

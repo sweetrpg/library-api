@@ -6,20 +6,23 @@ __author__ = "Paul Schifferer <dm@sweetrpg.com>"
 from flask import current_app
 from flask_rest_jsonapi.data_layers.base import BaseDataLayer
 from flask_rest_jsonapi.exceptions import ObjectNotFound, JsonApiException
-from sweetrpg_library_api.application.db import db
 from sweetrpg_db.mongodb.repo import MongoDataRepository
 from sweetrpg_db.mongodb.options import QueryOptions
 from sweetrpg_library_model.model.volume import Volume
-# from sweetrpg_library_model.db.volume.schema import VolumeDBSchema
+from sweetrpg_library_model.db.volume.document import VolumeDocument
+from sweetrpg_library_model.db.volume.schema import VolumeSchema
 from sweetrpg_library_model.model.author import Author
-# from sweetrpg_library_model.db.author.schema import AuthorDBSchema
+from sweetrpg_library_model.db.author.document import AuthorDocument
+from sweetrpg_library_model.db.author.schema import AuthorSchema
 from datetime import datetime
 from pymongo.errors import DuplicateKeyError
+from bson.objectid import ObjectId
+from sweetrpg_library_api.application.db import db
 
 
 models = {
-    "volume": {"model": Volume, "schema": "VolumeDBSchema", "type": "volume", "properties": {"authors": "author"}},
-    "author": {"model": Author, "schema": "AuthorDBSchema", "type": "author", "properties": {"volumes": "volume"}},
+    "volume": {"model": Volume, "schema": VolumeSchema, "document": VolumeDocument, "type": "volume", "collection": "volumes", "properties": {"authors": "author"}},
+    "author": {"model": Author, "schema": AuthorSchema, "document": AuthorDocument, "type": "author", "collection": "authors", "properties": {"volumes": "volume"}},
 }
 
 
@@ -40,10 +43,11 @@ class APIData(BaseDataLayer):
             setattr(self, key, value)
 
         self.repos = {}
-        # for model_type, model_info in models.items():
-        #     self.repos[model_type] = MongoDataRepository(
-        #         mongo=db, model=model_info["model"], schema=model_info["schema"], id_attr=model_info.get("id_attr")
-        #     )
+        for model_type, model_info in models.items():
+            self.repos[model_type] = MongoDataRepository(db=db,
+                                                         model=model_info["model"],
+                                                         document=model_info["document"],
+                                                         collection=model_info["collection"])
 
     def create_object(self, data, view_kwargs):
         """Create an object
@@ -51,22 +55,44 @@ class APIData(BaseDataLayer):
         :param dict view_kwargs: kwargs from the resource view
         :return DeclarativeMeta: an object
         """
-        current_app.logger.debug("self: %s, data (%s): %s, view_kwargs: %s", self, data, type(data), view_kwargs)
+        # db = current_app.config["db"]
+        db = self.repos[self.type].db
+        current_app.logger.debug("self: %s, db: %s, data (%s): %s, view_kwargs: %s", self, db, data, type(data), view_kwargs)
 
         self.before_create_object(data, view_kwargs)
 
         # schema = models[self.type]["schema"]
         # current_app.logger.info("self: %s, schema: %s", self, schema)
-        # json = schema().dump(data, many=False)
-        # current_app.logger.info("self: %s, json: %s", self, json)
+        # mapping = models[self.type]["mapping"]
+        # document_class = models[self.type]["document"]
+        # current_app.logger.info("self: %s, document_class: %s", self, document_class)
+        # db_obj = db[mapping.__name__]()
+        # current_app.logger.info("self: %s, db_obj: %s", self, db_obj)
+        json = schema().dump(data, many=False)
+        current_app.logger.info("self: %s, json: %s", self, json)
 
-        # try:
-        #     obj_id = self.repos[self.type].create(json)
-        #     current_app.logger.info("self: %s, obj_id: %s", self, obj_id)
-        #     obj = self.repos[self.type].query(obj_id)
-        #     current_app.logger.info("self: %s, obj: %s", self, obj)
-        # except DuplicateKeyError as dke:
-        #     raise JsonApiException(dke.details, title='Duplicate key', status='409', code='duplicate-key')
+        # db_obj = document_class()
+        # for k in db_obj.structure.keys():
+        #     current_app.logger.debug("self: %s, k: %s", self, k)
+        #     if hasattr(data, k):
+        #         db_obj[k] = getattr(data, k)
+
+        try:
+            repo = self.repos[self.type]
+            current_app.logger.debug("self: %s, repo: %s", self, repo)
+            # current_app.logger.info("Validating object...")
+            # db_obj.validate()
+            # current_app.logger.info("Saving object...")
+            # db_obj.save()
+            # obj_id = ObjectId(db_obj._id)
+            obj_id = repo.create(json)
+            current_app.logger.info("Object created with ID: %s", obj_id)
+            # obj = db_obj.one({"_id": obj_id})
+            # current_app.logger.debug("self: %s, db_obj: %s", self, db_obj)
+            # obj = models[self.type]["model"](**db_obj)
+            current_app.logger.info("self: %s, obj: %s", self, obj)
+        except DuplicateKeyError as dke:
+            raise JsonApiException(dke.details, title="Duplicate key", status="409", code="duplicate-key")
 
         self.after_create_object(obj, data, view_kwargs)
 
@@ -82,17 +108,33 @@ class APIData(BaseDataLayer):
 
         self.before_get_object(view_kwargs)
 
-        # record_id = view_kwargs["id"]
-        # current_app.logger.info("Looking up record for ID '%s'...", record_id)
-        record = None
+        record_id = view_kwargs["id"]
+        current_app.logger.info("Looking up record for ID '%s'...", record_id)
+        # schema = models[self.type]["schema"]
+        # current_app.logger.info("self: %s, schema: %s", self, schema)
+        # mapping = models[self.type]["mapping"]
+        # current_app.logger.info("self: %s, mapping: %s", self, mapping)
+        # document_class = models[self.type]["document"]
+        # current_app.logger.info("self: %s, document_class: %s", self, document_class)
+        # db = current_app.config["db"]
+        # db_obj = db[mapping]()
+        # current_app.logger.debug("self: %s, db_obj: %s", self, db_obj)
+        repo = self.repos[self.type]
+        current_app.logger.debug("self: %s, repo: %s", self, repo)
+        # record = mapping.one({"_id": record_id})
+        record = repo.get(record_id)
+        current_app.logger.info("self: %s, record: %s", self, record)
         # record = self.repos[self.type].get(record_id)
-        # if not record:
-        #     raise ObjectNotFound(f'No {self.type} record found for ID {view_kwargs["id"]}')
+        if not record:
+            raise ObjectNotFound(f'No {self.type} record found for ID {view_kwargs["id"]}')
         # current_app.logger.info("self: %s, record: %s", self, record)
 
         self.after_get_object(record, view_kwargs)
 
-        return record
+        obj = models[self.type]["model"](**record)
+        current_app.logger.info("self: %s, obj: %s", self, obj)
+
+        return obj
 
     def get_collection(self, qs, view_kwargs, filters=None):
         """Retrieve a collection of objects
@@ -109,20 +151,28 @@ class APIData(BaseDataLayer):
 
         self.before_get_collection(qs, view_kwargs)
 
-        # query = self.query(qs, view_kwargs)
-        # query = self.paginate_query(query, qs.pagination)
+        query = self.query(qs, view_kwargs)
+        query = self.paginate_query(query, qs.pagination)
 
+        schema = models[self.type]["schema"]
+        current_app.logger.info("self: %s, schema: %s", self, schema)
+        document = models[self.type]["document"]
+        current_app.logger.info("self: %s, document: %s", self, document)
+        # db = current_app.config["db"]
+        # db_obj = db[mapping]()
+        # current_app.logger.debug("self: %s, db_obj: %s", self, db_obj)
         # collection = db.db['volumes']
         # current_app.logger.info("collection: %s", collection)
         # query.sort = [('slug', 1)]
-        # cursor = collection.find(filter=query.filters, projection=query.projection, skip=query.skip, limit=query.skip, sort=query.sort)
-        # objs = list(map(lambda d: d, cursor))
-        # current_app.logger.info("objs: %s", objs)
+        cursor = mapping.find(filter=query.filters, projection=query.projection, skip=query.skip, limit=query.skip, sort=query.sort)
+        current_app.logger.debug("self: %s, cursor: %s", self, cursor)
+        objs = list(map(lambda d: models[self.type]["model"](**d), cursor))
+        current_app.logger.info("objs: %s", objs)
         # records = collection.find(filter=query.filters, projection=query.projection, skip=query.skip, limit=query.skip, sort=query.sort)
         # objs = self.repos[self.type].query(query)
         # current_app.logger.debug("objs: %s", objs)
 
-        collection = [] # self.after_get_collection(objs, qs, view_kwargs)
+        collection = self.after_get_collection(objs, qs, view_kwargs)
 
         return len(collection), collection
 
@@ -137,9 +187,24 @@ class APIData(BaseDataLayer):
 
         self.before_update_object(obj, data, view_kwargs)
 
-        # TODO
+        record_id = ObjectId(view_kwargs["id"])
+        schema = models[self.type]["schema"]
+        current_app.logger.info("self: %s, schema: %s", self, schema)
+        document = models[self.type]["document"]
+        current_app.logger.info("self: %s, document: %s", self, document)
+        db = current_app.config["db"]
+        db_obj = db[mapping]()
+
+        current_app.logger.info("Deleting record for ID '%s'...", record_id)
+        obj_filter = {"_id": record_id}
+        update = {"$set": data}
+        updated_record = db_obj.find_and_modify(filter=obj_filter, update=update)
+        if not updated_record:
+            raise ObjectNotFound(f'Unable to delete {self.type} record for ID {view_kwargs["id"]}')
 
         self.after_update_object(obj, data, view_kwargs)
+
+        return True
 
     def delete_object(self, obj, view_kwargs):
         """Delete an item through the data layer
@@ -150,13 +215,26 @@ class APIData(BaseDataLayer):
 
         self.before_delete_object(obj, view_kwargs)
 
-        # record_id = view_kwargs["id"]
-        # current_app.logger.info("Deleting record for ID '%s'...", record_id)
+        record_id = ObjectId(view_kwargs["id"])
+        schema = models[self.type]["schema"]
+        current_app.logger.info("self: %s, schema: %s", self, schema)
+        document = models[self.type]["document"]
+        current_app.logger.info("self: %s, document: %s", self, document)
+        db = current_app.config["db"]
+        db_obj = db[document]()
+
+        current_app.logger.info("Deleting record for ID '%s'...", record_id)
+        obj_filter = {"_id": record_id}
+        now = datetime.utcnow()
+        update = {"$set": {"deleted_at": now}}
+        updated_record = db_obj.find_and_modify(filter=obj_filter, update=update)
         # success = self.repos[self.type].delete(record_id)
-        # if not success:
-        #     raise ObjectNotFound(f'Unable to delete {self.type} record for ID {view_kwargs["id"]}')
+        if not updated_record:
+            raise ObjectNotFound(f'Unable to delete {self.type} record for ID {view_kwargs["id"]}')
 
         self.after_delete_object(obj, view_kwargs)
+
+        return True
 
     def create_relationship(self, json_data, relationship_field, related_id_field, view_kwargs):
         """Create a relationship
@@ -179,6 +257,7 @@ class APIData(BaseDataLayer):
 
         # TODO
         obj = None
+        updated = False
 
         self.after_create_relationship(obj, updated, json_data, relationship_field, related_id_field, view_kwargs)
 
@@ -233,6 +312,7 @@ class APIData(BaseDataLayer):
 
         # TODO
         obj = None
+        updated = False
 
         self.after_update_relationship(obj, updated, json_data, relationship_field, related_id_field, view_kwargs)
 
@@ -257,6 +337,8 @@ class APIData(BaseDataLayer):
         self.before_delete_relationship(json_data, relationship_field, related_id_field, view_kwargs)
 
         # TODO
+        obj = None
+        updated = False
 
         self.after_delete_relationship(obj, updated, json_data, relationship_field, related_id_field, view_kwargs)
 

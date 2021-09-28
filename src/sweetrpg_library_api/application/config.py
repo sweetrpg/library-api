@@ -17,13 +17,17 @@ class BaseConfig(object):
     PORT = os.environ.get('PORT') or 5000
     # ASSETS_DEBUG = True
     DB_HOST = os.environ["DB_HOST"]
-    DB_PORT = os.environ["DB_PORT"] or "25017"
-    DB_USER = os.environ["DB_USER"]
-    DB_PW = os.environ["DB_PW"]
+    DB_PORT = os.environ["DB_PORT"] or "27017"
+    DB_USERNAME = os.environ["DB_USER"]
+    DB_PASSWORD = os.environ["DB_PW"]
     DB_NAME = os.environ["DB_NAME"]
     DB_OPTS = os.environ["DB_OPTS"]
-    DB_URL = f'mongodb+srv://{DB_USER}:{DB_PW}@{DB_HOST}/{DB_NAME}?{DB_OPTS}'
-    MONGO_URI = DB_URL
+    DB_URL = f'mongodb+srv://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}?{DB_OPTS}'
+    MONGODB_ALIAS_CONNECTION = 'default'
+    MONGODB_URI = DB_URL
+    MONGODB_SETTINGS = {
+        'host': DB_URL,
+    }
     # used for encryption and session management
     # SECRET_KEY = os.environ.get('SECRET_KEY') or hashlib.sha256(f"{random.random()}".encode('utf-8')).hexdigest()
     # CSRF_TOKEN = os.environ.get('CSRF_TOKEN') or hashlib.sha256(f"{random.random()}".encode('utf-8')).hexdigest()

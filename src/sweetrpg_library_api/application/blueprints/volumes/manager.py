@@ -7,7 +7,7 @@ from flask_rest_jsonapi import ResourceList, ResourceDetail, ResourceRelationshi
 from .schema import VolumeAPISchema
 from sweetrpg_library_model.model.volume import Volume
 from ..data import APIData
-from sweetrpg_library_model.db.volume.schema import VolumeDBSchema
+from sweetrpg_library_model.db.volume.schema import VolumeSchema
 
 
 class VolumeList(ResourceList):

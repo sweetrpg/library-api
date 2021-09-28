@@ -5,26 +5,26 @@ __author__ = "Paul Schifferer <dm@sweetrpg.com>"
 """
 
 from flask import current_app
-
-# from flask_pymongo import PyMongo
-import pymongo
-# from flask_mongokit import MongoKit
-from mongokit_ng import Database, Connection
-from sweetrpg_library_model.model.volume import Volume
+from sweetrpg_library_model.db.volume.document import VolumeDocument
+from flask_mongoengine import MongoEngine
 
 
-# db = PyMongo()
-_client = None
-db = None
+db = MongoEngine()
 
-def setup_database(app):
-    global _client
-    _client = Connection(app.config["MONGO_URI"])
-    global db
-    db = Database(_client, 'default')
+# def setup_database(app):
+#     app.logger.info("Setting up database...")
+#     global _client
+#     _client = Connection(app.config["MONGO_URI"])
+#     app.logger.debug("_client: %s", _client)
+#     global db
+#     db = Database(_client, app.config['DB_NAME'])
+#     app.logger.debug("db: %s", db)
 
-def register_models():
-    _client.register([Volume])
+#     return db
+
+# def register_models(app):
+#     app.logger.info("Registering object mappings...")
+#     _client.register([VolumeDocument])
 
 
 # def setup_indexes(app, client):

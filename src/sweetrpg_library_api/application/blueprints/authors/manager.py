@@ -7,7 +7,7 @@ from flask_rest_jsonapi import ResourceList, ResourceDetail, ResourceRelationshi
 from .schema import AuthorAPISchema
 from sweetrpg_library_model.model.author import Author
 from ..data import APIData
-from sweetrpg_library_model.db.author.schema import AuthorDBSchema
+from sweetrpg_library_model.db.author.schema import AuthorSchema
 
 
 class AuthorList(ResourceList):

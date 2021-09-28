@@ -7,6 +7,7 @@ from marshmallow_jsonapi.flask import Schema, Relationship
 from marshmallow_jsonapi import fields
 from marshmallow import post_load
 from sweetrpg_library_model.model.volume import Volume
+from flask import current_app
 
 
 class VolumeAPISchema(Schema):
@@ -18,6 +19,7 @@ class VolumeAPISchema(Schema):
 
     @post_load
     def make_object(self, data, **kwargs):
+        current_app.logger.debug("self: %s, data: %s, kwargs: %s", self, data, kwargs)
         return Volume(**data)
 
     id = fields.Str()  # as_string=True, dump_only=True)

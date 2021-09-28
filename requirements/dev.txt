@@ -6,6 +6,8 @@
 #
 alabaster==0.7.12
     # via sphinx
+alembic==1.7.3
+    # via flask-migrate
 asgiref==3.4.1
     # via -r ./tests.in
 astroid==2.7.3
@@ -50,12 +52,14 @@ distlib==0.3.2
 dnspython==1.16.0
     # via
     #   -r ./app.in
-    #   pymongo
+    #   email-validator
 docutils==0.16
     # via
     #   rstcheck
     #   sphinx
     #   sphinx-tabs
+email-validator==1.1.3
+    # via wtforms
 filelock==3.0.12
     # via
     #   tox
@@ -66,9 +70,12 @@ flask==2.0.1
     #   flask-caching
     #   flask-cors
     #   flask-dotenv
-    #   flask-mongokit
+    #   flask-migrate
+    #   flask-mongoengine
     #   flask-rest-jsonapi
     #   flask-session
+    #   flask-sqlalchemy
+    #   flask-wtf
     #   sweetrpg-api-core
     #   sweetrpg-library-model
 flask-caching==1.10.1
@@ -77,12 +84,18 @@ flask-cors==3.0.10
     # via -r ./app.in
 flask-dotenv==0.1.2
     # via -r ./app.in
-flask-mongokit==0.6
-    # via sweetrpg-library-model
+flask-migrate==3.1.0
+    # via -r ./app.in
+flask-mongoengine==1.0.0
+    # via -r ./app.in
 flask-rest-jsonapi==0.31.2
     # via -r ./app.in
 flask-session==0.4.0
     # via -r ./app.in
+flask-sqlalchemy==2.5.1
+    # via flask-migrate
+flask-wtf==0.15.1
+    # via flask-mongoengine
 greenlet==1.1.1
     # via
     #   -r ./tests.in
@@ -90,7 +103,9 @@ greenlet==1.1.1
 gunicorn==20.1.0
     # via -r ./app.in
 idna==3.2
-    # via requests
+    # via
+    #   email-validator
+    #   requests
 imagesize==1.2.0
     # via sphinx
 iniconfig==1.1.1
@@ -98,7 +113,9 @@ iniconfig==1.1.1
 isort==5.9.3
     # via pylint
 itsdangerous==2.0.1
-    # via flask
+    # via
+    #   flask
+    #   flask-wtf
 jinja2==3.0.1
     # via
     #   flask
@@ -107,8 +124,13 @@ kanka==0.1.2
     # via -r ./app.in
 lazy-object-proxy==1.6.0
     # via astroid
+mako==1.1.5
+    # via alembic
 markupsafe==2.0.1
-    # via jinja2
+    # via
+    #   jinja2
+    #   mako
+    #   wtforms
 marshmallow==3.13.0
     # via
     #   flask-rest-jsonapi
@@ -118,10 +140,11 @@ marshmallow-jsonapi==0.24.0
     # via flask-rest-jsonapi
 mccabe==0.6.1
     # via pylint
-mongokit==0.9.1.1
-    # via flask-mongokit
-mongokit-ng==0.1.1
-    # via -r ./app.in
+mongoengine==0.23.1
+    # via
+    #   flask-mongoengine
+    #   sweetrpg-db
+    #   sweetrpg-library-model
 mypy-extensions==0.4.3
     # via black
 newrelic==6.10.0.165
@@ -161,11 +184,8 @@ pygments==2.10.0
     #   sphinx-tabs
 pylint==2.10.2
     # via -r ./app.in
-pymongo[srv,tls]==3.12.0
-    # via
-    #   mongokit
-    #   mongokit-ng
-    #   sweetrpg-db
+pymongo==3.12.0
+    # via mongoengine
 pyparsing==2.4.7
     # via packaging
 pytest==6.2.5
@@ -234,13 +254,17 @@ sphinxcontrib-qthelp==1.0.3
 sphinxcontrib-serializinghtml==1.1.5
     # via sphinx
 sqlalchemy==1.4.23
-    # via flask-rest-jsonapi
+    # via
+    #   alembic
+    #   flask-rest-jsonapi
+    #   flask-sqlalchemy
 git+https://github.com/sweetrpg/api-core.git@develop
     # via -r ./app.in
 git+https://github.com/sweetrpg/db.git@develop
     # via
     #   -r ./app.in
     #   sweetrpg-api-core
+    #   sweetrpg-library-model
 git+https://github.com/sweetrpg/library-model.git@develop
     # via -r ./app.in
 toml==0.10.2
@@ -269,6 +293,10 @@ wheel==0.37.0
     # via pip-tools
 wrapt==1.12.1
     # via astroid
+wtforms[email]==2.3.3
+    # via
+    #   flask-mongoengine
+    #   flask-wtf
 
 # The following packages are considered to be unsafe in a requirements file:
 # pip

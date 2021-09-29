@@ -107,6 +107,8 @@ class APIData(BaseDataLayer):
         try:
             record = repo.get(record_id)
             current_app.logger.info("self: %s, record: %s", self, record)
+            if record is None:
+                raise ObjectNotFound(f'No {self.type} record found for ID {view_kwargs["id"]}')
         except:
             raise ObjectNotFound(f'No {self.type} record found for ID {view_kwargs["id"]}')
 
@@ -336,6 +338,8 @@ class APIData(BaseDataLayer):
 
         for property_name, property_type in properties.items():
             current_app.logger.debug("self: %s, property_name: %s, property_type: %s", self, property_name, property_type)
+            if not hasattr(obj, property_name):
+                continue
             property_value = getattr(obj, property_name)
             current_app.logger.debug("self: %s, property_value: %s", self, property_value)
             if property_value is None:

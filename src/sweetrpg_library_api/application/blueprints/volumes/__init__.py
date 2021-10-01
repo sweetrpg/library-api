@@ -11,7 +11,7 @@ from flask_rest_jsonapi import Api, ResourceDetail, ResourceList, ResourceRelati
 blueprint = Blueprint("volumes", __name__, url_prefix="/volumes")
 
 
-from .manager import VolumeList, VolumeDetail, VolumeAuthorRelationship
+from .manager import VolumeList, VolumeDetail, VolumeAuthorRelationship, VolumeVolumePropertyRelationship
 
 
 def setup_routes(app):
@@ -20,3 +20,4 @@ def setup_routes(app):
     api.route(VolumeList, "volume_list", "/volumes/")
     api.route(VolumeDetail, "volume_detail", "/volumes/<id>")
     api.route(VolumeAuthorRelationship, "volume_authors", "/volumes/<id>/relationships/authors")
+    api.route(VolumeVolumePropertyRelationship, "volume_volume_properties", "/volumes/<id>/relationships/properties")

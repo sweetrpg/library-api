@@ -8,12 +8,16 @@ alabaster==0.7.12
     # via sphinx
 alembic==1.7.3
     # via flask-migrate
+analytics-python==1.4.0
+    # via -r ./app.in
 astroid==2.8.0
     # via pylint
 authlib==0.15.4
     # via -r ./app.in
 babel==2.9.1
     # via sphinx
+backoff==1.10.0
+    # via analytics-python
 blinker==1.4
     # via -r ./app.in
 cachelib==0.3.0
@@ -118,6 +122,8 @@ mongoengine==0.23.1
     #   flask-mongoengine
     #   sweetrpg-db
     #   sweetrpg-library-model
+monotonic==1.6
+    # via analytics-python
 newrelic==7.0.0.166
     # via -r ./app.in
 packaging==21.0
@@ -141,7 +147,9 @@ pymongo==3.12.0
 pyparsing==2.4.7
     # via packaging
 python-dateutil==2.8.2
-    # via -r ./app.in
+    # via
+    #   -r ./app.in
+    #   analytics-python
 python-dotenv==0.19.0
     # via -r ./app.in
 python-editor==1.0.4
@@ -155,6 +163,7 @@ redis==3.5.3
 requests==2.26.0
     # via
     #   -r ./app.in
+    #   analytics-python
     #   kanka
     #   sphinx
 rstcheck==3.3.1
@@ -163,6 +172,7 @@ sentry-sdk==1.4.1
     # via -r ./app.in
 six==1.16.0
     # via
+    #   analytics-python
     #   flask-cors
     #   flask-rest-jsonapi
     #   python-dateutil
@@ -198,14 +208,14 @@ sqlalchemy==1.4.25
     #   alembic
     #   flask-rest-jsonapi
     #   flask-sqlalchemy
-git+https://github.com/sweetrpg/api-core.git@develop
+sweetrpg-api-core @ git+https://github.com/sweetrpg/api-core.git@develop
     # via -r ./app.in
-git+https://github.com/sweetrpg/db.git@develop
+sweetrpg-db @ git+https://github.com/sweetrpg/db.git@develop
     # via
     #   -r ./app.in
     #   sweetrpg-api-core
     #   sweetrpg-library-model
-git+https://github.com/sweetrpg/library-model.git@develop
+sweetrpg-library-model @ git+https://github.com/sweetrpg/library-model.git@develop
     # via -r ./app.in
 toml==0.10.2
     # via pylint

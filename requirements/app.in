@@ -23,3 +23,4 @@ PyYAML
 redis
 requests
 sentry-sdk
+analytics-python<2.0

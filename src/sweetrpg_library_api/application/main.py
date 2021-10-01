@@ -17,6 +17,7 @@ from sweetrpg_library_api.application.blueprints import error_page
 from werkzeug.exceptions import HTTPException
 from redis.client import Redis
 from sentry_sdk.integrations.wsgi import SentryWsgiMiddleware
+import analytics
 
 
 ENV_FILE = find_dotenv()
@@ -26,28 +27,26 @@ if ENV_FILE:
 
 
 def create_app(app_name=constants.APPLICATION_NAME):
-    dictConfig({
-        'version': 1,
-        'formatters': {
-            'default': {
-                'format': '[%(asctime)s] %(levelname)s %(module)s/%(funcName)s: %(message)s',
-            }
-        },
-        'handlers': {'wsgi': {
-            'class': 'logging.StreamHandler',
-            'stream': 'ext://flask.logging.wsgi_errors_stream',
-            'formatter': 'default'
-        }},
-        'root': {
-            'level': 'DEBUG',
-            'handlers': ['wsgi']
+    dictConfig(
+        {
+            "version": 1,
+            "formatters": {
+                "default": {
+                    "format": "[%(asctime)s] %(levelname)s %(module)s/%(funcName)s: %(message)s",
+                }
+            },
+            "handlers": {"wsgi": {"class": "logging.StreamHandler", "stream": "ext://flask.logging.wsgi_errors_stream", "formatter": "default"}},
+            "root": {"level": "DEBUG", "handlers": ["wsgi"]},
         }
-    })
+    )
 
     app = Flask(app_name)
     app.config.from_object("sweetrpg_library_api.application.config.BaseConfig")
     # env = DotEnv(app)
     cache.init_app(app)
+
+    analytics.write_key = app.config.get("SEGMENT_WRITE_KEY")
+    analytics.debug = app.config.get("DEBUG") or False
 
     session = Session(app)
 
@@ -59,9 +58,11 @@ def create_app(app_name=constants.APPLICATION_NAME):
     # app.register_blueprint(volumes_blueprint, url_prefix="/volumes")
 
     from sweetrpg_library_api.application.blueprints.volumes import setup_routes as setup_volume_routes
+
     setup_volume_routes(app)
 
     from sweetrpg_library_api.application.blueprints.authors import setup_routes as setup_author_routes
+
     setup_author_routes(app)
 
     # from application.blueprints.api import blueprint as api_blueprint
@@ -77,12 +78,14 @@ def create_app(app_name=constants.APPLICATION_NAME):
     # app.register_blueprint(auth_blueprint, url_prefix="/auth")
 
     from sweetrpg_library_api.application.blueprints.health import blueprint as health_blueprint
+
     app.register_blueprint(health_blueprint, url_prefix="/health")
 
     # from application.blueprints.billing import blueprint as billing_blueprint
     # app.register_blueprint(billing_blueprint, url_prefix="/billing")
 
     from sweetrpg_library_api.application.db import db
+
     # from flask_migrate import Migrate
     # db.init_app(app, **app.config['DB_OPTS'])
     db.init_app(app)
@@ -103,6 +106,6 @@ def create_app(app_name=constants.APPLICATION_NAME):
 
     print(app.url_map)
 
-    app.debug = app.config['DEBUG']
+    app.debug = app.config["DEBUG"]
 
     return app

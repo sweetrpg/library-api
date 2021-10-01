@@ -14,10 +14,13 @@ from sweetrpg_library_model.db.volume.schema import VolumeSchema
 from sweetrpg_library_model.model.author import Author
 from sweetrpg_library_model.db.author.document import AuthorDocument
 from sweetrpg_library_model.db.author.schema import AuthorSchema
+from sweetrpg_db.utils import to_datetime
 from datetime import datetime
 from pymongo.errors import DuplicateKeyError
 from bson.objectid import ObjectId
 from sweetrpg_library_api.application.db import db
+import json
+import analytics
 
 
 models = {
@@ -98,6 +101,9 @@ class APIData(BaseDataLayer):
         """
         current_app.logger.debug("self: %s, view_kwargs: %s, qs: %s", self, view_kwargs, qs)
 
+        # analytics.write()
+        analytics.identify("anonymous", {"name": "Michael Bolton", "email": "mbolton@example.com", "created_at": datetime.now()})
+
         self.before_get_object(view_kwargs)
 
         record_id = view_kwargs["id"]
@@ -112,7 +118,8 @@ class APIData(BaseDataLayer):
         except:
             raise ObjectNotFound(f'No {self.type} record found for ID {view_kwargs["id"]}')
 
-        self.after_get_object(record, view_kwargs)
+        record = self.after_get_object(record, view_kwargs)
+        current_app.logger.info("self: %s, record: %s", self, record)
 
         obj = models[self.type]["model"](**record)
         current_app.logger.info("self: %s, obj: %s", self, obj)
@@ -333,6 +340,41 @@ class APIData(BaseDataLayer):
 
         return query
 
+    def _convert_properties(self, obj):
+        current_app.logger.debug("self: %s, obj: %s", self, obj)
+
+        date_properties = ["created_at", "updated_at", "deleted_at"]
+        id_properties = ["_id", "id"]
+        for p in date_properties + id_properties:
+            current_app.logger.debug("self: %s, p: %s", self, p)
+
+            try:
+                property_value = obj.get(p) or getattr(obj, p)
+            except:
+                continue
+
+            current_app.logger.debug("self: %s, property_value: %s", self, property_value)
+            if property_value is None:
+                continue
+
+            if p in date_properties:
+                current_app.logger.debug("self: %s, converting date property: %s, value: %s", self, p, property_value)
+                new_property_value = to_datetime(property_value)
+            elif p in id_properties:
+                current_app.logger.debug("self: %s, converting ID property: %s, value: %s", self, p, property_value)
+                if isinstance(property_value, dict):
+                    new_property_value = property_value["$oid"]
+                else:
+                    new_property_value = str(property_value)
+
+            if isinstance(obj, dict):
+                obj[p] = new_property_value
+            else:
+                setattr(obj, p, new_property_value)
+
+        current_app.logger.debug("self: %s, converted object: %s", self, obj)
+        return obj
+
     def _populate_object(self, obj, properties):
         current_app.logger.debug("self: %s, obj: %s, properties: %s", self, obj, properties)
 
@@ -365,6 +407,8 @@ class APIData(BaseDataLayer):
                 current_app.logger.debug("self: %s, new_property_value: %s", self, new_property_value)
 
                 setattr(obj, property_name, new_property_value)
+
+        return obj
 
     def before_create_object(self, data, view_kwargs):
         """Provide additional data before object creation
@@ -405,7 +449,14 @@ class APIData(BaseDataLayer):
         properties = this_model.get("properties", {})
         current_app.logger.debug("self: %s, properties: %s", self, properties)
 
-        self._populate_object(obj, properties)
+        data = json.loads(obj.to_json())
+        current_app.logger.debug("self: %s, data: %s", self, data)
+        converted_data = self._convert_properties(data)
+        current_app.logger.debug("self: %s, converted_data: %s", self, converted_data)
+        obj = self._populate_object(converted_data, properties)
+        current_app.logger.debug("self: %s, obj: %s", self, obj)
+
+        return obj
 
     def before_get_collection(self, qs, view_kwargs):
         """Make work before to retrieve a collection of objects

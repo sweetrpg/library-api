@@ -11,6 +11,9 @@ from sweetrpg_db.mongodb.options import QueryOptions
 from sweetrpg_library_model.model.volume import Volume
 from sweetrpg_library_model.db.volume.document import VolumeDocument
 from sweetrpg_library_model.db.volume.schema import VolumeSchema
+from sweetrpg_library_model.model.volume_property import VolumeProperty
+from sweetrpg_library_model.db.volume_property.document import VolumePropertyDocument
+from sweetrpg_library_model.db.volume_property.schema import VolumePropertySchema
 from sweetrpg_library_model.model.author import Author
 from sweetrpg_library_model.db.author.document import AuthorDocument
 from sweetrpg_library_model.db.author.schema import AuthorSchema
@@ -30,7 +33,15 @@ models = {
         "document": VolumeDocument,
         "type": "volume",
         "collection": "volumes",
-        "properties": {"authors": "author"},
+        "properties": {"authors": "author", "properties": "volume_property"},
+    },
+    "volume_property": {
+        "model": VolumeProperty,
+        "schema": VolumePropertySchema,
+        "document": VolumePropertyDocument,
+        "type": "volume_property",
+        "collection": "volume_properties",
+        "properties": {"volumes": "volume"},
     },
     "author": {
         "model": Author,
@@ -72,12 +83,12 @@ class APIData(BaseDataLayer):
         :return DeclarativeMeta: an object
         """
         # db = current_app.config["db"]
-        db = self.repos[self.type].db
-        current_app.logger.debug("self: %s, db: %s, data (%s): %s, view_kwargs: %s", self, db, data, type(data), view_kwargs)
+        # db = self.repos[self.type].db
+        current_app.logger.debug("self: %s, data (%s): %s, view_kwargs: %s", self, data, type(data), view_kwargs)
 
         self.before_create_object(data, view_kwargs)
 
-        json = schema().dump(data, many=False)
+        json = data.to_dict()  # schema().dump(data, many=False)
         current_app.logger.info("self: %s, json: %s", self, json)
 
         try:

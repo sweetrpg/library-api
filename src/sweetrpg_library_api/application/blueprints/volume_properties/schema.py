@@ -26,15 +26,15 @@ class VolumePropertyAPISchema(Schema):
     name = fields.Str()  # , load_only=True)
     type = fields.Str()  # , load_only=True)
     value = fields.Str()  # , load_only=True)
-    volumes = Relationship(
-        self_view="volume_property_volumes",
-        self_view_kwargs={"id": "<id>"},
-        related_view="volume_property_list",
-        related_view_kwargs={"volume_property_id": "<id>"},
-        many=True,
-        schema="VolumeAPISchema",
-        type_="volume",
-    )
+    # volumes = Relationship(
+    #     self_view="volume_property_volumes",
+    #     self_view_kwargs={"id": "<id>"},
+    #     related_view="volume_property_list",
+    #     related_view_kwargs={"volume_property_id": "<id>"},
+    #     many=True,
+    #     schema="VolumeAPISchema",
+    #     type_="volume",
+    # )
     created_at = fields.DateTime(dump_only=True)
     updated_at = fields.DateTime(dump_only=True)
     deleted_at = fields.DateTime()

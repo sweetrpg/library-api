@@ -61,6 +61,10 @@ def create_app(app_name=constants.APPLICATION_NAME):
 
     setup_volume_routes(app)
 
+    from sweetrpg_library_api.application.blueprints.volume_properties import setup_routes as setup_volume_property_routes
+
+    setup_volume_property_routes(app)
+
     from sweetrpg_library_api.application.blueprints.authors import setup_routes as setup_author_routes
 
     setup_author_routes(app)

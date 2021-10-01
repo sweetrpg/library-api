@@ -453,7 +453,7 @@ class APIData(BaseDataLayer):
         current_app.logger.debug("self: %s, data: %s", self, data)
         converted_data = self._convert_properties(data)
         current_app.logger.debug("self: %s, converted_data: %s", self, converted_data)
-        obj = self._populate_object(converted_data, properties)
+        obj = converted_data  # self._populate_object(converted_data, properties)
         current_app.logger.debug("self: %s, obj: %s", self, obj)
 
         return obj
@@ -478,9 +478,9 @@ class APIData(BaseDataLayer):
         properties = this_model.get("properties", {})
         current_app.logger.debug("self: %s, properties: %s", self, properties)
 
-        for obj in collection:
-            current_app.logger.debug("self: %s, obj: %s", self, obj)
-            self._populate_object(obj, properties)
+        # for obj in collection:
+        #     current_app.logger.debug("self: %s, obj: %s", self, obj)
+        #     self._populate_object(obj, properties)
 
         return collection
 

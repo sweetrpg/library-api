@@ -22,5 +22,5 @@ python-editor
 PyYAML
 redis
 requests
-sentry-sdk
+sentry-sdk==1.4.2
 analytics-python<2.0

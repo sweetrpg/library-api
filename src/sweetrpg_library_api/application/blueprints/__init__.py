@@ -13,6 +13,7 @@ from werkzeug.exceptions import HTTPException
 import json
 import os
 from sweetrpg_library_api.application import constants
+
 # from sweetrpg_library_api.application.models import constants as model_constants
 # from .. import render_page, requires_auth
 # from sweetrpg_library_api.application.models.user import User
@@ -40,36 +41,39 @@ from sweetrpg_library_api.application import constants
 
 #     return decorated
 
+
 def error_page(message, code):
     context = {
-        'code': code,
-        'message': message,
+        "code": code,
+        "message": message,
     }
     try:
-        return render_page(f'errors/{code}.json')
+        return render_page(f"errors/{code}.json")
     except jinja2.TemplateNotFound:
-        return render_page('errors/error.json', context)
+        return render_page("errors/error.json", context)
 
 
 def render_page(page, context={}):
 
     show_cookie_message = True
-    if request.cookies.get('cookies-accepted'):
+    if request.cookies.get("cookies-accepted"):
         show_cookie_message = False
 
     userinfo = session.get(constants.PROFILE_KEY)
     if userinfo:
-        context.update({
-            'showCookieMessage': show_cookie_message,
-            'userinfo': userinfo,
-        })
+        context.update(
+            {
+                "showCookieMessage": show_cookie_message,
+                "userinfo": userinfo,
+            }
+        )
     print(f"context: {context}")
 
     return render_template(page, **context)
 
 
 class UserAuthorizationException(Exception):
-    def __init__(self, reason:str):
+    def __init__(self, reason: str):
         self.reason = reason
 
 
@@ -135,12 +139,12 @@ blueprint = Blueprint("api", __name__)
 def error_handler(ex):
     current_app.logger.exception(f"Exception caught: {ex}")
     response = jsonify(message=str(ex))
-    response.status_code = (ex.code if isinstance(ex, HTTPException) else 500)
+    response.status_code = ex.code if isinstance(ex, HTTPException) else 500
     return response
 
 
 # from sweetrpg_library_api.application.blueprints.api.common import game_systems, utils
 # from sweetrpg_library_api.application.blueprints.api.initiative import encounters, groups
-from sweetrpg_library_api.application.blueprints import health
+from sweetrpg_api_core.blueprints.health import health
 from sweetrpg_library_api.application.blueprints import volumes
 from sweetrpg_library_api.application.blueprints import authors

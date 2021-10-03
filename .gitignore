@@ -15,12 +15,12 @@ __pycache__/
 .python-version
 .tox/
 .venv/
-.vscode/
 .workon
 *.dSYM
 *.dSYM.zip
 *.egg
 *.egg-info/
+*.env
 *.hmap
 *.iml
 *.ipa
@@ -52,4 +52,4 @@ src/configs/*.env
 t.py
 t2.py
 toy.py
-*.env
+venv/

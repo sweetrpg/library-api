@@ -145,6 +145,6 @@ def error_handler(ex):
 
 # from sweetrpg_library_api.application.blueprints.api.common import game_systems, utils
 # from sweetrpg_library_api.application.blueprints.api.initiative import encounters, groups
-from sweetrpg_api_core.blueprints.health import health
+from sweetrpg_api_core.blueprints import health
 from sweetrpg_library_api.application.blueprints import volumes
 from sweetrpg_library_api.application.blueprints import authors

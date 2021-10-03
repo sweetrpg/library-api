@@ -10,8 +10,6 @@ alembic==1.7.3
     # via flask-migrate
 analytics-python==1.4.0
     # via -r ./app.in
-astroid==2.8.0
-    # via pylint
 authlib==0.15.4
     # via -r ./app.in
 babel==2.9.1
@@ -38,6 +36,7 @@ dnspython==1.16.0
     # via
     #   -r ./app.in
     #   email-validator
+    #   pymongo
 docutils==0.16
     # via
     #   rstcheck
@@ -89,8 +88,6 @@ idna==3.2
     #   requests
 imagesize==1.2.0
     # via sphinx
-isort==5.9.3
-    # via pylint
 itsdangerous==2.0.1
     # via
     #   flask
@@ -101,8 +98,6 @@ jinja2==3.0.1
     #   sphinx
 kanka==0.1.2
     # via -r ./app.in
-lazy-object-proxy==1.6.0
-    # via astroid
 mako==1.1.5
     # via alembic
 markupsafe==2.0.1
@@ -115,10 +110,9 @@ marshmallow==3.13.0
     #   flask-rest-jsonapi
     #   marshmallow-jsonapi
     #   sweetrpg-db
+    #   sweetrpg-model-core
 marshmallow-jsonapi==0.24.0
     # via flask-rest-jsonapi
-mccabe==0.6.1
-    # via pylint
 mongoengine==0.23.1
     # via
     #   flask-mongoengine
@@ -127,26 +121,22 @@ mongoengine==0.23.1
     #   sweetrpg-library-model
 monotonic==1.6
     # via analytics-python
-newrelic==7.0.0.166
-    # via -r ./app.in
 packaging==21.0
     # via
     #   pallets-sphinx-themes
     #   sphinx
 pallets-sphinx-themes==2.0.1
     # via -r ./docs.in
-platformdirs==2.4.0
-    # via pylint
 pycparser==2.20
     # via cffi
 pygments==2.10.0
     # via
     #   sphinx
     #   sphinx-tabs
-pylint==2.11.1
-    # via -r ./app.in
-pymongo==3.12.0
-    # via mongoengine
+pymongo[srv,tls]==3.12.0
+    # via
+    #   mongoengine
+    #   sweetrpg-model-core
 pyparsing==2.4.7
     # via packaging
 python-dateutil==2.8.2
@@ -220,20 +210,16 @@ git+https://github.com/sweetrpg/db.git@develop
     #   sweetrpg-library-model
 git+https://github.com/sweetrpg/library-model.git@develop
     # via -r ./app.in
-toml==0.10.2
-    # via pylint
-typing-extensions==3.10.0.2
+git+https://github.com/sweetrpg/model-core.git@develop
     # via
-    #   astroid
-    #   pylint
+    #   -r ./app.in
+    #   sweetrpg-library-model
 urllib3==1.26.6
     # via
     #   requests
     #   sentry-sdk
 werkzeug==2.0.1
     # via flask
-wrapt==1.12.1
-    # via astroid
 wtforms[email]==2.3.3
     # via
     #   flask-mongoengine

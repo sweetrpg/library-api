@@ -12,8 +12,6 @@ analytics-python==1.4.0
     # via -r ./app.in
 asgiref==3.4.1
     # via -r ./tests.in
-astroid==2.7.3
-    # via pylint
 attrs==21.2.0
     # via pytest
 authlib==0.15.4
@@ -57,6 +55,7 @@ dnspython==1.16.0
     # via
     #   -r ./app.in
     #   email-validator
+    #   pymongo
 docutils==0.16
     # via
     #   rstcheck
@@ -116,8 +115,6 @@ imagesize==1.2.0
     # via sphinx
 iniconfig==1.1.1
     # via pytest
-isort==5.9.3
-    # via pylint
 itsdangerous==2.0.1
     # via
     #   flask
@@ -128,8 +125,6 @@ jinja2==3.0.1
     #   sphinx
 kanka==0.1.2
     # via -r ./app.in
-lazy-object-proxy==1.6.0
-    # via astroid
 mako==1.1.5
     # via alembic
 markupsafe==2.0.1
@@ -142,10 +137,9 @@ marshmallow==3.13.0
     #   flask-rest-jsonapi
     #   marshmallow-jsonapi
     #   sweetrpg-db
+    #   sweetrpg-model-core
 marshmallow-jsonapi==0.24.0
     # via flask-rest-jsonapi
-mccabe==0.6.1
-    # via pylint
 mongoengine==0.23.1
     # via
     #   flask-mongoengine
@@ -156,8 +150,6 @@ monotonic==1.6
     # via analytics-python
 mypy-extensions==0.4.3
     # via black
-newrelic==6.10.0.165
-    # via -r ./app.in
 packaging==21.0
     # via
     #   pallets-sphinx-themes
@@ -175,7 +167,6 @@ pip-tools==6.3.0
 platformdirs==2.3.0
     # via
     #   black
-    #   pylint
     #   virtualenv
 pluggy==1.0.0
     # via
@@ -191,10 +182,10 @@ pygments==2.10.0
     # via
     #   sphinx
     #   sphinx-tabs
-pylint==2.10.2
-    # via -r ./app.in
-pymongo==3.12.0
-    # via mongoengine
+pymongo[srv,tls]==3.12.0
+    # via
+    #   mongoengine
+    #   sweetrpg-model-core
 pyparsing==2.4.7
     # via packaging
 pytest==6.2.5
@@ -280,9 +271,12 @@ git+https://github.com/sweetrpg/db.git@develop
     #   sweetrpg-library-model
 git+https://github.com/sweetrpg/library-model.git@develop
     # via -r ./app.in
+git+https://github.com/sweetrpg/model-core.git@develop
+    # via
+    #   -r ./app.in
+    #   sweetrpg-library-model
 toml==0.10.2
     # via
-    #   pylint
     #   pytest
     #   pytest-cov
     #   tox
@@ -304,8 +298,6 @@ werkzeug==2.0.1
     # via flask
 wheel==0.37.0
     # via pip-tools
-wrapt==1.12.1
-    # via astroid
 wtforms[email]==2.3.3
     # via
     #   flask-mongoengine

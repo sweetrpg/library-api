@@ -17,7 +17,8 @@ from sweetrpg_library_api.application.blueprints import error_page
 from werkzeug.exceptions import HTTPException
 from redis.client import Redis
 from sentry_sdk.integrations.wsgi import SentryWsgiMiddleware
-import analytics
+
+# import analytics
 
 
 ENV_FILE = find_dotenv()
@@ -45,8 +46,8 @@ def create_app(app_name=constants.APPLICATION_NAME):
     # env = DotEnv(app)
     cache.init_app(app)
 
-    analytics.write_key = app.config.get("SEGMENT_WRITE_KEY")
-    analytics.debug = app.config.get("DEBUG") or False
+    # analytics.write_key = app.config.get("SEGMENT_WRITE_KEY")
+    # analytics.debug = app.config.get("DEBUG") or False
 
     session = Session(app)
 
@@ -60,10 +61,6 @@ def create_app(app_name=constants.APPLICATION_NAME):
     from sweetrpg_library_api.application.blueprints.volumes import setup_routes as setup_volume_routes
 
     setup_volume_routes(app)
-
-    from sweetrpg_library_api.application.blueprints.volume_properties import setup_routes as setup_volume_property_routes
-
-    setup_volume_property_routes(app)
 
     from sweetrpg_library_api.application.blueprints.authors import setup_routes as setup_author_routes
 

@@ -35,6 +35,7 @@ class VolumeAPISchema(Schema):
         schema="AuthorAPISchema",
         type_="author",
     )
+    properties = fields.List(fields.Dict(keys=fields.Str(), values=fields.Str()))
     # properties = Relationship(
     #     self_view="volume_volume_properties",
     #     self_view_kwargs={"id": "<id>"},

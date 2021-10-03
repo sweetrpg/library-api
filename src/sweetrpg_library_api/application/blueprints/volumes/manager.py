@@ -5,7 +5,9 @@ __author__ = "Paul Schifferer <dm@sweetrpg.com>"
 
 from flask_rest_jsonapi import ResourceList, ResourceDetail, ResourceRelationship
 from .schema import VolumeAPISchema
-from ..data import APIData
+from sweetrpg_api_core.data import APIData
+from sweetrpg_library_model.model.volume import Volume
+from sweetrpg_library_api.application.db import db
 
 
 class VolumeList(ResourceList):
@@ -13,6 +15,8 @@ class VolumeList(ResourceList):
     data_layer = {
         "class": APIData,
         "type": "volume",
+        "model": Volume,
+        "db": db,
     }
 
 
@@ -21,6 +25,8 @@ class VolumeDetail(ResourceDetail):
     data_layer = {
         "class": APIData,
         "type": "volume",
+        "model": Volume,
+        "db": db,
     }
 
 
@@ -29,12 +35,6 @@ class VolumeAuthorRelationship(ResourceRelationship):
     data_layer = {
         "class": APIData,
         "type": "volume",
-    }
-
-
-class VolumeVolumePropertyRelationship(ResourceRelationship):
-    schema = VolumeAPISchema
-    data_layer = {
-        "class": APIData,
-        "type": "volume",
+        "model": Volume,
+        "db": db,
     }

@@ -34,7 +34,7 @@ charset-normalizer==2.0.6
     # via requests
 click==8.0.1
     # via flask
-coverage==5.5
+coverage[toml]==5.5
     # via pytest-cov
 coverage-badge==1.0.1
     # via -r ./tests.in
@@ -87,7 +87,7 @@ flask-sqlalchemy==2.5.1
     # via flask-migrate
 flask-wtf==0.15.1
     # via flask-mongoengine
-greenlet==1.1.1
+greenlet==1.1.2
     # via
     #   -r ./tests.in
     #   sqlalchemy
@@ -156,7 +156,7 @@ pytest==6.2.5
     # via
     #   -r ./tests.in
     #   pytest-cov
-pytest-cov==2.12.1
+pytest-cov==3.0
     # via -r ./tests.in
 python-dateutil==2.8.2
     # via
@@ -192,23 +192,25 @@ sqlalchemy==1.4.23
     #   alembic
     #   flask-rest-jsonapi
     #   flask-sqlalchemy
-git+https://github.com/sweetrpg/api-core.git@develop
+sweetrpg-api-core @ git+https://github.com/sweetrpg/api-core.git@develop
     # via -r ./app.in
-git+https://github.com/sweetrpg/db.git@develop
+sweetrpg-db @ git+https://github.com/sweetrpg/db.git@develop
     # via
     #   -r ./app.in
     #   sweetrpg-api-core
     #   sweetrpg-library-model
-git+https://github.com/sweetrpg/library-model.git@develop
+sweetrpg-library-model @ git+https://github.com/sweetrpg/library-model.git@develop
     # via -r ./app.in
-git+https://github.com/sweetrpg/model-core.git@develop
+sweetrpg-model-core @ git+https://github.com/sweetrpg/model-core.git@develop
     # via
     #   -r ./app.in
+    #   sweetrpg-api-core
+    #   sweetrpg-db
     #   sweetrpg-library-model
 toml==0.10.2
     # via
+    #   coverage
     #   pytest
-    #   pytest-cov
     #   tox
 tox==3.24.4
     # via -r ./tests.in

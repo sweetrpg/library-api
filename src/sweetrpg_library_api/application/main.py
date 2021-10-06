@@ -78,7 +78,7 @@ def create_app(app_name=constants.APPLICATION_NAME):
     # from application.blueprints.auth import blueprint as auth_blueprint
     # app.register_blueprint(auth_blueprint, url_prefix="/auth")
 
-    from sweetrpg_library_api.application.blueprints.health import blueprint as health_blueprint
+    from sweetrpg_api_core.blueprints.health import blueprint as health_blueprint
 
     app.register_blueprint(health_blueprint, url_prefix="/health")
 

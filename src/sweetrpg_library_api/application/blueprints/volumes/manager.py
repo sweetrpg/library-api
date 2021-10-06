@@ -8,16 +8,12 @@ from .schema import VolumeAPISchema
 from sweetrpg_api_core.data import APIData
 from sweetrpg_library_model.model.volume import Volume
 from sweetrpg_library_api.application.db import db
+from sweetrpg_library_api.application.blueprints.setup import model_info
 
 
 class VolumeList(ResourceList):
     schema = VolumeAPISchema
-    data_layer = {
-        "class": APIData,
-        "type": "volume",
-        "model": Volume,
-        "db": db,
-    }
+    data_layer = {"class": APIData, "type": "volume", "model": Volume, "db": db, "model_info": model_info}
 
 
 class VolumeDetail(ResourceDetail):
@@ -27,6 +23,7 @@ class VolumeDetail(ResourceDetail):
         "type": "volume",
         "model": Volume,
         "db": db,
+        "model_info": model_info
     }
 
 
@@ -37,4 +34,5 @@ class VolumeAuthorRelationship(ResourceRelationship):
         "type": "volume",
         "model": Volume,
         "db": db,
+        "model_info": model_info
     }

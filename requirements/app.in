@@ -10,10 +10,10 @@ Flask-MongoEngine
 Flask-REST-JSONAPI
 Flask-Session
 Flask>=2.0
-git+https://github.com/sweetrpg/api-core.git@develop
-git+https://github.com/sweetrpg/db.git@develop
-git+https://github.com/sweetrpg/library-model.git@develop
-git+https://github.com/sweetrpg/model-core.git@develop
+sweetrpg-api-core
+sweetrpg-db
+sweetrpg-library-model
+sweetrpg-model-core
 gunicorn
 kanka
 python-dateutil

@@ -201,16 +201,16 @@ sqlalchemy==1.4.25
     #   alembic
     #   flask-rest-jsonapi
     #   flask-sqlalchemy
-sweetrpg-api-core @ git+https://github.com/sweetrpg/api-core.git@develop
+sweetrpg-api-core==0.0.2
     # via -r ./app.in
-sweetrpg-db @ git+https://github.com/sweetrpg/db.git@develop
+sweetrpg-db==0.0.4
     # via
     #   -r ./app.in
     #   sweetrpg-api-core
     #   sweetrpg-library-model
-sweetrpg-library-model @ git+https://github.com/sweetrpg/library-model.git@develop
+sweetrpg-library-model==0.0.0
     # via -r ./app.in
-sweetrpg-model-core @ git+https://github.com/sweetrpg/model-core.git@develop
+sweetrpg-model-core==0.0.9
     # via
     #   -r ./app.in
     #   sweetrpg-api-core

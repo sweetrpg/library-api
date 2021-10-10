@@ -103,6 +103,7 @@ flask-wtf==0.15.1
     # via flask-mongoengine
 greenlet==1.1.2
     # via
+    #   -r ./app.in
     #   -r ./tests.in
     #   sqlalchemy
 gunicorn==20.1.0
@@ -220,7 +221,7 @@ requests==2.26.0
     #   sphinx
 rstcheck==3.3.1
     # via -r ./docs.in
-sentry-sdk==1.4.2
+sentry-sdk==1.4.3
     # via -r ./app.in
 six==1.16.0
     # via
@@ -257,8 +258,9 @@ sphinxcontrib-qthelp==1.0.3
     # via sphinx
 sphinxcontrib-serializinghtml==1.1.5
     # via sphinx
-sqlalchemy==1.4.23
+sqlalchemy==1.4.25
     # via
+    #   -r ./app.in
     #   alembic
     #   flask-rest-jsonapi
     #   flask-sqlalchemy
@@ -290,8 +292,9 @@ tox==3.24.4
     # via -r ./tests.in
 typing-extensions==3.10.0.2
     # via black
-urllib3==1.26.6
+urllib3==1.26.7
     # via
+    #   -r ./app.in
     #   requests
     #   sentry-sdk
 virtualenv==20.8.0

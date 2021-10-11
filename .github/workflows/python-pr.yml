@@ -1,7 +1,7 @@
-name: CI
+name: PR
 
 on:
-    push:
+    pull_request:
         branches: [develop]
         paths:
             - "src/**"
@@ -53,23 +53,7 @@ jobs:
                   key: pip|${{ runner.os }}|${{ matrix.python }}|${{ hashFiles('setup.py') }}|${{ hashFiles('requirements/*.txt') }}
             - name: install-utils
               run: pip install tox
+            # - name: lint
+            #   run: black --check -t py39 --diff --color src
             - name: tests
               run: tox -e ${{ matrix.tox }}
-
-    docs:
-        needs: [tests]
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-            - uses: actions/setup-python@v2
-              with:
-                  python-version: "3.9"
-            - name: install-deps
-              run: pip install -r requirements/docs.txt
-            - name: make-docs
-              run: cd docs && make html
-            - name: publish-docs
-              uses: peaceiris/actions-gh-pages@v3
-              with:
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
-                  publish_dir: ./docs/_build/html

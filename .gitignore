@@ -35,7 +35,6 @@ __pycache__/
 /.mypy_cache/
 build/
 cover/
-coverage.svg
 coverage.xml
 Dependencies/
 dist

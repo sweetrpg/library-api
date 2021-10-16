@@ -1,7 +1,7 @@
 # SweetRPG Library API
 
 [![Unit tests](https://github.com/sweetrpg/library-api/actions/workflows/python-ci.yml/badge.svg)](https://github.com/sweetrpg/library-api/actions/workflows/python-ci.yml)
-[![Coverage](https://github.com/sweetrpg/library-api/coverage.svg)](https://github.com/sweetrpg/library-api)
+[![Coverage](https://github.com/sweetrpg/library-api/blob/develop/coverage.svg)](https://github.com/sweetrpg/library-api)
 [![License](https://img.shields.io/github/license/sweetrpg/library-api.svg)](https://img.shields.io/github/license/sweetrpg/library-api.svg)
 [![Issues](https://img.shields.io/github/issues/sweetrpg/library-api.svg)](https://img.shields.io/github/issues/sweetrpg/library-api.svg)
 [![PRs](https://img.shields.io/github/issues-pr/sweetrpg/library-api.svg)](https://img.shields.io/github/issues-pr/sweetrpg/library-api.svg)

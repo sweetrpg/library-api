@@ -7,6 +7,8 @@ from marshmallow_jsonapi.flask import Schema, Relationship
 from marshmallow_jsonapi import fields
 from marshmallow import post_load
 from sweetrpg_library_model.model.author import Author
+from flask import session, current_app
+from sweetrpg_library_api.application.utils.user import add_user_info
 
 
 class AuthorAPISchema(Schema):
@@ -18,6 +20,7 @@ class AuthorAPISchema(Schema):
 
     @post_load
     def make_object(self, data, **kwargs):
+        data = add_user_info(data)
         return Author(**data)
 
     id = fields.Str()  # as_string=True, dump_only=True)
@@ -31,6 +34,6 @@ class AuthorAPISchema(Schema):
         schema="VolumeAPISchema",
         type_="volume",
     )
-    created_at = fields.DateTime(dump_only=True)
-    updated_at = fields.DateTime(dump_only=True)
+    created_at = fields.DateTime()  # dump_only=True)
+    updated_at = fields.DateTime()  # dump_only=True)
     deleted_at = fields.DateTime()

@@ -12,13 +12,13 @@ from flask_session import Session
 from dotenv import load_dotenv, find_dotenv
 from sweetrpg_library_api.application.cache import cache
 from sweetrpg_library_api.application import constants
+from sweetrpg_library_api.application.auth import oauth
 from logging.config import dictConfig
-from sweetrpg_library_api.application.blueprints import error_page
 from werkzeug.exceptions import HTTPException
 from redis.client import Redis
 from sentry_sdk.integrations.wsgi import SentryWsgiMiddleware
-
 # import analytics
+import os
 
 
 ENV_FILE = find_dotenv()
@@ -46,6 +46,8 @@ def create_app(app_name=constants.APPLICATION_NAME):
     # env = DotEnv(app)
     cache.init_app(app)
 
+    # oauth.init_app(app)
+
     # analytics.write_key = app.config.get("SEGMENT_WRITE_KEY")
     # analytics.debug = app.config.get("DEBUG") or False
 
@@ -55,16 +57,49 @@ def create_app(app_name=constants.APPLICATION_NAME):
 
     sentry = SentryWsgiMiddleware(app)
 
+    from sweetrpg_library_api.application.blueprints import api
+    from sweetrpg_library_api.application.auth import oauth
+    # from authlib.integrations.flask_client import OAuth
+    api.init_app(app)
+    oauth.init_app(app)
+    oauth.app = app
+    api.oauth_manager(oauth)
+    # oauth.scope_setter(get_scope)
+
+    # _oauth = OAuth(app)
+    # oauth.register('auth0',
+    #                client_id=os.environ[constants.AUTH0_CLIENT_ID],
+    #                client_secret=os.environ[constants.AUTH0_CLIENT_SECRET],
+    #                api_base_url=os.environ[constants.AUTH0_DOMAIN],
+    #                access_token_url=os.environ[constants.AUTH0_CALLBACK_URL],
+    #                authorize_url=os.environ[constants.AUTH0_LOGIN_URL],
+    #                client_kwargs={
+    #                    'scope': 'openid profile email',
+    #                })
+
     # from sweetrpg_library_api.application.blueprints.volumes import blueprint as volumes_blueprint
     # app.register_blueprint(volumes_blueprint, url_prefix="/volumes")
 
     from sweetrpg_library_api.application.blueprints.volumes import setup_routes as setup_volume_routes
-
     setup_volume_routes(app)
 
     from sweetrpg_library_api.application.blueprints.authors import setup_routes as setup_author_routes
-
     setup_author_routes(app)
+
+    from sweetrpg_library_api.application.blueprints.publishers import setup_routes as setup_publisher_routes
+    setup_publisher_routes(app)
+
+    from sweetrpg_library_api.application.blueprints.reviews import setup_routes as setup_review_routes
+    setup_review_routes(app)
+
+    from sweetrpg_library_api.application.blueprints.studios import setup_routes as setup_studio_routes
+    setup_studio_routes(app)
+
+    from sweetrpg_library_api.application.blueprints.systems import setup_routes as setup_system_routes
+    setup_system_routes(app)
+
+    from sweetrpg_library_api.application.blueprints.tags import setup_routes as setup_tag_routes
+    setup_tag_routes(app)
 
     # from application.blueprints.api import blueprint as api_blueprint
     # app.register_blueprint(api_blueprint, url_prefix="/api/v1")

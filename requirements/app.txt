@@ -8,26 +8,22 @@ alembic==1.7.3
     # via flask-migrate
 analytics-python==1.4.0
     # via -r requirements/app.in
-authlib==0.15.4
-    # via -r requirements/app.in
 backoff==1.10.0
     # via analytics-python
 blinker==1.4
     # via -r requirements/app.in
 cachelib==0.3.0
-    # via flask-session
+    # via
+    #   flask-oauthlib
+    #   flask-session
 certifi==2021.5.30
     # via
     #   requests
     #   sentry-sdk
-cffi==1.14.6
-    # via cryptography
 charset-normalizer==2.0.4
     # via requests
 click==8.0.1
     # via flask
-cryptography==3.4.8
-    # via authlib
 dnspython==1.16.0
     # via
     #   -r requirements/app.in
@@ -42,6 +38,7 @@ flask==2.0.2
     #   flask-dotenv
     #   flask-migrate
     #   flask-mongoengine
+    #   flask-oauthlib
     #   flask-rest-jsonapi
     #   flask-session
     #   flask-sqlalchemy
@@ -57,6 +54,8 @@ flask-dotenv==0.1.2
 flask-migrate==3.1.0
     # via -r requirements/app.in
 flask-mongoengine==1.0.0
+    # via -r requirements/app.in
+flask-oauthlib==0.9.6
     # via -r requirements/app.in
 flask-rest-jsonapi==0.31.2
     # via
@@ -106,8 +105,10 @@ mongoengine==0.23.1
     #   sweetrpg-library-model
 monotonic==1.6
     # via analytics-python
-pycparser==2.20
-    # via cffi
+oauthlib==2.1.0
+    # via
+    #   flask-oauthlib
+    #   requests-oauthlib
 pymongo==3.12.0
     # via mongoengine
 python-dateutil==2.8.2
@@ -127,6 +128,9 @@ requests==2.26.0
     #   -r requirements/app.in
     #   analytics-python
     #   kanka
+    #   requests-oauthlib
+requests-oauthlib==1.1.0
+    # via flask-oauthlib
 sentry-sdk==1.4.3
     # via -r requirements/app.in
 six==1.16.0

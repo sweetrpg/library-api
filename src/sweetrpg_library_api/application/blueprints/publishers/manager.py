@@ -27,12 +27,12 @@ class PublisherDetail(ResourceDetail):
     }
 
 
-class PublisherAuthorRelationship(ResourceRelationship):
-    schema = PublisherAPISchema
-    data_layer = {
-        "class": APIData,
-        "type": "publisher",
-        "model": Publisher,
-        "db": db,
-        "model_info": model_info
-    }
+# class PublisherAuthorRelationship(ResourceRelationship):
+#     schema = PublisherAPISchema
+#     data_layer = {
+#         "class": APIData,
+#         "type": "publisher",
+#         "model": Publisher,
+#         "db": db,
+#         "model_info": model_info
+#     }

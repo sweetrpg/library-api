@@ -6,12 +6,30 @@ user.py
 """
 
 
-# from flask import current_app
+from flask import current_app, session
+from sweetrpg_library_api.application import constants
 # from sweetrpg_library_api.application.db import db
 # from sweetrpg_library_api.application.models.user import User, Identity, Role, UserRole
 # from sweetrpg_library_api.application.models import constants as model_constants
 # import hashlib
 
+
+def add_user_info(data: dict) -> dict:
+    """Set user audit fields, such as `created_by` and `updated_by` with current user info.
+    If the application is in debug mode, the system user ID is used.
+
+    :param dict data: The data dictionary to update.
+    :returns data: The data that was passed in, with user audit fields set.
+    """
+    if current_app.config['DEBUG']:
+        data['updated_by'] = constants.SYSTEM_USER_ID
+    elif session['user']:
+        data['created_by'] = session['user']['id']
+
+    if not data.get('created_by'):
+        data['created_by'] = constants.SYSTEM_USER_ID
+
+    return data
 
 # def has_role(user: User, role_name: str):
 #     for role_assoc in user.roles:

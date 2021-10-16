@@ -18,6 +18,4 @@ class StudioAPISchema(BaseAPISchema):
         self_view_kwargs = {"id": "<id>"}
         self_view_many = "studio_list"
 
-    name = fields.Str()  # , load_only=True)
-    slug = fields.Str()  # , load_only=True)
-    system = fields.Str()  # , load_only=True)
+    name = fields.Str(required=True)  # , load_only=True)

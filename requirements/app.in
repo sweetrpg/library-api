@@ -1,12 +1,12 @@
 analytics-python<2.0
-Authlib
 blinker
 dnspython<2.0.0
 Flask-Caching
-Flask-Cors
+Flask-CORS
 Flask-DotEnv
 Flask-Migrate
 Flask-MongoEngine
+Flask-OAuthlib
 Flask-REST-JSONAPI
 Flask-Session
 Flask==2.0.2

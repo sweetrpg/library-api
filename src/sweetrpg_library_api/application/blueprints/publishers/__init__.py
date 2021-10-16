@@ -4,8 +4,9 @@ __author__ = "Paul Schifferer <dm@sweetrpg.com>"
 """
 
 import functools
-from flask_rest_jsonapi import Api
-from .manager import PublisherList, PublisherDetail, PublisherAuthorRelationship
+# from flask_rest_jsonapi import Api
+from .manager import PublisherList, PublisherDetail
+from ...blueprints import api
 
 
 def setup_routes(app):
@@ -14,7 +15,7 @@ def setup_routes(app):
     #     APIData.add_model(model_name, model_info)
 
     app.logger.info("Setting up routes for Publishers API")
-    api = Api(app)
+    # api = Api(app)
     api.route(PublisherList, "publisher_list", "/publishers/")
     api.route(PublisherDetail, "publisher_detail", "/publishers/<id>")
-    api.route(PublisherAuthorRelationship, "publisher_authors", "/publishers/<id>/relationships/authors")
+    # api.route(PublisherAuthorRelationship, "publisher_authors", "/publishers/<id>/relationships/authors")

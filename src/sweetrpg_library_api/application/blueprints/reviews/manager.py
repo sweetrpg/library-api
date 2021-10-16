@@ -3,12 +3,15 @@ __author__ = "Paul Schifferer <dm@sweetrpg.com>"
 """
 """
 
+from flask import current_app
 from flask_rest_jsonapi import ResourceList, ResourceDetail, ResourceRelationship
 from .schema import ReviewAPISchema
 from sweetrpg_api_core.data import APIData
 from sweetrpg_library_model.model.review import Review
 from sweetrpg_library_api.application.db import db
 from sweetrpg_library_api.application.blueprints.setup import model_info
+from sweetrpg_library_api.application.auth import oauth
+import logging
 
 
 class ReviewList(ResourceList):
@@ -17,6 +20,7 @@ class ReviewList(ResourceList):
 
 
 class ReviewDetail(ResourceDetail):
+    # disable_oauth = True
     schema = ReviewAPISchema
     data_layer = {
         "class": APIData,
@@ -25,14 +29,20 @@ class ReviewDetail(ResourceDetail):
         "db": db,
         "model_info": model_info
     }
+    # decorators = (check_auth,)
+
+    # @oauth.require_oauth("something")
+    # def create(*args, **kwargs):
+    #     current_app.logger.debug("args: %s, kwargs: %s", args, kwargs)
+    #     return "TODO"
 
 
-class ReviewAuthorRelationship(ResourceRelationship):
-    schema = ReviewAPISchema
-    data_layer = {
-        "class": APIData,
-        "type": "review",
-        "model": Review,
-        "db": db,
-        "model_info": model_info
-    }
+# class ReviewAuthorRelationship(ResourceRelationship):
+#     schema = ReviewAPISchema
+#     data_layer = {
+#         "class": APIData,
+#         "type": "review",
+#         "model": Review,
+#         "db": db,
+#         "model_info": model_info
+#     }

@@ -27,12 +27,12 @@ class TagDetail(ResourceDetail):
     }
 
 
-class TagAuthorRelationship(ResourceRelationship):
-    schema = TagAPISchema
-    data_layer = {
-        "class": APIData,
-        "type": "tag",
-        "model": Tag,
-        "db": db,
-        "model_info": model_info
-    }
+# class TagAuthorRelationship(ResourceRelationship):
+#     schema = TagAPISchema
+#     data_layer = {
+#         "class": APIData,
+#         "type": "tag",
+#         "model": Tag,
+#         "db": db,
+#         "model_info": model_info
+#     }

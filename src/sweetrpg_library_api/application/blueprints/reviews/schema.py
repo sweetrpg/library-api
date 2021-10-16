@@ -18,6 +18,20 @@ class ReviewAPISchema(BaseAPISchema):
         self_view_kwargs = {"id": "<id>"}
         self_view_many = "review_list"
 
-    name = fields.Str()  # , load_only=True)
-    slug = fields.Str()  # , load_only=True)
-    system = fields.Str()  # , load_only=True)
+    title = fields.Str(required=True)  # , load_only=True)
+    text = fields.Str(required=True)  # , load_only=True)
+    volume = Relationship(attribute='volume',
+                          self_view='review_volume',
+                          self_view_kwargs={'id': '<id>'},
+                          related_view='volume_detail',
+                          related_view_kwargs={'volume_id': '<id>'},
+                          schema='VolumeAPISchema',
+                          type_='volume')
+    tags = Relationship(self_view='review_tags',
+                        self_view_kwargs={'id': '<id>'},
+                        related_view='tag_list',
+                        related_view_kwargs={'id': '<id>'},
+                        many=True,
+                        schema='TagAPISchema',
+                        type_='tag',
+                        id_field='tag_id')

@@ -27,12 +27,12 @@ class SystemDetail(ResourceDetail):
     }
 
 
-class SystemAuthorRelationship(ResourceRelationship):
-    schema = SystemAPISchema
-    data_layer = {
-        "class": APIData,
-        "type": "system",
-        "model": System,
-        "db": db,
-        "model_info": model_info
-    }
+# class SystemAuthorRelationship(ResourceRelationship):
+#     schema = SystemAPISchema
+#     data_layer = {
+#         "class": APIData,
+#         "type": "system",
+#         "model": System,
+#         "db": db,
+#         "model_info": model_info
+#     }

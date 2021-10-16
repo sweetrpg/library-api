@@ -27,12 +27,12 @@ class StudioDetail(ResourceDetail):
     }
 
 
-class StudioAuthorRelationship(ResourceRelationship):
-    schema = StudioAPISchema
-    data_layer = {
-        "class": APIData,
-        "type": "studio",
-        "model": Studio,
-        "db": db,
-        "model_info": model_info
-    }
+# class StudioAuthorRelationship(ResourceRelationship):
+#     schema = StudioAPISchema
+#     data_layer = {
+#         "class": APIData,
+#         "type": "studio",
+#         "model": Studio,
+#         "db": db,
+#         "model_info": model_info
+#     }

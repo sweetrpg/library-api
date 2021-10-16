@@ -18,6 +18,5 @@ class TagAPISchema(BaseAPISchema):
         self_view_kwargs = {"id": "<id>"}
         self_view_many = "tag_list"
 
-    name = fields.Str()  # , load_only=True)
-    slug = fields.Str()  # , load_only=True)
-    system = fields.Str()  # , load_only=True)
+    name = fields.Str(required=True)  # , load_only=True)
+    value = fields.Str()

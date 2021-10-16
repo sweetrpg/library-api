@@ -4,8 +4,8 @@ __author__ = "Paul Schifferer <dm@sweetrpg.com>"
 """
 
 import functools
-from flask_rest_jsonapi import Api
-from .manager import ReviewList, ReviewDetail, ReviewAuthorRelationship
+from .manager import ReviewList, ReviewDetail
+from ...blueprints import api
 
 
 def setup_routes(app):
@@ -14,7 +14,8 @@ def setup_routes(app):
     #     APIData.add_model(model_name, model_info)
 
     app.logger.info("Setting up routes for Reviews API")
-    api = Api(app)
+    # api = Api(app)
     api.route(ReviewList, "review_list", "/reviews/")
     api.route(ReviewDetail, "review_detail", "/reviews/<id>")
-    api.route(ReviewAuthorRelationship, "review_authors", "/reviews/<id>/relationships/authors")
+    # oauth.require_oauth('create_review', 'update_review', 'delete_review')
+    # api.route(ReviewAuthorRelationship, "review_authors", "/reviews/<id>/relationships/authors")

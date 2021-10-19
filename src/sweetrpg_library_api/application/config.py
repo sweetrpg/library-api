@@ -17,6 +17,7 @@ class BaseConfig(object):
     DEBUG = bool(os.environ.get(constants.DEBUG) or True)
     PORT = os.environ.get(constants.PORT) or 5000
     # ASSETS_DEBUG = True
+    LOG_LEVEL = os.environ.get(constants.LOG_LEVEL) or "INFO"
     DB_HOST = os.environ[constants.DB_HOST]
     DB_PORT = os.environ[constants.DB_PORT] or "27017"
     DB_USERNAME = os.environ[constants.DB_USER]

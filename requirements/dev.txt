@@ -127,6 +127,8 @@ jinja2==3.0.1
     #   sphinx
 kanka==0.1.2
     # via -r requirements/app.in
+limits==1.5.1
+    # via python-logstash-async
 mako==1.1.5
     # via alembic
 markupsafe==2.0.1
@@ -186,6 +188,8 @@ pygments==2.10.0
     # via
     #   sphinx
     #   sphinx-tabs
+pylogbeat==2.0.0
+    # via python-logstash-async
 pymongo[srv,tls]==3.12.0
     # via
     #   mongoengine
@@ -208,6 +212,8 @@ python-dotenv==0.19.1
     #   -r requirements/tests.in
 python-editor==1.0.4
     # via -r requirements/app.in
+python-logstash-async==2.3.0
+    # via -r requirements/app.in
 pytz==2021.1
     # via babel
 pyyaml==6.0
@@ -221,6 +227,7 @@ requests==2.26.0
     #   -r requirements/app.in
     #   analytics-python
     #   kanka
+    #   python-logstash-async
     #   requests-oauthlib
     #   sphinx
 requests-oauthlib==1.1.0
@@ -234,6 +241,7 @@ six==1.16.0
     #   analytics-python
     #   flask-cors
     #   flask-rest-jsonapi
+    #   limits
     #   python-dateutil
     #   tox
     #   virtualenv

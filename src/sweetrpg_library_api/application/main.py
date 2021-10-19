@@ -5,7 +5,6 @@ __author__ = "Paul Schifferer <dm@sweetrpg.com>"
 Creates a Flask app instance and registers various services and middleware.
 """
 
-
 from flask import Flask, session
 from flask_migrate import Migrate
 from flask_session import Session
@@ -14,7 +13,6 @@ from sweetrpg_library_api.application.cache import cache
 from sweetrpg_library_api.application import constants
 from sweetrpg_library_api.application.auth import oauth
 from logging.config import dictConfig
-from werkzeug.exceptions import HTTPException
 from redis.client import Redis
 from sentry_sdk.integrations.wsgi import SentryWsgiMiddleware
 # import analytics
@@ -28,34 +26,53 @@ if ENV_FILE:
 
 
 def create_app(app_name=constants.APPLICATION_NAME):
+    print("Configuring logging...")
     dictConfig(
         {
             "version": 1,
             "formatters": {
                 "default": {
                     "format": "[%(asctime)s] %(levelname)s %(module)s/%(funcName)s: %(message)s",
+                },
+                "logstash": {
+                    "class": "logstash_async.formatter.FlaskLogstashFormatter",
+                    "metadata": {"beat": "sweetrpg-library-api"},
                 }
             },
-            "handlers": {"wsgi": {"class": "logging.StreamHandler", "stream": "ext://flask.logging.wsgi_errors_stream", "formatter": "default"}},
-            "root": {"level": "DEBUG", "handlers": ["wsgi"]},
+            "handlers": {"wsgi": {"class": "logging.StreamHandler", "stream": "ext://flask.logging.wsgi_errors_stream", "formatter": "default"},
+                         "logstash": {"class": "logstash_async.handler.AsynchronousLogstashHandler", "formatter": "logstash",
+                                      "host": os.environ[constants.LOGSTASH_HOST],
+                                      "port": int(os.environ[constants.LOGSTASH_PORT]),
+                                      "database_path": "/tmp/sweetrpg_library_api_flask_logstash.db",
+                                      "transport": "logstash_async.transport.BeatsTransport",
+                                      }},
+            "root": {"level": os.environ.get(constants.LOG_LEVEL) or "INFO", "handlers": ["wsgi", "logstash"]},
         }
     )
 
     app = Flask(app_name)
+    app.debug = app.config["DEBUG"]
     app.config.from_object("sweetrpg_library_api.application.config.BaseConfig")
     # env = DotEnv(app)
+
+    app.logger.info("Setting up cache...")
     cache.init_app(app)
 
+    # app.logger.info("Setting up cache...")
     # oauth.init_app(app)
 
+    # app.logger.info("Setting up cache...")
     # analytics.write_key = app.config.get("SEGMENT_WRITE_KEY")
     # analytics.debug = app.config.get("DEBUG") or False
 
+    app.logger.info("Setting up session manager...")
     session = Session(app)
 
     # cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
-    sentry = SentryWsgiMiddleware(app)
+    if not app.debug:
+        app.logger.info("Setting up Sentry...")
+        sentry = SentryWsgiMiddleware(app)
 
     from sweetrpg_library_api.application.blueprints import api
     from sweetrpg_library_api.application.auth import oauth
@@ -76,6 +93,8 @@ def create_app(app_name=constants.APPLICATION_NAME):
     #                client_kwargs={
     #                    'scope': 'openid profile email',
     #                })
+
+    app.logger.info("Setting up endpoints...")
 
     # from sweetrpg_library_api.application.blueprints.volumes import blueprint as volumes_blueprint
     # app.register_blueprint(volumes_blueprint, url_prefix="/volumes")
@@ -122,6 +141,8 @@ def create_app(app_name=constants.APPLICATION_NAME):
 
     from sweetrpg_library_api.application.db import db
 
+    app.logger.info("Setting up database...")
+
     # from flask_migrate import Migrate
     # db.init_app(app, **app.config['DB_OPTS'])
     db.init_app(app)
@@ -141,7 +162,5 @@ def create_app(app_name=constants.APPLICATION_NAME):
     # stripe.api_key = app.config['STRIPE_API_KEY']
 
     print(app.url_map)
-
-    app.debug = app.config["DEBUG"]
 
     return app

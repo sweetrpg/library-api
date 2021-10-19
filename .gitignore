@@ -53,3 +53,4 @@ t2.py
 toy.py
 venv/
 htmlcov
+.flaskenv

@@ -2,7 +2,7 @@ from setuptools import setup
 
 # Metadata goes in setup.cfg. These are here for GitHub's dependency graph.
 setup(
-    name="sweetrpg-library-model",
+    name="sweetrpg-library-objects",
     install_requires=[
         "Authlib",
         "blinker",
@@ -28,7 +28,7 @@ setup(
         "sweetrpg-db",
         "sweetrpg-model-core",
         "sweetrpg-api-core",
-        "sweetrpg-library-model",
+        "sweetrpg-library-objects",
     ],
     extras_require={},
 )

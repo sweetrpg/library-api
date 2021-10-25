@@ -1,2 +1,0 @@
-FLASK_RUN_PORT=8281
-FLASK_APP=sweetrpg_library_api.application.main:create_app

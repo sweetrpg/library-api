@@ -1,13 +1,8 @@
-#-------------------------------------------------------------------------------------------------------------
-# Copyright (c) Microsoft Corporation. All rights reserved.
-# Licensed under the MIT License. See https://go.microsoft.com/fwlink/?linkid=2090316 for license information.
-#-------------------------------------------------------------------------------------------------------------
-
 FROM python:3.9
+LABEL maintainer="Paul Schifferer <dm@sweetrpg.com>"
 
 # Avoid warnings by switching to noninteractive
 ENV DEBIAN_FRONTEND=noninteractive
-
 ENV PYTHONUNBUFFERED 1
 
 # This Dockerfile adds a non-root 'vscode' user with sudo access. However, for Linux,
@@ -31,8 +26,8 @@ RUN apt-get update \
     # Verify git, process tools, lsb-release (common in install instructions for CLIs) installed
     && apt-get install -y git iproute2 procps lsb-release \
     #
-    # Install pylint
-    && pip install pylint \
+    # Install pylint and NewRelic
+    && pip install pylint newrelic \
     #
     # Other stuff
     # && apt-get install -y postgresql-client \
@@ -58,4 +53,3 @@ WORKDIR /app
 ENV DEBIAN_FRONTEND=
 
 ENTRYPOINT [ "/entrypoint.sh" ]
-#CMD [ "newrelic-admin", "run-program", "gunicorn", "wsgi:app" ]

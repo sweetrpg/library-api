@@ -68,9 +68,7 @@ flask-sqlalchemy==2.5.1
 flask-wtf==0.15.1
     # via flask-mongoengine
 greenlet==1.1.2
-    # via
-    #   -r requirements/app.in
-    #   sqlalchemy
+    # via sqlalchemy
 gunicorn==20.1.0
     # via -r requirements/app.in
 idna==3.3
@@ -151,7 +149,6 @@ six==1.16.0
     #   python-dateutil
 sqlalchemy==1.4.26
     # via
-    #   -r requirements/app.in
     #   alembic
     #   flask-rest-jsonapi
     #   flask-sqlalchemy
@@ -171,7 +168,6 @@ sweetrpg-model-core @ git+https://github.com/sweetrpg/model-core.git@develop
     #   sweetrpg-library-objects
 urllib3==1.26.7
     # via
-    #   -r requirements/app.in
     #   requests
     #   sentry-sdk
 werkzeug==2.0.2

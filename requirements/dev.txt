@@ -104,7 +104,6 @@ flask-wtf==0.15.1
     # via flask-mongoengine
 greenlet==1.1.2
     # via
-    #   -r requirements/app.in
     #   -r requirements/tests.in
     #   sqlalchemy
 gunicorn==20.1.0
@@ -276,7 +275,6 @@ sphinxcontrib-serializinghtml==1.1.5
     # via sphinx
 sqlalchemy==1.4.26
     # via
-    #   -r requirements/app.in
     #   alembic
     #   flask-rest-jsonapi
     #   flask-sqlalchemy
@@ -310,7 +308,6 @@ typing-extensions==3.10.0.2
     # via black
 urllib3==1.26.7
     # via
-    #   -r requirements/app.in
     #   requests
     #   sentry-sdk
 virtualenv==20.9.0

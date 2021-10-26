@@ -27,6 +27,15 @@ if ENV_FILE:
 
 def create_app(app_name=constants.APPLICATION_NAME):
     print("Configuring logging...")
+    handlers = {"wsgi": {"class": "logging.StreamHandler", "stream": "ext://flask.logging.wsgi_errors_stream", "formatter": "default"}}
+    logstash_host = os.environ.get(constants.LOGSTASH_HOST)
+    if logstash_host:
+         handlers["logstash"] = {"class": "logstash_async.handler.AsynchronousLogstashHandler", "formatter": "logstash",
+                                  "host": logstash_host,
+                                  "port": int(os.environ[constants.LOGSTASH_PORT]),
+                                  "database_path": "/tmp/sweetrpg_library_api_flask_logstash.db",
+                                  "transport": "logstash_async.transport.BeatsTransport",
+                                  }
     dictConfig(
         {
             "version": 1,
@@ -39,13 +48,7 @@ def create_app(app_name=constants.APPLICATION_NAME):
                     "metadata": {"beat": "sweetrpg-library-api"},
                 }
             },
-            "handlers": {"wsgi": {"class": "logging.StreamHandler", "stream": "ext://flask.logging.wsgi_errors_stream", "formatter": "default"},
-                         "logstash": {"class": "logstash_async.handler.AsynchronousLogstashHandler", "formatter": "logstash",
-                                      "host": os.environ[constants.LOGSTASH_HOST],
-                                      "port": int(os.environ[constants.LOGSTASH_PORT]),
-                                      "database_path": "/tmp/sweetrpg_library_api_flask_logstash.db",
-                                      "transport": "logstash_async.transport.BeatsTransport",
-                                      }},
+            "handlers": handlers,
             "root": {"level": os.environ.get(constants.LOG_LEVEL) or "INFO", "handlers": ["wsgi", "logstash"]},
         }
     )

@@ -5,7 +5,7 @@ __author__ = "Paul Schifferer <dm@sweetrpg.com>"
 """
 
 from flask import current_app
-from sweetrpg_library_model.db.volume.document import VolumeDocument
+from sweetrpg_library_objects.db.volume.document import VolumeDocument
 from flask_mongoengine import MongoEngine
 
 

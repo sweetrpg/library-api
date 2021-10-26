@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 __author__ = "Paul Schifferer <dm@sweetrpg.com>"
-"""
-constants.py
-- Contstants for keys and environment variable names
+"""constants.py
+
+Constants for keys and environment variable names
 """
 
 AUTH0_CLIENT_ID = "AUTH0_CLIENT_ID"

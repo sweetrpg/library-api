@@ -4,9 +4,9 @@ __author__ = "Paul Schifferer <dm@sweetrpg.com>"
 """
 
 from flask_rest_jsonapi import ResourceList, ResourceDetail, ResourceRelationship
-from .schema import VolumeAPISchema
+from sweetrpg_library_objects.api.volume.schema import VolumeAPISchema
 from sweetrpg_api_core.data import APIData
-from sweetrpg_library_model.model.volume import Volume
+from sweetrpg_library_objects.model.volume import Volume
 from sweetrpg_library_api.application.db import db
 from sweetrpg_library_api.application.blueprints.setup import model_info
 

@@ -136,14 +136,16 @@ markupsafe==2.0.1
     #   jinja2
     #   mako
     #   wtforms
-marshmallow==3.13.0
+marshmallow==3.14.0
     # via
     #   flask-rest-jsonapi
     #   marshmallow-jsonapi
     #   sweetrpg-db
     #   sweetrpg-model-core
 marshmallow-jsonapi==0.24.0
-    # via flask-rest-jsonapi
+    # via
+    #   flask-rest-jsonapi
+    #   sweetrpg-library-objects
 mongoengine==0.23.1
     # via
     #   flask-mongoengine

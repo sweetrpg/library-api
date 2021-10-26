@@ -26,13 +26,6 @@ jobs:
                           os: ubuntu-latest,
                           tox: py39,
                       }
-                    # - {
-                    #       name: Windows,
-                    #       python: "3.9",
-                    #       os: windows-latest,
-                    #       tox: py39,
-                    #   }
-                    # - { name: Mac, python: "3.9", os: macos-latest, tox: py39 }
         steps:
             - uses: actions/checkout@v2
             - uses: actions/setup-python@v2
@@ -53,7 +46,5 @@ jobs:
                   key: pip|${{ runner.os }}|${{ matrix.python }}|${{ hashFiles('setup.py') }}|${{ hashFiles('requirements/*.txt') }}
             - name: install-utils
               run: pip install tox
-            # - name: lint
-            #   run: black --check -t py39 --diff --color src
             - name: tests
               run: tox -e ${{ matrix.tox }}

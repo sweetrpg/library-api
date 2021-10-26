@@ -28,6 +28,7 @@ dnspython==1.16.0
     # via
     #   -r requirements/app.in
     #   email-validator
+    #   pymongo
 email-validator==1.1.3
     # via wtforms
 flask==2.0.2
@@ -96,6 +97,8 @@ marshmallow==3.14.0
     # via
     #   flask-rest-jsonapi
     #   marshmallow-jsonapi
+    #   sweetrpg-db
+    #   sweetrpg-model-core
 marshmallow-jsonapi==0.24.0
     # via
     #   flask-rest-jsonapi
@@ -104,6 +107,7 @@ mongoengine==0.23.1
     # via
     #   flask-mongoengine
     #   sweetrpg-api-core
+    #   sweetrpg-db
     #   sweetrpg-library-objects
 monotonic==1.6
     # via analytics-python
@@ -113,8 +117,11 @@ oauthlib==2.1.0
     #   requests-oauthlib
 pylogbeat==2.0.0
     # via python-logstash-async
-pymongo==3.12.1
-    # via mongoengine
+pymongo[srv,tls]==3.12.1
+    # via
+    #   -r requirements/app.in
+    #   mongoengine
+    #   sweetrpg-model-core
 python-dateutil==2.8.2
     # via
     #   -r requirements/app.in
@@ -152,19 +159,20 @@ sqlalchemy==1.4.26
     #   alembic
     #   flask-rest-jsonapi
     #   flask-sqlalchemy
-sweetrpg-api-core @ git+https://github.com/sweetrpg/api-core.git@develop
+sweetrpg-api-core==0.0.17
     # via -r requirements/app.in
-sweetrpg-db @ git+https://github.com/sweetrpg/db.git@develop
+sweetrpg-db==0.0.17
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
     #   sweetrpg-library-objects
-sweetrpg-library-objects @ git+https://github.com/sweetrpg/library-objects.git@develop
+sweetrpg-library-objects==0.0.28
     # via -r requirements/app.in
-sweetrpg-model-core @ git+https://github.com/sweetrpg/model-core.git@develop
+sweetrpg-model-core==0.0.21
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
+    #   sweetrpg-db
     #   sweetrpg-library-objects
 urllib3==1.26.7
     # via

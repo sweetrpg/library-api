@@ -14,6 +14,7 @@ data:
   AUTH0_DOMAIN: sweetrpg-dev.us.auth0.com
   AUTH0_LOGIN_URL: https://sweetrpg-dev.us.auth0.com/authorize
   PORT: "8281"
-  SERVICE_CHECK_URL: http://dev.sweetrpg.com/health/ping
-  HEALTH_CHECK_URL: http://dev.sweetrpg.com/health/status
+  SERVICE_CHECK_URL: unset
+  HEALTH_CHECK_URL: unset
   REDIS_HOST: redis
+  LOGSTASH_HOST: unset

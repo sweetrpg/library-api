@@ -18,3 +18,4 @@ data:
   HEALTH_CHECK_URL: unset
   REDIS_HOST: redis
   LOGSTASH_HOST: unset
+  LOGSTASH_PORT: unset

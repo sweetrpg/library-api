@@ -10,19 +10,6 @@ resources:
   - configmaps.yaml
   - middlewares.yaml
   - ingress-route.yaml
-secretGenerator:
-  - name: sweetrpg-registry
-    type: kubernetes.io/dockerconfigjson
-    files:
-      - .dockerconfigjson
-  - name: sweetrpg-library-api-env
-    type: Opaque
-    envs:
-      - secrets.env
-  - name: sweetrpg-library-api-config-env
-    type: Opaque
-    files:
-      - newrelic.ini
 
 commonLabels:
   platform: sweetrpg

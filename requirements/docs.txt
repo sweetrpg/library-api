@@ -6,7 +6,7 @@
 #
 alabaster==0.7.12
     # via sphinx
-alembic==1.7.3
+alembic==1.7.4
     # via flask-migrate
 analytics-python==1.4.0
     # via -r requirements/app.in
@@ -16,17 +16,17 @@ backoff==1.10.0
     # via analytics-python
 blinker==1.4
     # via -r requirements/app.in
-cachelib==0.3.0
+cachelib==0.4.1
     # via
     #   flask-oauthlib
     #   flask-session
-certifi==2021.5.30
+certifi==2021.10.8
     # via
     #   requests
     #   sentry-sdk
-charset-normalizer==2.0.4
+charset-normalizer==2.0.7
     # via requests
-click==8.0.1
+click==8.0.3
     # via flask
 dnspython==1.16.0
     # via
@@ -82,7 +82,7 @@ greenlet==1.1.2
     #   sqlalchemy
 gunicorn==20.1.0
     # via -r requirements/app.in
-idna==3.2
+idna==3.3
     # via
     #   email-validator
     #   requests
@@ -92,7 +92,7 @@ itsdangerous==2.0.1
     # via
     #   flask
     #   flask-wtf
-jinja2==3.0.1
+jinja2==3.0.2
     # via
     #   flask
     #   sphinx
@@ -107,7 +107,7 @@ markupsafe==2.0.1
     #   jinja2
     #   mako
     #   wtforms
-marshmallow==3.13.0
+marshmallow==3.14.0
     # via
     #   flask-rest-jsonapi
     #   marshmallow-jsonapi
@@ -138,9 +138,9 @@ pygments==2.10.0
     #   sphinx-tabs
 pylogbeat==2.0.0
     # via python-logstash-async
-pymongo==3.12.0
+pymongo==3.12.1
     # via mongoengine
-pyparsing==2.4.7
+pyparsing==3.0.1
     # via packaging
 python-dateutil==2.8.2
     # via
@@ -152,7 +152,7 @@ python-editor==1.0.4
     # via -r requirements/app.in
 python-logstash-async==2.3.0
     # via -r requirements/app.in
-pytz==2021.1
+pytz==2021.3
     # via babel
 pyyaml==6.0
     # via -r requirements/app.in
@@ -231,7 +231,7 @@ urllib3==1.26.7
     #   -r requirements/app.in
     #   requests
     #   sentry-sdk
-werkzeug==2.0.1
+werkzeug==2.0.2
     # via flask
 wtforms[email]==2.3.3
     # via

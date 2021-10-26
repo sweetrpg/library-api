@@ -6,7 +6,7 @@
 #
 alabaster==0.7.12
     # via sphinx
-alembic==1.7.3
+alembic==1.7.4
     # via flask-migrate
 analytics-python==1.4.0
     # via -r requirements/app.in
@@ -26,17 +26,17 @@ blinker==1.4
     # via
     #   -r requirements/app.in
     #   -r requirements/tests.in
-cachelib==0.3.0
+cachelib==0.4.1
     # via
     #   flask-oauthlib
     #   flask-session
-certifi==2021.5.30
+certifi==2021.10.8
     # via
     #   requests
     #   sentry-sdk
-charset-normalizer==2.0.4
+charset-normalizer==2.0.7
     # via requests
-click==8.0.1
+click==8.0.3
     # via
     #   black
     #   flask
@@ -47,7 +47,7 @@ coverage[toml]==5.5
     #   pytest-cov
 coverage-badge==1.0.2
     # via -r requirements/tests.in
-distlib==0.3.2
+distlib==0.3.3
     # via virtualenv
 dnspython==1.16.0
     # via
@@ -61,7 +61,7 @@ docutils==0.16
     #   sphinx-tabs
 email-validator==1.1.3
     # via wtforms
-filelock==3.0.12
+filelock==3.3.1
     # via
     #   tox
     #   virtualenv
@@ -109,7 +109,7 @@ greenlet==1.1.2
     #   sqlalchemy
 gunicorn==20.1.0
     # via -r requirements/app.in
-idna==3.2
+idna==3.3
     # via
     #   email-validator
     #   requests
@@ -121,7 +121,7 @@ itsdangerous==2.0.1
     # via
     #   flask
     #   flask-wtf
-jinja2==3.0.1
+jinja2==3.0.2
     # via
     #   flask
     #   sphinx
@@ -170,11 +170,11 @@ pallets-sphinx-themes==2.0.1
     # via -r requirements/docs.in
 pathspec==0.9.0
     # via black
-pep517==0.11.0
+pep517==0.12.0
     # via pip-tools
 pip-tools==6.4.0
     # via -r requirements/dev.in
-platformdirs==2.3.0
+platformdirs==2.4.0
     # via
     #   black
     #   virtualenv
@@ -196,7 +196,7 @@ pymongo[srv,tls]==3.12.0
     # via
     #   mongoengine
     #   sweetrpg-model-core
-pyparsing==2.4.7
+pyparsing==3.0.1
     # via packaging
 pytest==6.2.5
     # via
@@ -216,13 +216,13 @@ python-editor==1.0.4
     # via -r requirements/app.in
 python-logstash-async==2.3.0
     # via -r requirements/app.in
-pytz==2021.1
+pytz==2021.3
     # via babel
 pyyaml==6.0
     # via -r requirements/app.in
 redis==3.5.3
     # via -r requirements/app.in
-regex==2021.8.28
+regex==2021.10.23
     # via black
 requests==2.26.0
     # via
@@ -300,7 +300,7 @@ toml==0.10.2
     #   coverage
     #   pytest
     #   tox
-tomli==1.2.1
+tomli==1.2.2
     # via
     #   black
     #   pep517
@@ -313,9 +313,9 @@ urllib3==1.26.7
     #   -r requirements/app.in
     #   requests
     #   sentry-sdk
-virtualenv==20.8.0
+virtualenv==20.9.0
     # via tox
-werkzeug==2.0.1
+werkzeug==2.0.2
     # via flask
 wheel==0.37.0
     # via pip-tools

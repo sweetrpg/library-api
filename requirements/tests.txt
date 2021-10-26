@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements/tests.in
 #
-alembic==1.7.3
+alembic==1.7.4
     # via flask-migrate
 analytics-python==1.4.0
     # via -r requirements/app.in
@@ -20,17 +20,17 @@ blinker==1.4
     # via
     #   -r requirements/app.in
     #   -r requirements/tests.in
-cachelib==0.3.0
+cachelib==0.4.1
     # via
     #   flask-oauthlib
     #   flask-session
-certifi==2021.5.30
+certifi==2021.10.8
     # via
     #   requests
     #   sentry-sdk
-charset-normalizer==2.0.6
+charset-normalizer==2.0.7
     # via requests
-click==8.0.1
+click==8.0.3
     # via flask
 coverage[toml]==5.5
     # via
@@ -38,7 +38,7 @@ coverage[toml]==5.5
     #   pytest-cov
 coverage-badge==1.0.2
     # via -r requirements/tests.in
-distlib==0.3.2
+distlib==0.3.3
     # via virtualenv
 dnspython==1.16.0
     # via
@@ -46,7 +46,7 @@ dnspython==1.16.0
     #   email-validator
 email-validator==1.1.3
     # via wtforms
-filelock==3.0.12
+filelock==3.3.1
     # via
     #   tox
     #   virtualenv
@@ -94,7 +94,7 @@ greenlet==1.1.2
     #   sqlalchemy
 gunicorn==20.1.0
     # via -r requirements/app.in
-idna==3.2
+idna==3.3
     # via
     #   email-validator
     #   requests
@@ -104,7 +104,7 @@ itsdangerous==2.0.1
     # via
     #   flask
     #   flask-wtf
-jinja2==3.0.1
+jinja2==3.0.2
     # via flask
 kanka==0.1.2
     # via -r requirements/app.in
@@ -117,7 +117,7 @@ markupsafe==2.0.1
     #   jinja2
     #   mako
     #   wtforms
-marshmallow==3.13.0
+marshmallow==3.14.0
     # via
     #   flask-rest-jsonapi
     #   marshmallow-jsonapi
@@ -140,7 +140,7 @@ packaging==21.0
     # via
     #   pytest
     #   tox
-platformdirs==2.3.0
+platformdirs==2.4.0
     # via virtualenv
 pluggy==1.0.0
     # via
@@ -152,9 +152,9 @@ py==1.10.0
     #   tox
 pylogbeat==2.0.0
     # via python-logstash-async
-pymongo==3.12.0
+pymongo==3.12.1
     # via mongoengine
-pyparsing==2.4.7
+pyparsing==3.0.1
     # via packaging
 pytest==6.2.5
     # via
@@ -230,9 +230,9 @@ urllib3==1.26.7
     #   -r requirements/app.in
     #   requests
     #   sentry-sdk
-virtualenv==20.8.0
+virtualenv==20.9.0
     # via tox
-werkzeug==2.0.1
+werkzeug==2.0.2
     # via flask
 wtforms[email]==2.3.3
     # via

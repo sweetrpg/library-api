@@ -8,4 +8,4 @@ pwd
 ls -la
 ls -la /config
 
-newrelic-admin run-program gunicorn --log-level debug -w 1 wsgi:app
+newrelic-admin run-program gunicorn wsgi:app

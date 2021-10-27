@@ -33,9 +33,10 @@ kubectl create -n "${ns}" secret docker-registry sweetrpg-registry \
 #kubectl create -n "${ns}" secret dockerconfigjson sweetrpg-registry \
 #    --from-file=.dockerconfigjson
 
-echo "NewRelic config..."
-kubectl create -n "${ns}" secret generic api-newrelic \
-    --from-file=newrelic.ini
+echo "NewRelic and logging config..."
+kubectl create -n "${ns}" secret generic api-files \
+    --from-file=newrelic.ini \
+    --from-file=gunicorn-logging.conf
 
 echo "Other secrets..."
 kubectl create -n "${ns}" secret generic api-db \

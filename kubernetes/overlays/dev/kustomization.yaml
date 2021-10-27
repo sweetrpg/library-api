@@ -10,6 +10,8 @@ resources:
   - configmaps.yaml
   - middlewares.yaml
   - ingress-route.yaml
+patchesStrategicMerge:
+  - replicas.yaml
 
 commonLabels:
   platform: sweetrpg

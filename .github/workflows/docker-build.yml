@@ -21,11 +21,15 @@ jobs:
             registry.sweetrpg.com/sweetrpg-library-api
           tags: |
             type=raw,value=latest
-            type=ref,event=branch
-            type=ref,event=tag
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
+            type=ref,enable=true,event=branch
+            type=ref,enable=true,event=tag
+            type=semver,enable=true,pattern={{version}}
+            type=semver,enable=true,pattern={{major}}.{{minor}}
+            type=semver,enable=true,pattern={{major}}
+            type=raw,pattern={{version}}
+            type=raw,pattern={{major}}.{{minor}}
+            type=raw,pattern={{major}}
+            type=sha,prefix={{branch}}-
             type=sha
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1

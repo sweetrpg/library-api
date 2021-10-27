@@ -136,9 +136,6 @@ def create_app(app_name=constants.APPLICATION_NAME):
 
     app.register_blueprint(health_blueprint, url_prefix="/health")
 
-    # from application.blueprints.billing import blueprint as billing_blueprint
-    # app.register_blueprint(billing_blueprint, url_prefix="/billing")
-
     app.logger.info("Setting up database...")
     from sweetrpg_library_api.application.db import db
     # print(db)

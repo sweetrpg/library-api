@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: sweetrpg-library-api
+  name: library-api
 
 spec:
   strategy:
@@ -23,7 +23,7 @@ spec:
         app: library
         component: api
     spec:
-      serviceAccountName: sweetrpg-library-api
+      serviceAccountName: library-api
       imagePullSecrets:
         - name: sweetrpg-registry
       containers:

@@ -1,13 +1,11 @@
 name: Docker Build
 
 on:
-  # push:
-  #   branches:
-  #     - "develop"
-  release:
-      types:
-          - published
-          - created
+    workflow_run:
+        workflows: ["CI"]
+        branches: [develop]
+        types:
+          - completed
 
 jobs:
   docker:

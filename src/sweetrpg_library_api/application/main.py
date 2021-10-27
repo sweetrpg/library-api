@@ -129,9 +129,6 @@ def create_app(app_name=constants.APPLICATION_NAME):
     from sweetrpg_library_api.application.blueprints.tags import setup_routes as setup_tag_routes
     setup_tag_routes(app)
 
-    # from application.blueprints.account import blueprint as account_blueprint
-    # app.register_blueprint(account_blueprint, url_prefix="/account")
-    #
     # from application.blueprints.auth import blueprint as auth_blueprint
     # app.register_blueprint(auth_blueprint, url_prefix="/auth")
 

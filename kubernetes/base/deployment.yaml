@@ -32,13 +32,17 @@ spec:
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
-                name: sweetrpg-library-api
+                name: api-common
             - configMapRef:
-                name: sweetrpg-library-api-env
+                name: api-env
             - secretRef:
-                name: sweetrpg-library-api
+                name: api-db
             - secretRef:
-                name: sweetrpg-library-api-env
+                name: api-auth
+            - secretRef:
+                name: api-misc
+            - secretRef:
+                name: api-cache
           env:
             - name: NEW_RELIC_CONFIG_FILE
               value: /config/newrelic.ini
@@ -72,7 +76,7 @@ spec:
       volumes:
         - name: config
           secret:
-            secretName: sweetrpg-library-api-config-env
+            secretName: api-newrelic
             items:
               - key: newrelic.ini
                 path: newrelic.ini

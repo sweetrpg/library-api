@@ -22,6 +22,9 @@ pushd ${scriptdir}
 #    files:
 #      - newrelic.ini
 
+echo "Deleting old secrets..."
+kubectl delete -n "${ns}" secret sweetrpg-registry api-newrelic api-db api-cache api-auth api-misc api-common || true
+
 echo "Docker registry config..."
 kubectl create -n "${ns}" secret docker-registry sweetrpg-registry \
     --docker-server=registry.sweetrpg.com \
@@ -31,13 +34,21 @@ kubectl create -n "${ns}" secret docker-registry sweetrpg-registry \
 #    --from-file=.dockerconfigjson
 
 echo "NewRelic config..."
-kubectl create -n "${ns}" secret generic sweetrpg-library-api-config-env \
+kubectl create -n "${ns}" secret generic api-newrelic \
     --from-file=newrelic.ini
 
 echo "Other secrets..."
-kubectl create -n "${ns}" secret generic sweetrpg-library-api-env \
-    --from-env-file=secrets.env
-kubectl create -n "${ns}" secret generic sweetrpg-library-api \
+kubectl create -n "${ns}" secret generic api-db \
+    --from-env-file=db.env
+kubectl create -n "${ns}" secret generic api-cache \
+    --from-env-file=cache.env
+kubectl create -n "${ns}" secret generic api-auth \
+    --from-env-file=auth.env
+kubectl create -n "${ns}" secret generic api-misc \
+    --from-env-file=misc.env
+#kubectl create -n "${ns}" secret generic api-stripe \
+#    --from-env-file=stripe.env
+kubectl create -n "${ns}" secret generic api-common \
     --from-env-file=../common.env
 
 popd

@@ -148,10 +148,9 @@ def create_app(app_name=constants.APPLICATION_NAME):
     # from application.blueprints.billing import blueprint as billing_blueprint
     # app.register_blueprint(billing_blueprint, url_prefix="/billing")
 
-    from sweetrpg_library_api.application.db import db
-
     app.logger.info("Setting up database...")
-    print(db)
+    from sweetrpg_library_api.application.db import db
+    # print(db)
     # from flask_migrate import Migrate
     # db.init_app(app, **app.config['DB_OPTS'])
     db.init_app(app)

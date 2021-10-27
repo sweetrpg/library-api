@@ -11,6 +11,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: |
+            registry.sweetrpg.com/sweetrpg-library-api
+          tags: |
+            type=schedule
+            type=ref,event=branch
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+            type=sha
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
@@ -28,7 +41,8 @@ jobs:
           # context: .
           push: true
           no-cache: true
-          tags: registry.sweetrpg.com/sweetrpg-library-api:latest
+          tags: ${{ steps.meta.outputs.tags }}
+      #          tags: registry.sweetrpg.com/sweetrpg-library-api:latest
       # - name: Scan image
       #   uses: sysdiglabs/scan-action@v1
       #   with:

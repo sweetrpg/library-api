@@ -3,7 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 
 metadata:
-  name: sweetrpg-library-api-env
+  name: api-env
 
 data:
   PORT: "8281"

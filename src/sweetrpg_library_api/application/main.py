@@ -55,7 +55,9 @@ def create_app(app_name=constants.APPLICATION_NAME):
     }
     print(logging_config)
     dictConfig(logging_config)
+    print("Logging setup.")
 
+    print("Creating app...")
     app = Flask(app_name)
     app.debug = app.config["DEBUG"]
     app.config.from_object("sweetrpg_library_api.application.config.BaseConfig")

@@ -19,11 +19,11 @@ class BaseConfig(object):
     # ASSETS_DEBUG = True
     LOG_LEVEL = os.environ.get(constants.LOG_LEVEL) or "INFO"
     DB_HOST = os.environ[constants.DB_HOST]
-    DB_PORT = os.environ[constants.DB_PORT] or "27017"
+    # DB_PORT = os.environ.get(constants.DB_PORT) or "27017"
     DB_USERNAME = os.environ[constants.DB_USER]
     DB_PASSWORD = os.environ[constants.DB_PW]
     DB_NAME = os.environ[constants.DB_NAME]
-    DB_OPTS = os.environ[constants.DB_OPTS]
+    DB_OPTS = os.environ.get(constants.DB_OPTS)
     DB_URL = f"mongodb+srv://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}?{DB_OPTS}"
     MONGODB_ALIAS_CONNECTION = "default"
     MONGODB_URI = DB_URL

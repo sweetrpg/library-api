@@ -47,16 +47,19 @@ def create_app(app_name=constants.APPLICATION_NAME):
                    "class": "logstash_async.formatter.FlaskLogstashFormatter",
                    "metadata": {"beat": "sweetrpg-library-api"},
         }
-    dictConfig({
+    logging_config = {
         "version": 1,
         "formatters": formatters,
         "handlers": handler_configs,
         "root": {"level": os.environ.get(constants.LOG_LEVEL) or "INFO", "handlers": handlers},
-    })
+    }
+    print(logging_config)
+    dictConfig(logging_config)
 
     app = Flask(app_name)
     app.debug = app.config["DEBUG"]
     app.config.from_object("sweetrpg_library_api.application.config.BaseConfig")
+    print(app.config)
     # env = DotEnv(app)
 
     app.logger.info("Setting up cache...")
@@ -146,7 +149,7 @@ def create_app(app_name=constants.APPLICATION_NAME):
     from sweetrpg_library_api.application.db import db
 
     app.logger.info("Setting up database...")
-
+    print(db)
     # from flask_migrate import Migrate
     # db.init_app(app, **app.config['DB_OPTS'])
     db.init_app(app)

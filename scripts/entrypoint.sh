@@ -8,4 +8,5 @@ printenv
 #ls -la
 #ls -la /config
 
-newrelic-admin run-program gunicorn wsgi:app
+#newrelic-admin run-program gunicorn wsgi:app
+gunicorn wsgi:app

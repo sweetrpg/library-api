@@ -1,11 +1,13 @@
 name: Docker Build
 
 on:
-  push:
-    #    branches:
-    #      - "develop"
-    tags:
-        - '*'
+  # push:
+  #   branches:
+  #     - "develop"
+  release:
+      types:
+          - published
+          - created
 
 jobs:
   docker:

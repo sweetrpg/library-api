@@ -13,6 +13,6 @@ pushd src
 
 export $(cat ${scriptdir}/../src/configs/local/wsgi.env | xargs)
 
-gunicorn wsgi:app
+gunicorn --log-level debug -w 1 wsgi:app
 
 popd

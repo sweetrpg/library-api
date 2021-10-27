@@ -77,7 +77,7 @@ spec:
       volumes:
         - name: config
           secret:
-            secretName: api-newrelic
+            secretName: api-files
             items:
               - key: newrelic.ini
                 path: newrelic.ini

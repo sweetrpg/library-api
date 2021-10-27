@@ -134,7 +134,7 @@ def create_app(app_name=constants.APPLICATION_NAME):
     #
     # from application.blueprints.apps import blueprint as apps_blueprint
     # app.register_blueprint(apps_blueprint, url_prefix="/apps")
-    #
+    #s
     # from application.blueprints.account import blueprint as account_blueprint
     # app.register_blueprint(account_blueprint, url_prefix="/account")
     #
@@ -154,20 +154,8 @@ def create_app(app_name=constants.APPLICATION_NAME):
     # from flask_migrate import Migrate
     # db.init_app(app, **app.config['DB_OPTS'])
     db.init_app(app)
-    app.logger.info("Database: %s", db)
-    # db.init_app(app)
+    app.logger.debug("Database: %s", db)
     migrate = Migrate(app, db)
-    # setup_indexes(app, db.db)
-    # register_models(app)
-
-    # vue = Vue(app)
-
-    # app.wsgi_app = SassMiddleware(app.wsgi_app, {
-    #     'application': ('static/sass', 'static/css', '/static/css')
-    # })
-    # scss = Scss(app, static_dir='static', asset_dir='assets')
-
-    # stripe.api_key = app.config['STRIPE_API_KEY']
 
     print(app.url_map)
 

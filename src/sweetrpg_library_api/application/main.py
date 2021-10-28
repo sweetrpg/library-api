@@ -135,7 +135,6 @@ def create_app(app_name=constants.APPLICATION_NAME):
     app.logger.info("Setting up database...")
     from sweetrpg_library_api.application.db import db
     # print(db)
-    # from flask_migrate import Migrate
     # db.init_app(app, **app.config['DB_OPTS'])
     db.init_app(app)
     app.logger.debug("Database: %s", db)

@@ -20,8 +20,8 @@ on:
             - setup.py
             - tox.ini
             - "requirements/**"
-            - "docs/**"
             - Dockerfile
+            - scripts/entrypoint.sh
     workflow_run:
         workflows: ["CI"]
         branches: [develop]

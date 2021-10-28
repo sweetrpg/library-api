@@ -4,11 +4,29 @@ on:
     create:
         tags:
             - '*'
-#    workflow_run:
-#        workflows: ["CI"]
-#        branches: [develop]
-#        types:
-#          - completed
+    release:
+        types:
+            - published
+            - created
+    push:
+        branches:
+            - develop
+        tags:
+            - '*'
+        paths:
+            - "src/**"
+            - "tests/**"
+            - setup.cfg
+            - setup.py
+            - tox.ini
+            - "requirements/**"
+            - "docs/**"
+            - Dockerfile
+    workflow_run:
+        workflows: ["CI"]
+        branches: [develop]
+        types:
+          - completed
 
 jobs:
   docker:

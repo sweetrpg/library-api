@@ -130,7 +130,6 @@ def create_app(app_name=constants.APPLICATION_NAME):
     setup_tag_routes(app)
 
     from sweetrpg_api_core.blueprints.health import blueprint as health_blueprint
-
     app.register_blueprint(health_blueprint, url_prefix="/health")
 
     app.logger.info("Setting up database...")

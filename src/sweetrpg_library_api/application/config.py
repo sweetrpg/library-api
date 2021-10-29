@@ -29,6 +29,7 @@ class BaseConfig(object):
     MONGODB_URI = DB_URL
     MONGODB_SETTINGS = {
         "host": DB_URL,
+        "connect": False,
     }
     # used for encryption and session management
     # SECRET_KEY = os.environ.get('SECRET_KEY') or hashlib.sha256(f"{random.random()}".encode('utf-8')).hexdigest()

@@ -178,6 +178,8 @@ urllib3==1.26.7
     # via
     #   requests
     #   sentry-sdk
+uwsgi==2.0.20
+    # via -r requirements/app.in
 werkzeug==2.0.2
     # via flask
 wtforms[email]==2.3.3

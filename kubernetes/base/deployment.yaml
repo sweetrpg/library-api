@@ -44,9 +44,9 @@ spec:
                 name: api-misc
             - secretRef:
                 name: api-cache
-          env:
-            - name: NEW_RELIC_CONFIG_FILE
-              value: /config/newrelic.ini
+          env: []
+#            - name: NEW_RELIC_CONFIG_FILE
+#              value: /config/newrelic.ini
           ports:
             - containerPort: 8281
               name: http

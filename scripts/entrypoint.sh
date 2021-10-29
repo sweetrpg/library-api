@@ -10,4 +10,5 @@ printenv
 
 #newrelic-admin run-program gunicorn wsgi:app
 #gunicorn wsgi:app
-python appserver.py
+#python appserver.py
+cat

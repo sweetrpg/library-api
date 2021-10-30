@@ -8,8 +8,6 @@ resources:
   - namespace.yaml
   - ../../base
   - configmaps.yaml
-  - middlewares.yaml
-  - ingress-route.yaml
 patchesStrategicMerge:
   - replicas.yaml
 

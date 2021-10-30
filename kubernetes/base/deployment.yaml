@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: library-api
+  name: api
 
 spec:
   replicas: 1
@@ -24,11 +24,11 @@ spec:
         app: library
         component: api
     spec:
-      serviceAccountName: library-api
+      serviceAccountName: api
       imagePullSecrets:
         - name: sweetrpg-registry
       containers:
-        - name: library-api-app
+        - name: api-app
           image: registry.sweetrpg.com/sweetrpg-library-api:latest
           imagePullPolicy: Always
           envFrom:

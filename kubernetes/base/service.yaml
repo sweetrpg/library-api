@@ -3,7 +3,7 @@ kind: Service
 apiVersion: v1
 
 metadata:
-  name: library-api
+  name: api
 
 spec:
   selector:

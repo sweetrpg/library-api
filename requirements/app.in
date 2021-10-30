@@ -14,7 +14,6 @@ sweetrpg-api-core
 sweetrpg-db
 sweetrpg-library-objects
 sweetrpg-model-core
-gunicorn
 kanka
 PyMongo[srv,tls]==3.12.1
 python-dateutil

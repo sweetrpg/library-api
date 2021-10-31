@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: api
+  name: api-v1
 
 spec:
   replicas: 1
@@ -16,34 +16,34 @@ spec:
     matchLabels:
       platform: sweetrpg
       app: library
-      component: api
+      component: api-v1
   template:
     metadata:
       labels:
         platform: sweetrpg
         app: library
-        component: api
+        component: api-v1
     spec:
       serviceAccountName: api
       imagePullSecrets:
         - name: sweetrpg-registry
       containers:
-        - name: api-app
+        - name: api-v1-app
           image: registry.sweetrpg.com/sweetrpg-library-api:latest
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
-                name: api-common
+                name: api-v1-common
             - configMapRef:
-                name: api-env
+                name: api-v1-env
             - secretRef:
-                name: api-db
+                name: api-v1-db
             - secretRef:
-                name: api-auth
+                name: api-v1-auth
             - secretRef:
-                name: api-misc
+                name: api-v1-misc
             - secretRef:
-                name: api-cache
+                name: api-v1-cache
           env: []
           ports:
             - containerPort: 8281
@@ -75,7 +75,7 @@ spec:
       volumes:
         - name: config
           secret:
-            secretName: api-files
+            secretName: api-v1-files
             items:
               - key: newrelic.ini
                 path: newrelic.ini

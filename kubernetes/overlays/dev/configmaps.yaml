@@ -3,7 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 
 metadata:
-  name: api-env
+  name: api-v1-env
 
 data:
   PORT: "8281"

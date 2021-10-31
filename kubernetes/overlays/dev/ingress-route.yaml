@@ -3,7 +3,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 
 metadata:
-  name: library-api
+  name: api-v1
 
 spec:
   entryPoints:
@@ -13,7 +13,7 @@ spec:
       kind: Rule
       services:
         - kind: Service
-          name: library-api
+          name: api-v1
           port: 8281
           passHostHeader: true
           responseForwarding:

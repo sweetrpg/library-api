@@ -24,6 +24,7 @@ pushd ${scriptdir}
 
 echo "Deleting old secrets..."
 kubectl delete -n "${ns}" secret sweetrpg-registry api-newrelic api-db api-cache api-auth api-misc api-common || true
+kubectl delete -n "${ns}" secret api-v1-newrelic api-v1-db api-v1-cache api-v1-auth api-v1-misc api-v1-common || true
 
 echo "Docker registry config..."
 kubectl create -n "${ns}" secret docker-registry sweetrpg-registry \
@@ -34,22 +35,21 @@ kubectl create -n "${ns}" secret docker-registry sweetrpg-registry \
 #    --from-file=.dockerconfigjson
 
 echo "NewRelic and logging config..."
-kubectl create -n "${ns}" secret generic api-files \
-    --from-file=newrelic.ini \
-    --from-file=gunicorn-logging.conf
+kubectl create -n "${ns}" secret generic api-v1-files \
+    --from-file=newrelic.ini
 
 echo "Other secrets..."
-kubectl create -n "${ns}" secret generic api-db \
+kubectl create -n "${ns}" secret generic api-v1-db \
     --from-env-file=db.env
-kubectl create -n "${ns}" secret generic api-cache \
+kubectl create -n "${ns}" secret generic api-v1-cache \
     --from-env-file=cache.env
-kubectl create -n "${ns}" secret generic api-auth \
+kubectl create -n "${ns}" secret generic api-v1-auth \
     --from-env-file=auth.env
-kubectl create -n "${ns}" secret generic api-misc \
+kubectl create -n "${ns}" secret generic api-v1-misc \
     --from-env-file=misc.env
-#kubectl create -n "${ns}" secret generic api-stripe \
+#kubectl create -n "${ns}" secret generic api-v1-stripe \
 #    --from-env-file=stripe.env
-kubectl create -n "${ns}" secret generic api-common \
+kubectl create -n "${ns}" secret generic api-v1-common \
     --from-env-file=../common.env
 
 popd

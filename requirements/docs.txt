@@ -123,7 +123,7 @@ oauthlib==2.1.0
     # via
     #   flask-oauthlib
     #   requests-oauthlib
-packaging==21.0
+packaging==21.2
     # via
     #   pallets-sphinx-themes
     #   sphinx
@@ -140,7 +140,7 @@ pymongo[srv,tls]==3.12.1
     #   -r requirements/app.in
     #   mongoengine
     #   sweetrpg-model-core
-pyparsing==3.0.1
+pyparsing==2.4.7
     # via packaging
 python-dateutil==2.8.2
     # via
@@ -210,16 +210,16 @@ sqlalchemy==1.4.26
     #   alembic
     #   flask-rest-jsonapi
     #   flask-sqlalchemy
-sweetrpg-api-core==0.0.18
+sweetrpg-api-core==0.0.19
     # via -r requirements/app.in
-sweetrpg-db==0.0.17
+sweetrpg-db==0.0.18
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
     #   sweetrpg-library-objects
-sweetrpg-library-objects==0.0.28
+sweetrpg-library-objects==0.0.29
     # via -r requirements/app.in
-sweetrpg-model-core==0.0.21
+sweetrpg-model-core==0.0.22
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core

@@ -2,7 +2,6 @@ analytics-python<2.0
 blinker
 dnspython<2.0.0
 Flask-Caching
-Flask-CORS
 Flask-DotEnv
 Flask-Migrate
 Flask-MongoEngine

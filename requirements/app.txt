@@ -35,7 +35,6 @@ flask==2.0.2
     # via
     #   -r requirements/app.in
     #   flask-caching
-    #   flask-cors
     #   flask-dotenv
     #   flask-migrate
     #   flask-mongoengine
@@ -47,8 +46,6 @@ flask==2.0.2
     #   sweetrpg-api-core
     #   sweetrpg-library-objects
 flask-caching==1.10.1
-    # via -r requirements/app.in
-flask-cors==3.0.10
     # via -r requirements/app.in
 flask-dotenv==0.1.2
     # via -r requirements/app.in
@@ -148,7 +145,6 @@ sentry-sdk==1.4.3
 six==1.16.0
     # via
     #   analytics-python
-    #   flask-cors
     #   flask-rest-jsonapi
     #   limits
     #   python-dateutil
@@ -157,7 +153,7 @@ sqlalchemy==1.4.26
     #   alembic
     #   flask-rest-jsonapi
     #   flask-sqlalchemy
-sweetrpg-api-core==0.0.17
+sweetrpg-api-core==0.0.18
     # via -r requirements/app.in
 sweetrpg-db==0.0.17
     # via

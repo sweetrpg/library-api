@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 __author__ = "Paul Schifferer <dm@sweetrpg.com>"
-"""
+"""Authn/z
 """
 
 from flask_oauthlib.provider import OAuth2Provider

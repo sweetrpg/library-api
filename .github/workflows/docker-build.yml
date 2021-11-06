@@ -55,7 +55,7 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: |
-            registry.sweetrpg.com/sweetrpg-main-web
+            registry.sweetrpg.com/sweetrpg-library-api
           tags: |
             type=raw,value=latest
             type=raw,value=${{ steps.previoustag.outputs.tag }}

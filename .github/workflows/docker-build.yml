@@ -43,6 +43,10 @@ jobs:
           semver_only: true
           initial_version: v0.0.0
           with_initial_version: true
+      - name: Get current date
+        id: getbuilddate
+        run: |
+             echo "::set-output name=date::$(date)"
       - name: Docker metadata
         id: meta
         uses: docker/metadata-action@v3
@@ -80,7 +84,7 @@ jobs:
               BUILD_NUMBER=${{ github.run_number }}
               BUILD_JOB=${{ github.job }}
               BUILD_SHA=${{ github.sha }}
-              BUILD_DATE=${{ github.event.commits[0].timestamp }}
+              BUILD_DATE=${{ steps.getbuilddate.outputs.date }}
               BUILD_VERSION=${{ steps.previoustag.outputs.tag }}
       #          tags: registry.sweetrpg.com/sweetrpg-library-api:latest
       # - name: Scan image

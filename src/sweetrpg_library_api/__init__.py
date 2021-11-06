@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 __author__ = "Paul Schifferer <dm@sweetrpg.com>"
-"""
+"""Root.
 """
 
 __title__ = "sweetrpg-library-api"
 __description__ = "API microservice for SweetRPG Library"
 __url__ = "https://sweetrpg.com"
 __version__ = "0.0.16"
-__build__ = 0x000000
+__build__ = 0x000010
 __author__ = "Paul Schifferer"
 __author_email__ = "dm@sweetrpg.com"
 __license__ = "MIT"

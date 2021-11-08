@@ -72,7 +72,7 @@ flask-session==0.4.0
     # via -r requirements/app.in
 flask-sqlalchemy==2.5.1
     # via flask-migrate
-flask-wtf==0.15.1
+flask-wtf==1.0.0
     # via flask-mongoengine
 greenlet==1.1.2
     # via sqlalchemy
@@ -212,14 +212,14 @@ sqlalchemy==1.4.26
     #   flask-sqlalchemy
 sweetrpg-api-core==0.0.23
     # via -r requirements/app.in
-sweetrpg-db==0.0.20
+sweetrpg-db==0.0.22
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
     #   sweetrpg-library-objects
-sweetrpg-library-objects==0.0.31
+sweetrpg-library-objects==0.0.32
     # via -r requirements/app.in
-sweetrpg-model-core==0.0.24
+sweetrpg-model-core==0.0.30
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
@@ -233,7 +233,7 @@ uwsgi==2.0.20
     # via -r requirements/app.in
 werkzeug==2.0.2
     # via flask
-wtforms[email]==2.3.3
+wtforms[email]==3.0.0
     # via
     #   flask-mongoengine
     #   flask-wtf

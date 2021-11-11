@@ -155,7 +155,7 @@ sqlalchemy==1.4.27
     #   flask-sqlalchemy
 sweetrpg-api-core==0.0.30
     # via -r requirements/app.in
-sweetrpg-db==0.0.29
+sweetrpg-db==0.0.30
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core

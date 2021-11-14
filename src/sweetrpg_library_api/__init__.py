@@ -8,7 +8,6 @@ __description__ = "API microservice for SweetRPG Library"
 __url__ = "https://sweetrpg.com"
 __version__ = "0.0.38"
 __build__ = 0x000011
-__author__ = "Paul Schifferer"
 __author_email__ = "dm@sweetrpg.com"
 __license__ = "MIT"
 __copyright__ = "Copyright 2021 SweetRPG"

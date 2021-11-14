@@ -7,9 +7,9 @@ config.py
 
 
 import os
+
 import redis
-import random
-import hashlib
+
 from sweetrpg_library_api.application import constants
 
 
@@ -38,5 +38,7 @@ class BaseConfig(object):
     CACHE_REDIS_PORT = int(os.environ.get(constants.REDIS_PORT) or 6379)
     # CACHE_REDIS_DB = int(os.environ.get(constants.REDIS_DB) or 7)
     SESSION_TYPE = "redis"
-    SESSION_REDIS = redis.from_url(f"redis://{os.environ[constants.REDIS_HOST]}:{int(os.environ.get(constants.REDIS_PORT) or 6379)}")
-    SEGMENT_WRITE_KEY = os.environ.get(constants.SEGMENT_WRITE_KEY)
+    SESSION_REDIS = redis.from_url(
+        f"redis://{os.environ[constants.REDIS_HOST]}:{int(os.environ.get(constants.REDIS_PORT) or 6379)}")
+    # SEGMENT_WRITE_KEY = os.environ.get(constants.SEGMENT_WRITE_KEY)
+    SERVER_NAME = os.environ.get(constants.SERVER_NAME)

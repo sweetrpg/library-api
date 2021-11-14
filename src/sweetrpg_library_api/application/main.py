@@ -5,19 +5,19 @@ __author__ = "Paul Schifferer <dm@sweetrpg.com>"
 Creates a Flask app instance and registers various services and middleware.
 """
 
-from flask import Flask, session
-from flask_migrate import Migrate
-from flask_session import Session
-from dotenv import load_dotenv, find_dotenv
-from sweetrpg_library_api.application.cache import cache
-from sweetrpg_library_api.application import constants
-from sweetrpg_library_api.application.auth import oauth
-from logging.config import dictConfig
-from redis.client import Redis
-from sentry_sdk.integrations.wsgi import SentryWsgiMiddleware
 # import analytics
 import os
+from logging.config import dictConfig
 
+from dotenv import load_dotenv, find_dotenv
+from flask import Flask
+from flask_migrate import Migrate
+from flask_session import Session
+from sentry_sdk.integrations.wsgi import SentryWsgiMiddleware
+from werkzeug.middleware.proxy_fix import ProxyFix
+
+from sweetrpg_library_api.application import constants
+from sweetrpg_library_api.application.cache import cache
 
 ENV_FILE = find_dotenv()
 if ENV_FILE:
@@ -63,6 +63,9 @@ def create_app(app_name=constants.APPLICATION_NAME):
     app.config.from_object("sweetrpg_library_api.application.config.BaseConfig")
     # print(app.config)
     # env = DotEnv(app)
+
+    app.logger.info("Setting up proxy fix...")
+    app.wsgi_app = ProxyFix(app.wsgi_app)
 
     app.logger.info("Setting up cache...")
     cache.init_app(app)

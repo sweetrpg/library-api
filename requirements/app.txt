@@ -24,6 +24,8 @@ charset-normalizer==2.0.7
     # via requests
 click==8.0.3
     # via flask
+deprecated==1.2.13
+    # via redis
 dnspython==2.1.0
     # via
     #   -r requirements/app.in
@@ -129,7 +131,7 @@ python-logstash-async==2.3.0
     # via -r requirements/app.in
 pyyaml==6.0
     # via -r requirements/app.in
-redis==3.5.3
+redis==4.0.0
     # via -r requirements/app.in
 requests==2.26.0
     # via
@@ -155,7 +157,7 @@ sqlalchemy==1.4.27
     #   flask-sqlalchemy
 sweetrpg-api-core==0.0.37
     # via -r requirements/app.in
-sweetrpg-db==0.0.34
+sweetrpg-db==0.0.35
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
@@ -176,6 +178,8 @@ uwsgi==2.0.20
     # via -r requirements/app.in
 werkzeug==2.0.2
     # via flask
+wrapt==1.13.3
+    # via deprecated
 wtforms[email]==3.0.0
     # via
     #   flask-mongoengine

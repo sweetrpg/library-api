@@ -16,7 +16,7 @@ sweetrpg-model-core
 kanka
 PyMongo[srv,tls]==3.12.1
 python-dateutil
-python-dotenv==0.19.1
+python-dotenv==0.19.2
 python-editor
 python-logstash-async
 PyYAML==6.0

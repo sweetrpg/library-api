@@ -160,7 +160,7 @@ pytz==2021.3
     # via babel
 pyyaml==6.0
     # via -r requirements/app.in
-redis==4.0.0
+redis==4.0.1
     # via -r requirements/app.in
 requests==2.26.0
     # via
@@ -182,7 +182,7 @@ six==1.16.0
     #   flask-rest-jsonapi
     #   limits
     #   python-dateutil
-snowballstemmer==2.1.0
+snowballstemmer==2.2.0
     # via sphinx
 sphinx==4.3.0
     # via
@@ -214,14 +214,14 @@ sqlalchemy==1.4.27
     #   alembic
     #   flask-rest-jsonapi
     #   flask-sqlalchemy
-sweetrpg-api-core==0.0.42
+sweetrpg-api-core==0.0.43
     # via -r requirements/app.in
-sweetrpg-db==0.0.39
+sweetrpg-db==0.0.40
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
     #   sweetrpg-library-objects
-sweetrpg-library-objects==0.0.52
+sweetrpg-library-objects==0.0.53
     # via -r requirements/app.in
 sweetrpg-model-core==0.0.51
     # via

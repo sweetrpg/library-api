@@ -84,7 +84,7 @@ kanka==0.1.2
     # via -r requirements/app.in
 limits==1.5.1
     # via python-logstash-async
-mako==1.1.5
+mako==1.1.6
     # via alembic
 markupsafe==2.0.1
     # via
@@ -157,14 +157,16 @@ sqlalchemy==1.4.27
     #   alembic
     #   flask-rest-jsonapi
     #   flask-sqlalchemy
-sweetrpg-api-core==0.0.44
-    # via -r requirements/app.in
+sweetrpg-api-core==0.0.45
+    # via
+    #   -r requirements/app.in
+    #   sweetrpg-library-objects
 sweetrpg-db==0.0.40
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
     #   sweetrpg-library-objects
-sweetrpg-library-objects==0.0.54
+sweetrpg-library-objects==0.0.55
     # via -r requirements/app.in
 sweetrpg-model-core==0.0.51
     # via

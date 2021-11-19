@@ -97,7 +97,7 @@ kanka==0.1.2
     # via -r requirements/app.in
 limits==1.5.1
     # via python-logstash-async
-mako==1.1.5
+mako==1.1.6
     # via alembic
 markupsafe==2.0.1
     # via
@@ -126,7 +126,7 @@ oauthlib==2.1.0
     # via
     #   flask-oauthlib
     #   requests-oauthlib
-packaging==21.2
+packaging==21.3
     # via
     #   pallets-sphinx-themes
     #   sphinx
@@ -144,7 +144,7 @@ pymongo[srv,tls]==3.12.1
     #   mongoengine
     #   sweetrpg-db
     #   sweetrpg-model-core
-pyparsing==2.4.7
+pyparsing==3.0.6
     # via packaging
 python-dateutil==2.8.2
     # via
@@ -214,7 +214,7 @@ sqlalchemy==1.4.27
     #   alembic
     #   flask-rest-jsonapi
     #   flask-sqlalchemy
-sweetrpg-api-core==0.0.44
+sweetrpg-api-core==0.0.45
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects

@@ -157,7 +157,7 @@ sqlalchemy==1.4.27
     #   alembic
     #   flask-rest-jsonapi
     #   flask-sqlalchemy
-sweetrpg-api-core==0.0.45
+sweetrpg-api-core==0.0.46
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects
@@ -178,8 +178,6 @@ urllib3==1.26.7
     # via
     #   requests
     #   sentry-sdk
-uwsgi==2.0.20
-    # via -r requirements/app.in
 werkzeug==2.0.2
     # via flask
 wrapt==1.13.3

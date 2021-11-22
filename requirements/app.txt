@@ -133,7 +133,7 @@ python-logstash-async==2.3.0
     # via -r requirements/app.in
 pyyaml==6.0
     # via -r requirements/app.in
-redis==4.0.1
+redis==4.0.2
     # via -r requirements/app.in
 requests==2.26.0
     # via
@@ -166,7 +166,7 @@ sweetrpg-db==0.0.40
     #   -r requirements/app.in
     #   sweetrpg-api-core
     #   sweetrpg-library-objects
-sweetrpg-library-objects==0.0.58
+sweetrpg-library-objects==0.0.59
     # via -r requirements/app.in
 sweetrpg-model-core==0.0.51
     # via

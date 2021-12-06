@@ -20,7 +20,7 @@ backoff==1.10.0
     # via analytics-python
 backports.entry-points-selectable==1.1.1
     # via virtualenv
-black==21.11b1
+black==21.12b0
     # via -r requirements/dev.in
 blinker==1.4
     # via
@@ -35,7 +35,7 @@ certifi==2021.10.8
     # via
     #   requests
     #   sentry-sdk
-charset-normalizer==2.0.8
+charset-normalizer==2.0.9
     # via requests
 click==8.0.3
     # via
@@ -126,7 +126,7 @@ jinja2==3.0.3
     #   sphinx
 kanka==0.1.2
     # via -r requirements/app.in
-limits==2.0.0
+limits==2.0.3
     # via python-logstash-async
 mako==1.1.6
     # via alembic
@@ -223,8 +223,6 @@ pyyaml==6.0
     # via -r requirements/app.in
 redis==4.0.2
     # via -r requirements/app.in
-regex==2021.11.10
-    # via black
 requests==2.26.0
     # via
     #   -r requirements/app.in
@@ -243,7 +241,6 @@ six==1.16.0
     # via
     #   analytics-python
     #   flask-rest-jsonapi
-    #   limits
     #   python-dateutil
     #   tox
     #   virtualenv
@@ -279,18 +276,18 @@ sqlalchemy==1.4.27
     #   alembic
     #   flask-rest-jsonapi
     #   flask-sqlalchemy
-sweetrpg-api-core==0.0.52
+sweetrpg-api-core==0.0.54
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects
-sweetrpg-db==0.0.42
+sweetrpg-db==0.0.44
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
     #   sweetrpg-library-objects
-sweetrpg-library-objects==0.0.61
+sweetrpg-library-objects==0.0.62
     # via -r requirements/app.in
-sweetrpg-model-core==0.0.52
+sweetrpg-model-core==0.0.53
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
@@ -307,7 +304,7 @@ tomli==1.2.2
     #   pep517
 tox==3.24.4
     # via -r requirements/tests.in
-typing-extensions==4.0.0
+typing-extensions==4.0.1
     # via black
 urllib3==1.26.7
     # via

@@ -17,6 +17,7 @@ spec:
       platform: sweetrpg
       app: library
       component: api-v1
+      version: v1
   template:
     metadata:
       labels:

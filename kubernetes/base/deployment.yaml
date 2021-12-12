@@ -32,7 +32,7 @@ spec:
             imagePullSecrets:
                 -   name: sweetrpg-registry
             containers:
-                -   name: api-v1-svc
+                -   name: app
                     image: registry.sweetrpg.com/sweetrpg-library-api:latest
                     imagePullPolicy: Always
                     envFrom:

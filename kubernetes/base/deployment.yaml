@@ -15,10 +15,10 @@ spec:
     selector:
         matchLabels:
             app: library-api # this is for Istio
+            version: v1
             platform: sweetrpg
             package: library
             component: api
-            version: v1
     template:
         metadata:
             labels:

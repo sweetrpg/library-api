@@ -3,7 +3,6 @@ __author__ = "Paul Schifferer <dm@sweetrpg.com>"
 """
 """
 
-import functools
 from .manager import ReviewList, ReviewDetail
 from ...blueprints import api
 
@@ -18,4 +17,4 @@ def setup_routes(app):
     api.route(ReviewList, "review_list", "/reviews/")
     api.route(ReviewDetail, "review_detail", "/reviews/<id>")
     # oauth.require_oauth('create_review', 'update_review', 'delete_review')
-    # api.route(ReviewAuthorRelationship, "review_authors", "/reviews/<id>/relationships/authors")
+    # api.route(ReviewAuthorRelationship, "review_authors", "/reviews/<id>/relationships/persons")

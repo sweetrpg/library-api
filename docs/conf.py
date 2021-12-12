@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.abspath("../src/sweetrpg_library_api"))
 
 project = "SweetRPG Library API"
 copyright = "2021, Paul Schifferer"
-author = "Paul Schifferer"
+person = "Paul Schifferer"
 
 
 # -- General configuration ---------------------------------------------------

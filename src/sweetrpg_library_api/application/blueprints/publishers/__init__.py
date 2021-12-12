@@ -3,7 +3,6 @@ __author__ = "Paul Schifferer <dm@sweetrpg.com>"
 """
 """
 
-import functools
 # from flask_rest_jsonapi import Api
 from .manager import PublisherList, PublisherDetail
 from ...blueprints import api
@@ -18,4 +17,4 @@ def setup_routes(app):
     # api = Api(app)
     api.route(PublisherList, "publisher_list", "/publishers/")
     api.route(PublisherDetail, "publisher_detail", "/publishers/<id>")
-    # api.route(PublisherAuthorRelationship, "publisher_authors", "/publishers/<id>/relationships/authors")
+    # api.route(PublisherAuthorRelationship, "publisher_authors", "/publishers/<id>/relationships/persons")

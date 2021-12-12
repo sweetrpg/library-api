@@ -114,7 +114,7 @@ def create_app(app_name=constants.APPLICATION_NAME):
     from sweetrpg_library_api.application.blueprints.volumes import setup_routes as setup_volume_routes
     setup_volume_routes(app)
 
-    from sweetrpg_library_api.application.blueprints.authors import setup_routes as setup_author_routes
+    from sweetrpg_library_api.application.blueprints.persons import setup_routes as setup_author_routes
     setup_author_routes(app)
 
     from sweetrpg_library_api.application.blueprints.publishers import setup_routes as setup_publisher_routes
@@ -128,9 +128,6 @@ def create_app(app_name=constants.APPLICATION_NAME):
 
     from sweetrpg_library_api.application.blueprints.systems import setup_routes as setup_system_routes
     setup_system_routes(app)
-
-    from sweetrpg_library_api.application.blueprints.tags import setup_routes as setup_tag_routes
-    setup_tag_routes(app)
 
     from sweetrpg_api_core.blueprints.health import blueprint as health_blueprint
     app.register_blueprint(health_blueprint, url_prefix="/health")

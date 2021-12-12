@@ -24,7 +24,7 @@ pushd ${scriptdir}
 
 echo "Deleting old secrets..."
 kubectl delete -n "${ns}" secret sweetrpg-registry api-newrelic api-db api-cache api-auth api-misc api-common || true
-kubectl delete -n "${ns}" secret api-v1-newrelic api-v1-db api-v1-cache api-v1-auth api-v1-misc api-v1-common || true
+kubectl delete -n "${ns}" secret api-v1-newrelic api-v1-db api-v1-files api-v1-cache api-v1-auth api-v1-misc api-v1-common || true
 
 echo "Docker registry config..."
 kubectl create -n "${ns}" secret docker-registry sweetrpg-registry \

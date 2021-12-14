@@ -3,12 +3,14 @@ __author__ = "Paul Schifferer <dm@sweetrpg.com>"
 """
 """
 
+from sweetrpg_library_objects.db.contribution.document import ContributionDocument
 from sweetrpg_library_objects.db.person.document import PersonDocument
 from sweetrpg_library_objects.db.publisher.document import PublisherDocument
 from sweetrpg_library_objects.db.review.document import ReviewDocument
 from sweetrpg_library_objects.db.studio.document import StudioDocument
 from sweetrpg_library_objects.db.system.document import SystemDocument
 from sweetrpg_library_objects.db.volume.document import VolumeDocument
+from sweetrpg_library_objects.model.contribution import Contribution
 from sweetrpg_library_objects.model.person import Person
 from sweetrpg_library_objects.model.publisher import Publisher
 from sweetrpg_library_objects.model.review import Review
@@ -24,6 +26,14 @@ model_info = {
         "type": "person",
         "collection": "persons",
         "properties": {"volumes": "volume"},
+    },
+    "contribution": {
+        "model": Contribution,
+        # "schema": ContributionSchema,
+        "document": ContributionDocument,
+        "type": "contribution",
+        "collection": "contributions",
+        "properties": {"volumes": "volume", "persons": "person"},
     },
     "volume": {
         "model": Volume,

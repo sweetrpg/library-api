@@ -8,7 +8,7 @@ resources:
     - namespace.yaml
     - ../../base
     - configmaps.yaml
-    - mongodb-atlas.yaml
+    - mongodb-atlas-service-entry.yaml
 patchesStrategicMerge:
     - replicas.yaml
 

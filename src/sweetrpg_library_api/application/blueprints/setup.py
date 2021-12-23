@@ -25,7 +25,7 @@ model_info = {
         "document": PersonDocument,
         "type": "person",
         "collection": "persons",
-        "properties": {"volumes": "volume"},
+        "properties": {"volume_ids": "volume"},
     },
     "contribution": {
         "model": Contribution,
@@ -33,7 +33,7 @@ model_info = {
         "document": ContributionDocument,
         "type": "contribution",
         "collection": "contributions",
-        "properties": {"volumes": "volume", "persons": "person"},
+        "properties": {"volume_ids": "volume", "person_ids": "person"},
     },
     "volume": {
         "model": Volume,

@@ -5,16 +5,17 @@ kind: Kustomization
 namespace: sweetrpg-library
 
 resources:
-  - namespace.yaml
-  - ../../base
-  - configmaps.yaml
+    - namespace.yaml
+    - ../../base
+    - configmaps.yaml
+    - mongodb-atlas.yaml
 patchesStrategicMerge:
-  - replicas.yaml
+    - replicas.yaml
 
 commonLabels:
-  platform: sweetrpg
-  app: library
-  component: api
+    platform: sweetrpg
+    app: library
+    component: api
 
 generatorOptions:
-  disableNameSuffixHash: true
+    disableNameSuffixHash: true

@@ -14,6 +14,6 @@ spec:
         component: api
     type: LoadBalancer
     ports:
-        -   name: http
-            port: 8281
-            targetPort: http
+        - name: http
+          port: 8281
+          targetPort: http

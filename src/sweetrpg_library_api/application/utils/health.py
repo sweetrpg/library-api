@@ -11,8 +11,13 @@ from sweetrpg_library_api.application.db import db
 
 
 def _db_check():
+    # db.connection
     return {
-        'connection': str(db.connection)
+        'db': str(db),
+        'connection': str(db.connection),
+        'host': db.connection.host,
+        'name': str(db.connection.get_default_database),
+        'collections': [],
     }
 
 

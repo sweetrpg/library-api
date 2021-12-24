@@ -15,8 +15,8 @@ def _db_check():
     return {
         'db': str(db),
         'connection': str(db.connection),
-        'host': db.connection.host,
-        'name': str(db.connection.get_default_database),
+        'host': str(db.connection.host),
+        'name': str(db.connection.get_default_database()),
         'collections': [],
     }
 

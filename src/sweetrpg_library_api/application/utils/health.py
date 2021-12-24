@@ -7,6 +7,7 @@ import logging
 
 from sweetrpg_api_core.blueprints.health import register_health_check_service_hook
 
+from sweetrpg_library_api.application.cache import cache
 from sweetrpg_library_api.application.db import db
 
 
@@ -21,6 +22,13 @@ def _db_check():
     }
 
 
+def _cache_check():
+    return {
+        'info': str(cache),
+    }
+
+
 def register_service_checks():
     logging.info("Registering health check service hook for 'database'...")
     register_health_check_service_hook('database', _db_check)
+    register_health_check_service_hook('cache', _cache_check)

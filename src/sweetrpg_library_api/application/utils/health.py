@@ -24,7 +24,7 @@ def _db_check():
 
 def _cache_check():
     return {
-        'info': str(cache.config),
+        **cache.config,
     }
 
 

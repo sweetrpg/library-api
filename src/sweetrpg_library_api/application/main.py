@@ -133,6 +133,8 @@ def create_app(app_name=constants.APPLICATION_NAME):
     setup_system_routes(app)
 
     from sweetrpg_api_core.blueprints.health import blueprint as health_blueprint
+    from sweetrpg_library_api.application.utils.health import register_service_checks
+    register_service_checks()
     app.register_blueprint(health_blueprint, url_prefix="/health")
 
     app.logger.info("Setting up database...")

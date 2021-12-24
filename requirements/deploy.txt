@@ -87,7 +87,7 @@ jinja2==3.0.3
     # via flask
 kanka==0.1.2
     # via -r requirements/app.in
-limits==2.0.3
+limits==2.1.0
     # via python-logstash-async
 mako==1.1.6
     # via alembic
@@ -156,12 +156,12 @@ six==1.16.0
     #   analytics-python
     #   flask-rest-jsonapi
     #   python-dateutil
-sqlalchemy==1.4.28
+sqlalchemy==1.4.29
     # via
     #   alembic
     #   flask-rest-jsonapi
     #   flask-sqlalchemy
-sweetrpg-api-core==0.0.59
+sweetrpg-api-core==0.0.61
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects
@@ -188,7 +188,7 @@ werkzeug==2.0.2
     # via flask
 wrapt==1.13.3
     # via deprecated
-wtforms[email]==3.0.0
+wtforms[email]==3.0.1
     # via
     #   flask-mongoengine
     #   flask-wtf

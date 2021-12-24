@@ -126,7 +126,7 @@ jinja2==3.0.3
     #   sphinx
 kanka==0.1.2
     # via -r requirements/app.in
-limits==2.0.3
+limits==2.1.0
     # via python-logstash-async
 mako==1.1.6
     # via alembic
@@ -271,12 +271,12 @@ sphinxcontrib-qthelp==1.0.3
     # via sphinx
 sphinxcontrib-serializinghtml==1.1.5
     # via sphinx
-sqlalchemy==1.4.28
+sqlalchemy==1.4.29
     # via
     #   alembic
     #   flask-rest-jsonapi
     #   flask-sqlalchemy
-sweetrpg-api-core==0.0.59
+sweetrpg-api-core==0.0.61
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects
@@ -314,11 +314,11 @@ virtualenv==20.10.0
     # via tox
 werkzeug==2.0.2
     # via flask
-wheel==0.37.0
+wheel==0.37.1
     # via pip-tools
 wrapt==1.13.3
     # via deprecated
-wtforms[email]==3.0.0
+wtforms[email]==3.0.1
     # via
     #   flask-mongoengine
     #   flask-wtf

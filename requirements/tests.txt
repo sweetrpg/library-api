@@ -142,6 +142,7 @@ oauthlib==2.1.0
 packaging==21.3
     # via
     #   pytest
+    #   redis
     #   tox
 platformdirs==2.4.0
     # via virtualenv
@@ -183,7 +184,7 @@ python-logstash-async==2.3.0
     # via -r requirements/app.in
 pyyaml==6.0
     # via -r requirements/app.in
-redis==4.0.2
+redis==4.1.0
     # via -r requirements/app.in
 requests==2.26.0
     # via

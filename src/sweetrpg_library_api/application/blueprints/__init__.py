@@ -140,8 +140,13 @@ def error_handler(ex):
 
 
 @blueprint.before_request
-def log_headers(r):
-    current_app.logger.info(r.headers)
+def log_request_headers():
+    current_app.logger.info(f"Request headers: {request.headers}")
+
+
+@blueprint.after_request
+def log_response_headers(r):
+    current_app.logger.info(f"Response headers: {r.headers}")
     return r
 
 

@@ -139,6 +139,12 @@ def error_handler(ex):
     return response
 
 
+@blueprint.before_request
+def log_headers(r):
+    print(r.headers)
+    return r
+
+
 from flask_rest_jsonapi import Api
 
 api = Api()

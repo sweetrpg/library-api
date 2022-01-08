@@ -15,7 +15,7 @@ def _db_check():
     database = db.connection.get_default_database()
     return {
         # 'db': str(db),
-        "connection": str(db.connection.server_info()),
+        "connection": db.connection.server_info(),
         "address": str(db.connection.address),
         "name": database.name,
         "collections": database.list_collection_names(),

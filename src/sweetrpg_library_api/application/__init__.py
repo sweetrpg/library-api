@@ -3,15 +3,17 @@ __author__ = "Paul Schifferer <dm@sweetrpg.com>"
 """
 """
 
-import sentry_sdk
 import os
-from sweetrpg_library_api.application import constants
-from sentry_sdk.integrations.redis import RedisIntegration
-from sentry_sdk.integrations.flask import FlaskIntegration
 
+import sentry_sdk
+from sentry_sdk.integrations.flask import FlaskIntegration
+from sentry_sdk.integrations.redis import RedisIntegration
+
+from sweetrpg_library_api.application import constants
 
 sentry_sdk.init(dsn=os.environ[constants.SENTRY_DSN],
+                traces_sample_rate=0.2,
                 environment=os.environ.get(constants.SENTRY_ENV) or 'Unknown',
                 integrations=[
-                    FlaskIntegration(), RedisIntegration()
-                    ])
+                    FlaskIntegration(), RedisIntegration(),
+                ])

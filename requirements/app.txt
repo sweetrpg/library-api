@@ -140,7 +140,7 @@ python-logstash-async==2.3.0
     # via -r requirements/app.in
 pyyaml==6.0
     # via -r requirements/app.in
-redis==4.1.0
+redis==4.1.2
     # via -r requirements/app.in
 requests==2.27.1
     # via
@@ -163,7 +163,7 @@ sqlalchemy==1.4.29
     #   alembic
     #   flask-rest-jsonapi
     #   flask-sqlalchemy
-sweetrpg-api-core==0.0.69
+sweetrpg-api-core==0.0.71
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects

@@ -18,14 +18,14 @@ babel==2.9.1
     # via sphinx
 backoff==1.10.0
     # via analytics-python
-black==21.12b0
+black==22.1.0
     # via -r requirements/dev.in
 blinker==1.4
     # via
     #   -r requirements/app.in
     #   -r requirements/tests.in
     #   sentry-sdk
-cachelib==0.5.0
+cachelib==0.6.0
     # via
     #   flask-oauthlib
     #   flask-session
@@ -33,14 +33,14 @@ certifi==2021.10.8
     # via
     #   requests
     #   sentry-sdk
-charset-normalizer==2.0.10
+charset-normalizer==2.0.11
     # via requests
 click==8.0.3
     # via
     #   black
     #   flask
     #   pip-tools
-coverage[toml]==6.2
+coverage[toml]==6.3
     # via
     #   coverage-badge
     #   pytest-cov
@@ -126,7 +126,7 @@ jinja2==3.0.3
     #   sphinx
 kanka==0.1.2
     # via -r requirements/app.in
-limits==2.2.0
+limits==2.3.2
     # via python-logstash-async
 mako==1.1.6
     # via alembic
@@ -198,7 +198,7 @@ pymongo[srv,tls]==3.12.1
     #   mongoengine
     #   sweetrpg-db
     #   sweetrpg-model-core
-pyparsing==3.0.6
+pyparsing==3.0.7
     # via packaging
 pytest==6.2.5
     # via
@@ -272,16 +272,16 @@ sphinxcontrib-qthelp==1.0.3
     # via sphinx
 sphinxcontrib-serializinghtml==1.1.5
     # via sphinx
-sqlalchemy==1.4.29
+sqlalchemy==1.4.31
     # via
     #   alembic
     #   flask-rest-jsonapi
     #   flask-sqlalchemy
-sweetrpg-api-core==0.0.69
+sweetrpg-api-core==0.0.70
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects
-sweetrpg-db==0.0.49
+sweetrpg-db==0.0.50
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
@@ -298,7 +298,7 @@ toml==0.10.2
     # via
     #   pytest
     #   tox
-tomli==1.2.3
+tomli==2.0.0
     # via
     #   black
     #   coverage

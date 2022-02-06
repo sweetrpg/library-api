@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements/tests.in
 #
-alembic==1.7.5
+alembic==1.7.6
     # via flask-migrate
 analytics-python==1.4.0
     # via -r requirements/app.in
@@ -31,7 +31,7 @@ charset-normalizer==2.0.11
     # via requests
 click==8.0.3
     # via flask
-coverage[toml]==6.3
+coverage[toml]==6.3.1
     # via
     #   coverage-badge
     #   pytest-cov
@@ -106,7 +106,7 @@ jinja2==3.0.3
     # via flask
 kanka==0.1.2
     # via -r requirements/app.in
-limits==2.3.2
+limits==2.3.3
     # via python-logstash-async
 mako==1.1.6
     # via alembic
@@ -162,7 +162,7 @@ pymongo[srv,tls]==3.12.1
     #   sweetrpg-model-core
 pyparsing==3.0.7
     # via packaging
-pytest==6.2.5
+pytest==7.0.0
     # via
     #   -r requirements/tests.in
     #   pytest-cov
@@ -207,36 +207,36 @@ sqlalchemy==1.4.31
     #   alembic
     #   flask-rest-jsonapi
     #   flask-sqlalchemy
-sweetrpg-api-core==0.0.71
+sweetrpg-api-core==0.0.73
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects
-sweetrpg-db==0.0.50
+sweetrpg-db==0.0.51
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
     #   sweetrpg-library-objects
-sweetrpg-library-objects==0.0.75
+sweetrpg-library-objects==0.0.77
     # via -r requirements/app.in
-sweetrpg-model-core==0.0.57
+sweetrpg-model-core==0.0.58
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
     #   sweetrpg-db
     #   sweetrpg-library-objects
 toml==0.10.2
-    # via
-    #   pytest
-    #   tox
+    # via tox
 tomli==2.0.0
-    # via coverage
+    # via
+    #   coverage
+    #   pytest
 tox==3.24.5
     # via -r requirements/tests.in
 urllib3==1.26.8
     # via
     #   requests
     #   sentry-sdk
-virtualenv==20.13.0
+virtualenv==20.13.1
     # via tox
 werkzeug==2.0.2
     # via flask

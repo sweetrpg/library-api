@@ -14,7 +14,7 @@ sweetrpg-db
 sweetrpg-library-objects
 sweetrpg-model-core
 kanka
-PyMongo[srv,tls]==3.12.1
+PyMongo[srv]==4.0.2
 python-dateutil
 python-dotenv==0.19.2
 python-editor

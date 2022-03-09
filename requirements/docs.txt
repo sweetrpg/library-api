@@ -26,9 +26,9 @@ certifi==2021.10.8
     # via
     #   requests
     #   sentry-sdk
-charset-normalizer==2.0.11
+charset-normalizer==2.0.12
     # via requests
-click==8.0.3
+click==8.0.4
     # via flask
 deprecated==1.2.13
     # via redis
@@ -88,9 +88,9 @@ idna==3.3
     #   requests
 imagesize==1.3.0
     # via sphinx
-importlib-metadata==4.10.1
+importlib-metadata==4.11.2
     # via sphinx
-itsdangerous==2.0.1
+itsdangerous==2.1.0
     # via
     #   flask
     #   flask-wtf
@@ -104,7 +104,7 @@ limits==2.3.3
     # via python-logstash-async
 mako==1.1.6
     # via alembic
-markupsafe==2.0.1
+markupsafe==2.1.0
     # via
     #   jinja2
     #   mako
@@ -119,7 +119,7 @@ marshmallow-jsonapi==0.24.0
     # via
     #   flask-rest-jsonapi
     #   sweetrpg-library-objects
-mongoengine==0.23.1
+mongoengine==0.24.0
     # via
     #   flask-mongoengine
     #   sweetrpg-api-core
@@ -214,7 +214,7 @@ sphinxcontrib-qthelp==1.0.3
     # via sphinx
 sphinxcontrib-serializinghtml==1.1.5
     # via sphinx
-sqlalchemy==1.4.31
+sqlalchemy==1.4.32
     # via
     #   alembic
     #   flask-rest-jsonapi
@@ -230,7 +230,7 @@ sweetrpg-db==0.0.52
     #   sweetrpg-library-objects
 sweetrpg-library-objects==0.0.80
     # via -r requirements/app.in
-sweetrpg-model-core==0.0.59
+sweetrpg-model-core==0.0.60
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
@@ -240,7 +240,7 @@ urllib3==1.26.8
     # via
     #   requests
     #   sentry-sdk
-werkzeug==2.0.2
+werkzeug==2.0.3
     # via flask
 wrapt==1.13.3
     # via deprecated

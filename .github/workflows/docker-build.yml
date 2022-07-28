@@ -41,6 +41,7 @@ jobs:
               with:
                   images: |
                       registry.sweetrpg.com/sweetrpg-library-api
+                      ghcr.io/sweetrpg/library-api
                   tags: |
                       type=raw,value=latest
                       type=raw,value=${{ steps.previoustag.outputs.tag }}

@@ -10,5 +10,5 @@ __version__ = "0.0.126"
 __build__ = 0x000011
 __author_email__ = "dm@sweetrpg.com"
 __license__ = "MIT"
-__copyright__ = "Copyright 2021 SweetRPG"
+__copyright__ = "Copyright 2022 SweetRPG"
 __cake__ = u"\u2728 \U0001f370 \u2728"

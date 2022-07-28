@@ -17,3 +17,4 @@ setup.py
 tox.ini
 .editorconfig
 tests/
+.DS_Store

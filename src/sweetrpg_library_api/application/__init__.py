@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 __author__ = "Paul Schifferer <dm@sweetrpg.com>"
 """
+__init__.py
+Application root module.
 """
 
 import os

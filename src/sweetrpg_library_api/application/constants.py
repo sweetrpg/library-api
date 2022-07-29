@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 __author__ = "Paul Schifferer <dm@sweetrpg.com>"
-"""constants.py
+"""
+constants.py
 
 Constants for keys and environment variable names
 """

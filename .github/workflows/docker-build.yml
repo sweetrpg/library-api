@@ -40,7 +40,7 @@ jobs:
               uses: docker/metadata-action@v4
               with:
                   images: |
-                      ghcr.io/sweetrpg/library-api
+                      registry.sweetrpg.com/sweetrpg-library-api
                   tags: |
                       type=raw,value=latest
                       type=raw,value=${{ steps.previoustag.outputs.tag }}
@@ -58,7 +58,7 @@ jobs:
             - name: Login to registry
               uses: docker/login-action@v2
               with:
-                  registry: ghcr.io
+                  registry: registry.sweetrpg.com
                   username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
                   password: ${{ secrets.DOCKER_REGISTRY_TOKEN }}
             - name: Build and push

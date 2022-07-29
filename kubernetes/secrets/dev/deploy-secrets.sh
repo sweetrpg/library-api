@@ -34,9 +34,7 @@ echo "Docker registry config..."
 kubectl create -n "${ns}" secret docker-registry sweetrpg-registry \
     --docker-server=ghcr.io \
     --docker-username=paulyhedral \
-    --docker-password=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
-# old: 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
-# new (7/28/22): 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
+    --docker-password=xxx
 #kubectl create -n "${ns}" secret dockerconfigjson sweetrpg-registry \
 #    --from-file=.dockerconfigjson
 

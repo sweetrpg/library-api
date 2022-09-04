@@ -37,17 +37,17 @@ spec:
                   imagePullPolicy: Always
                   envFrom:
                       - configMapRef:
-                            name: api-v1-common
+                            name: api-common
                       - configMapRef:
-                            name: api-v1-env
+                            name: api-env
                       - secretRef:
-                            name: api-v1-db
+                            name: api-db
                       - secretRef:
-                            name: api-v1-auth
+                            name: api-auth
                       - secretRef:
-                            name: api-v1-misc
+                            name: api-misc
                       - secretRef:
-                            name: api-v1-cache
+                            name: api-cache
                   env: []
                   ports:
                       - containerPort: 8281
@@ -79,7 +79,7 @@ spec:
             volumes:
                 - name: config
                   secret:
-                      secretName: api-v1-files
+                      secretName: api-files
                       items:
                           - key: newrelic.ini
                             path: newrelic.ini

@@ -9,6 +9,7 @@ resources:
     - configmaps.yaml
     - mongodb-atlas-service-entry.yaml
     - destination-rules.yaml
+    - secrets.yaml
 patchesStrategicMerge:
     - replicas.yaml
 

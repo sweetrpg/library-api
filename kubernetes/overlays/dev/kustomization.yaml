@@ -10,6 +10,7 @@ resources:
     - mongodb-atlas-service-entry.yaml
     - destination-rules.yaml
     - secrets.yaml
+    - secret-store.yaml
 patchesStrategicMerge:
     - replicas.yaml
 

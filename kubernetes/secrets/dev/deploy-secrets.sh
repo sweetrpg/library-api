@@ -23,7 +23,7 @@ pushd ${scriptdir}
 #      - newrelic.ini
 
 echo "Deleting old secrets..."
-kubectl delete -n "${ns}" secret sweetrpg-registry api-v1-files || true
+# kubectl delete -n "${ns}" secret sweetrpg-registry api-files || true
 # kubectl delete -n "${ns}" secret sweetrpg-registry api-newrelic api-db api-cache api-auth api-misc api-common || true
 # kubectl delete -n "${ns}" secret api-v1-newrelic api-v1-db api-v1-files api-v1-cache api-v1-auth api-v1-misc api-v1-common || true
 
@@ -32,16 +32,16 @@ echo "Docker registry config..."
 #     --docker-server=http://registry.sweetrpg.com \
 #     --docker-username=docker \
 #     --docker-password=ESU7PnNtlt07zkvbnSyByrTdzllajxIQWqY7mswQR78
-kubectl create -n "${ns}" secret docker-registry sweetrpg-registry \
-    --docker-server=ghcr.io \
-    --docker-username=paulyhedral \
-    --docker-password=$(cat ${scriptdir}/tokens.txt | grep '^sweetrpg-registry' | cut -f2 -d:)
+# kubectl create -n "${ns}" secret docker-registry sweetrpg-registry \
+#     --docker-server=ghcr.io \
+#     --docker-username=paulyhedral \
+#     --docker-password=$(cat ${scriptdir}/tokens.txt | grep '^sweetrpg-registry' | cut -f2 -d:)
 #kubectl create -n "${ns}" secret dockerconfigjson sweetrpg-registry \
 #    --from-file=.dockerconfigjson
 
 echo "NewRelic and logging config..."
-kubectl create -n "${ns}" secret generic api-v1-files \
-    --from-file=newrelic.ini
+# kubectl create -n "${ns}" secret generic api-files \
+#     --from-file=newrelic.ini
 
 echo "Other secrets..."
 # kubectl create -n "${ns}" secret generic api-v1-db \

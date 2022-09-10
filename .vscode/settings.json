@@ -17,5 +17,7 @@
     "python.formatting.provider": "black",
     "restructuredtext.confPath": "${workspaceFolder}/docs",
     "restructuredtext.pythonRecommendation.disabled": true,
-    "restructuredtext.languageServer.disabled": true
+    "restructuredtext.languageServer.disabled": true,
+    "restructuredtext.preview.docutils.disabled": true,
+    "esbonio.sphinx.confDir": "${workspaceFolder}/docs"
 }

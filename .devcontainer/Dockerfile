@@ -1,7 +1,7 @@
 # See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.194.0/containers/python-3/.devcontainer/base.Dockerfile
 
 # [Choice] Python version: 3, 3.9, 3.8, 3.7, 3.6
-ARG VARIANT="3.9"
+ARG VARIANT="3.10"
 FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
 
 # [Choice] Node.js version: none, lts/*, 16, 14, 12, 10
@@ -12,7 +12,7 @@ RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/
 ARG USERNAME=vscode
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
-COPY .devcontainer/library-scripts/common-debian.sh /tmp/library-scripts/
+COPY library-scripts/common-debian.sh /tmp/library-scripts/
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && /bin/bash /tmp/library-scripts/common-debian.sh "${INSTALL_ZSH}" "${USERNAME}" "${USER_UID}" "${USER_GID}" "${UPGRADE_PACKAGES}" "true" "true" \
     && apt-get -y install --no-install-recommends lldb python3-minimal libpython3.7 gnupg2 \
@@ -24,7 +24,7 @@ ARG NODE_VERSION="lts/*"
 ENV NVM_DIR=/usr/local/share/nvm
 ENV NVM_SYMLINK_CURRENT=true \
     PATH=${NVM_DIR}/current/bin:${PATH}
-COPY .devcontainer/library-scripts/node-debian.sh /tmp/library-scripts/
+COPY library-scripts/node-debian.sh /tmp/library-scripts/
 RUN if [ "$INSTALL_NODE" = "true" ]; then /bin/bash /tmp/library-scripts/node-debian.sh "${NVM_DIR}" "${NODE_VERSION}" "${USERNAME}"; fi \
     && rm -rf /var/lib/apt/lists/* /tmp/library-scripts
 

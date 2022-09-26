@@ -7,7 +7,9 @@ on:
             - api-core-published
             - library-objects-published
             - db-published
-
+    schedule:
+        - cron: '0 1 * * 1'
+        
 jobs:
     update-reqs:
         runs-on: ubuntu-latest

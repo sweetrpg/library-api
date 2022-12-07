@@ -12,6 +12,7 @@ resources:
     - mongodb-atlas-service-entry.yaml
     - destination-rules.yaml
     - secrets.yaml
+    - virtual-service.yaml
 patchesStrategicMerge:
     - replicas.yaml
 

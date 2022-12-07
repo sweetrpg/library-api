@@ -20,15 +20,15 @@ spec:
             host: api-v1.sweetrpg-library.svc.cluster.local
             port:
               number: 8281
-  tls:
-    - match:
-        - uri:
-            prefix: /api/0/library
-        - port: 443
-          sniHosts:
-            - dev.sweetrpg.com
-      route:
-        - destination:
-            host: api-v1.sweetrpg-library.svc.cluster.local
-            port:
-              number: 8281
+#   tls:
+#     - match:
+#         - uri:
+#             prefix: /api/0/library
+#         - port: 443
+#           sniHosts:
+#             - dev.sweetrpg.com
+#       route:
+#         - destination:
+#             host: api-v1.sweetrpg-library.svc.cluster.local
+#             port:
+#               number: 8281

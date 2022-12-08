@@ -14,7 +14,7 @@ spec:
   http:
     - match:
         - uri:
-            prefix: /api/0/library
+            prefix: /api/0/library/
       route:
         - destination:
             host: api-v1.sweetrpg-library.svc.cluster.local
@@ -49,7 +49,7 @@ spec:
   http:
     - match:
         - uri:
-            prefix: /api/1/library
+            prefix: /api/1/library/
       route:
         - destination:
             host: api-v1.sweetrpg-library.svc.cluster.local

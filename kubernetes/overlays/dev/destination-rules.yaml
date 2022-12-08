@@ -3,7 +3,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 
 metadata:
-    name: library-api
+    name: api
 
 spec:
     host: api-v1.sweetrpg-library.svc.cluster.local

@@ -17,7 +17,7 @@ patchesStrategicMerge:
     - replicas.yaml
 
 commonLabels:
-    app: library-api
+    app: api
     version: v1
     platform: sweetrpg
     package: library

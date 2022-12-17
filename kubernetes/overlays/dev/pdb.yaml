@@ -10,7 +10,7 @@ spec:
     selector:
         matchLabels:
             platform: sweetrpg
-            app: library-api
+            app: api
             package: library
             component: api
             version: v1

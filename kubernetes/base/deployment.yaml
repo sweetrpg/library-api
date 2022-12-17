@@ -14,7 +14,7 @@ spec:
         type: RollingUpdate
     selector:
         matchLabels:
-            app: library-api # this is for Istio
+            app: api
             version: v1
             platform: sweetrpg
             package: library
@@ -23,12 +23,12 @@ spec:
         metadata:
             labels:
                 platform: sweetrpg
-                app: library-api
+                app: api
                 package: library
                 component: api
                 version: v1
         spec:
-            serviceAccountName: library-api
+            serviceAccountName: api
             imagePullSecrets:
                 - name: sweetrpg-registry
             containers:

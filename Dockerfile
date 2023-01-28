@@ -40,7 +40,7 @@ RUN apt-get update \
     && pip install pylint newrelic \
     #
     # Other stuff
-    # && apt-get install -y postgresql-client \
+    # && apt-get install -y postgresql-client
     #
     # Update Python environment based on requirements.txt
     && pip --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \

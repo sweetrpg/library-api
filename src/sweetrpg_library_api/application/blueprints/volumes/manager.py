@@ -38,3 +38,47 @@ class VolumeAuthorRelationship(ResourceRelationship):
         "db": db,
         "model_info": model_info
     }
+
+
+class VolumeLicenseRelationship(ResourceRelationship):
+    schema = VolumeAPISchema
+    data_layer = {
+        "class": APIData,
+        "type": "volume",
+        "model": Volume,
+        "db": db,
+        "model_info": model_info
+    }
+
+
+class VolumeStudioRelationship(ResourceRelationship):
+    schema = VolumeAPISchema
+    data_layer = {
+        "class": APIData,
+        "type": "volume",
+        "model": Volume,
+        "db": db,
+        "model_info": model_info
+    }
+
+
+class VolumePublisherRelationship(ResourceRelationship):
+    schema = VolumeAPISchema
+    data_layer = {
+        "class": APIData,
+        "type": "volume",
+        "model": Volume,
+        "db": db,
+        "model_info": model_info
+    }
+
+
+class VolumeSystemRelationship(ResourceRelationship):
+    schema = VolumeAPISchema
+    data_layer = {
+        "class": APIData,
+        "type": "volume",
+        "model": Volume,
+        "db": db,
+        "model_info": model_info
+    }

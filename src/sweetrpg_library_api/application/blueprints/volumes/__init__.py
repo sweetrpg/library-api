@@ -4,7 +4,7 @@ __author__ = "Paul Schifferer <dm@sweetrpg.com>"
 """
 
 # from flask_rest_jsonapi import Api
-from .manager import VolumeList, VolumeDetail, VolumeAuthorRelationship
+from .manager import VolumeList, VolumeDetail, VolumeAuthorRelationship, VolumeLicenseRelationship, VolumeStudioRelationship, VolumePublisherRelationship, VolumeSystemRelationship
 from ...blueprints import api
 
 
@@ -18,3 +18,7 @@ def setup_routes(app):
     api.route(VolumeList, "volume_list", "/volumes/")
     api.route(VolumeDetail, "volume_detail", "/volumes/<id>")
     api.route(VolumeAuthorRelationship, "volume_authors", "/volumes/<id>/relationships/persons")
+    api.route(VolumeLicenseRelationship, "volume_licenses", "/volumes/<id>/relationships/licenses")
+    api.route(VolumeStudioRelationship, "volume_studios", "/volumes/<id>/relationships/studios")
+    api.route(VolumePublisherRelationship, "volume_publishers", "/volumes/<id>/relationships/publishers")
+    api.route(VolumeSystemRelationship, "volume_systems", "/volumes/<id>/relationships/systems")

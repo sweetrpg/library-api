@@ -10,6 +10,11 @@ on:
             - db-published
     schedule:
         - cron: "0 1 * * 1"
+    push:
+        branches:
+            - develop
+        paths:
+            - "requirements/*.in"
 
 jobs:
     update-reqs:

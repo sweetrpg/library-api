@@ -37,7 +37,7 @@ RUN apt-get update \
     && apt-get install -y git iproute2 procps lsb-release \
     #
     # Install pylint
-    && pip install pylint newrelic \
+    && pip install pylint \
     #
     # Other stuff
     # && apt-get install -y postgresql-client
@@ -67,4 +67,3 @@ ENV DEBIAN_FRONTEND=
 USER ${USERNAME}
 
 ENTRYPOINT [ "/entrypoint.sh" ]
-#CMD [ "newrelic-admin", "run-program", "gunicorn", "wsgi:app" ]

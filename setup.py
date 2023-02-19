@@ -12,7 +12,7 @@ setup(
         "Flask-DotEnv",
         "Flask-REST-JSONAPI",
         "Flask-Session",
-        "Flask==2.0.2",
+        "Flask<3.0",
         "Flask-Migrate",
         "Flask-MongoEngine",
         "gunicorn",
@@ -30,6 +30,7 @@ setup(
         "sweetrpg-model-core",
         "sweetrpg-api-core",
         "sweetrpg-library-objects",
+        "airtable",
     ],
     extras_require={},
 )

@@ -15,6 +15,7 @@ on:
             - develop
         paths:
             - "requirements/*.in"
+            - setup.py
 
 jobs:
     update-reqs:

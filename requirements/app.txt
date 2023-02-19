@@ -4,8 +4,6 @@
 #
 #    pip-compile requirements/app.in
 #
-airtable==0.4.8
-    # via -r requirements/app.in
 alembic==1.9.4
     # via flask-migrate
 analytics-python==1.4.0
@@ -151,7 +149,6 @@ redis==4.5.1
 requests==2.28.2
     # via
     #   -r requirements/app.in
-    #   airtable
     #   analytics-python
     #   kanka
     #   python-logstash-async
@@ -162,7 +159,6 @@ sentry-sdk[flask]==1.15.0
     # via -r requirements/app.in
 six==1.16.0
     # via
-    #   airtable
     #   analytics-python
     #   flask-rest-jsonapi
     #   python-dateutil

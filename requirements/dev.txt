@@ -4,8 +4,6 @@
 #
 #    pip-compile requirements/dev.in
 #
-airtable==0.4.8
-    # via -r requirements/app.in
 alabaster==0.7.13
     # via sphinx
 alembic==1.9.4
@@ -245,7 +243,6 @@ redis==4.5.1
 requests==2.28.2
     # via
     #   -r requirements/app.in
-    #   airtable
     #   analytics-python
     #   kanka
     #   python-logstash-async
@@ -265,7 +262,6 @@ shellingham==1.5.0.post1
     # via typer
 six==1.16.0
     # via
-    #   airtable
     #   analytics-python
     #   flask-rest-jsonapi
     #   python-dateutil

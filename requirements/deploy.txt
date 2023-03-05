@@ -173,7 +173,7 @@ sweetrpg-api-core==0.0.98
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects
-sweetrpg-db==0.0.93
+sweetrpg-db==0.0.94
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
@@ -198,7 +198,7 @@ uwsgi==2.0.21
     # via -r requirements/deploy.in
 werkzeug==2.2.3
     # via flask
-wrapt==1.14.1
+wrapt==1.15.0
     # via deprecated
 wtforms[email]==3.0.1
     # via

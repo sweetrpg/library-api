@@ -171,7 +171,7 @@ sweetrpg-api-core==0.0.98
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects
-sweetrpg-db==0.0.93
+sweetrpg-db==0.0.94
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
@@ -194,7 +194,7 @@ urllib3==1.26.14
     #   sentry-sdk
 werkzeug==2.2.3
     # via flask
-wrapt==1.14.1
+wrapt==1.15.0
     # via deprecated
 wtforms[email]==3.0.1
     # via

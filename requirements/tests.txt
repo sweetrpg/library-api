@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements/tests.in
 #
-alembic==1.9.4
+alembic==1.10.0
     # via flask-migrate
 analytics-python==1.4.0
     # via -r requirements/app.in
@@ -242,6 +242,7 @@ tox==4.4.5
     # via -r requirements/tests.in
 typing-extensions==4.5.0
     # via
+    #   alembic
     #   limits
     #   sqlalchemy
 urllib3==1.26.14

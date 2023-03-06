@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements/app.in
 #
-alembic==1.9.4
+alembic==1.10.0
     # via flask-migrate
 analytics-python==1.4.0
     # via -r requirements/app.in
@@ -186,6 +186,7 @@ sweetrpg-model-core==0.0.108
     #   sweetrpg-library-objects
 typing-extensions==4.5.0
     # via
+    #   alembic
     #   limits
     #   sqlalchemy
 urllib3==1.26.14

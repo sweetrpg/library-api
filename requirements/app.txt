@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements/app.in
 #
-alembic==1.10.0
+alembic==1.10.2
     # via flask-migrate
 analytics-python==1.4.0
     # via -r requirements/app.in
@@ -25,7 +25,7 @@ certifi==2022.12.7
     # via
     #   requests
     #   sentry-sdk
-charset-normalizer==3.0.1
+charset-normalizer==3.1.0
     # via requests
 click==8.1.3
     # via flask
@@ -162,7 +162,7 @@ six==1.16.0
     #   analytics-python
     #   flask-rest-jsonapi
     #   python-dateutil
-sqlalchemy==2.0.4
+sqlalchemy==2.0.5.post1
     # via
     #   alembic
     #   flask-rest-jsonapi
@@ -171,7 +171,7 @@ sweetrpg-api-core==0.0.102
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects
-sweetrpg-db==0.0.95
+sweetrpg-db==0.0.96
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
@@ -189,7 +189,7 @@ typing-extensions==4.5.0
     #   alembic
     #   limits
     #   sqlalchemy
-urllib3==1.26.14
+urllib3==1.26.15
     # via
     #   requests
     #   sentry-sdk

@@ -188,7 +188,7 @@ requests-oauthlib==1.1.0
     # via flask-oauthlib
 rich==12.6.0
     # via typer
-rstcheck==6.1.1
+rstcheck==6.1.2
     # via -r requirements/docs.in
 rstcheck-core==1.0.3
     # via rstcheck

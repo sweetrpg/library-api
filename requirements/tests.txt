@@ -215,11 +215,11 @@ sqlalchemy==2.0.7
     #   alembic
     #   flask-rest-jsonapi
     #   flask-sqlalchemy
-sweetrpg-api-core==0.0.107
+sweetrpg-api-core==0.0.108
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects
-sweetrpg-db==0.0.98
+sweetrpg-db==0.0.99
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core

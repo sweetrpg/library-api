@@ -20,7 +20,7 @@ babel==2.12.1
     # via sphinx
 backoff==1.10.0
     # via analytics-python
-black==23.1.0
+black==23.3.0
     # via -r requirements/dev.in
 blinker==1.5
     # via
@@ -79,7 +79,7 @@ email-validator==1.3.1
     # via wtforms
 exceptiongroup==1.1.1
     # via pytest
-filelock==3.10.6
+filelock==3.10.7
     # via
     #   tox
     #   virtualenv
@@ -238,7 +238,7 @@ python-logstash-async==2.5.0
     # via -r requirements/app.in
 pyyaml==6.0
     # via -r requirements/app.in
-redis==4.5.3
+redis==4.5.4
     # via -r requirements/app.in
 requests==2.28.2
     # via
@@ -292,7 +292,7 @@ sphinxcontrib-qthelp==1.0.3
     # via sphinx
 sphinxcontrib-serializinghtml==1.1.5
     # via sphinx
-sqlalchemy==2.0.7
+sqlalchemy==2.0.8
     # via
     #   alembic
     #   flask-rest-jsonapi
@@ -301,7 +301,7 @@ sweetrpg-api-core==0.0.112
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects
-sweetrpg-db==0.0.101
+sweetrpg-db==0.0.102
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
@@ -326,7 +326,7 @@ tox==4.4.5
     # via -r requirements/tests.in
 typer[all]==0.7.0
     # via rstcheck
-types-docutils==0.19.1.6
+types-docutils==0.19.1.7
     # via rstcheck-core
 typing-extensions==4.5.0
     # via

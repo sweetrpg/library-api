@@ -24,7 +24,7 @@ setup(
         "PyYAML==6.0",
         "redis",
         "requests",
-        "sentry-sdk[flask]==1.15.0",
+        "sentry-sdk[flask]==1.18.0",
         "analytics-python<2.0",
         "sweetrpg-db",
         "sweetrpg-model-core",

@@ -6,7 +6,7 @@
 #
 alabaster==0.7.13
     # via sphinx
-alembic==1.10.2
+alembic==1.10.3
     # via flask-migrate
 analytics-python==1.4.post1
     # via -r requirements/app.in
@@ -230,7 +230,7 @@ sphinxcontrib-qthelp==1.0.3
     # via sphinx
 sphinxcontrib-serializinghtml==1.1.5
     # via sphinx
-sqlalchemy==2.0.8
+sqlalchemy==2.0.9
     # via
     #   alembic
     #   flask-rest-jsonapi
@@ -239,7 +239,7 @@ sweetrpg-api-core==0.0.116
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects
-sweetrpg-db==0.0.103
+sweetrpg-db==0.0.104
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core

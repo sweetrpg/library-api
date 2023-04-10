@@ -18,7 +18,7 @@ python-logstash-async
 PyYAML==6.0
 redis
 requests
-sentry-sdk[flask]==1.15.0
+sentry-sdk[flask]==1.19.1
 sweetrpg-api-core
 sweetrpg-db
 sweetrpg-library-objects

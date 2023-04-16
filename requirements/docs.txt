@@ -52,7 +52,7 @@ docutils==0.18.1
     #   rstcheck-core
     #   sphinx
     #   sphinx-tabs
-email-validator==1.3.1
+email-validator==2.0.0
     # via wtforms
 flask==2.2.3
     # via
@@ -235,7 +235,7 @@ sqlalchemy==2.0.9
     #   alembic
     #   flask-rest-jsonapi
     #   flask-sqlalchemy
-sweetrpg-api-core==0.0.121
+sweetrpg-api-core==0.0.122
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects

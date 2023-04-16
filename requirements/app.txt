@@ -12,7 +12,7 @@ async-timeout==4.0.2
     # via redis
 backoff==1.10.0
     # via analytics-python
-blinker==1.6.1
+blinker==1.6.2
     # via
     #   -r requirements/app.in
     #   sentry-sdk
@@ -122,7 +122,7 @@ oauthlib==2.1.0
     # via
     #   flask-oauthlib
     #   requests-oauthlib
-packaging==23.0
+packaging==23.1
     # via
     #   limits
     #   marshmallow
@@ -173,7 +173,7 @@ sweetrpg-api-core==0.0.120
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects
-sweetrpg-db==0.0.105
+sweetrpg-db==0.0.106
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
@@ -189,7 +189,6 @@ sweetrpg-model-core==0.0.113
 typing-extensions==4.5.0
     # via
     #   alembic
-    #   blinker
     #   limits
     #   sqlalchemy
 urllib3==1.26.15

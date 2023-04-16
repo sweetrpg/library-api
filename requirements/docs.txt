@@ -16,7 +16,7 @@ babel==2.12.1
     # via sphinx
 backoff==1.10.0
     # via analytics-python
-blinker==1.6.1
+blinker==1.6.2
     # via
     #   -r requirements/app.in
     #   sentry-sdk
@@ -141,7 +141,7 @@ oauthlib==2.1.0
     # via
     #   flask-oauthlib
     #   requests-oauthlib
-packaging==23.0
+packaging==23.1
     # via
     #   limits
     #   marshmallow
@@ -151,7 +151,7 @@ pallets-sphinx-themes==2.0.3
     # via -r requirements/docs.in
 pydantic==1.10.7
     # via rstcheck-core
-pygments==2.14.0
+pygments==2.15.0
     # via
     #   rich
     #   sphinx
@@ -239,7 +239,7 @@ sweetrpg-api-core==0.0.120
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects
-sweetrpg-db==0.0.105
+sweetrpg-db==0.0.106
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
@@ -259,7 +259,6 @@ types-docutils==0.19.1.7
 typing-extensions==4.5.0
     # via
     #   alembic
-    #   blinker
     #   limits
     #   pydantic
     #   sqlalchemy

@@ -14,7 +14,7 @@ async-timeout==4.0.2
     # via redis
 backoff==1.10.0
     # via analytics-python
-blinker==1.6.1
+blinker==1.6.2
     # via
     #   -r requirements/app.in
     #   -r requirements/tests.in
@@ -147,7 +147,7 @@ oauthlib==2.1.0
     # via
     #   flask-oauthlib
     #   requests-oauthlib
-packaging==23.0
+packaging==23.1
     # via
     #   limits
     #   marshmallow
@@ -172,7 +172,7 @@ pymongo[srv]==4.0.2
     #   sweetrpg-model-core
 pyproject-api==1.5.1
     # via tox
-pytest==7.3.0
+pytest==7.3.1
     # via
     #   -r requirements/tests.in
     #   pytest-cov
@@ -219,7 +219,7 @@ sweetrpg-api-core==0.0.120
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects
-sweetrpg-db==0.0.105
+sweetrpg-db==0.0.106
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
@@ -243,7 +243,6 @@ tox==4.4.5
 typing-extensions==4.5.0
     # via
     #   alembic
-    #   blinker
     #   limits
     #   sqlalchemy
 urllib3==1.26.15

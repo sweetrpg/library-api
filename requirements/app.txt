@@ -37,7 +37,7 @@ dnspython==2.3.0
     #   email-validator
     #   pymongo
     #   sweetrpg-db
-email-validator==2.0.0
+email-validator==2.0.0.post1
     # via wtforms
 flask==2.2.3
     # via
@@ -178,7 +178,7 @@ sweetrpg-db==0.0.107
     #   -r requirements/app.in
     #   sweetrpg-api-core
     #   sweetrpg-library-objects
-sweetrpg-library-objects==0.0.203
+sweetrpg-library-objects==0.0.204
     # via -r requirements/app.in
 sweetrpg-model-core==0.0.114
     # via

@@ -52,7 +52,7 @@ docutils==0.18.1
     #   rstcheck-core
     #   sphinx
     #   sphinx-tabs
-email-validator==2.0.0
+email-validator==2.0.0.post1
     # via wtforms
 flask==2.2.3
     # via

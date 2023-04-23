@@ -52,7 +52,7 @@ docutils==0.18.1
     #   rstcheck-core
     #   sphinx
     #   sphinx-tabs
-email-validator==2.0.0.post1
+email-validator==2.0.0.post2
     # via wtforms
 flask==2.2.3
     # via
@@ -109,7 +109,7 @@ jinja2==3.1.2
     #   sphinx
 kanka==0.1.2
     # via -r requirements/app.in
-limits==3.3.1
+limits==3.4.0
     # via python-logstash-async
 mako==1.2.4
     # via alembic
@@ -151,7 +151,7 @@ pallets-sphinx-themes==2.0.3
     # via -r requirements/docs.in
 pydantic==1.10.7
     # via rstcheck-core
-pygments==2.15.0
+pygments==2.15.1
     # via
     #   rich
     #   sphinx
@@ -230,7 +230,7 @@ sphinxcontrib-qthelp==1.0.3
     # via sphinx
 sphinxcontrib-serializinghtml==1.1.5
     # via sphinx
-sqlalchemy==2.0.9
+sqlalchemy==2.0.10
     # via
     #   alembic
     #   flask-rest-jsonapi
@@ -239,7 +239,7 @@ sweetrpg-api-core==0.0.124
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects
-sweetrpg-db==0.0.107
+sweetrpg-db==0.0.108
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core

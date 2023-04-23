@@ -54,11 +54,11 @@ dnspython==2.3.0
     #   email-validator
     #   pymongo
     #   sweetrpg-db
-email-validator==2.0.0.post1
+email-validator==2.0.0.post2
     # via wtforms
 exceptiongroup==1.1.1
     # via pytest
-filelock==3.11.0
+filelock==3.12.0
     # via
     #   tox
     #   virtualenv
@@ -115,7 +115,7 @@ jinja2==3.1.2
     # via flask
 kanka==0.1.2
     # via -r requirements/app.in
-limits==3.3.1
+limits==3.4.0
     # via python-logstash-async
 mako==1.2.4
     # via alembic
@@ -210,7 +210,7 @@ six==1.16.0
     #   analytics-python
     #   flask-rest-jsonapi
     #   python-dateutil
-sqlalchemy==2.0.9
+sqlalchemy==2.0.10
     # via
     #   alembic
     #   flask-rest-jsonapi
@@ -219,7 +219,7 @@ sweetrpg-api-core==0.0.124
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects
-sweetrpg-db==0.0.107
+sweetrpg-db==0.0.108
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
@@ -249,7 +249,7 @@ urllib3==1.26.15
     # via
     #   requests
     #   sentry-sdk
-virtualenv==20.21.0
+virtualenv==20.22.0
     # via tox
 werkzeug==2.2.3
     # via flask

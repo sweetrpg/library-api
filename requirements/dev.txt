@@ -26,6 +26,8 @@ blinker==1.6.2
     #   -r requirements/tests.in
     #   flask
     #   sentry-sdk
+build==0.10.0
+    # via pip-tools
 cachelib==0.9.0
     # via
     #   flask-caching
@@ -176,6 +178,7 @@ oauthlib==2.1.0
 packaging==23.1
     # via
     #   black
+    #   build
     #   limits
     #   marshmallow
     #   pallets-sphinx-themes
@@ -187,9 +190,7 @@ pallets-sphinx-themes==2.1.0
     # via -r requirements/docs.in
 pathspec==0.11.1
     # via black
-pep517==0.13.0
-    # via pip-tools
-pip-tools==6.5.1
+pip-tools==6.13.0
     # via -r requirements/dev.in
 platformdirs==3.5.0
     # via
@@ -217,6 +218,8 @@ pymongo[srv]==4.0.2
     #   sweetrpg-model-core
 pyproject-api==1.5.1
     # via tox
+pyproject-hooks==1.0.0
+    # via build
 pytest==7.3.1
     # via
     #   -r requirements/tests.in
@@ -316,9 +319,10 @@ sweetrpg-model-core==0.0.115
 tomli==2.0.1
     # via
     #   black
+    #   build
     #   coverage
-    #   pep517
     #   pyproject-api
+    #   pyproject-hooks
     #   pytest
     #   tox
 tox==4.4.5

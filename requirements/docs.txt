@@ -19,7 +19,6 @@ backoff==1.10.0
 blinker==1.6.2
     # via
     #   -r requirements/app.in
-    #   flask
     #   sentry-sdk
 cachelib==0.9.0
     # via
@@ -55,7 +54,7 @@ docutils==0.18.1
     #   sphinx-tabs
 email-validator==2.0.0.post2
     # via wtforms
-flask==2.3.1
+flask==2.2.4
     # via
     #   -r requirements/app.in
     #   flask-caching
@@ -84,7 +83,7 @@ flask-rest-jsonapi==0.31.2
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
-flask-session==0.4.0
+flask-session==0.4.1
     # via -r requirements/app.in
 flask-sqlalchemy==3.0.3
     # via flask-migrate
@@ -231,7 +230,7 @@ sphinxcontrib-qthelp==1.0.3
     # via sphinx
 sphinxcontrib-serializinghtml==1.1.5
     # via sphinx
-sqlalchemy==2.0.11
+sqlalchemy==2.0.12
     # via
     #   alembic
     #   flask-rest-jsonapi

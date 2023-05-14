@@ -24,6 +24,7 @@ blinker==1.6.2
     # via
     #   -r requirements/app.in
     #   -r requirements/tests.in
+    #   flask
     #   sentry-sdk
 cachelib==0.9.0
     # via
@@ -81,7 +82,7 @@ filelock==3.12.0
     # via
     #   tox
     #   virtualenv
-flask==2.2.5
+flask==2.3.2
     # via
     #   -r requirements/app.in
     #   flask-caching
@@ -110,7 +111,7 @@ flask-rest-jsonapi==0.31.2
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
-flask-session==0.4.1
+flask-session==0.5.0
     # via -r requirements/app.in
 flask-sqlalchemy==3.0.3
     # via flask-migrate
@@ -190,7 +191,7 @@ pep517==0.13.0
     # via pip-tools
 pip-tools==6.5.1
     # via -r requirements/dev.in
-platformdirs==3.5.0
+platformdirs==3.5.1
     # via
     #   black
     #   tox
@@ -236,7 +237,7 @@ python-logstash-async==2.5.0
     # via -r requirements/app.in
 pyyaml==6.0
     # via -r requirements/app.in
-redis==4.5.4
+redis==4.5.5
     # via -r requirements/app.in
 requests==2.30.0
     # via
@@ -290,7 +291,7 @@ sphinxcontrib-qthelp==1.0.3
     # via sphinx
 sphinxcontrib-serializinghtml==1.1.5
     # via sphinx
-sqlalchemy==2.0.12
+sqlalchemy==2.0.13
     # via
     #   alembic
     #   flask-rest-jsonapi
@@ -299,7 +300,7 @@ sweetrpg-api-core==0.0.136
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects
-sweetrpg-db==0.0.113
+sweetrpg-db==0.0.114
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
@@ -338,7 +339,7 @@ urllib3==2.0.2
     #   sentry-sdk
 virtualenv==20.23.0
     # via tox
-werkzeug==2.3.3
+werkzeug==2.3.4
     # via flask
 wheel==0.40.0
     # via pip-tools

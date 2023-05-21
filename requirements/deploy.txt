@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements/deploy.in
 #
-alembic==1.10.4
+alembic==1.11.1
     # via flask-migrate
 analytics-python==1.4.post1
     # via -r requirements/app.in
@@ -93,7 +93,7 @@ jinja2==3.1.2
     # via flask
 kanka==0.1.2
     # via -r requirements/app.in
-limits==3.4.0
+limits==3.5.0
     # via python-logstash-async
 mako==1.2.4
     # via alembic
@@ -167,7 +167,7 @@ six==1.16.0
     #   analytics-python
     #   flask-rest-jsonapi
     #   python-dateutil
-sqlalchemy==2.0.13
+sqlalchemy==2.0.15
     # via
     #   alembic
     #   flask-rest-jsonapi
@@ -176,7 +176,7 @@ sweetrpg-api-core==0.0.140
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects
-sweetrpg-db==0.0.115
+sweetrpg-db==0.0.116
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core

@@ -8,16 +8,17 @@ Creates a Flask app instance and registers various services and middleware.
 # import analytics
 import os
 from logging.config import dictConfig
-
 from dotenv import load_dotenv, find_dotenv
 from flask import Flask
 from flask_migrate import Migrate
 from flask_session import Session
 from sentry_sdk.integrations.wsgi import SentryWsgiMiddleware
 from werkzeug.middleware.proxy_fix import ProxyFix
-
+from prometheus_flask_exporter import PrometheusMetrics
 from sweetrpg_library_api.application import constants
 from sweetrpg_library_api.application.cache import cache
+import sweetrpg_library_api
+
 
 ENV_FILE = find_dotenv()
 if ENV_FILE:
@@ -63,6 +64,10 @@ def create_app(app_name=constants.APPLICATION_NAME):
     app.config.from_object("sweetrpg_library_api.application.config.BaseConfig")
     # print(app.config)
     # env = DotEnv(app)
+
+    metrics = PrometheusMetrics(app)
+    # static information as metric
+    metrics.info('app_info', sweetrpg_library_api.__name__, version=sweetrpg_library_api.__version__, build=sweetrpg_library_api.__build__)
 
     app.logger.info("Setting up proxy fix...")
     app.wsgi_app = ProxyFix(app.wsgi_app)

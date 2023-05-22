@@ -12,12 +12,7 @@ export FLASK_ENV=development
 pushd src
 
 export $(cat ${scriptdir}/../src/configs/local/local.env | xargs)
-#export NEW_RELIC_CONFIG_FILE=${scriptdir}/../src/configs/local/newrelic.ini
 
-#python3 appserver.py
-gunicorn -w 1 --reload --log-level debug wsgi:app
-
-# $(pyenv which flask) init-db
-# $(pyenv which flask) run
+python3 appserver.py
 
 popd

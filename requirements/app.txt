@@ -192,7 +192,7 @@ sweetrpg-api-core==0.0.144
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects
-sweetrpg-db==0.0.117
+sweetrpg-db==0.0.118
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
@@ -207,7 +207,7 @@ sweetrpg-model-core==0.0.119
     #   sweetrpg-library-objects
 sweetrpg-web-core==0.0.268
     # via -r requirements/app.in
-typing-extensions==4.5.0
+typing-extensions==4.6.0
     # via
     #   alembic
     #   limits

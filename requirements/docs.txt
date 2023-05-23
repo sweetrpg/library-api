@@ -258,7 +258,7 @@ sweetrpg-api-core==0.0.144
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects
-sweetrpg-db==0.0.117
+sweetrpg-db==0.0.118
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
@@ -277,7 +277,7 @@ typer[all]==0.7.0
     # via rstcheck
 types-docutils==0.19.1.9
     # via rstcheck-core
-typing-extensions==4.5.0
+typing-extensions==4.6.0
     # via
     #   alembic
     #   limits

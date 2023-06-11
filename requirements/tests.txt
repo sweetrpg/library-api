@@ -59,7 +59,7 @@ email-validator==2.0.0.post2
     # via wtforms
 exceptiongroup==1.1.1
     # via pytest
-filelock==3.12.0
+filelock==3.12.1
     # via
     #   tox
     #   virtualenv
@@ -166,7 +166,7 @@ packaging==23.1
     #   pyproject-api
     #   pytest
     #   tox
-platformdirs==3.5.1
+platformdirs==3.5.3
     # via
     #   tox
     #   virtualenv
@@ -188,7 +188,7 @@ pymongo[srv]==4.0.2
     #   sweetrpg-model-core
 pyproject-api==1.5.1
     # via tox
-pytest==7.3.1
+pytest==7.3.2
     # via
     #   -r requirements/tests.in
     #   pytest-cov
@@ -229,7 +229,7 @@ six==1.16.0
     #   flask-cors
     #   flask-rest-jsonapi
     #   python-dateutil
-sqlalchemy==2.0.15
+sqlalchemy==2.0.16
     # via
     #   alembic
     #   flask-rest-jsonapi
@@ -238,7 +238,7 @@ sweetrpg-api-core==0.0.161
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects
-sweetrpg-db==0.0.125
+sweetrpg-db==0.0.126
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
@@ -259,7 +259,7 @@ tomli==2.0.1
     #   pyproject-api
     #   pytest
     #   tox
-tox==4.5.2
+tox==4.6.0
     # via -r requirements/tests.in
 typing-extensions==4.6.3
     # via
@@ -274,7 +274,7 @@ urllib3==1.26.16
     #   sentry-sdk
 virtualenv==20.23.0
     # via tox
-werkzeug==2.3.4
+werkzeug==2.3.6
     # via flask
 wrapt==1.15.0
     # via deprecated

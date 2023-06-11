@@ -78,7 +78,7 @@ email-validator==2.0.0.post2
     # via wtforms
 exceptiongroup==1.1.1
     # via pytest
-filelock==3.12.0
+filelock==3.12.1
     # via
     #   tox
     #   virtualenv
@@ -194,7 +194,7 @@ packaging==23.1
     #   pytest
     #   sphinx
     #   tox
-pallets-sphinx-themes==2.1.0
+pallets-sphinx-themes==2.1.1
     # via -r requirements/docs.in
 pathspec==0.11.1
     # via black
@@ -202,7 +202,7 @@ pep517==0.13.0
     # via pip-tools
 pip-tools==6.5.1
     # via -r requirements/dev.in
-platformdirs==3.5.1
+platformdirs==3.5.3
     # via
     #   black
     #   tox
@@ -215,7 +215,7 @@ prometheus-client==0.17.0
     # via prometheus-flask-exporter
 prometheus-flask-exporter==0.22.4
     # via -r requirements/app.in
-pydantic==1.10.8
+pydantic==1.10.9
     # via rstcheck-core
 pygments==2.15.1
     # via
@@ -232,7 +232,7 @@ pymongo[srv]==4.0.2
     #   sweetrpg-model-core
 pyproject-api==1.5.1
     # via tox
-pytest==7.3.1
+pytest==7.3.2
     # via
     #   -r requirements/tests.in
     #   pytest-cov
@@ -309,7 +309,7 @@ sphinxcontrib-qthelp==1.0.3
     # via sphinx
 sphinxcontrib-serializinghtml==1.1.5
     # via sphinx
-sqlalchemy==2.0.15
+sqlalchemy==2.0.16
     # via
     #   alembic
     #   flask-rest-jsonapi
@@ -318,7 +318,7 @@ sweetrpg-api-core==0.0.161
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects
-sweetrpg-db==0.0.125
+sweetrpg-db==0.0.126
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
@@ -341,7 +341,7 @@ tomli==2.0.1
     #   pyproject-api
     #   pytest
     #   tox
-tox==4.5.2
+tox==4.6.0
     # via -r requirements/tests.in
 typer[all]==0.7.0
     # via rstcheck
@@ -361,7 +361,7 @@ urllib3==1.26.16
     #   sentry-sdk
 virtualenv==20.23.0
     # via tox
-werkzeug==2.3.4
+werkzeug==2.3.6
     # via flask
 wheel==0.40.0
     # via pip-tools

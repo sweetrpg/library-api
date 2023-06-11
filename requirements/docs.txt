@@ -159,13 +159,13 @@ packaging==23.1
     #   marshmallow
     #   pallets-sphinx-themes
     #   sphinx
-pallets-sphinx-themes==2.1.0
+pallets-sphinx-themes==2.1.1
     # via -r requirements/docs.in
 prometheus-client==0.17.0
     # via prometheus-flask-exporter
 prometheus-flask-exporter==0.22.4
     # via -r requirements/app.in
-pydantic==1.10.8
+pydantic==1.10.9
     # via rstcheck-core
 pygments==2.15.1
     # via
@@ -249,7 +249,7 @@ sphinxcontrib-qthelp==1.0.3
     # via sphinx
 sphinxcontrib-serializinghtml==1.1.5
     # via sphinx
-sqlalchemy==2.0.15
+sqlalchemy==2.0.16
     # via
     #   alembic
     #   flask-rest-jsonapi
@@ -258,7 +258,7 @@ sweetrpg-api-core==0.0.161
     # via
     #   -r requirements/app.in
     #   sweetrpg-library-objects
-sweetrpg-db==0.0.125
+sweetrpg-db==0.0.126
     # via
     #   -r requirements/app.in
     #   sweetrpg-api-core
@@ -288,7 +288,7 @@ urllib3==1.26.16
     #   -r requirements/app.in
     #   requests
     #   sentry-sdk
-werkzeug==2.3.4
+werkzeug==2.3.6
     # via flask
 wrapt==1.15.0
     # via deprecated

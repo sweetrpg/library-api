@@ -202,7 +202,7 @@ pep517==0.13.0
     # via pip-tools
 pip-tools==6.5.1
     # via -r requirements/dev.in
-platformdirs==3.5.3
+platformdirs==3.6.0
     # via
     #   black
     #   tox
@@ -331,7 +331,7 @@ sweetrpg-model-core==0.0.127
     #   sweetrpg-api-core
     #   sweetrpg-db
     #   sweetrpg-library-objects
-sweetrpg-web-core==0.0.307
+sweetrpg-web-core==0.0.308
     # via -r requirements/app.in
 tomli==2.0.1
     # via

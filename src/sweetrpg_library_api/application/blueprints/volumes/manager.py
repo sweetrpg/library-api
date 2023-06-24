@@ -12,6 +12,24 @@ from sweetrpg_library_api.application.blueprints.setup import model_info
 
 
 class VolumeList(ResourceList):
+    """
+    Get a list of volumes
+    ---
+    tags:
+        - volumes
+    definitions:
+        - schema:
+            id: Volume
+            properties:
+            name:
+                type: string
+                description: the group's name
+    parameters:
+
+    responses:
+        200:
+          description: List of volumes returned
+    """
     disable_oauth = True
     schema = VolumeAPISchema
     data_layer = {"class": APIData, "type": "volume", "model": Volume, "db": db, "model_info": model_info}

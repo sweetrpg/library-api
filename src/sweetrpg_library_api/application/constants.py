@@ -29,6 +29,9 @@ CURRENT_USER_ID = "current_user_id"
 
 SEGMENT_WRITE_KEY = "SEGMENT_WRITE_KEY"
 
+SWAGGER_URL = '/swagger-ui'
+API_URL = '/swagger'
+
 # Configuration
 DEBUG = "DEBUG"
 PORT = "PORT"

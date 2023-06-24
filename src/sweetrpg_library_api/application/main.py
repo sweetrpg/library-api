@@ -18,6 +18,9 @@ from prometheus_flask_exporter import PrometheusMetrics
 from sweetrpg_library_api.application import constants
 from sweetrpg_library_api.application.cache import cache
 import sweetrpg_library_api
+from flask_swagger import swagger as Swagger
+
+# from flask_swagger_ui import get_swaggerui_blueprint
 
 
 ENV_FILE = find_dotenv()
@@ -30,23 +33,25 @@ def create_app(app_name=constants.APPLICATION_NAME):
     print("Configuring logging...")
     handlers = ["wsgi"]
     formatters = {
-                "default": {
-                    "format": "[%(asctime)s] %(levelname)s %(module)s/%(funcName)s: %(message)s",
-                }
-            }
+        "default": {
+            "format": "[%(asctime)s] %(levelname)s %(module)s/%(funcName)s: %(message)s",
+        }
+    }
     handler_configs = {"wsgi": {"class": "logging.StreamHandler", "stream": "ext://flask.logging.wsgi_errors_stream", "formatter": "default"}}
     logstash_host = os.environ.get(constants.LOGSTASH_HOST)
     if logstash_host:
         handlers.append("logstash")
-        handler_configs["logstash"] = {"class": "logstash_async.handler.AsynchronousLogstashHandler", "formatter": "logstash",
-                                       "host": logstash_host,
-                                       "port": int(os.environ[constants.LOGSTASH_PORT]),
-                                       "database_path": "/tmp/sweetrpg_library_api_flask_logstash.db",
-                                       "transport": "logstash_async.transport.BeatsTransport",
-                                       }
+        handler_configs["logstash"] = {
+            "class": "logstash_async.handler.AsynchronousLogstashHandler",
+            "formatter": "logstash",
+            "host": logstash_host,
+            "port": int(os.environ[constants.LOGSTASH_PORT]),
+            "database_path": "/tmp/sweetrpg_library_api_flask_logstash.db",
+            "transport": "logstash_async.transport.BeatsTransport",
+        }
         formatters["logstash"] = {
-                   "class": "logstash_async.formatter.FlaskLogstashFormatter",
-                   "metadata": {"beat": "sweetrpg-library-api"},
+            "class": "logstash_async.formatter.FlaskLogstashFormatter",
+            "metadata": {"beat": "sweetrpg-library-api"},
         }
     logging_config = {
         "version": 1,
@@ -67,7 +72,9 @@ def create_app(app_name=constants.APPLICATION_NAME):
 
     metrics = PrometheusMetrics(app)
     # static information as metric
-    metrics.info('app_info', sweetrpg_library_api.__name__, version=sweetrpg_library_api.__version__, build=sweetrpg_library_api.__build__)
+    metrics.info("app_info", sweetrpg_library_api.__name__, version=sweetrpg_library_api.__version__, build=sweetrpg_library_api.__build__)
+
+    swagger = Swagger(app)
 
     app.logger.info("Setting up proxy fix...")
     app.wsgi_app = ProxyFix(app.wsgi_app)
@@ -93,6 +100,7 @@ def create_app(app_name=constants.APPLICATION_NAME):
 
     from sweetrpg_library_api.application.blueprints import api
     from sweetrpg_library_api.application.auth import oauth
+
     # from authlib.integrations.flask_client import OAuth
     api.init_app(app)
     oauth.init_app(app)
@@ -117,29 +125,48 @@ def create_app(app_name=constants.APPLICATION_NAME):
     # app.register_blueprint(volumes_blueprint, url_prefix="/volumes")
 
     from sweetrpg_library_api.application.blueprints.licenses import setup_routes as setup_license_routes
+
     setup_license_routes(app)
     from sweetrpg_library_api.application.blueprints.volumes import setup_routes as setup_volume_routes
+
     setup_volume_routes(app)
     from sweetrpg_library_api.application.blueprints.contributions import setup_routes as setup_contrib_routes
+
     setup_contrib_routes(app)
     from sweetrpg_library_api.application.blueprints.persons import setup_routes as setup_person_routes
+
     setup_person_routes(app)
     from sweetrpg_library_api.application.blueprints.publishers import setup_routes as setup_publisher_routes
+
     setup_publisher_routes(app)
     from sweetrpg_library_api.application.blueprints.reviews import setup_routes as setup_review_routes
+
     setup_review_routes(app)
     from sweetrpg_library_api.application.blueprints.studios import setup_routes as setup_studio_routes
+
     setup_studio_routes(app)
     from sweetrpg_library_api.application.blueprints.systems import setup_routes as setup_system_routes
+
     setup_system_routes(app)
 
     from sweetrpg_api_core.blueprints.health import blueprint as health_blueprint
     from sweetrpg_library_api.application.utils.health import register_service_checks
+
     register_service_checks()
     app.register_blueprint(health_blueprint, url_prefix="/health")
 
+    # swaggerui_blueprint = get_swaggerui_blueprint(
+    #     constants.SWAGGER_URL,
+    #     constants.API_URL,
+    #     config={
+    #         "app_name": "SweetRPG Library API",
+    #     },
+    # )
+    # app.register_blueprint(swaggerui_blueprint, url_prefix=constants.SWAGGER_URL)
+
     app.logger.info("Setting up database...")
     from sweetrpg_library_api.application.db import db
+
     # print(db)
     db.init_app(app)
     app.logger.debug("Database: %s", db)

@@ -13,8 +13,6 @@ resources:
     # - destination-rules.yaml
     - secrets.yaml
     # - virtual-service.yaml
-patchesStrategicMerge:
-    - replicas.yaml
 
 commonLabels:
     app: api

@@ -18,7 +18,7 @@ setup(
         "Flask-Swagger~=0.2",
         "Flask~=2.0",
         "hiredis~=2.2",
-        "kanka",
+        "kanka~=0.1",
         "prometheus-flask-exporter~=0.22",
         "PyMongo[srv]==4.0.2",
         "python-dateutil~=2.8",

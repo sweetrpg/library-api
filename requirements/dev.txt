@@ -22,7 +22,7 @@ babel==2.14.0
     # via sphinx
 backoff==1.10.0
     # via analytics-python
-black==23.12.1
+black==24.2.0
     # via -r requirements/dev.in
 blinker==1.7.0
     # via
@@ -287,7 +287,9 @@ rstcheck==6.2.0
 rstcheck-core==1.2.0
     # via rstcheck
 sentry-sdk[flask]==1.41.0
-    # via -r requirements/app.in
+    # via
+    #   -r requirements/app.in
+    #   sentry-sdk
 shellingham==1.5.4
     # via typer
 six==1.16.0
@@ -361,7 +363,9 @@ tomli==2.0.1
 tox==4.14.1
     # via -r requirements/tests.in
 typer[all]==0.9.0
-    # via rstcheck
+    # via
+    #   rstcheck
+    #   typer
 typing-extensions==4.10.0
     # via
     #   alembic

@@ -206,7 +206,7 @@ pallets-sphinx-themes==2.1.1
     # via -r requirements/docs.in
 pathspec==0.12.1
     # via black
-pip-tools==6.14.0
+pip-tools==7.4.1
     # via -r requirements/dev.in
 platformdirs==4.2.0
     # via
@@ -240,7 +240,9 @@ pymongo[srv]==4.6.2
 pyproject-api==1.6.1
     # via tox
 pyproject-hooks==1.0.0
-    # via build
+    # via
+    #   build
+    #   pip-tools
 pytest==7.4.4
     # via
     #   -r requirements/tests.in

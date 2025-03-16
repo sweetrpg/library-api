@@ -74,7 +74,7 @@ docutils==0.21.2
     #   sphinx-tabs
 email-validator==2.2.0
     # via wtforms
-filelock==3.17.0
+filelock==3.18.0
     # via
     #   tox
     #   virtualenv
@@ -214,7 +214,7 @@ pluggy==1.5.0
     #   tox
 prometheus-client==0.21.1
     # via prometheus-flask-exporter
-prometheus-flask-exporter==0.23.1
+prometheus-flask-exporter==0.23.2
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
 pydantic==2.10.6
     # via rstcheck-core
@@ -323,7 +323,7 @@ sphinxcontrib-qthelp==2.0.0
     # via sphinx
 sphinxcontrib-serializinghtml==2.0.0
     # via sphinx
-sqlalchemy==2.0.38
+sqlalchemy==2.0.39
     # via
     #   alembic
     #   flask-rest-jsonapi

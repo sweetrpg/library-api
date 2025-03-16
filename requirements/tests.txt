@@ -55,7 +55,7 @@ dnspython==2.7.0
     #   sweetrpg-db
 email-validator==2.2.0
     # via wtforms
-filelock==3.17.0
+filelock==3.18.0
     # via
     #   tox
     #   virtualenv
@@ -174,7 +174,7 @@ pluggy==1.5.0
     #   tox
 prometheus-client==0.21.1
     # via prometheus-flask-exporter
-prometheus-flask-exporter==0.23.1
+prometheus-flask-exporter==0.23.2
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
 pymongo[srv]==3.13.0
     # via
@@ -229,7 +229,7 @@ six==1.17.0
     #   flask-rest-jsonapi
     #   flask-restful
     #   python-dateutil
-sqlalchemy==2.0.38
+sqlalchemy==2.0.39
     # via
     #   alembic
     #   flask-rest-jsonapi

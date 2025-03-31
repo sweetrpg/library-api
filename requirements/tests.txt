@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements/tests.in
 #
-alembic==1.15.1
+alembic==1.15.2
     # via flask-migrate
 analytics-python==1.4.post1
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
@@ -39,7 +39,7 @@ click==8.1.8
     # via flask
 colorama==0.4.6
     # via tox
-coverage[toml]==7.7.1
+coverage[toml]==7.8.0
     # via
     #   coverage-badge
     #   pytest-cov
@@ -201,13 +201,13 @@ python-dateutil==2.9.0.post0
     # via
     #   -r /home/runner/work/library-api/library-api/requirements/app.in
     #   analytics-python
-python-dotenv==1.0.1
+python-dotenv==1.1.0
     # via
     #   -r /home/runner/work/library-api/library-api/requirements/app.in
     #   -r requirements/tests.in
 python-editor==1.0.4
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
-pytz==2025.1
+pytz==2025.2
     # via flask-restful
 pyyaml==6.0.2
     # via
@@ -221,7 +221,7 @@ requests==2.32.3
     #   requests-oauthlib
 requests-oauthlib==1.1.0
     # via flask-oauthlib
-sentry-sdk[flask]==2.24.0
+sentry-sdk[flask]==2.24.1
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
 six==1.17.0
     # via
@@ -229,7 +229,7 @@ six==1.17.0
     #   flask-rest-jsonapi
     #   flask-restful
     #   python-dateutil
-sqlalchemy==2.0.39
+sqlalchemy==2.0.40
     # via
     #   alembic
     #   flask-rest-jsonapi
@@ -251,9 +251,9 @@ sweetrpg-model-core==0.0.155
     #   sweetrpg-api-core
     #   sweetrpg-db
     #   sweetrpg-library-objects
-tox==4.24.2
+tox==4.25.0
     # via -r requirements/tests.in
-typing-extensions==4.12.2
+typing-extensions==4.13.0
     # via
     #   alembic
     #   sqlalchemy

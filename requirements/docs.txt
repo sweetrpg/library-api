@@ -6,7 +6,7 @@
 #
 alabaster==1.0.0
     # via sphinx
-alembic==1.15.1
+alembic==1.15.2
     # via flask-migrate
 analytics-python==1.4.post1
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
@@ -167,9 +167,9 @@ prometheus-client==0.21.1
     # via prometheus-flask-exporter
 prometheus-flask-exporter==0.23.2
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
-pydantic==2.10.6
+pydantic==2.11.1
     # via rstcheck-core
-pydantic-core==2.27.2
+pydantic-core==2.33.0
     # via pydantic
 pygments==2.19.1
     # via
@@ -187,11 +187,11 @@ python-dateutil==2.9.0.post0
     # via
     #   -r /home/runner/work/library-api/library-api/requirements/app.in
     #   analytics-python
-python-dotenv==1.0.1
+python-dotenv==1.1.0
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
 python-editor==1.0.4
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
-pytz==2025.1
+pytz==2025.2
     # via flask-restful
 pyyaml==6.0.2
     # via
@@ -206,7 +206,7 @@ requests==2.32.3
     #   sphinx
 requests-oauthlib==1.1.0
     # via flask-oauthlib
-rich==13.9.4
+rich==14.0.0
     # via typer
 roman-numerals-py==3.1.0
     # via sphinx
@@ -214,7 +214,7 @@ rstcheck==6.2.4
     # via -r requirements/docs.in
 rstcheck-core==1.2.1
     # via rstcheck
-sentry-sdk[flask]==2.24.0
+sentry-sdk[flask]==2.24.1
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
 shellingham==1.5.4
     # via typer
@@ -254,7 +254,7 @@ sphinxcontrib-qthelp==2.0.0
     # via sphinx
 sphinxcontrib-serializinghtml==2.0.0
     # via sphinx
-sqlalchemy==2.0.39
+sqlalchemy==2.0.40
     # via
     #   alembic
     #   flask-rest-jsonapi
@@ -278,13 +278,16 @@ sweetrpg-model-core==0.0.155
     #   sweetrpg-library-objects
 typer==0.15.2
     # via rstcheck
-typing-extensions==4.12.2
+typing-extensions==4.13.0
     # via
     #   alembic
     #   pydantic
     #   pydantic-core
     #   sqlalchemy
     #   typer
+    #   typing-inspection
+typing-inspection==0.4.0
+    # via pydantic
 urllib3==2.3.0
     # via
     #   -r /home/runner/work/library-api/library-api/requirements/app.in

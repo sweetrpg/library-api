@@ -10,7 +10,7 @@ alembic==1.15.2
     # via flask-migrate
 analytics-python==1.4.post1
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
-aniso8601==10.0.0
+aniso8601==10.0.1
     # via flask-restful
 annotated-types==0.7.0
     # via pydantic

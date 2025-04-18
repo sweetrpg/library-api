@@ -8,7 +8,7 @@ alembic==1.15.2
     # via flask-migrate
 analytics-python==1.4.post1
     # via -r requirements/app.in
-aniso8601==10.0.0
+aniso8601==10.0.1
     # via flask-restful
 backoff==1.10.0
     # via analytics-python

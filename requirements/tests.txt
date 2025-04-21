@@ -158,7 +158,7 @@ oauthlib==2.1.0
     # via
     #   flask-oauthlib
     #   requests-oauthlib
-packaging==24.2
+packaging==25.0
     # via
     #   marshmallow
     #   pyproject-api

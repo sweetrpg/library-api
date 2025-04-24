@@ -221,7 +221,7 @@ requests==2.32.3
     #   requests-oauthlib
 requests-oauthlib==1.1.0
     # via flask-oauthlib
-sentry-sdk[flask]==2.26.1
+sentry-sdk[flask]==2.27.0
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
 six==1.17.0
     # via

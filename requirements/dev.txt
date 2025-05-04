@@ -43,7 +43,7 @@ certifi==2025.4.26
     #   sentry-sdk
 chardet==5.2.0
     # via tox
-charset-normalizer==3.4.1
+charset-normalizer==3.4.2
     # via requests
 click==8.1.8
     # via
@@ -216,9 +216,9 @@ prometheus-client==0.21.1
     # via prometheus-flask-exporter
 prometheus-flask-exporter==0.23.2
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
-pydantic==2.11.3
+pydantic==2.11.4
     # via rstcheck-core
-pydantic-core==2.33.1
+pydantic-core==2.33.2
     # via pydantic
 pygments==2.19.1
     # via
@@ -347,7 +347,7 @@ sweetrpg-model-core==0.0.155
     #   sweetrpg-library-objects
 tox==4.25.0
     # via -r /home/runner/work/library-api/library-api/requirements/tests.in
-typer==0.15.2
+typer==0.15.3
     # via rstcheck
 typing-extensions==4.13.2
     # via

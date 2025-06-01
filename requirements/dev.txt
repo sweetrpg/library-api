@@ -45,7 +45,7 @@ chardet==5.2.0
     # via tox
 charset-normalizer==3.4.2
     # via requests
-click==8.1.8
+click==8.2.1
     # via
     #   black
     #   flask
@@ -348,7 +348,7 @@ sweetrpg-model-core==0.0.155
     #   sweetrpg-library-objects
 tox==4.26.0
     # via -r /home/runner/work/library-api/library-api/requirements/tests.in
-typer==0.15.4
+typer==0.16.0
     # via rstcheck
 typing-extensions==4.13.2
     # via

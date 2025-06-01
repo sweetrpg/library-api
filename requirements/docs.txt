@@ -34,7 +34,7 @@ certifi==2025.4.26
     #   sentry-sdk
 charset-normalizer==3.4.2
     # via requests
-click==8.1.8
+click==8.2.1
     # via
     #   flask
     #   typer
@@ -277,7 +277,7 @@ sweetrpg-model-core==0.0.155
     #   sweetrpg-api-core
     #   sweetrpg-db
     #   sweetrpg-library-objects
-typer==0.15.4
+typer==0.16.0
     # via rstcheck
 typing-extensions==4.13.2
     # via

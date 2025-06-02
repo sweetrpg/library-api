@@ -280,9 +280,9 @@ rich==14.0.0
     # via typer
 roman-numerals-py==3.1.0
     # via sphinx
-rstcheck==6.2.4
+rstcheck==6.2.5
     # via -r /home/runner/work/library-api/library-api/requirements/docs.in
-rstcheck-core==1.2.1
+rstcheck-core==1.2.2
     # via rstcheck
 sentry-sdk[flask]==2.29.1
     # via -r /home/runner/work/library-api/library-api/requirements/app.in

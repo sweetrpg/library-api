@@ -107,7 +107,7 @@ flask-views==0.2.1
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
 flask-wtf==1.2.2
     # via flask-mongoengine
-greenlet==3.2.2
+greenlet==3.2.3
     # via sqlalchemy
 hiredis==3.2.1
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
@@ -173,7 +173,7 @@ pluggy==1.6.0
     # via
     #   pytest
     #   tox
-prometheus-client==0.22.0
+prometheus-client==0.22.1
     # via prometheus-flask-exporter
 prometheus-flask-exporter==0.23.2
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
@@ -254,7 +254,7 @@ sweetrpg-model-core==0.0.155
     #   sweetrpg-library-objects
 tox==4.26.0
     # via -r requirements/tests.in
-typing-extensions==4.13.2
+typing-extensions==4.14.0
     # via
     #   alembic
     #   sqlalchemy

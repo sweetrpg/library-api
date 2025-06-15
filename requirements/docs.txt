@@ -168,7 +168,7 @@ prometheus-client==0.22.1
     # via prometheus-flask-exporter
 prometheus-flask-exporter==0.23.2
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
-pydantic==2.11.5
+pydantic==2.11.7
     # via rstcheck-core
 pydantic-core==2.33.2
     # via pydantic
@@ -198,7 +198,7 @@ pyyaml==6.0.2
     # via
     #   -r /home/runner/work/library-api/library-api/requirements/app.in
     #   flask-swagger
-requests==2.32.3
+requests==2.32.4
     # via
     #   -r /home/runner/work/library-api/library-api/requirements/app.in
     #   analytics-python
@@ -215,7 +215,7 @@ rstcheck==6.2.5
     # via -r requirements/docs.in
 rstcheck-core==1.2.2
     # via rstcheck
-sentry-sdk[flask]==2.29.1
+sentry-sdk[flask]==2.30.0
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
 shellingham==1.5.4
     # via typer

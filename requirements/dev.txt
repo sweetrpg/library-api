@@ -37,7 +37,7 @@ cachelib==0.13.0
     #   flask-session
 cachetools==6.0.0
     # via tox
-certifi==2025.4.26
+certifi==2025.6.15
     # via
     #   requests
     #   sentry-sdk

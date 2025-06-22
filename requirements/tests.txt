@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements/tests.in
 #
-alembic==1.16.1
+alembic==1.16.2
     # via flask-migrate
 analytics-python==1.4.post1
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
@@ -25,7 +25,7 @@ cachelib==0.13.0
     #   flask-caching
     #   flask-oauthlib
     #   flask-session
-cachetools==6.0.0
+cachetools==6.1.0
     # via tox
 certifi==2025.6.15
     # via
@@ -252,13 +252,13 @@ sweetrpg-model-core==0.0.155
     #   sweetrpg-api-core
     #   sweetrpg-db
     #   sweetrpg-library-objects
-tox==4.26.0
+tox==4.27.0
     # via -r requirements/tests.in
 typing-extensions==4.14.0
     # via
     #   alembic
     #   sqlalchemy
-urllib3==2.4.0
+urllib3==2.5.0
     # via
     #   -r /home/runner/work/library-api/library-api/requirements/app.in
     #   requests

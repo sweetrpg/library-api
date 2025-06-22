@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements/deploy.in
 #
-alembic==1.16.1
+alembic==1.16.2
     # via flask-migrate
 analytics-python==1.4.post1
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
@@ -207,7 +207,7 @@ typing-extensions==4.14.0
     # via
     #   alembic
     #   sqlalchemy
-urllib3==2.4.0
+urllib3==2.5.0
     # via
     #   -r /home/runner/work/library-api/library-api/requirements/app.in
     #   requests

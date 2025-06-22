@@ -6,7 +6,7 @@
 #
 alabaster==1.0.0
     # via sphinx
-alembic==1.16.1
+alembic==1.16.2
     # via flask-migrate
 analytics-python==1.4.post1
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
@@ -172,7 +172,7 @@ pydantic==2.11.7
     # via rstcheck-core
 pydantic-core==2.33.2
     # via pydantic
-pygments==2.19.1
+pygments==2.19.2
     # via
     #   rich
     #   sphinx
@@ -289,7 +289,7 @@ typing-extensions==4.14.0
     #   typing-inspection
 typing-inspection==0.4.1
     # via pydantic
-urllib3==2.4.0
+urllib3==2.5.0
     # via
     #   -r /home/runner/work/library-api/library-api/requirements/app.in
     #   requests

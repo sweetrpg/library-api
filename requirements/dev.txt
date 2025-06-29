@@ -255,7 +255,7 @@ python-dateutil==2.9.0.post0
     # via
     #   -r /home/runner/work/library-api/library-api/requirements/app.in
     #   analytics-python
-python-dotenv==1.1.0
+python-dotenv==1.1.1
     # via
     #   -r /home/runner/work/library-api/library-api/requirements/app.in
     #   -r /home/runner/work/library-api/library-api/requirements/tests.in
@@ -284,7 +284,7 @@ rstcheck==6.2.5
     # via -r /home/runner/work/library-api/library-api/requirements/docs.in
 rstcheck-core==1.2.2
     # via rstcheck
-sentry-sdk[flask]==2.30.0
+sentry-sdk[flask]==2.32.0
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
 shellingham==1.5.4
     # via typer

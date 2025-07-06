@@ -10,7 +10,7 @@ analytics-python==1.4.post1
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
 aniso8601==10.0.1
     # via flask-restful
-asgiref==3.8.1
+asgiref==3.9.0
     # via -r requirements/tests.in
 backoff==1.10.0
     # via analytics-python
@@ -39,7 +39,7 @@ click==8.2.1
     # via flask
 colorama==0.4.6
     # via tox
-coverage[toml]==7.9.1
+coverage[toml]==7.9.2
     # via
     #   coverage-badge
     #   pytest-cov
@@ -254,7 +254,7 @@ sweetrpg-model-core==0.0.155
     #   sweetrpg-library-objects
 tox==4.27.0
     # via -r requirements/tests.in
-typing-extensions==4.14.0
+typing-extensions==4.14.1
     # via
     #   alembic
     #   sqlalchemy

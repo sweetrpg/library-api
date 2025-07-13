@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements/deploy.in
 #
-alembic==1.16.2
+alembic==1.16.4
     # via flask-migrate
 analytics-python==1.4.post1
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
@@ -22,7 +22,7 @@ cachelib==0.13.0
     #   flask-caching
     #   flask-oauthlib
     #   flask-session
-certifi==2025.6.15
+certifi==2025.7.9
     # via
     #   requests
     #   sentry-sdk

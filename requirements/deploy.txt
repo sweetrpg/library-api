@@ -22,7 +22,7 @@ cachelib==0.13.0
     #   flask-caching
     #   flask-oauthlib
     #   flask-session
-certifi==2025.7.9
+certifi==2025.7.14
     # via
     #   requests
     #   sentry-sdk
@@ -173,7 +173,7 @@ requests==2.32.4
     #   requests-oauthlib
 requests-oauthlib==1.1.0
     # via flask-oauthlib
-sentry-sdk[flask]==2.32.0
+sentry-sdk[flask]==2.33.0
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
 six==1.17.0
     # via

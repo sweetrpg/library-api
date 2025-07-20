@@ -37,7 +37,7 @@ cachelib==0.13.0
     #   flask-session
 cachetools==6.1.0
     # via tox
-certifi==2025.7.9
+certifi==2025.7.14
     # via
     #   requests
     #   sentry-sdk
@@ -59,7 +59,7 @@ coverage[toml]==7.9.2
     #   pytest-cov
 coverage-badge==1.1.2
     # via -r /home/runner/work/library-api/library-api/requirements/tests.in
-distlib==0.3.9
+distlib==0.4.0
     # via virtualenv
 dnspython==2.7.0
     # via
@@ -284,7 +284,7 @@ rstcheck==6.2.5
     # via -r /home/runner/work/library-api/library-api/requirements/docs.in
 rstcheck-core==1.2.2
     # via rstcheck
-sentry-sdk[flask]==2.32.0
+sentry-sdk[flask]==2.33.0
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
 shellingham==1.5.4
     # via typer

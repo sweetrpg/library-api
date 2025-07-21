@@ -252,7 +252,7 @@ sweetrpg-model-core==0.0.155
     #   sweetrpg-api-core
     #   sweetrpg-db
     #   sweetrpg-library-objects
-tox==4.27.0
+tox==4.28.0
     # via -r requirements/tests.in
 typing-extensions==4.14.1
     # via

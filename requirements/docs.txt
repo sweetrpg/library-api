@@ -207,7 +207,7 @@ requests==2.32.4
     #   sphinx
 requests-oauthlib==1.1.0
     # via flask-oauthlib
-rich==14.0.0
+rich==14.1.0
     # via typer
 roman-numerals-py==3.1.0
     # via sphinx
@@ -215,7 +215,7 @@ rstcheck==6.2.5
     # via -r requirements/docs.in
 rstcheck-core==1.2.2
     # via rstcheck
-sentry-sdk[flask]==2.33.0
+sentry-sdk[flask]==2.33.2
     # via -r /home/runner/work/library-api/library-api/requirements/app.in
 shellingham==1.5.4
     # via typer

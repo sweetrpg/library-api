@@ -9,7 +9,7 @@ alabaster==1.0.0
 alembic==1.16.4
     # via flask-migrate
 analytics-python==1.4.post1
-    # via -r /home/runner/work/library-api/library-api/requirements/app.in
+    # via -r requirements/app.in
 aniso8601==10.0.1
     # via flask-restful
 annotated-types==0.7.0
@@ -20,7 +20,7 @@ backoff==1.10.0
     # via analytics-python
 blinker==1.9.0
     # via
-    #   -r /home/runner/work/library-api/library-api/requirements/app.in
+    #   -r requirements/app.in
     #   flask
     #   sentry-sdk
 cachelib==0.13.0
@@ -40,7 +40,7 @@ click==8.2.1
     #   typer
 dnspython==2.7.0
     # via
-    #   -r /home/runner/work/library-api/library-api/requirements/app.in
+    #   -r requirements/app.in
     #   email-validator
     #   pymongo
     #   sweetrpg-db
@@ -53,7 +53,7 @@ email-validator==2.2.0
     # via wtforms
 flask==3.1.1
     # via
-    #   -r /home/runner/work/library-api/library-api/requirements/app.in
+    #   -r requirements/app.in
     #   flask-caching
     #   flask-cors
     #   flask-dotenv
@@ -72,37 +72,37 @@ flask==3.1.1
     #   sweetrpg-api-core
     #   sweetrpg-library-objects
 flask-caching==2.3.1
-    # via -r /home/runner/work/library-api/library-api/requirements/app.in
+    # via -r requirements/app.in
 flask-cors==5.0.1
-    # via -r /home/runner/work/library-api/library-api/requirements/app.in
+    # via -r requirements/app.in
 flask-dotenv==0.1.2
-    # via -r /home/runner/work/library-api/library-api/requirements/app.in
+    # via -r requirements/app.in
 flask-migrate==4.1.0
-    # via -r /home/runner/work/library-api/library-api/requirements/app.in
+    # via -r requirements/app.in
 flask-mongoengine==1.0.0
-    # via -r /home/runner/work/library-api/library-api/requirements/app.in
+    # via -r requirements/app.in
 flask-oauthlib==0.9.6
-    # via -r /home/runner/work/library-api/library-api/requirements/app.in
+    # via -r requirements/app.in
 flask-rest-jsonapi==0.31.2
     # via
-    #   -r /home/runner/work/library-api/library-api/requirements/app.in
+    #   -r requirements/app.in
     #   sweetrpg-api-core
 flask-restful==0.3.10
-    # via -r /home/runner/work/library-api/library-api/requirements/app.in
+    # via -r requirements/app.in
 flask-session==0.8.0
-    # via -r /home/runner/work/library-api/library-api/requirements/app.in
+    # via -r requirements/app.in
 flask-sqlalchemy==3.1.1
     # via flask-migrate
 flask-swagger==0.2.14
-    # via -r /home/runner/work/library-api/library-api/requirements/app.in
+    # via -r requirements/app.in
 flask-views==0.2.1
-    # via -r /home/runner/work/library-api/library-api/requirements/app.in
+    # via -r requirements/app.in
 flask-wtf==1.2.2
     # via flask-mongoengine
 greenlet==3.2.3
     # via sqlalchemy
 hiredis==3.2.1
-    # via -r /home/runner/work/library-api/library-api/requirements/app.in
+    # via -r requirements/app.in
 idna==3.10
     # via
     #   email-validator
@@ -118,7 +118,7 @@ jinja2==3.1.6
     #   flask
     #   sphinx
 kanka==0.1.2
-    # via -r /home/runner/work/library-api/library-api/requirements/app.in
+    # via -r requirements/app.in
 mako==1.3.10
     # via alembic
 markdown-it-py==3.0.0
@@ -167,7 +167,7 @@ pallets-sphinx-themes==2.3.0
 prometheus-client==0.22.1
     # via prometheus-flask-exporter
 prometheus-flask-exporter==0.23.2
-    # via -r /home/runner/work/library-api/library-api/requirements/app.in
+    # via -r requirements/app.in
 pydantic==2.11.7
     # via rstcheck-core
 pydantic-core==2.33.2
@@ -179,28 +179,28 @@ pygments==2.19.2
     #   sphinx-tabs
 pymongo[srv]==3.13.0
     # via
-    #   -r /home/runner/work/library-api/library-api/requirements/app.in
+    #   -r requirements/app.in
     #   mongoengine
     #   pymongo
     #   sweetrpg-db
     #   sweetrpg-model-core
 python-dateutil==2.9.0.post0
     # via
-    #   -r /home/runner/work/library-api/library-api/requirements/app.in
+    #   -r requirements/app.in
     #   analytics-python
 python-dotenv==1.1.1
-    # via -r /home/runner/work/library-api/library-api/requirements/app.in
+    # via -r requirements/app.in
 python-editor==1.0.4
-    # via -r /home/runner/work/library-api/library-api/requirements/app.in
+    # via -r requirements/app.in
 pytz==2025.2
     # via flask-restful
 pyyaml==6.0.2
     # via
-    #   -r /home/runner/work/library-api/library-api/requirements/app.in
+    #   -r requirements/app.in
     #   flask-swagger
 requests==2.32.4
     # via
-    #   -r /home/runner/work/library-api/library-api/requirements/app.in
+    #   -r requirements/app.in
     #   analytics-python
     #   kanka
     #   requests-oauthlib
@@ -215,8 +215,8 @@ rstcheck==6.2.5
     # via -r requirements/docs.in
 rstcheck-core==1.2.2
     # via rstcheck
-sentry-sdk[flask]==2.33.2
-    # via -r /home/runner/work/library-api/library-api/requirements/app.in
+sentry-sdk[flask]==2.34.1
+    # via -r requirements/app.in
 shellingham==1.5.4
     # via typer
 six==1.17.0
@@ -255,25 +255,25 @@ sphinxcontrib-qthelp==2.0.0
     # via sphinx
 sphinxcontrib-serializinghtml==2.0.0
     # via sphinx
-sqlalchemy==2.0.41
+sqlalchemy==2.0.42
     # via
     #   alembic
     #   flask-rest-jsonapi
     #   flask-sqlalchemy
 sweetrpg-api-core==0.0.342
     # via
-    #   -r /home/runner/work/library-api/library-api/requirements/app.in
+    #   -r requirements/app.in
     #   sweetrpg-library-objects
 sweetrpg-db==0.0.145
     # via
-    #   -r /home/runner/work/library-api/library-api/requirements/app.in
+    #   -r requirements/app.in
     #   sweetrpg-api-core
     #   sweetrpg-library-objects
 sweetrpg-library-objects==0.0.452
-    # via -r /home/runner/work/library-api/library-api/requirements/app.in
+    # via -r requirements/app.in
 sweetrpg-model-core==0.0.155
     # via
-    #   -r /home/runner/work/library-api/library-api/requirements/app.in
+    #   -r requirements/app.in
     #   sweetrpg-api-core
     #   sweetrpg-db
     #   sweetrpg-library-objects
@@ -291,7 +291,7 @@ typing-inspection==0.4.1
     # via pydantic
 urllib3==2.5.0
     # via
-    #   -r /home/runner/work/library-api/library-api/requirements/app.in
+    #   -r requirements/app.in
     #   requests
     #   sentry-sdk
 werkzeug==3.1.3

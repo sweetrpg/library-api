@@ -28,7 +28,7 @@ cachelib==0.13.0
     #   flask-caching
     #   flask-oauthlib
     #   flask-session
-certifi==2025.7.14
+certifi==2025.8.3
     # via
     #   requests
     #   sentry-sdk

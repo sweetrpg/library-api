@@ -38,7 +38,7 @@ dnspython==2.7.0
     #   sweetrpg-db
 email-validator==2.2.0
     # via wtforms
-flask==3.1.1
+flask==3.1.2
     # via
     #   -r requirements/app.in
     #   flask-caching
@@ -163,7 +163,7 @@ pyyaml==6.0.2
     # via
     #   -r requirements/app.in
     #   flask-swagger
-requests==2.32.4
+requests==2.32.5
     # via
     #   -r requirements/app.in
     #   analytics-python

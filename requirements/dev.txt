@@ -6,7 +6,7 @@
 #
 alabaster==1.0.0
     # via sphinx
-alembic==1.16.4
+alembic==1.16.5
     # via flask-migrate
 analytics-python==1.4.post1
     # via -r requirements/app.in
@@ -35,7 +35,7 @@ cachelib==0.13.0
     #   flask-caching
     #   flask-oauthlib
     #   flask-session
-cachetools==6.1.0
+cachetools==6.2.0
     # via tox
 certifi==2025.8.3
     # via
@@ -53,7 +53,7 @@ click==8.2.1
     #   typer
 colorama==0.4.6
     # via tox
-coverage[toml]==7.10.5
+coverage[toml]==7.10.6
     # via
     #   coverage-badge
     #   pytest-cov
@@ -72,7 +72,7 @@ docutils==0.21.2
     #   rstcheck-core
     #   sphinx
     #   sphinx-tabs
-email-validator==2.2.0
+email-validator==2.3.0
     # via wtforms
 filelock==3.19.1
     # via
@@ -204,7 +204,7 @@ pathspec==0.12.1
     # via black
 pip-tools==7.5.0
     # via -r requirements/dev.in
-platformdirs==4.3.8
+platformdirs==4.4.0
     # via
     #   black
     #   tox
@@ -284,7 +284,7 @@ rstcheck==6.2.5
     # via -r requirements/docs.in
 rstcheck-core==1.2.2
     # via rstcheck
-sentry-sdk[flask]==2.35.0
+sentry-sdk[flask]==2.35.1
     # via -r requirements/app.in
 shellingham==1.5.4
     # via typer
@@ -346,11 +346,11 @@ sweetrpg-model-core==0.0.155
     #   sweetrpg-api-core
     #   sweetrpg-db
     #   sweetrpg-library-objects
-tox==4.28.4
+tox==4.29.0
     # via -r requirements/tests.in
-typer==0.16.1
+typer==0.17.3
     # via rstcheck
-typing-extensions==4.14.1
+typing-extensions==4.15.0
     # via
     #   alembic
     #   pydantic

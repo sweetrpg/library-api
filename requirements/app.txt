@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements/app.in
 #
-alembic==1.16.4
+alembic==1.16.5
     # via flask-migrate
 analytics-python==1.4.post1
     # via -r requirements/app.in
@@ -36,7 +36,7 @@ dnspython==2.7.0
     #   email-validator
     #   pymongo
     #   sweetrpg-db
-email-validator==2.2.0
+email-validator==2.3.0
     # via wtforms
 flask==3.1.2
     # via
@@ -171,7 +171,7 @@ requests==2.32.5
     #   requests-oauthlib
 requests-oauthlib==1.1.0
     # via flask-oauthlib
-sentry-sdk[flask]==2.35.0
+sentry-sdk[flask]==2.35.1
     # via -r requirements/app.in
 six==1.17.0
     # via
@@ -201,7 +201,7 @@ sweetrpg-model-core==0.0.155
     #   sweetrpg-api-core
     #   sweetrpg-db
     #   sweetrpg-library-objects
-typing-extensions==4.14.1
+typing-extensions==4.15.0
     # via
     #   alembic
     #   sqlalchemy

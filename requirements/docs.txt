@@ -6,7 +6,7 @@
 #
 alabaster==1.0.0
     # via sphinx
-alembic==1.16.4
+alembic==1.16.5
     # via flask-migrate
 analytics-python==1.4.post1
     # via -r requirements/app.in
@@ -49,7 +49,7 @@ docutils==0.21.2
     #   rstcheck-core
     #   sphinx
     #   sphinx-tabs
-email-validator==2.2.0
+email-validator==2.3.0
     # via wtforms
 flask==3.1.2
     # via
@@ -215,7 +215,7 @@ rstcheck==6.2.5
     # via -r requirements/docs.in
 rstcheck-core==1.2.2
     # via rstcheck
-sentry-sdk[flask]==2.35.0
+sentry-sdk[flask]==2.35.1
     # via -r requirements/app.in
 shellingham==1.5.4
     # via typer
@@ -277,9 +277,9 @@ sweetrpg-model-core==0.0.155
     #   sweetrpg-api-core
     #   sweetrpg-db
     #   sweetrpg-library-objects
-typer==0.16.1
+typer==0.17.3
     # via rstcheck
-typing-extensions==4.14.1
+typing-extensions==4.15.0
     # via
     #   alembic
     #   pydantic

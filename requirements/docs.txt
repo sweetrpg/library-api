@@ -215,7 +215,7 @@ rstcheck==6.2.5
     # via -r requirements/docs.in
 rstcheck-core==1.2.2
     # via rstcheck
-sentry-sdk[flask]==2.35.1
+sentry-sdk[flask]==2.37.0
     # via -r requirements/app.in
 shellingham==1.5.4
     # via typer
@@ -277,7 +277,7 @@ sweetrpg-model-core==0.0.155
     #   sweetrpg-api-core
     #   sweetrpg-db
     #   sweetrpg-library-objects
-typer==0.17.3
+typer==0.17.4
     # via rstcheck
 typing-extensions==4.15.0
     # via

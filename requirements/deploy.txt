@@ -30,7 +30,7 @@ charset-normalizer==3.4.3
     # via requests
 click==8.2.1
     # via flask
-dnspython==2.7.0
+dnspython==2.8.0
     # via
     #   -r requirements/app.in
     #   email-validator

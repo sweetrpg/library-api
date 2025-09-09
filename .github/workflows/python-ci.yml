@@ -41,7 +41,7 @@ jobs:
                     # - { name: Mac, python: "3.11", os: macos-latest, tox: py311 }
         steps:
             - uses: actions/checkout@v5
-            - uses: actions/setup-python@v5
+            - uses: actions/setup-python@v6
               with:
                   python-version: ${{ matrix.python }}
             - name: update-pip
@@ -68,7 +68,7 @@ jobs:
     #        concurrency: docs
     #        steps:
     #            - uses: actions/checkout@v5
-    #            - uses: actions/setup-python@v5
+    #            - uses: actions/setup-python@v6
     #              with:
     #                  python-version: "3.11"
     #            - name: install-deps

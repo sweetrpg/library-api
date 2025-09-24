@@ -10,7 +10,7 @@ analytics-python==1.4.post1
     # via -r requirements/app.in
 aniso8601==10.0.1
     # via flask-restful
-asgiref==3.9.1
+asgiref==3.9.2
     # via -r requirements/tests.in
 backoff==1.10.0
     # via analytics-python
@@ -197,7 +197,7 @@ pytest==8.4.2
     #   pytest-ordering
 pytest-cov==7.0.0
     # via -r requirements/tests.in
-pytest-env==1.1.3
+pytest-env==1.1.5
     # via -r requirements/tests.in
 pytest-ordering==0.6
     # via -r requirements/tests.in

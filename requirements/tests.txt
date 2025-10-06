@@ -10,7 +10,7 @@ analytics-python==1.4.post1
     # via -r requirements/app.in
 aniso8601==10.0.1
     # via flask-restful
-asgiref==3.9.2
+asgiref==3.10.0
     # via -r requirements/tests.in
 backoff==1.10.0
     # via analytics-python
@@ -27,7 +27,7 @@ cachelib==0.13.0
     #   flask-session
 cachetools==6.2.0
     # via tox
-certifi==2025.8.3
+certifi==2025.10.5
     # via
     #   requests
     #   sentry-sdk

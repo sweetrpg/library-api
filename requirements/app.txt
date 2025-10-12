@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements/app.in
 #
-alembic==1.16.5
+alembic==1.17.0
     # via flask-migrate
 analytics-python==1.4.post1
     # via -r requirements/app.in
@@ -171,7 +171,7 @@ requests==2.32.5
     #   requests-oauthlib
 requests-oauthlib==1.1.0
     # via flask-oauthlib
-sentry-sdk[flask]==2.39.0
+sentry-sdk[flask]==2.41.0
     # via -r requirements/app.in
 six==1.17.0
     # via
@@ -179,7 +179,7 @@ six==1.17.0
     #   flask-rest-jsonapi
     #   flask-restful
     #   python-dateutil
-sqlalchemy==2.0.43
+sqlalchemy==2.0.44
     # via
     #   alembic
     #   flask-rest-jsonapi

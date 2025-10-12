@@ -6,7 +6,7 @@
 #
 alabaster==1.0.0
     # via sphinx
-alembic==1.16.5
+alembic==1.17.0
     # via flask-migrate
 analytics-python==1.4.post1
     # via -r requirements/app.in
@@ -168,9 +168,9 @@ prometheus-client==0.23.1
     # via prometheus-flask-exporter
 prometheus-flask-exporter==0.23.2
     # via -r requirements/app.in
-pydantic==2.11.10
+pydantic==2.12.0
     # via rstcheck-core
-pydantic-core==2.33.2
+pydantic-core==2.41.1
     # via pydantic
 pygments==2.19.2
     # via
@@ -207,7 +207,7 @@ requests==2.32.5
     #   sphinx
 requests-oauthlib==1.1.0
     # via flask-oauthlib
-rich==14.1.0
+rich==14.2.0
     # via typer
 roman-numerals-py==3.1.0
     # via sphinx
@@ -215,7 +215,7 @@ rstcheck==6.2.5
     # via -r requirements/docs.in
 rstcheck-core==1.2.2
     # via rstcheck
-sentry-sdk[flask]==2.39.0
+sentry-sdk[flask]==2.41.0
     # via -r requirements/app.in
 shellingham==1.5.4
     # via typer
@@ -255,7 +255,7 @@ sphinxcontrib-qthelp==2.0.0
     # via sphinx
 sphinxcontrib-serializinghtml==2.0.0
     # via sphinx
-sqlalchemy==2.0.43
+sqlalchemy==2.0.44
     # via
     #   alembic
     #   flask-rest-jsonapi

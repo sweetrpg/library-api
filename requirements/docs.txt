@@ -103,7 +103,7 @@ greenlet==3.2.4
     # via sqlalchemy
 hiredis==3.2.1
     # via -r requirements/app.in
-idna==3.10
+idna==3.11
     # via
     #   email-validator
     #   requests

@@ -35,7 +35,7 @@ cachelib==0.13.0
     #   flask-caching
     #   flask-oauthlib
     #   flask-session
-cachetools==6.2.0
+cachetools==6.2.1
     # via tox
 certifi==2025.10.5
     # via
@@ -130,7 +130,7 @@ greenlet==3.2.4
     # via sqlalchemy
 hiredis==3.2.1
     # via -r requirements/app.in
-idna==3.10
+idna==3.11
     # via
     #   email-validator
     #   requests

@@ -225,7 +225,7 @@ requests==2.32.5
     #   requests-oauthlib
 requests-oauthlib==1.1.0
     # via flask-oauthlib
-sentry-sdk[flask]==2.42.0
+sentry-sdk[flask]==2.42.1
     # via -r requirements/app.in
 six==1.17.0
     # via
@@ -255,7 +255,7 @@ sweetrpg-model-core==0.0.155
     #   sweetrpg-api-core
     #   sweetrpg-db
     #   sweetrpg-library-objects
-tox==4.31.0
+tox==4.32.0
     # via -r requirements/tests.in
 typing-extensions==4.15.0
     # via

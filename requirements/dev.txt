@@ -20,7 +20,7 @@ babel==2.17.0
     # via sphinx
 backoff==1.10.0
     # via analytics-python
-black==25.9.0
+black==25.11.0
     # via -r requirements/dev.in
 blinker==1.9.0
     # via
@@ -263,7 +263,7 @@ python-dotenv==1.2.1
     #   -r requirements/tests.in
 python-editor==1.0.4
     # via -r requirements/app.in
-pytokens==0.2.0
+pytokens==0.3.0
     # via black
 pytz==2025.2
     # via flask-restful

@@ -107,7 +107,7 @@ flask-views==0.2.1
     # via -r requirements/app.in
 flask-wtf==1.2.2
     # via flask-mongoengine
-greenlet==3.2.4
+greenlet==3.3.0
     # via sqlalchemy
 hiredis==3.3.0
     # via -r requirements/app.in
@@ -165,7 +165,7 @@ packaging==25.0
     #   pyproject-api
     #   pytest
     #   tox
-platformdirs==4.5.0
+platformdirs==4.5.1
     # via
     #   tox
     #   virtualenv
@@ -225,7 +225,7 @@ requests==2.32.5
     #   requests-oauthlib
 requests-oauthlib==1.1.0
     # via flask-oauthlib
-sentry-sdk[flask]==2.46.0
+sentry-sdk[flask]==2.47.0
     # via -r requirements/app.in
 six==1.17.0
     # via
@@ -261,7 +261,7 @@ typing-extensions==4.15.0
     # via
     #   alembic
     #   sqlalchemy
-urllib3==2.5.0
+urllib3==2.6.0
     # via
     #   -r requirements/app.in
     #   requests

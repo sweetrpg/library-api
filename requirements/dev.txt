@@ -126,7 +126,7 @@ flask-views==0.2.1
     # via -r requirements/app.in
 flask-wtf==1.2.2
     # via flask-mongoengine
-greenlet==3.2.4
+greenlet==3.3.0
     # via sqlalchemy
 hiredis==3.3.0
     # via -r requirements/app.in
@@ -204,7 +204,7 @@ pathspec==0.12.1
     # via black
 pip-tools==7.5.2
     # via -r requirements/dev.in
-platformdirs==4.5.0
+platformdirs==4.5.1
     # via
     #   black
     #   tox
@@ -288,7 +288,7 @@ rstcheck==6.2.5
     # via -r requirements/docs.in
 rstcheck-core==1.2.2
     # via rstcheck
-sentry-sdk[flask]==2.46.0
+sentry-sdk[flask]==2.47.0
     # via -r requirements/app.in
 shellingham==1.5.4
     # via typer
@@ -364,7 +364,7 @@ typing-extensions==4.15.0
     #   typing-inspection
 typing-inspection==0.4.2
     # via pydantic
-urllib3==2.5.0
+urllib3==2.6.0
     # via
     #   -r requirements/app.in
     #   requests

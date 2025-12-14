@@ -60,7 +60,7 @@ flask==3.1.2
     #   sweetrpg-library-objects
 flask-caching==2.3.1
     # via -r requirements/app.in
-flask-cors==6.0.1
+flask-cors==6.0.2
     # via -r requirements/app.in
 flask-dotenv==0.1.2
     # via -r requirements/app.in
@@ -181,7 +181,7 @@ six==1.17.0
     #   flask-rest-jsonapi
     #   flask-restful
     #   python-dateutil
-sqlalchemy==2.0.44
+sqlalchemy==2.0.45
     # via
     #   alembic
     #   flask-rest-jsonapi
@@ -207,7 +207,7 @@ typing-extensions==4.15.0
     # via
     #   alembic
     #   sqlalchemy
-urllib3==2.6.0
+urllib3==2.6.2
     # via
     #   -r requirements/app.in
     #   requests

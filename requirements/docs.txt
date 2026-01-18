@@ -6,7 +6,7 @@
 #
 alabaster==1.0.0
     # via sphinx
-alembic==1.18.0
+alembic==1.18.1
     # via flask-migrate
 analytics-python==1.4.post1
     # via -r requirements/app.in
@@ -164,7 +164,7 @@ packaging==25.0
     #   sphinx
 pallets-sphinx-themes==2.3.0
     # via -r requirements/docs.in
-prometheus-client==0.23.1
+prometheus-client==0.24.1
     # via prometheus-flask-exporter
 prometheus-flask-exporter==0.23.2
     # via -r requirements/app.in

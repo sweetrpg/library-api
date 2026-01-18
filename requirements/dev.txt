@@ -6,7 +6,7 @@
 #
 alabaster==1.0.0
     # via sphinx
-alembic==1.18.0
+alembic==1.18.1
     # via flask-migrate
 analytics-python==1.4.post1
     # via -r requirements/app.in
@@ -214,7 +214,7 @@ pluggy==1.6.0
     #   pytest
     #   pytest-cov
     #   tox
-prometheus-client==0.23.1
+prometheus-client==0.24.1
     # via prometheus-flask-exporter
 prometheus-flask-exporter==0.23.2
     # via -r requirements/app.in

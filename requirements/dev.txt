@@ -126,7 +126,7 @@ flask-views==0.2.1
     # via -r requirements/app.in
 flask-wtf==1.2.2
     # via flask-mongoengine
-greenlet==3.3.0
+greenlet==3.3.1
     # via sqlalchemy
 hiredis==3.3.0
     # via -r requirements/app.in
@@ -188,7 +188,7 @@ oauthlib==2.1.0
     # via
     #   flask-oauthlib
     #   requests-oauthlib
-packaging==25.0
+packaging==26.0
     # via
     #   black
     #   build
@@ -198,6 +198,7 @@ packaging==25.0
     #   pytest
     #   sphinx
     #   tox
+    #   wheel
 pallets-sphinx-themes==2.3.0
     # via -r requirements/docs.in
 pathspec==1.0.3
@@ -263,7 +264,7 @@ python-dotenv==1.2.1
     #   -r requirements/tests.in
 python-editor==1.0.4
     # via -r requirements/app.in
-pytokens==0.3.0
+pytokens==0.4.0
     # via black
 pytz==2025.2
     # via flask-restful
@@ -280,7 +281,7 @@ requests==2.32.5
     #   sphinx
 requests-oauthlib==1.1.0
     # via flask-oauthlib
-rich==14.2.0
+rich==14.3.1
     # via typer
 roman-numerals==4.1.0
     # via roman-numerals-py
@@ -290,7 +291,7 @@ rstcheck==6.2.5
     # via -r requirements/docs.in
 rstcheck-core==1.2.2
     # via rstcheck
-sentry-sdk[flask]==2.49.0
+sentry-sdk[flask]==2.50.0
     # via -r requirements/app.in
 shellingham==1.5.4
     # via typer
@@ -330,7 +331,7 @@ sphinxcontrib-qthelp==2.0.0
     # via sphinx
 sphinxcontrib-serializinghtml==2.0.0
     # via sphinx
-sqlalchemy==2.0.45
+sqlalchemy==2.0.46
     # via
     #   alembic
     #   flask-rest-jsonapi
@@ -377,7 +378,7 @@ werkzeug==3.1.5
     # via
     #   flask
     #   flask-cors
-wheel==0.45.1
+wheel==0.46.3
     # via pip-tools
 wtforms[email]==3.2.1
     # via

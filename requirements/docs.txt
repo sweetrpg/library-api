@@ -6,7 +6,7 @@
 #
 alabaster==1.0.0
     # via sphinx
-alembic==1.18.1
+alembic==1.18.3
     # via flask-migrate
 analytics-python==1.4.post1
     # via -r requirements/app.in
@@ -217,7 +217,7 @@ rstcheck==6.2.5
     # via -r requirements/docs.in
 rstcheck-core==1.2.2
     # via rstcheck
-sentry-sdk[flask]==2.50.0
+sentry-sdk[flask]==2.51.0
     # via -r requirements/app.in
 shellingham==1.5.4
     # via typer

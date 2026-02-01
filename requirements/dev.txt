@@ -6,7 +6,7 @@
 #
 alabaster==1.0.0
     # via sphinx
-alembic==1.18.1
+alembic==1.18.3
     # via flask-migrate
 analytics-python==1.4.post1
     # via -r requirements/app.in
@@ -35,7 +35,7 @@ cachelib==0.13.0
     #   flask-caching
     #   flask-oauthlib
     #   flask-session
-cachetools==6.2.5
+cachetools==6.2.6
     # via tox
 certifi==2026.1.4
     # via
@@ -201,7 +201,7 @@ packaging==26.0
     #   wheel
 pallets-sphinx-themes==2.3.0
     # via -r requirements/docs.in
-pathspec==1.0.3
+pathspec==1.0.4
     # via black
 pip-tools==7.5.2
     # via -r requirements/dev.in
@@ -264,7 +264,7 @@ python-dotenv==1.2.1
     #   -r requirements/tests.in
 python-editor==1.0.4
     # via -r requirements/app.in
-pytokens==0.4.0
+pytokens==0.4.1
     # via black
 pytz==2025.2
     # via flask-restful
@@ -291,7 +291,7 @@ rstcheck==6.2.5
     # via -r requirements/docs.in
 rstcheck-core==1.2.2
     # via rstcheck
-sentry-sdk[flask]==2.50.0
+sentry-sdk[flask]==2.51.0
     # via -r requirements/app.in
 shellingham==1.5.4
     # via typer

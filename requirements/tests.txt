@@ -4,13 +4,13 @@
 #
 #    pip-compile requirements/tests.in
 #
-alembic==1.18.3
+alembic==1.18.4
     # via flask-migrate
 analytics-python==1.4.post1
     # via -r requirements/app.in
 aniso8601==10.0.1
     # via flask-restful
-asgiref==3.11.0
+asgiref==3.11.1
     # via -r requirements/tests.in
 backoff==1.10.0
     # via analytics-python
@@ -25,7 +25,7 @@ cachelib==0.13.0
     #   flask-caching
     #   flask-oauthlib
     #   flask-session
-cachetools==7.0.0
+cachetools==7.0.1
     # via tox
 certifi==2026.1.4
     # via
@@ -39,7 +39,7 @@ click==8.3.1
     # via flask
 colorama==0.4.6
     # via tox
-coverage[toml]==7.13.2
+coverage[toml]==7.13.4
     # via
     #   coverage-badge
     #   pytest-cov
@@ -55,7 +55,7 @@ dnspython==2.8.0
     #   sweetrpg-db
 email-validator==2.3.0
     # via wtforms
-filelock==3.20.3
+filelock==3.24.0
     # via
     #   tox
     #   virtualenv
@@ -165,7 +165,7 @@ packaging==26.0
     #   pyproject-api
     #   pytest
     #   tox
-platformdirs==4.5.1
+platformdirs==4.9.1
     # via
     #   tox
     #   virtualenv
@@ -225,7 +225,7 @@ requests==2.32.5
     #   requests-oauthlib
 requests-oauthlib==1.1.0
     # via flask-oauthlib
-sentry-sdk[flask]==2.51.0
+sentry-sdk[flask]==2.52.0
     # via -r requirements/app.in
 six==1.17.0
     # via
@@ -255,7 +255,7 @@ sweetrpg-model-core==0.0.155
     #   sweetrpg-api-core
     #   sweetrpg-db
     #   sweetrpg-library-objects
-tox==4.34.1
+tox==4.35.0
     # via -r requirements/tests.in
 typing-extensions==4.15.0
     # via

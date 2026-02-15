@@ -6,12 +6,14 @@
 #
 alabaster==1.0.0
     # via sphinx
-alembic==1.18.3
+alembic==1.18.4
     # via flask-migrate
 analytics-python==1.4.post1
     # via -r requirements/app.in
 aniso8601==10.0.1
     # via flask-restful
+annotated-doc==0.0.4
+    # via typer
 annotated-types==0.7.0
     # via pydantic
 babel==2.18.0
@@ -217,7 +219,7 @@ rstcheck==6.2.5
     # via -r requirements/docs.in
 rstcheck-core==1.2.2
     # via rstcheck
-sentry-sdk[flask]==2.51.0
+sentry-sdk[flask]==2.52.0
     # via -r requirements/app.in
 shellingham==1.5.4
     # via typer
@@ -279,7 +281,7 @@ sweetrpg-model-core==0.0.155
     #   sweetrpg-api-core
     #   sweetrpg-db
     #   sweetrpg-library-objects
-typer==0.21.1
+typer==0.23.1
     # via rstcheck
 typing-extensions==4.15.0
     # via
@@ -287,7 +289,6 @@ typing-extensions==4.15.0
     #   pydantic
     #   pydantic-core
     #   sqlalchemy
-    #   typer
     #   typing-inspection
 typing-inspection==0.4.2
     # via pydantic

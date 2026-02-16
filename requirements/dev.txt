@@ -76,7 +76,7 @@ docutils==0.21.2
     #   sphinx-tabs
 email-validator==2.3.0
     # via wtforms
-filelock==3.24.0
+filelock==3.24.1
     # via
     #   tox
     #   virtualenv
@@ -355,7 +355,7 @@ sweetrpg-model-core==0.0.155
     #   sweetrpg-api-core
     #   sweetrpg-db
     #   sweetrpg-library-objects
-tox==4.35.0
+tox==4.36.0
     # via -r requirements/tests.in
 typer==0.23.1
     # via rstcheck

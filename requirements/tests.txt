@@ -55,7 +55,7 @@ dnspython==2.8.0
     #   sweetrpg-db
 email-validator==2.3.0
     # via wtforms
-filelock==3.24.0
+filelock==3.24.1
     # via
     #   tox
     #   virtualenv
@@ -255,7 +255,7 @@ sweetrpg-model-core==0.0.155
     #   sweetrpg-api-core
     #   sweetrpg-db
     #   sweetrpg-library-objects
-tox==4.35.0
+tox==4.36.0
     # via -r requirements/tests.in
 typing-extensions==4.15.0
     # via

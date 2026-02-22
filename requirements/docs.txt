@@ -53,7 +53,7 @@ docutils==0.21.2
     #   sphinx-tabs
 email-validator==2.3.0
     # via wtforms
-flask==3.1.2
+flask==3.1.3
     # via
     #   -r requirements/app.in
     #   flask-caching
@@ -101,7 +101,7 @@ flask-views==0.2.1
     # via -r requirements/app.in
 flask-wtf==1.2.2
     # via flask-mongoengine
-greenlet==3.3.1
+greenlet==3.3.2
     # via sqlalchemy
 hiredis==3.3.0
     # via -r requirements/app.in
@@ -209,7 +209,7 @@ requests==2.32.5
     #   sphinx
 requests-oauthlib==1.1.0
     # via flask-oauthlib
-rich==14.3.2
+rich==14.3.3
     # via typer
 roman-numerals==4.1.0
     # via roman-numerals-py
@@ -219,7 +219,7 @@ rstcheck==6.2.5
     # via -r requirements/docs.in
 rstcheck-core==1.2.2
     # via rstcheck
-sentry-sdk[flask]==2.52.0
+sentry-sdk[flask]==2.53.0
     # via -r requirements/app.in
 shellingham==1.5.4
     # via typer
@@ -281,7 +281,7 @@ sweetrpg-model-core==0.0.155
     #   sweetrpg-api-core
     #   sweetrpg-db
     #   sweetrpg-library-objects
-typer==0.23.1
+typer==0.24.1
     # via rstcheck
 typing-extensions==4.15.0
     # via
@@ -297,7 +297,7 @@ urllib3==2.6.3
     #   -r requirements/app.in
     #   requests
     #   sentry-sdk
-werkzeug==3.1.5
+werkzeug==3.1.6
     # via
     #   flask
     #   flask-cors

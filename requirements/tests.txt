@@ -27,12 +27,10 @@ cachelib==0.13.0
     #   flask-session
 cachetools==7.0.1
     # via tox
-certifi==2026.1.4
+certifi==2026.2.25
     # via
     #   requests
     #   sentry-sdk
-chardet==6.0.0.post1
-    # via tox
 charset-normalizer==3.4.4
     # via requests
 click==8.3.1
@@ -57,6 +55,7 @@ email-validator==2.3.0
     # via wtforms
 filelock==3.24.3
     # via
+    #   python-discovery
     #   tox
     #   virtualenv
 flask==3.1.3
@@ -167,6 +166,7 @@ packaging==26.0
     #   tox
 platformdirs==4.9.2
     # via
+    #   python-discovery
     #   tox
     #   virtualenv
 pluggy==1.6.0
@@ -205,6 +205,8 @@ python-dateutil==2.9.0.post0
     # via
     #   -r requirements/app.in
     #   analytics-python
+python-discovery==1.1.0
+    # via virtualenv
 python-dotenv==1.2.1
     # via
     #   -r requirements/app.in
@@ -233,7 +235,7 @@ six==1.17.0
     #   flask-rest-jsonapi
     #   flask-restful
     #   python-dateutil
-sqlalchemy==2.0.46
+sqlalchemy==2.0.47
     # via
     #   alembic
     #   flask-rest-jsonapi
@@ -255,7 +257,7 @@ sweetrpg-model-core==0.0.155
     #   sweetrpg-api-core
     #   sweetrpg-db
     #   sweetrpg-library-objects
-tox==4.44.0
+tox==4.46.3
     # via -r requirements/tests.in
 typing-extensions==4.15.0
     # via
@@ -266,7 +268,7 @@ urllib3==2.6.3
     #   -r requirements/app.in
     #   requests
     #   sentry-sdk
-virtualenv==20.38.0
+virtualenv==21.1.0
     # via tox
 werkzeug==3.1.6
     # via

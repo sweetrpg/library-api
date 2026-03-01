@@ -30,7 +30,7 @@ cachelib==0.13.0
     #   flask-caching
     #   flask-oauthlib
     #   flask-session
-certifi==2026.1.4
+certifi==2026.2.25
     # via
     #   requests
     #   sentry-sdk
@@ -164,7 +164,7 @@ packaging==26.0
     #   marshmallow
     #   pallets-sphinx-themes
     #   sphinx
-pallets-sphinx-themes==2.3.0
+pallets-sphinx-themes==2.5.0
     # via -r requirements/docs.in
 prometheus-client==0.24.1
     # via prometheus-flask-exporter
@@ -259,7 +259,7 @@ sphinxcontrib-qthelp==2.0.0
     # via sphinx
 sphinxcontrib-serializinghtml==2.0.0
     # via sphinx
-sqlalchemy==2.0.46
+sqlalchemy==2.0.47
     # via
     #   alembic
     #   flask-rest-jsonapi

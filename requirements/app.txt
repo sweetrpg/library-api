@@ -22,7 +22,7 @@ cachelib==0.13.0
     #   flask-caching
     #   flask-oauthlib
     #   flask-session
-certifi==2026.1.4
+certifi==2026.2.25
     # via
     #   requests
     #   sentry-sdk
@@ -179,7 +179,7 @@ six==1.17.0
     #   flask-rest-jsonapi
     #   flask-restful
     #   python-dateutil
-sqlalchemy==2.0.46
+sqlalchemy==2.0.47
     # via
     #   alembic
     #   flask-rest-jsonapi

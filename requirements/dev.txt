@@ -74,7 +74,7 @@ docutils==0.21.2
     #   sphinx-tabs
 email-validator==2.3.0
     # via wtforms
-filelock==3.24.3
+filelock==3.25.0
     # via
     #   python-discovery
     #   tox
@@ -262,7 +262,7 @@ python-dateutil==2.9.0.post0
     #   analytics-python
 python-discovery==1.1.0
     # via virtualenv
-python-dotenv==1.2.1
+python-dotenv==1.2.2
     # via
     #   -r requirements/app.in
     #   -r requirements/tests.in
@@ -357,7 +357,7 @@ sweetrpg-model-core==0.0.155
     #   sweetrpg-api-core
     #   sweetrpg-db
     #   sweetrpg-library-objects
-tox==4.46.3
+tox==4.47.0
     # via -r requirements/tests.in
 typer==0.24.1
     # via rstcheck

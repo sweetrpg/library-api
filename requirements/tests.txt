@@ -25,13 +25,13 @@ cachelib==0.13.0
     #   flask-caching
     #   flask-oauthlib
     #   flask-session
-cachetools==7.0.1
+cachetools==7.0.3
     # via tox
 certifi==2026.2.25
     # via
     #   requests
     #   sentry-sdk
-charset-normalizer==3.4.4
+charset-normalizer==3.4.5
     # via requests
 click==8.3.1
     # via flask
@@ -164,7 +164,7 @@ packaging==26.0
     #   pyproject-api
     #   pytest
     #   tox
-platformdirs==4.9.2
+platformdirs==4.9.4
     # via
     #   python-discovery
     #   tox
@@ -205,7 +205,7 @@ python-dateutil==2.9.0.post0
     # via
     #   -r requirements/app.in
     #   analytics-python
-python-discovery==1.1.0
+python-discovery==1.1.1
     # via virtualenv
 python-dotenv==1.2.2
     # via
@@ -213,7 +213,7 @@ python-dotenv==1.2.2
     #   -r requirements/tests.in
 python-editor==1.0.4
     # via -r requirements/app.in
-pytz==2025.2
+pytz==2026.1.post1
     # via flask-restful
 pyyaml==6.0.3
     # via
@@ -227,7 +227,7 @@ requests==2.32.5
     #   requests-oauthlib
 requests-oauthlib==1.1.0
     # via flask-oauthlib
-sentry-sdk[flask]==2.53.0
+sentry-sdk[flask]==2.54.0
     # via -r requirements/app.in
 six==1.17.0
     # via
@@ -235,7 +235,7 @@ six==1.17.0
     #   flask-rest-jsonapi
     #   flask-restful
     #   python-dateutil
-sqlalchemy==2.0.47
+sqlalchemy==2.0.48
     # via
     #   alembic
     #   flask-rest-jsonapi
@@ -257,7 +257,9 @@ sweetrpg-model-core==0.0.155
     #   sweetrpg-api-core
     #   sweetrpg-db
     #   sweetrpg-library-objects
-tox==4.47.0
+tomli-w==1.2.0
+    # via tox
+tox==4.49.0
     # via -r requirements/tests.in
 typing-extensions==4.15.0
     # via

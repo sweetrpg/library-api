@@ -145,7 +145,7 @@ marshmallow-jsonapi==0.24.0
     #   sweetrpg-library-objects
 mdurl==0.1.2
     # via markdown-it-py
-mongoengine==0.29.1
+mongoengine==0.29.3
     # via
     #   flask-mongoengine
     #   sweetrpg-api-core

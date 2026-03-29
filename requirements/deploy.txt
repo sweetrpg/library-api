@@ -165,7 +165,7 @@ pyyaml==6.0.3
     # via
     #   -r requirements/app.in
     #   flask-swagger
-requests==2.32.5
+requests==2.33.0
     # via
     #   -r requirements/app.in
     #   analytics-python
@@ -173,7 +173,7 @@ requests==2.32.5
     #   requests-oauthlib
 requests-oauthlib==1.1.0
     # via flask-oauthlib
-sentry-sdk[flask]==2.55.0
+sentry-sdk[flask]==2.56.0
     # via -r requirements/app.in
 six==1.17.0
     # via
@@ -214,7 +214,7 @@ urllib3==2.6.3
     #   sentry-sdk
 uwsgi==2.0.31
     # via -r requirements/deploy.in
-werkzeug==3.1.6
+werkzeug==3.1.7
     # via
     #   flask
     #   flask-cors

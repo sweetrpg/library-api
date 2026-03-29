@@ -205,8 +205,10 @@ python-dateutil==2.9.0.post0
     # via
     #   -r requirements/app.in
     #   analytics-python
-python-discovery==1.2.0
-    # via virtualenv
+python-discovery==1.2.1
+    # via
+    #   tox
+    #   virtualenv
 python-dotenv==1.2.2
     # via
     #   -r requirements/app.in
@@ -219,7 +221,7 @@ pyyaml==6.0.3
     # via
     #   -r requirements/app.in
     #   flask-swagger
-requests==2.32.5
+requests==2.33.0
     # via
     #   -r requirements/app.in
     #   analytics-python
@@ -227,7 +229,7 @@ requests==2.32.5
     #   requests-oauthlib
 requests-oauthlib==1.1.0
     # via flask-oauthlib
-sentry-sdk[flask]==2.55.0
+sentry-sdk[flask]==2.56.0
     # via -r requirements/app.in
 six==1.17.0
     # via
@@ -259,7 +261,7 @@ sweetrpg-model-core==0.0.155
     #   sweetrpg-library-objects
 tomli-w==1.2.0
     # via tox
-tox==4.50.3
+tox==4.51.0
     # via -r requirements/tests.in
 typing-extensions==4.15.0
     # via
@@ -272,7 +274,7 @@ urllib3==2.6.3
     #   sentry-sdk
 virtualenv==21.2.0
     # via tox
-werkzeug==3.1.6
+werkzeug==3.1.7
     # via
     #   flask
     #   flask-cors

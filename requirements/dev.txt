@@ -30,7 +30,7 @@ blinker==1.9.0
     #   -r requirements/tests.in
     #   flask
     #   sentry-sdk
-build==1.4.0
+build==1.4.2
     # via pip-tools
 cachelib==0.13.0
     # via
@@ -260,8 +260,10 @@ python-dateutil==2.9.0.post0
     # via
     #   -r requirements/app.in
     #   analytics-python
-python-discovery==1.2.0
-    # via virtualenv
+python-discovery==1.2.1
+    # via
+    #   tox
+    #   virtualenv
 python-dotenv==1.2.2
     # via
     #   -r requirements/app.in
@@ -276,7 +278,7 @@ pyyaml==6.0.3
     # via
     #   -r requirements/app.in
     #   flask-swagger
-requests==2.32.5
+requests==2.33.0
     # via
     #   -r requirements/app.in
     #   analytics-python
@@ -295,7 +297,7 @@ rstcheck==6.2.5
     # via -r requirements/docs.in
 rstcheck-core==1.2.2
     # via rstcheck
-sentry-sdk[flask]==2.55.0
+sentry-sdk[flask]==2.56.0
     # via -r requirements/app.in
 shellingham==1.5.4
     # via typer
@@ -359,7 +361,7 @@ sweetrpg-model-core==0.0.155
     #   sweetrpg-library-objects
 tomli-w==1.2.0
     # via tox
-tox==4.50.3
+tox==4.51.0
     # via -r requirements/tests.in
 typer==0.24.1
     # via rstcheck
@@ -379,7 +381,7 @@ urllib3==2.6.3
     #   sentry-sdk
 virtualenv==21.2.0
     # via tox
-werkzeug==3.1.6
+werkzeug==3.1.7
     # via
     #   flask
     #   flask-cors

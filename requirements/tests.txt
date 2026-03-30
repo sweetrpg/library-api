@@ -178,7 +178,7 @@ prometheus-client==0.24.1
     # via prometheus-flask-exporter
 prometheus-flask-exporter==0.23.2
     # via -r requirements/app.in
-pygments==2.19.2
+pygments==2.20.0
     # via pytest
 pymongo[srv]==3.13.0
     # via

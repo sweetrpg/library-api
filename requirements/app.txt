@@ -86,7 +86,7 @@ flask-views==0.2.1
     # via -r requirements/app.in
 flask-wtf==1.2.2
     # via flask-mongoengine
-greenlet==3.3.2
+greenlet==3.4.0
     # via sqlalchemy
 hiredis==3.3.1
     # via -r requirements/app.in
@@ -130,7 +130,7 @@ mongoengine==0.29.3
     #   sweetrpg-library-objects
 monotonic==1.6
     # via analytics-python
-msgspec==0.20.0
+msgspec==0.21.0
     # via flask-session
 oauthlib==2.1.0
     # via
@@ -138,7 +138,7 @@ oauthlib==2.1.0
     #   requests-oauthlib
 packaging==26.0
     # via marshmallow
-prometheus-client==0.24.1
+prometheus-client==0.25.0
     # via prometheus-flask-exporter
 prometheus-flask-exporter==0.23.2
     # via -r requirements/app.in

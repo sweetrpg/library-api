@@ -101,7 +101,7 @@ flask-views==0.2.1
     # via -r requirements/app.in
 flask-wtf==1.2.2
     # via flask-mongoengine
-greenlet==3.3.2
+greenlet==3.4.0
     # via sqlalchemy
 hiredis==3.3.1
     # via -r requirements/app.in
@@ -153,7 +153,7 @@ mongoengine==0.29.3
     #   sweetrpg-library-objects
 monotonic==1.6
     # via analytics-python
-msgspec==0.20.0
+msgspec==0.21.0
     # via flask-session
 oauthlib==2.1.0
     # via
@@ -166,7 +166,7 @@ packaging==26.0
     #   sphinx
 pallets-sphinx-themes==2.5.0
     # via -r requirements/docs.in
-prometheus-client==0.24.1
+prometheus-client==0.25.0
     # via prometheus-flask-exporter
 prometheus-flask-exporter==0.23.2
     # via -r requirements/app.in
@@ -209,7 +209,7 @@ requests==2.33.1
     #   sphinx
 requests-oauthlib==1.1.0
     # via flask-oauthlib
-rich==14.3.3
+rich==14.3.4
     # via typer
 roman-numerals==4.1.0
     # via roman-numerals-py

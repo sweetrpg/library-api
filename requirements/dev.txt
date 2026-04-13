@@ -181,7 +181,7 @@ mongoengine==0.29.3
     #   sweetrpg-library-objects
 monotonic==1.6
     # via analytics-python
-msgspec==0.21.0
+msgspec==0.21.1
     # via flask-session
 mypy-extensions==1.1.0
     # via black
@@ -287,7 +287,7 @@ requests==2.33.1
     #   sphinx
 requests-oauthlib==1.1.0
     # via flask-oauthlib
-rich==14.3.4
+rich==15.0.0
     # via typer
 roman-numerals==4.1.0
     # via roman-numerals-py

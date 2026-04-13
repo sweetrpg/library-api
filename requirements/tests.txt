@@ -152,7 +152,7 @@ mongoengine==0.29.3
     #   sweetrpg-library-objects
 monotonic==1.6
     # via analytics-python
-msgspec==0.21.0
+msgspec==0.21.1
     # via flask-session
 oauthlib==2.1.0
     # via

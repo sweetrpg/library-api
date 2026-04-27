@@ -363,7 +363,7 @@ tomli-w==1.2.0
     # via tox
 tox==4.53.0
     # via -r requirements/tests.in
-typer==0.24.2
+typer==0.25.0
     # via rstcheck
 typing-extensions==4.15.0
     # via

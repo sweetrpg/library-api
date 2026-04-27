@@ -281,7 +281,7 @@ sweetrpg-model-core==0.0.155
     #   sweetrpg-api-core
     #   sweetrpg-db
     #   sweetrpg-library-objects
-typer==0.24.2
+typer==0.25.0
     # via rstcheck
 typing-extensions==4.15.0
     # via

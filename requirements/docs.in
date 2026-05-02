@@ -1,6 +1,6 @@
 -r app.in
 Pallets-Sphinx-Themes~=2.0
-Sphinx~=8.0
+Sphinx~=9.0
 sphinx-issues~=5.0
 sphinxcontrib-log-cabinet~=1.0
 sphinx-tabs~=3.0

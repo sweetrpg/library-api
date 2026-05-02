@@ -290,8 +290,6 @@ requests-oauthlib==1.1.0
 rich==15.0.0
     # via typer
 roman-numerals==4.1.0
-    # via roman-numerals-py
-roman-numerals-py==4.1.0
     # via sphinx
 rstcheck==6.2.5
     # via -r requirements/docs.in
@@ -309,7 +307,7 @@ six==1.17.0
     #   python-dateutil
 snowballstemmer==3.0.1
     # via sphinx
-sphinx==8.2.3
+sphinx==9.0.4
     # via
     #   -r requirements/docs.in
     #   pallets-sphinx-themes

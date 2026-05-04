@@ -25,7 +25,7 @@ cachelib==0.13.0
     #   flask-caching
     #   flask-oauthlib
     #   flask-session
-cachetools==7.1.0
+cachetools==7.1.1
     # via tox
 certifi==2026.4.22
     # via
@@ -216,7 +216,7 @@ python-dotenv==1.2.2
     #   pytest-env
 python-editor==1.0.4
     # via -r requirements/app.in
-pytz==2026.1.post1
+pytz==2026.2
     # via flask-restful
 pyyaml==6.0.3
     # via
@@ -279,7 +279,7 @@ werkzeug==3.1.8
     # via
     #   flask
     #   flask-cors
-wtforms[email]==3.2.1
+wtforms[email]==3.2.2
     # via
     #   flask-mongoengine
     #   flask-wtf

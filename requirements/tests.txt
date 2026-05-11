@@ -222,7 +222,7 @@ pyyaml==6.0.3
     # via
     #   -r requirements/app.in
     #   flask-swagger
-requests==2.33.1
+requests==2.34.0
     # via
     #   -r requirements/app.in
     #   analytics-python

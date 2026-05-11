@@ -92,7 +92,7 @@ hiredis==3.3.1
     # via
     #   -r requirements/app.in
     #   -r requirements/deploy.in
-idna==3.13
+idna==3.14
     # via
     #   email-validator
     #   requests

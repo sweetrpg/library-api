@@ -26,7 +26,7 @@ certifi==2026.6.17
     # via
     #   requests
     #   sentry-sdk
-charset-normalizer==3.4.7
+charset-normalizer==3.4.9
     # via requests
 click==8.4.2
     # via flask
@@ -58,7 +58,7 @@ flask==3.1.3
     #   sentry-sdk
     #   sweetrpg-api-core
     #   sweetrpg-library-objects
-flask-caching==2.4.0
+flask-caching==2.4.1
     # via -r requirements/app.in
 flask-cors==6.0.5
     # via -r requirements/app.in

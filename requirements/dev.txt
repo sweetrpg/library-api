@@ -73,7 +73,7 @@ docutils==0.22.4
     #   sphinx-tabs
 email-validator==2.3.0
     # via wtforms
-filelock==3.31.0
+filelock==3.31.1
     # via
     #   python-discovery
     #   tox

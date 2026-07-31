@@ -3,20 +3,20 @@ __author__ = "Paul Schifferer <dm@sweetrpg.com>"
 """
 """
 
-from sweetrpg_library_objects.db.contribution.document import ContributionDocument
-from sweetrpg_library_objects.db.person.document import PersonDocument
-from sweetrpg_library_objects.db.publisher.document import PublisherDocument
-from sweetrpg_library_objects.db.review.document import ReviewDocument
-from sweetrpg_library_objects.db.studio.document import StudioDocument
-from sweetrpg_library_objects.db.system.document import SystemDocument
-from sweetrpg_library_objects.db.volume.document import VolumeDocument
-from sweetrpg_library_objects.model.contribution import Contribution
-from sweetrpg_library_objects.model.person import Person
-from sweetrpg_library_objects.model.publisher import Publisher
-from sweetrpg_library_objects.model.review import Review
-from sweetrpg_library_objects.model.studio import Studio
-from sweetrpg_library_objects.model.system import System
-from sweetrpg_library_objects.model.volume import Volume
+from sweetrpg_shelf_objects.db.contribution.document import ContributionDocument
+from sweetrpg_shelf_objects.db.person.document import PersonDocument
+from sweetrpg_shelf_objects.db.publisher.document import PublisherDocument
+from sweetrpg_shelf_objects.db.review.document import ReviewDocument
+from sweetrpg_shelf_objects.db.studio.document import StudioDocument
+from sweetrpg_shelf_objects.db.system.document import SystemDocument
+from sweetrpg_shelf_objects.db.volume.document import VolumeDocument
+from sweetrpg_shelf_objects.model.contribution import Contribution
+from sweetrpg_shelf_objects.model.person import Person
+from sweetrpg_shelf_objects.model.publisher import Publisher
+from sweetrpg_shelf_objects.model.review import Review
+from sweetrpg_shelf_objects.model.studio import Studio
+from sweetrpg_shelf_objects.model.system import System
+from sweetrpg_shelf_objects.model.volume import Volume
 
 model_info = {
     "person": {

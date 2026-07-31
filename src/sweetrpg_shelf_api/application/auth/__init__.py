@@ -7,7 +7,7 @@ from flask_oauthlib.provider import OAuth2Provider
 # from authlib.integrations.flask_client import OAuth
 from flask import current_app
 import logging
-from sweetrpg_library_api.application import constants
+from sweetrpg_shelf_api.application import constants
 import os
 
 

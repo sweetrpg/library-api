@@ -6,12 +6,12 @@ __author__ = "Paul Schifferer <dm@sweetrpg.com>"
 from flask import current_app
 from flask_rest_jsonapi import ResourceList, ResourceDetail, ResourceRelationship
 from sweetrpg_api_core.data import APIData
-from sweetrpg_library_objects.api.contribution.schema import ContributionAPISchema
-from sweetrpg_library_objects.model.contribution import Contribution
+from sweetrpg_shelf_objects.api.contribution.schema import ContributionAPISchema
+from sweetrpg_shelf_objects.model.contribution import Contribution
 
-from sweetrpg_library_api.application.auth import oauth
-from sweetrpg_library_api.application.blueprints.setup import model_info
-from sweetrpg_library_api.application.db import db
+from sweetrpg_shelf_api.application.auth import oauth
+from sweetrpg_shelf_api.application.blueprints.setup import model_info
+from sweetrpg_shelf_api.application.db import db
 
 
 class ContributionList(ResourceList):

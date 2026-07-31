@@ -10,7 +10,7 @@ import os
 
 import redis
 
-from sweetrpg_library_api.application import constants
+from sweetrpg_shelf_api.application import constants
 
 
 class BaseConfig(object):

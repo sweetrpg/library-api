@@ -5,8 +5,8 @@ __init__.py
 Root.
 """
 
-__title__ = "sweetrpg-library-api"
-__description__ = "API microservice for SweetRPG Library"
+__title__ = "sweetrpg-shelf-api"
+__description__ = "API microservice for SweetRPG Shelf"
 __url__ = "https://sweetrpg.com"
 __version__ = "0.0.347"
 __build__ = 0x000013

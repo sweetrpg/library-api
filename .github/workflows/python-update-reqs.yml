@@ -6,7 +6,7 @@ on:
         types:
             - model-core-published
             - api-core-published
-            - library-objects-published
+            - shelf-objects-published
             - db-published
     schedule:
         - cron: "0 1 * * 1"

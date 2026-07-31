@@ -8,7 +8,7 @@ version=$1
 
 export DOCKER_BUILDKIT=1
 registry=registry.sweetrpg.com
-name=sweetrpg-library-api
+name=sweetrpg-shelf-api
 new_version=$(semver -i patch ${version})
 
 ssh-add ~/.ssh/id_rsa

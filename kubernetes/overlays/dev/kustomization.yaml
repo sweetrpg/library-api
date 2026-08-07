@@ -6,6 +6,7 @@ namespace: sweetrpg-library
 
 resources:
     - ../../base
+    - atlas-db-user.yaml
     - configmaps.yaml
     - mongodb-atlas-service-entry.yaml
     # - destination-rules.yaml
